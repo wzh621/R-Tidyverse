@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 0 章 导语：从问题到代码 | R 语言编程：基于 tidyverse</title>
+  <meta name="description" content="基于指定教材与配套资料开发的 R 语言课程讲义。" />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 0 章 导语：从问题到代码 | R 语言编程：基于 tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="基于指定教材与配套资料开发的 R 语言课程讲义。" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 0 章 导语：从问题到代码 | R 语言编程：基于 tidyverse" />
+  
+  <meta name="twitter:description" content="基于指定教材与配套资料开发的 R 语言课程讲义。" />
+  
+
+<meta name="author" content="王芝皓" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="author-bio.html"/>
+<link rel="next" href="basic-syntax.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/codefolding-lua-1.1/codefolding-lua.css" rel="stylesheet" />
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="course-brand"><a href="./">R 语言编程 · tidyverse</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#教材章节与讲义文件对应关系"><i class="fa fa-check"></i>教材章节与讲义文件对应关系</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author-bio.html"><a href="author-bio.html"><i class="fa fa-check"></i>作者简介</a>
+<ul>
+<li class="chapter" data-level="" data-path="author-bio.html"><a href="author-bio.html#科研与教学工作"><i class="fa fa-check"></i>科研与教学工作</a></li>
+<li class="chapter" data-level="" data-path="author-bio.html"><a href="author-bio.html#学术成果"><i class="fa fa-check"></i>学术成果</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i>第 0 章 导语：从问题到代码</a>
+<ul>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#学习目标"><i class="fa fa-check"></i>学习目标</a></li>
+<li class="chapter" data-level="0.1" data-path="intro.html"><a href="intro.html#怎么学习编程语言"><i class="fa fa-check"></i><b>0.1</b> 怎么学习编程语言</a>
+<ul>
+<li class="chapter" data-level="0.1.1" data-path="intro.html"><a href="intro.html#跨过能看懂到能写出的门槛"><i class="fa fa-check"></i><b>0.1.1</b> 跨过“能看懂”到“能写出”的门槛</a></li>
+<li class="chapter" data-level="0.1.2" data-path="intro.html"><a href="intro.html#微型案例把一句需求翻译成代码"><i class="fa fa-check"></i><b>0.1.2</b> 微型案例：把一句需求翻译成代码</a></li>
+</ul></li>
+<li class="chapter" data-level="0.2" data-path="intro.html"><a href="intro.html#r-语言数据科学与-tidyverse"><i class="fa fa-check"></i><b>0.2</b> R 语言、数据科学与 tidyverse</a>
+<ul>
+<li class="chapter" data-level="0.2.1" data-path="intro.html"><a href="intro.html#tidyverse-的核心管道流与泛函流"><i class="fa fa-check"></i><b>0.2.1</b> tidyverse 的核心：管道流与泛函流</a></li>
+<li class="chapter" data-level="0.2.2" data-path="intro.html"><a href="intro.html#三种重要编程思想"><i class="fa fa-check"></i><b>0.2.2</b> 三种重要编程思想</a></li>
+</ul></li>
+<li class="chapter" data-level="0.3" data-path="intro.html"><a href="intro.html#rrstudio-与-positron三层关系"><i class="fa fa-check"></i><b>0.3</b> R、RStudio 与 Positron：三层关系</a></li>
+<li class="chapter" data-level="0.4" data-path="intro.html"><a href="intro.html#安装-r"><i class="fa fa-check"></i><b>0.4</b> 安装 R</a>
+<ul>
+<li class="chapter" data-level="0.4.1" data-path="intro.html"><a href="intro.html#windows"><i class="fa fa-check"></i><b>0.4.1</b> Windows</a></li>
+<li class="chapter" data-level="0.4.2" data-path="intro.html"><a href="intro.html#macos"><i class="fa fa-check"></i><b>0.4.2</b> macOS</a></li>
+<li class="chapter" data-level="0.4.3" data-path="intro.html"><a href="intro.html#linuxubuntu-debian"><i class="fa fa-check"></i><b>0.4.3</b> Linux（Ubuntu / Debian）</a></li>
+<li class="chapter" data-level="0.4.4" data-path="intro.html"><a href="intro.html#验证-r-与安装常用包"><i class="fa fa-check"></i><b>0.4.4</b> 验证 R 与安装常用包</a></li>
+</ul></li>
+<li class="chapter" data-level="0.5" data-path="intro.html"><a href="intro.html#安装与认识-rstudio"><i class="fa fa-check"></i><b>0.5</b> 安装与认识 RStudio</a></li>
+<li class="chapter" data-level="0.6" data-path="intro.html"><a href="intro.html#安装与认识-positron"><i class="fa fa-check"></i><b>0.6</b> 安装与认识 Positron</a></li>
+<li class="chapter" data-level="0.7" data-path="intro.html"><a href="intro.html#配置-posit-assistant-deepseek"><i class="fa fa-check"></i><b>0.7</b> 配置 Posit Assistant + DeepSeek</a>
+<ul>
+<li class="chapter" data-level="0.7.1" data-path="intro.html"><a href="intro.html#准备-api-key"><i class="fa fa-check"></i><b>0.7.1</b> 准备 API Key</a></li>
+<li class="chapter" data-level="0.7.2" data-path="intro.html"><a href="intro.html#推荐使用-positron-原生-deepseek-提供商"><i class="fa fa-check"></i><b>0.7.2</b> 推荐：使用 Positron 原生 DeepSeek 提供商</a></li>
+<li class="chapter" data-level="0.7.3" data-path="intro.html"><a href="intro.html#兼容旧版custom-provider"><i class="fa fa-check"></i><b>0.7.3</b> 兼容旧版：Custom Provider</a></li>
+<li class="chapter" data-level="0.7.4" data-path="intro.html"><a href="intro.html#安全与验证清单"><i class="fa fa-check"></i><b>0.7.4</b> 安全与验证清单</a></li>
+</ul></li>
+<li class="chapter" data-level="0.8" data-path="intro.html"><a href="intro.html#最小项目工作流"><i class="fa fa-check"></i><b>0.8</b> 最小项目工作流</a>
+<ul>
+<li class="chapter" data-level="0.8.1" data-path="intro.html"><a href="intro.html#第一步用-rstudio-图形界面建立项目边界"><i class="fa fa-check"></i><b>0.8.1</b> 第一步：用 RStudio 图形界面建立项目边界</a></li>
+<li class="chapter" data-level="0.8.2" data-path="intro.html"><a href="intro.html#第二步用四窗格完成一次可复现循环"><i class="fa fa-check"></i><b>0.8.2</b> 第二步：用四窗格完成一次可复现循环</a></li>
+<li class="chapter" data-level="0.8.3" data-path="intro.html"><a href="intro.html#第三步让目录结构支持相对路径"><i class="fa fa-check"></i><b>0.8.3</b> 第三步：让目录结构支持相对路径</a></li>
+</ul></li>
+<li class="chapter" data-level="0.9" data-path="intro.html"><a href="intro.html#本章小结"><i class="fa fa-check"></i><b>0.9</b> 本章小结</a></li>
+<li class="chapter" data-level="0.10" data-path="intro.html"><a href="intro.html#课后练习"><i class="fa fa-check"></i><b>0.10</b> 课后练习</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#本章来源与延伸阅读"><i class="fa fa-check"></i>本章来源与延伸阅读</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="basic-syntax.html"><a href="basic-syntax.html"><i class="fa fa-check"></i><b>1</b> 基础语法</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="basic-syntax.html"><a href="basic-syntax.html#搭建-r-环境及常用操作"><i class="fa fa-check"></i><b>1.1</b> 搭建 R 环境及常用操作</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="basic-syntax.html"><a href="basic-syntax.html#搭建-r-环境"><i class="fa fa-check"></i><b>1.1.1</b> 搭建 R 环境</a></li>
+<li class="chapter" data-level="1.1.2" data-path="basic-syntax.html"><a href="basic-syntax.html#常用操作"><i class="fa fa-check"></i><b>1.1.2</b> 常用操作</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="basic-syntax.html"><a href="basic-syntax.html#数据结构向量矩阵多维数组"><i class="fa fa-check"></i><b>1.2</b> 数据结构：向量、矩阵、多维数组</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="basic-syntax.html"><a href="basic-syntax.html#向量一维数据"><i class="fa fa-check"></i><b>1.2.1</b> 向量（一维数据）</a></li>
+<li class="chapter" data-level="1.2.2" data-path="basic-syntax.html"><a href="basic-syntax.html#矩阵二维数据"><i class="fa fa-check"></i><b>1.2.2</b> 矩阵（二维数据）</a></li>
+<li class="chapter" data-level="1.2.3" data-path="basic-syntax.html"><a href="basic-syntax.html#多维数组多维数据"><i class="fa fa-check"></i><b>1.2.3</b> 多维数组（多维数据）</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="basic-syntax.html"><a href="basic-syntax.html#数据结构列表数据框因子"><i class="fa fa-check"></i><b>1.3</b> 数据结构：列表、数据框、因子</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="basic-syntax.html"><a href="basic-syntax.html#列表"><i class="fa fa-check"></i><b>1.3.1</b> 列表</a></li>
+<li class="chapter" data-level="1.3.2" data-path="basic-syntax.html"><a href="basic-syntax.html#数据框数据表"><i class="fa fa-check"></i><b>1.3.2</b> 数据框（数据表）</a></li>
+<li class="chapter" data-level="1.3.3" data-path="basic-syntax.html"><a href="basic-syntax.html#因子"><i class="fa fa-check"></i><b>1.3.3</b> 因子</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="basic-syntax.html"><a href="basic-syntax.html#数据结构字符串日期时间"><i class="fa fa-check"></i><b>1.4</b> 数据结构：字符串、日期时间</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="basic-syntax.html"><a href="basic-syntax.html#字符串"><i class="fa fa-check"></i><b>1.4.1</b> 字符串</a></li>
+<li class="chapter" data-level="1.4.2" data-path="basic-syntax.html"><a href="basic-syntax.html#日期时间"><i class="fa fa-check"></i><b>1.4.2</b> 日期时间</a></li>
+<li class="chapter" data-level="1.4.3" data-path="basic-syntax.html"><a href="basic-syntax.html#时间序列"><i class="fa fa-check"></i><b>1.4.3</b> 时间序列</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="basic-syntax.html"><a href="basic-syntax.html#正则表达式"><i class="fa fa-check"></i><b>1.5</b> 正则表达式</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="basic-syntax.html"><a href="basic-syntax.html#基本语法"><i class="fa fa-check"></i><b>1.5.1</b> 基本语法</a></li>
+<li class="chapter" data-level="1.5.2" data-path="basic-syntax.html"><a href="basic-syntax.html#若干实例"><i class="fa fa-check"></i><b>1.5.2</b> 若干实例</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="basic-syntax.html"><a href="basic-syntax.html#控制结构"><i class="fa fa-check"></i><b>1.6</b> 控制结构</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="basic-syntax.html"><a href="basic-syntax.html#分支结构"><i class="fa fa-check"></i><b>1.6.1</b> 分支结构</a></li>
+<li class="chapter" data-level="1.6.2" data-path="basic-syntax.html"><a href="basic-syntax.html#循环结构"><i class="fa fa-check"></i><b>1.6.2</b> 循环结构</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="basic-syntax.html"><a href="basic-syntax.html#自定义函数"><i class="fa fa-check"></i><b>1.7</b> 自定义函数</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="basic-syntax.html"><a href="basic-syntax.html#自定义函数-1"><i class="fa fa-check"></i><b>1.7.1</b> 自定义函数</a></li>
+<li class="chapter" data-level="1.7.2" data-path="basic-syntax.html"><a href="basic-syntax.html#r-自带的函数"><i class="fa fa-check"></i><b>1.7.2</b> R 自带的函数</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>2</b> 数据操作</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-manipulation.html"><a href="data-manipulation.html#tidyverse-简介与管道"><i class="fa fa-check"></i><b>2.1</b> tidyverse 简介与管道</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="data-manipulation.html"><a href="data-manipulation.html#tidyverse-包简介"><i class="fa fa-check"></i><b>2.1.1</b> tidyverse 包简介</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data-manipulation.html"><a href="data-manipulation.html#管道操作"><i class="fa fa-check"></i><b>2.1.2</b> 管道操作</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-manipulation.html"><a href="data-manipulation.html#数据读写"><i class="fa fa-check"></i><b>2.2</b> 数据读写</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="data-manipulation.html"><a href="data-manipulation.html#用于数据读写的包与函数"><i class="fa fa-check"></i><b>2.2.1</b> 用于数据读写的包与函数</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-manipulation.html"><a href="data-manipulation.html#数据读写实例"><i class="fa fa-check"></i><b>2.2.2</b> 数据读写实例</a></li>
+<li class="chapter" data-level="2.2.3" data-path="data-manipulation.html"><a href="data-manipulation.html#连接数据库"><i class="fa fa-check"></i><b>2.2.3</b> 连接数据库</a></li>
+<li class="chapter" data-level="2.2.4" data-path="data-manipulation.html"><a href="data-manipulation.html#关于中文编码"><i class="fa fa-check"></i><b>2.2.4</b> 关于中文编码</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data-manipulation.html"><a href="data-manipulation.html#数据连接"><i class="fa fa-check"></i><b>2.3</b> 数据连接</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="data-manipulation.html"><a href="data-manipulation.html#合并行与合并列"><i class="fa fa-check"></i><b>2.3.1</b> 合并行与合并列</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-manipulation.html"><a href="data-manipulation.html#根据值匹配合并数据框"><i class="fa fa-check"></i><b>2.3.2</b> 根据值匹配合并数据框</a></li>
+<li class="chapter" data-level="2.3.3" data-path="data-manipulation.html"><a href="data-manipulation.html#集合运算"><i class="fa fa-check"></i><b>2.3.3</b> 集合运算</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="data-manipulation.html"><a href="data-manipulation.html#数据重塑"><i class="fa fa-check"></i><b>2.4</b> 数据重塑</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="data-manipulation.html"><a href="data-manipulation.html#什么是整洁的数据"><i class="fa fa-check"></i><b>2.4.1</b> 什么是整洁的数据</a></li>
+<li class="chapter" data-level="2.4.2" data-path="data-manipulation.html"><a href="data-manipulation.html#宽表变长表"><i class="fa fa-check"></i><b>2.4.2</b> 宽表变长表</a></li>
+<li class="chapter" data-level="2.4.3" data-path="data-manipulation.html"><a href="data-manipulation.html#长表变宽表"><i class="fa fa-check"></i><b>2.4.3</b> 长表变宽表</a></li>
+<li class="chapter" data-level="2.4.4" data-path="data-manipulation.html"><a href="data-manipulation.html#拆分列与合并列"><i class="fa fa-check"></i><b>2.4.4</b> 拆分列与合并列</a></li>
+<li class="chapter" data-level="2.4.5" data-path="data-manipulation.html"><a href="data-manipulation.html#方形化"><i class="fa fa-check"></i><b>2.4.5</b> 方形化</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="data-manipulation.html"><a href="data-manipulation.html#基本数据操作"><i class="fa fa-check"></i><b>2.5</b> 基本数据操作</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="data-manipulation.html"><a href="data-manipulation.html#选择列"><i class="fa fa-check"></i><b>2.5.1</b> 选择列</a></li>
+<li class="chapter" data-level="2.5.2" data-path="data-manipulation.html"><a href="data-manipulation.html#修改列"><i class="fa fa-check"></i><b>2.5.2</b> 修改列</a></li>
+<li class="chapter" data-level="2.5.3" data-path="data-manipulation.html"><a href="data-manipulation.html#筛选行"><i class="fa fa-check"></i><b>2.5.3</b> 筛选行</a></li>
+<li class="chapter" data-level="2.5.4" data-path="data-manipulation.html"><a href="data-manipulation.html#对行排序"><i class="fa fa-check"></i><b>2.5.4</b> 对行排序</a></li>
+<li class="chapter" data-level="2.5.5" data-path="data-manipulation.html"><a href="data-manipulation.html#分组操作"><i class="fa fa-check"></i><b>2.5.5</b> 分组操作</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="data-manipulation.html"><a href="data-manipulation.html#其他数据操作"><i class="fa fa-check"></i><b>2.6</b> 其他数据操作</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="data-manipulation.html"><a href="data-manipulation.html#按行汇总"><i class="fa fa-check"></i><b>2.6.1</b> 按行汇总</a></li>
+<li class="chapter" data-level="2.6.2" data-path="data-manipulation.html"><a href="data-manipulation.html#窗口函数"><i class="fa fa-check"></i><b>2.6.2</b> 窗口函数</a></li>
+<li class="chapter" data-level="2.6.3" data-path="data-manipulation.html"><a href="data-manipulation.html#滑窗迭代"><i class="fa fa-check"></i><b>2.6.3</b> 滑窗迭代</a></li>
+<li class="chapter" data-level="2.6.4" data-path="data-manipulation.html"><a href="data-manipulation.html#整洁计算"><i class="fa fa-check"></i><b>2.6.4</b> 整洁计算</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="data-manipulation.html"><a href="data-manipulation.html#数据处理神器data.table-包"><i class="fa fa-check"></i><b>2.7</b> 数据处理神器：data.table 包</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="data-manipulation.html"><a href="data-manipulation.html#通用语法"><i class="fa fa-check"></i><b>2.7.1</b> 通用语法</a></li>
+<li class="chapter" data-level="2.7.2" data-path="data-manipulation.html"><a href="data-manipulation.html#数据读写-1"><i class="fa fa-check"></i><b>2.7.2</b> 数据读写</a></li>
+<li class="chapter" data-level="2.7.3" data-path="data-manipulation.html"><a href="data-manipulation.html#数据连接-1"><i class="fa fa-check"></i><b>2.7.3</b> 数据连接</a></li>
+<li class="chapter" data-level="2.7.4" data-path="data-manipulation.html"><a href="data-manipulation.html#数据重塑-1"><i class="fa fa-check"></i><b>2.7.4</b> 数据重塑</a></li>
+<li class="chapter" data-level="2.7.5" data-path="data-manipulation.html"><a href="data-manipulation.html#数据操作"><i class="fa fa-check"></i><b>2.7.5</b> 数据操作</a></li>
+<li class="chapter" data-level="2.7.6" data-path="data-manipulation.html"><a href="data-manipulation.html#分组操作-1"><i class="fa fa-check"></i><b>2.7.6</b> 分组操作</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="visualization-modeling.html"><a href="visualization-modeling.html"><i class="fa fa-check"></i><b>3</b> 可视化与建模技术</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="visualization-modeling.html"><a href="visualization-modeling.html#ggplot2-基础语法"><i class="fa fa-check"></i><b>3.1</b> ggplot2 基础语法</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="visualization-modeling.html"><a href="visualization-modeling.html#ggplot2-概述"><i class="fa fa-check"></i><b>3.1.1</b> ggplot2 概述</a></li>
+<li class="chapter" data-level="3.1.2" data-path="visualization-modeling.html"><a href="visualization-modeling.html#数据映射几何对象"><i class="fa fa-check"></i><b>3.1.2</b> 数据、映射、几何对象</a></li>
+<li class="chapter" data-level="3.1.3" data-path="visualization-modeling.html"><a href="visualization-modeling.html#标度"><i class="fa fa-check"></i><b>3.1.3</b> 标度</a></li>
+<li class="chapter" data-level="3.1.4" data-path="visualization-modeling.html"><a href="visualization-modeling.html#统计变换坐标系位置调整"><i class="fa fa-check"></i><b>3.1.4</b> 统计变换、坐标系、位置调整</a></li>
+<li class="chapter" data-level="3.1.5" data-path="visualization-modeling.html"><a href="visualization-modeling.html#分面主题输出"><i class="fa fa-check"></i><b>3.1.5</b> 分面、主题、输出</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="visualization-modeling.html"><a href="visualization-modeling.html#ggplot2-图形示例"><i class="fa fa-check"></i><b>3.2</b> ggplot2 图形示例</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="visualization-modeling.html"><a href="visualization-modeling.html#类别比较图"><i class="fa fa-check"></i><b>3.2.1</b> 类别比较图</a></li>
+<li class="chapter" data-level="3.2.2" data-path="visualization-modeling.html"><a href="visualization-modeling.html#数据关系图"><i class="fa fa-check"></i><b>3.2.2</b> 数据关系图</a></li>
+<li class="chapter" data-level="3.2.3" data-path="visualization-modeling.html"><a href="visualization-modeling.html#数据分布图"><i class="fa fa-check"></i><b>3.2.3</b> 数据分布图</a></li>
+<li class="chapter" data-level="3.2.4" data-path="visualization-modeling.html"><a href="visualization-modeling.html#时间序列图"><i class="fa fa-check"></i><b>3.2.4</b> 时间序列图</a></li>
+<li class="chapter" data-level="3.2.5" data-path="visualization-modeling.html"><a href="visualization-modeling.html#局部整体图"><i class="fa fa-check"></i><b>3.2.5</b> 局部整体图</a></li>
+<li class="chapter" data-level="3.2.6" data-path="visualization-modeling.html"><a href="visualization-modeling.html#地理空间图"><i class="fa fa-check"></i><b>3.2.6</b> 地理空间图</a></li>
+<li class="chapter" data-level="3.2.7" data-path="visualization-modeling.html"><a href="visualization-modeling.html#动态交互图"><i class="fa fa-check"></i><b>3.2.7</b> 动态交互图</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="visualization-modeling.html"><a href="visualization-modeling.html#统计建模技术"><i class="fa fa-check"></i><b>3.3</b> 统计建模技术</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="visualization-modeling.html"><a href="visualization-modeling.html#整洁模型结果"><i class="fa fa-check"></i><b>3.3.1</b> 整洁模型结果</a></li>
+<li class="chapter" data-level="3.3.2" data-path="visualization-modeling.html"><a href="visualization-modeling.html#辅助建模"><i class="fa fa-check"></i><b>3.3.2</b> 辅助建模</a></li>
+<li class="chapter" data-level="3.3.3" data-path="visualization-modeling.html"><a href="visualization-modeling.html#批量建模"><i class="fa fa-check"></i><b>3.3.3</b> 批量建模</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="applied-statistics.html"><a href="applied-statistics.html"><i class="fa fa-check"></i><b>4</b> 应用统计</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="applied-statistics.html"><a href="applied-statistics.html#描述性统计"><i class="fa fa-check"></i><b>4.1</b> 描述性统计</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="applied-statistics.html"><a href="applied-statistics.html#统计量"><i class="fa fa-check"></i><b>4.1.1</b> 统计量</a></li>
+<li class="chapter" data-level="4.1.2" data-path="applied-statistics.html"><a href="applied-statistics.html#统计图"><i class="fa fa-check"></i><b>4.1.2</b> 统计图</a></li>
+<li class="chapter" data-level="4.1.3" data-path="applied-statistics.html"><a href="applied-statistics.html#列联表"><i class="fa fa-check"></i><b>4.1.3</b> 列联表</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="applied-statistics.html"><a href="applied-statistics.html#参数估计"><i class="fa fa-check"></i><b>4.2</b> 参数估计</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="applied-statistics.html"><a href="applied-statistics.html#点估计与区间估计"><i class="fa fa-check"></i><b>4.2.1</b> 点估计与区间估计</a></li>
+<li class="chapter" data-level="4.2.2" data-path="applied-statistics.html"><a href="applied-statistics.html#最小二乘估计"><i class="fa fa-check"></i><b>4.2.2</b> 最小二乘估计</a></li>
+<li class="chapter" data-level="4.2.3" data-path="applied-statistics.html"><a href="applied-statistics.html#最大似然估计"><i class="fa fa-check"></i><b>4.2.3</b> 最大似然估计</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="applied-statistics.html"><a href="applied-statistics.html#假设检验"><i class="fa fa-check"></i><b>4.3</b> 假设检验</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="applied-statistics.html"><a href="applied-statistics.html#假设检验原理"><i class="fa fa-check"></i><b>4.3.1</b> 假设检验原理</a></li>
+<li class="chapter" data-level="4.3.2" data-path="applied-statistics.html"><a href="applied-statistics.html#基于理论的假设检验"><i class="fa fa-check"></i><b>4.3.2</b> 基于理论的假设检验</a></li>
+<li class="chapter" data-level="4.3.3" data-path="applied-statistics.html"><a href="applied-statistics.html#基于重排的假设检验"><i class="fa fa-check"></i><b>4.3.3</b> 基于重排的假设检验</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="applied-statistics.html"><a href="applied-statistics.html#回归分析"><i class="fa fa-check"></i><b>4.4</b> 回归分析</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="applied-statistics.html"><a href="applied-statistics.html#线性回归"><i class="fa fa-check"></i><b>4.4.1</b> 线性回归</a></li>
+<li class="chapter" data-level="4.4.2" data-path="applied-statistics.html"><a href="applied-statistics.html#回归诊断"><i class="fa fa-check"></i><b>4.4.2</b> 回归诊断</a></li>
+<li class="chapter" data-level="4.4.3" data-path="applied-statistics.html"><a href="applied-statistics.html#多元线性回归实例"><i class="fa fa-check"></i><b>4.4.3</b> 多元线性回归实例</a></li>
+<li class="chapter" data-level="4.4.4" data-path="applied-statistics.html"><a href="applied-statistics.html#梯度下降法"><i class="fa fa-check"></i><b>4.4.4</b> 梯度下降法</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>5</b> 探索性数据分析</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="eda.html"><a href="eda.html#数据清洗"><i class="fa fa-check"></i><b>5.1</b> 数据清洗</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="eda.html"><a href="eda.html#缺失值"><i class="fa fa-check"></i><b>5.1.1</b> 缺失值</a></li>
+<li class="chapter" data-level="5.1.2" data-path="eda.html"><a href="eda.html#异常值"><i class="fa fa-check"></i><b>5.1.2</b> 异常值</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="eda.html"><a href="eda.html#特征工程"><i class="fa fa-check"></i><b>5.2</b> 特征工程</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="eda.html"><a href="eda.html#特征缩放"><i class="fa fa-check"></i><b>5.2.1</b> 特征缩放</a></li>
+<li class="chapter" data-level="5.2.2" data-path="eda.html"><a href="eda.html#特征变换"><i class="fa fa-check"></i><b>5.2.2</b> 特征变换</a></li>
+<li class="chapter" data-level="5.2.3" data-path="eda.html"><a href="eda.html#特征降维"><i class="fa fa-check"></i><b>5.2.3</b> 特征降维</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="eda.html"><a href="eda.html#探索变量间的关系"><i class="fa fa-check"></i><b>5.3</b> 探索变量间的关系</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="eda.html"><a href="eda.html#两个分类变量"><i class="fa fa-check"></i><b>5.3.1</b> 两个分类变量</a></li>
+<li class="chapter" data-level="5.3.2" data-path="eda.html"><a href="eda.html#分类变量与连续变量"><i class="fa fa-check"></i><b>5.3.2</b> 分类变量与连续变量</a></li>
+<li class="chapter" data-level="5.3.3" data-path="eda.html"><a href="eda.html#两个连续变量"><i class="fa fa-check"></i><b>5.3.3</b> 两个连续变量</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>6</b> 文档沟通</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="communication.html"><a href="communication.html#r-markdown"><i class="fa fa-check"></i><b>6.1</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="communication.html"><a href="communication.html#r-markdown-基础"><i class="fa fa-check"></i><b>6.1.1</b> R Markdown 基础</a></li>
+<li class="chapter" data-level="6.1.2" data-path="communication.html"><a href="communication.html#输出格式与参数"><i class="fa fa-check"></i><b>6.1.2</b> 输出格式与参数</a></li>
+<li class="chapter" data-level="6.1.3" data-path="communication.html"><a href="communication.html#表格图形与引用"><i class="fa fa-check"></i><b>6.1.3</b> 表格、图形与引用</a></li>
+<li class="chapter" data-level="6.1.4" data-path="communication.html"><a href="communication.html#参数化报告与自动化"><i class="fa fa-check"></i><b>6.1.4</b> 参数化报告与自动化</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="communication.html"><a href="communication.html#r-与-latexgitgithub-交互"><i class="fa fa-check"></i><b>6.2</b> R 与 LaTeX、Git/GitHub 交互</a></li>
+<li class="chapter" data-level="6.3" data-path="communication.html"><a href="communication.html#r-shiny-与-web-应用"><i class="fa fa-check"></i><b>6.3</b> R Shiny 与 Web 应用</a></li>
+<li class="chapter" data-level="6.4" data-path="communication.html"><a href="communication.html#开发-r-包"><i class="fa fa-check"></i><b>6.4</b> 开发 R 包</a></li>
+</ul></li>
+<li class="appendix"><span><b>附录</b></span></li>
+<li class="chapter" data-level="A" data-path="appendix-r6.html"><a href="appendix-r6.html"><i class="fa fa-check"></i><b>A</b> R6 类面向对象编程简单实例</a></li>
+<li class="chapter" data-level="B" data-path="appendix-debugging.html"><a href="appendix-debugging.html"><i class="fa fa-check"></i><b>B</b> 错误与调试</a></li>
+<li class="chapter" data-level="C" data-path="appendix-excel.html"><a href="appendix-excel.html"><i class="fa fa-check"></i><b>C</b> 用 R 实现 Excel 中的 VLOOKUP 与透视表</a></li>
+<li class="chapter" data-level="D" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html"><i class="fa fa-check"></i><b>D</b> 非等连接与滚动连接</a></li>
+<li class="chapter" data-level="E" data-path="appendix-web.html"><a href="appendix-web.html"><i class="fa fa-check"></i><b>E</b> R 与网络爬虫</a></li>
+<li class="chapter" data-level="F" data-path="appendix-hpc.html"><a href="appendix-hpc.html"><i class="fa fa-check"></i><b>F</b> R 与高性能计算</a></li>
+<li class="chapter" data-level="G" data-path="appendix-ml.html"><a href="appendix-ml.html"><i class="fa fa-check"></i><b>G</b> R 机器学习框架</a></li>
+<li class="divider"></li>
+<li class="course-meta">王芝皓 · 统计与数据科学学院</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 语言编程：基于 tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1 unnumbered hasAnchor">
+<h1>第 0 章 导语：从问题到代码<a href="intro.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="学习目标" class="section level2 unnumbered hasAnchor">
+<h2>学习目标<a href="intro.html#学习目标" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>完成本章后，你应该能够：</p>
+<ul>
+<li>解释 R、RStudio 与 Positron 的关系，而不是把三者混为一谈；</li>
+<li>按操作系统完成 R 与 IDE 的安装，并能验证安装是否成功；</li>
+<li>用“分解问题—实例梳理—翻译与调试”组织一次编程任务；</li>
+<li>识别 R 的面向对象、面向函数和向量化思想；</li>
+<li>在 Positron 中安全地配置 Posit Assistant 与 DeepSeek，并验证其可用性；</li>
+<li>判断 AI 生成的 R 代码是否值得信任。</li>
+</ul>
+<div class="callout">
+<p><strong>本章定位</strong>：软件安装只是准备工作。真正的主线是建立“从问题到算法、从算法到代码”的思维链。</p>
+</div>
+</div>
+<div id="怎么学习编程语言" class="section level2 hasAnchor" number="0.1">
+<h2><span class="header-section-number">0.1</span> 怎么学习编程语言<a href="intro.html#怎么学习编程语言" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>编程语言是人与计算机沟通的形式语言。它要求我们使用约定的数据结构、控制结构与函数，把“想做什么”准确地表达为计算机可以逐步执行的指令。</p>
+<p>教材给出的关键方法可以概括为：</p>
+<ol style="list-style-type: decimal">
+<li><strong>理解核心思想</strong>：R 既面向对象，也面向函数，并倡导向量化计算；</li>
+<li><strong>掌握基础语法</strong>：数据结构、分支与循环、函数、文件读写、可视化；</li>
+<li><strong>在真实问题中迁移</strong>：查帮助、做小实验、逐段调试、解释结果。</li>
+</ol>
+<div id="跨过能看懂到能写出的门槛" class="section level3 hasAnchor" number="0.1.1">
+<h3><span class="header-section-number">0.1.1</span> 跨过“能看懂”到“能写出”的门槛<a href="intro.html#跨过能看懂到能写出的门槛" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre class="text"><code>真实问题
+  ↓  分解
+可逐步解决的小问题
+  ↓  用简单实例梳理
+明确的算法步骤
+  ↓  逐片段翻译与调试
+可运行的代码
+  ↓  检查中间结果与边界情况
+可信的结论</code></pre>
+<p>不要试图一步从题目跳到完整代码。每完成一小步，就检查对象的类型、形状和值是否符合预期。</p>
+</div>
+<div id="微型案例把一句需求翻译成代码" class="section level3 hasAnchor" number="0.1.2">
+<h3><span class="header-section-number">0.1.2</span> 微型案例：把一句需求翻译成代码<a href="intro.html#微型案例把一句需求翻译成代码" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>需求：计算半径为 2、4、7 的圆的面积。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="intro.html#cb2-1" aria-hidden="true" tabindex="-1"></a>area_circle <span class="ot">&lt;-</span> <span class="cf">function</span>(r) {</span>
+<span id="cb2-2"><a href="intro.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  pi <span class="sc">*</span> r<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb2-3"><a href="intro.html#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-4"><a href="intro.html#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="intro.html#cb2-5" aria-hidden="true" tabindex="-1"></a>radii <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>)</span>
+<span id="cb2-6"><a href="intro.html#cb2-6" aria-hidden="true" tabindex="-1"></a>areas <span class="ot">&lt;-</span> <span class="fu">area_circle</span>(radii)</span>
+<span id="cb2-7"><a href="intro.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">radius =</span> radii, <span class="at">area =</span> <span class="fu">round</span>(areas, <span class="dv">2</span>))</span></code></pre></div>
+</details>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["radius"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["area"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"2","2":"12.57"},{"1":"4","2":"50.27"},{"1":"7","2":"153.94"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>这段代码同时体现了：函数封装、对象赋值、向量化输入与可检查的表格输出。</p>
+<details>
+<summary>
+课堂思考：为什么不写三次面积公式？
+</summary>
+函数把“如何计算一个圆”封装为可复用规则；向量化让同一规则一次应用到多个半径。数据规模变化时，代码结构无需改变。
+</details>
+</div>
+</div>
+<div id="r-语言数据科学与-tidyverse" class="section level2 hasAnchor" number="0.2">
+<h2><span class="header-section-number">0.2</span> R 语言、数据科学与 tidyverse<a href="intro.html#r-语言数据科学与-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>数据科学把统计学、计算机科学与领域知识结合起来。典型工作流是：</p>
+<blockquote>
+<p>导入 → 整理 → 变换 → 可视化 → 建模 → 沟通</p>
+</blockquote>
+<p>R 是为统计计算、数据分析与图形表达设计的开源语言。它的优势包括：</p>
+<ul>
+<li>统计方法与数据科学扩展包丰富；</li>
+<li>图形语法成熟，适合探索与发表级制图；</li>
+<li>交互分析与可复现报告可以在同一工作流中完成；</li>
+<li>社区活跃，CRAN、Bioconductor 与 GitHub 构成丰富生态。</li>
+</ul>
+<p>tidyverse 是一组共享设计理念、语法与数据结构的 R 包。它让导入、整理、变换、可视化和函数式迭代形成一致的表达方式。</p>
+<div id="tidyverse-的核心管道流与泛函流" class="section level3 hasAnchor" number="0.2.1">
+<h3><span class="header-section-number">0.2.1</span> tidyverse 的核心：管道流与泛函流<a href="intro.html#tidyverse-的核心管道流与泛函流" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>教材把 tidyverse 的特点概括为“整洁流、管道流、泛函流”。其中，最值得在导语阶段建立的不是某个函数名，而是两种组织计算的方式：</p>
+<ul>
+<li><strong>管道流</strong>：把数据依次交给多个函数，代码阅读顺序与分析步骤一致；</li>
+<li><strong>泛函流</strong>：把“要重复做的事”封装成函数，再把这个函数依次应用到一组输入。</li>
+</ul>
+<div id="管道符让代码按数据流阅读" class="section level4 hasAnchor" number="0.2.1.1">
+<h4><span class="header-section-number">0.2.1.1</span> 管道符：让代码按数据流阅读<a href="intro.html#管道符让代码按数据流阅读" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>下面两段代码做同一件事：按气缸数分组，计算平均油耗。嵌套写法必须从内向外读；管道写法可以从上向下读。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="intro.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 嵌套写法：从最里面开始读</span></span>
+<span id="cb3-2"><a href="intro.html#cb3-2" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb3-3"><a href="intro.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(mtcars, cyl),</span>
+<span id="cb3-4"><a href="intro.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean_mpg =</span> <span class="fu">mean</span>(mpg)</span>
+<span id="cb3-5"><a href="intro.html#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-6"><a href="intro.html#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="intro.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 原生管道：把左边结果交给右边第一个参数</span></span>
+<span id="cb3-8"><a href="intro.html#cb3-8" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span></span>
+<span id="cb3-9"><a href="intro.html#cb3-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(cyl) <span class="sc">|&gt;</span></span>
+<span id="cb3-10"><a href="intro.html#cb3-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mean_mpg =</span> <span class="fu">mean</span>(mpg), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>)</span></code></pre></div>
+</details>
+<p>可以把管道理解为一句完整的话：</p>
+<blockquote>
+<p><strong>从 <code>mtcars</code> 开始，然后按 <code>cyl</code> 分组，然后计算每组的平均 <code>mpg</code>。</strong></p>
+</blockquote>
+<p>tidyverse 早期广泛使用 magrittr 的 <code>%&gt;%</code>；现代 R 课程优先使用 R 4.1 起提供的原生管道 <code>|&gt;</code>。两者在常见数据处理中非常相似，但并不完全等价。阅读旧教材时要认识 <code>%&gt;%</code>，自己写新代码时优先使用 <code>|&gt;</code>。</p>
+<div class="callout">
+<p><strong>管道使用原则</strong>：一行只完成一个清晰动作；当管道过长、需要反复回看，或中间结果值得命名和检查时，就拆开并保存中间对象。</p>
+</div>
+</div>
+<div id="泛函式编程函数也是可以传递的数据" class="section level4 hasAnchor" number="0.2.1.2">
+<h4><span class="header-section-number">0.2.1.2</span> 泛函式编程：函数也是可以传递的数据<a href="intro.html#泛函式编程函数也是可以传递的数据" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>“泛函”是<strong>接收函数作为输入，或返回函数作为输出的函数</strong>。<code>purrr::map_*()</code> 家族接收“一组输入 + 一个函数”，完成迭代并约束输出类型。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="intro.html#cb4-1" aria-hidden="true" tabindex="-1"></a>area_circle <span class="ot">&lt;-</span> <span class="cf">function</span>(r) pi <span class="sc">*</span> r<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb4-2"><a href="intro.html#cb4-2" aria-hidden="true" tabindex="-1"></a>radii <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>)</span>
+<span id="cb4-3"><a href="intro.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="intro.html#cb4-4" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_dbl</span>(radii, area_circle)</span>
+<span id="cb4-5"><a href="intro.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  12.56637  50.26548 153.93804</span></span></code></pre></div>
+</details>
+<p>这里的思维顺序是：</p>
+<ol style="list-style-type: decimal">
+<li>先把“一个输入怎样处理”写成 <code>area_circle()</code>；</li>
+<li>再用 <code>map_dbl()</code> 把它应用到每个半径；</li>
+<li>函数名后缀 <code>_dbl</code> 明确承诺返回双精度数值向量。</li>
+</ol>
+<p>常用映射如下：</p>
+<table>
+<thead>
+<tr class="header">
+<th>函数</th>
+<th>期望输出</th>
+<th>典型用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>map()</code></td>
+<td>列表</td>
+<td>每次结果结构复杂或不一致</td>
+</tr>
+<tr class="even">
+<td><code>map_dbl()</code></td>
+<td>数值向量</td>
+<td>批量计算统计量</td>
+</tr>
+<tr class="odd">
+<td><code>map_chr()</code></td>
+<td>字符向量</td>
+<td>批量生成标签或文件名</td>
+</tr>
+<tr class="even">
+<td><code>map_lgl()</code></td>
+<td>逻辑向量</td>
+<td>批量做条件判断</td>
+</tr>
+<tr class="odd">
+<td><code>map2()</code> / <code>pmap()</code></td>
+<td>列表</td>
+<td>同时迭代两组或多组参数</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="管道与泛函式如何配合" class="section level4 hasAnchor" number="0.2.1.3">
+<h4><span class="header-section-number">0.2.1.3</span> 管道与泛函式如何配合<a href="intro.html#管道与泛函式如何配合" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>管道负责表达“一个分析要经过哪些阶段”，泛函负责表达“同一规则怎样作用于多个对象”。例如，对不同气缸组分别拟合模型：</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="intro.html#cb5-1" aria-hidden="true" tabindex="-1"></a>models <span class="ot">&lt;-</span> mtcars <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="intro.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_split</span>(cyl) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="intro.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map</span>(\(df) <span class="fu">lm</span>(mpg <span class="sc">~</span> wt, <span class="at">data =</span> df))</span>
+<span id="cb5-4"><a href="intro.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="intro.html#cb5-5" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_dbl</span>(models, \(model) <span class="fu">summary</span>(model)<span class="sc">$</span>r.squared)</span></code></pre></div>
+</details>
+<p>这正是 tidyverse 的关键优势：<strong>用一致的语法，把数据流、函数封装与批量迭代连成一条可读、可组合、可检查的工作流。</strong></p>
+</div>
+</div>
+<div id="三种重要编程思想" class="section level3 hasAnchor" number="0.2.2">
+<h3><span class="header-section-number">0.2.2</span> 三种重要编程思想<a href="intro.html#三种重要编程思想" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="面向对象" class="section level4 hasAnchor" number="0.2.2.1">
+<h4><span class="header-section-number">0.2.2.1</span> 面向对象<a href="intro.html#面向对象" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>R 中的数据、函数和模型都是对象；对象带有类型或类，决定适用的操作。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="intro.html#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb6-2"><a href="intro.html#cb6-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt, <span class="at">data =</span> mtcars)</span>
+<span id="cb6-3"><a href="intro.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">class</span>(x), <span class="fu">class</span>(model))</span>
+<span id="cb6-4"><a href="intro.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;integer&quot; &quot;lm&quot;</span></span></code></pre></div>
+</details>
+</div>
+<div id="面向函数" class="section level4 hasAnchor" number="0.2.2.2">
+<h4><span class="header-section-number">0.2.2.2</span> 面向函数<a href="intro.html#面向函数" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>R 的日常工作可以理解为“把函数应用到数据”。先学会阅读帮助：</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="intro.html#cb7-1" aria-hidden="true" tabindex="-1"></a>?mean</span>
+<span id="cb7-2"><a href="intro.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">args</span>(mean)</span>
+<span id="cb7-3"><a href="intro.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">example</span>(mean)</span></code></pre></div>
+</details>
+<p>自定义函数时，要明确输入、输出与边界情况。</p>
+</div>
+<div id="向量化编程" class="section level4 hasAnchor" number="0.2.2.3">
+<h4><span class="header-section-number">0.2.2.3</span> 向量化编程<a href="intro.html#向量化编程" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>向量化是对一组数据整体表达相同操作。它通常比逐元素循环更简洁，也更贴近统计计算语言。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="intro.html#cb8-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">72</span>, <span class="dv">85</span>, <span class="dv">91</span>, <span class="dv">64</span>)</span>
+<span id="cb8-2"><a href="intro.html#cb8-2" aria-hidden="true" tabindex="-1"></a>scores <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb8-3"><a href="intro.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 77 90 96 69</span></span>
+<span id="cb8-4"><a href="intro.html#cb8-4" aria-hidden="true" tabindex="-1"></a>scores <span class="sc">&gt;=</span> <span class="dv">60</span></span>
+<span id="cb8-5"><a href="intro.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE TRUE TRUE TRUE</span></span>
+<span id="cb8-6"><a href="intro.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(scores)</span>
+<span id="cb8-7"><a href="intro.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 78</span></span></code></pre></div>
+</details>
+</div>
+</div>
+</div>
+<div id="rrstudio-与-positron三层关系" class="section level2 hasAnchor" number="0.3">
+<h2><span class="header-section-number">0.3</span> R、RStudio 与 Positron：三层关系<a href="intro.html#rrstudio-与-positron三层关系" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="relation-grid">
+<div id="r计算引擎" class="section level4 unnumbered hasAnchor">
+<h4>R：计算引擎<a href="intro.html#r计算引擎" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>解释并执行 R 代码，管理对象，调用扩展包，完成统计计算与绘图。</p>
+</div>
+<div id="rstudio经典-r-ide" class="section level4 unnumbered hasAnchor">
+<h4>RStudio：经典 R IDE<a href="intro.html#rstudio经典-r-ide" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>围绕 R 工作流设计的集成开发环境，提供编辑器、控制台、环境、绘图、帮助与项目管理。</p>
+</div>
+<div id="positron新一代数据科学-ide" class="section level4 unnumbered hasAnchor">
+<h4>Positron：新一代数据科学 IDE<a href="intro.html#positron新一代数据科学-ide" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>基于 VS Code 技术路线，原生面向 R 与 Python，强调解释器、数据浏览、Notebook/Quarto 与 AI 协作。</p>
+</div>
+</div>
+<p><strong>关键关系</strong>：先安装 R，再由 RStudio 或 Positron 调用 R。IDE 不是 R 本身；删除 IDE 不等于删除 R，安装两个 IDE 也不会复制两套 R。</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>维度</th>
+<th>R</th>
+<th>RStudio</th>
+<th>Positron</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>角色</td>
+<td>语言与运行时</td>
+<td>经典 R IDE</td>
+<td>R/Python 数据科学 IDE</td>
+</tr>
+<tr class="even">
+<td>是否执行 R 代码</td>
+<td>是</td>
+<td>调用 R</td>
+<td>调用 R</td>
+</tr>
+<tr class="odd">
+<td>强项</td>
+<td>统计计算、包生态</td>
+<td>纯 R 教学、R Project、成熟工作流</td>
+<td>R/Python 混合、数据浏览、现代编辑器、AI</td>
+</tr>
+<tr class="even">
+<td>更适合</td>
+<td>所有 R 用户的底座</td>
+<td>初学者与以 R 为主的分析</td>
+<td>多语言项目与现代数据科学工作流</td>
+</tr>
+</tbody>
+</table>
+<div class="callout">
+<p><strong>课程建议</strong>：两者都认识，课堂主环境使用 Positron；遇到教材中的 RStudio 截图时，能把相同功能映射到 Positron。</p>
+</div>
+</div>
+<div id="安装-r" class="section level2 hasAnchor" number="0.4">
+<h2><span class="header-section-number">0.4</span> 安装 R<a href="intro.html#安装-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>安装顺序：<strong>R → IDE → R 包 → 项目验证</strong>。</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:cran-shot"></span>
+<img src="assets/screenshots/cran-download.png" alt="CRAN 官方首页：先按操作系统选择 R 安装入口（网页截图，2026-08）" width="100%" />
+<p class="caption">
+Figure 0.1: CRAN 官方首页：先按操作系统选择 R 安装入口（网页截图，2026-08）
+</p>
+</div>
+<p>图中最重要的是顶部三个入口：<strong>Download R for Linux</strong>、<strong>Download R for macOS</strong> 和 <strong>Download R for Windows</strong>。CRAN 是 R 本体与扩展包的官方分发网络；RStudio 与 Positron 的下载不在这里。</p>
+<div id="windows" class="section level3 hasAnchor" number="0.4.1">
+<h3><span class="header-section-number">0.4.1</span> Windows<a href="intro.html#windows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>打开 <a href="https://cran.r-project.org/">CRAN</a>，选择 <strong>Download R for Windows</strong>；</li>
+<li>进入 <code>base</code>，下载当前稳定版安装程序；</li>
+<li>使用默认的 64 位安装选项；建议使用无中文、无特殊字符的项目路径；</li>
+<li>打开 R，运行 <code>R.version.string</code> 验证。</li>
+</ol>
+<p>如需编译含 C/C++/Fortran 的 R 包，再按当前 R 版本安装匹配的 Rtools。普通课程初期不必先安装 Rtools。</p>
+</div>
+<div id="macos" class="section level3 hasAnchor" number="0.4.2">
+<h3><span class="header-section-number">0.4.2</span> macOS<a href="intro.html#macos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>在 CRAN 选择 <strong>Download R for macOS</strong>；</li>
+<li>根据芯片选择 Apple Silicon (<code>arm64</code>) 或 Intel (<code>x86_64</code>) 安装包；</li>
+<li>完成 <code>.pkg</code> 安装后启动 R，运行 <code>R.version.string</code>。</li>
+</ol>
+<p>可在“关于本机”查看芯片类型。不要把 Intel 与 Apple Silicon 安装包混用。</p>
+</div>
+<div id="linuxubuntu-debian" class="section level3 hasAnchor" number="0.4.3">
+<h3><span class="header-section-number">0.4.3</span> Linux（Ubuntu / Debian）<a href="intro.html#linuxubuntu-debian" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>优先按 CRAN 对应发行版页面配置软件源，然后通过系统包管理器安装 <code>r-base</code>。课程机房如由管理员维护，应使用统一版本，避免学生自行更换系统源。</p>
+</div>
+<div id="验证-r-与安装常用包" class="section level3 hasAnchor" number="0.4.4">
+<h3><span class="header-section-number">0.4.4</span> 验证 R 与安装常用包<a href="intro.html#验证-r-与安装常用包" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro.html#cb9-1" aria-hidden="true" tabindex="-1"></a>R.version.string</span>
+<span id="cb9-2"><a href="intro.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.info</span>()[<span class="fu">c</span>(<span class="st">&quot;sysname&quot;</span>, <span class="st">&quot;release&quot;</span>, <span class="st">&quot;machine&quot;</span>)]</span>
+<span id="cb9-3"><a href="intro.html#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="intro.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;rmarkdown&quot;</span>, <span class="st">&quot;bookdown&quot;</span>, <span class="st">&quot;xaringan&quot;</span>))</span>
+<span id="cb9-5"><a href="intro.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+</details>
+<p>国内网络可临时指定 CRAN 镜像：</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="intro.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">&quot;https://mirrors.bfsu.edu.cn/CRAN/&quot;</span>))</span></code></pre></div>
+</details>
+</div>
+</div>
+<div id="安装与认识-rstudio" class="section level2 hasAnchor" number="0.5">
+<h2><span class="header-section-number">0.5</span> 安装与认识 RStudio<a href="intro.html#安装与认识-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>先确认 R 已安装；</li>
+<li>从 <a href="https://posit.co/downloads/">Posit 下载页</a> 获取 RStudio Desktop；</li>
+<li>按系统安装程序完成安装；</li>
+<li>启动 RStudio，在 Console 中运行 <code>R.version.string</code>。</li>
+</ol>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rstudio-shot"></span>
+<img src="assets/screenshots/rstudio-panes-official.jpeg" alt="RStudio 当前界面示例（窗格可在 Tools → Global Options → Pane Layout 中调整）" width="100%" />
+<p class="caption">
+Figure 0.2: RStudio 当前界面示例（窗格可在 Tools → Global Options → Pane Layout 中调整）
+</p>
+</div>
+<p>界面功能映射：</p>
+<ol style="list-style-type: decimal">
+<li><strong>Source</strong>：编写并保存 <code>.R</code>、<code>.Rmd</code>、<code>.qmd</code>；</li>
+<li><strong>Console</strong>：交互执行短命令，查看错误与输出；</li>
+<li><strong>Environment / History</strong>：查看会话对象与命令历史；</li>
+<li><strong>Output</strong>：Files、Plots、Packages、Help、Viewer；</li>
+<li><strong>Sidebar / Posit Assistant</strong>：新版可放置辅助工具，具体能力取决于版本与账户配置。</li>
+</ol>
+<p>RStudio 的优势是 R 教学路径成熟、窗格概念清晰、R Project 与包开发支持稳定。其局限是多语言与现代编辑器扩展体验不如 Positron 统一。</p>
+<p>上图来自 <a href="https://docs.posit.co/ide/user/ide/get-started/">RStudio User Guide: Get Started</a>，官方已直接标出四个核心窗格。初学阶段先掌握 <strong>Source → Console → Environment → Output</strong> 的信息流，不必一次记住所有标签页。</p>
+</div>
+<div id="安装与认识-positron" class="section level2 hasAnchor" number="0.6">
+<h2><span class="header-section-number">0.6</span> 安装与认识 Positron<a href="intro.html#安装与认识-positron" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>从 <a href="https://positron.posit.co/install">Positron 官方安装页</a> 下载对应系统版本；</li>
+<li>按系统常规方式安装并启动；</li>
+<li>打开课程文件夹；</li>
+<li>点击右上角 <strong>Start Session</strong>，选择已安装的 R；</li>
+<li>在 Console 执行 <code>R.version.string</code> 与 <code>getwd()</code> 验证解释器和项目路径。</li>
+</ol>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:positron-shot"></span>
+<img src="assets/screenshots/positron-layout-official.png" alt="Positron 当前界面示例；打开项目并启动 R 会话后，各数据科学窗格会显示内容" width="100%" />
+<p class="caption">
+Figure 0.3: Positron 当前界面示例；打开项目并启动 R 会话后，各数据科学窗格会显示内容
+</p>
+</div>
+<p>主要区域：</p>
+<ol style="list-style-type: decimal">
+<li><strong>Activity Bar / Explorer</strong>：项目文件、搜索、版本控制、扩展；</li>
+<li><strong>Editor</strong>：R 脚本、R Markdown、Quarto 与 Notebook；</li>
+<li><strong>Console / Terminal / Problems / Output</strong>：交互会话、系统终端与诊断；</li>
+<li><strong>Variables / Data Explorer</strong>：查看对象、筛选和检查表格数据；</li>
+<li><strong>Plots / Viewer / Help / Connections</strong>：图形、HTML 结果、帮助与连接；</li>
+<li><strong>Posit Assistant</strong>：结合当前文件、会话对象、图形与控制台历史辅助分析。</li>
+</ol>
+<p>Positron 的优势是 R 与 Python 的统一体验、现代代码编辑能力、解释器管理、数据浏览和 AI 上下文；对于只使用 R 的入门者，按钮与命令入口较多，需要先掌握最小工作流。</p>
+<p>上图来自 Posit 官方文章 <a href="https://posit.co/blog/a-quick-tour-of-positron">A quick tour of Positron</a>。与 RStudio 对照时，不要强求窗格位置一一相同，而要找功能：编辑器对应 Source，Console 对应 Console，Variables 对应 Environment，Plots/Viewer/Help 对应 Output。</p>
+</div>
+<div id="配置-posit-assistant-deepseek" class="section level2 hasAnchor" number="0.7">
+<h2><span class="header-section-number">0.7</span> 配置 Posit Assistant + DeepSeek<a href="intro.html#配置-posit-assistant-deepseek" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p><strong>版本提示（2026-08）</strong>：Positron 2026.07 起默认提供 <strong>Posit Assistant</strong>，它取代旧称 <strong>Positron Assistant</strong>。新版已经提供原生的 <strong>DeepSeek (Experimental)</strong> 提供商；旧版教程中的 Custom Provider 仍可作为兼容方案。</p>
+</blockquote>
+<div id="准备-api-key" class="section level3 hasAnchor" number="0.7.1">
+<h3><span class="header-section-number">0.7.1</span> 准备 API Key<a href="intro.html#准备-api-key" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>登录 <a href="https://platform.deepseek.com/">DeepSeek 开放平台</a>；</li>
+<li>在 API Keys 页面创建密钥并充值或确认额度；</li>
+<li>创建后立即存入密码管理器。不要截图、粘贴到讲义、写入 R 脚本或提交到 Git。</li>
+</ol>
+</div>
+<div id="推荐使用-positron-原生-deepseek-提供商" class="section level3 hasAnchor" number="0.7.2">
+<h3><span class="header-section-number">0.7.2</span> 推荐：使用 Positron 原生 DeepSeek 提供商<a href="intro.html#推荐使用-positron-原生-deepseek-提供商" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>在 Positron 按 <code>Ctrl/⌘ + Shift + P</code> 打开命令面板；</li>
+<li>运行 <strong>Authentication: Configure Language Model Providers</strong>；</li>
+<li>选择 <strong>DeepSeek (Experimental)</strong>；</li>
+<li>按提示粘贴 API Key；</li>
+<li>运行 <strong>View: Show Posit Assistant</strong> 打开侧栏；</li>
+<li>在模型选择器中选 <code>deepseek-v4-flash</code> 或 <code>deepseek-v4-pro</code>；</li>
+<li>发送测试问题，例如：“解释当前 R 文件中 <code>summarise()</code> 的输入与输出，不要修改文件。”</li>
+</ol>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:provider-list-shot"></span>
+<img src="assets/screenshots/positron-provider-list.png" alt="Positron 的 Language Model Providers 列表；DeepSeek 已作为 Experimental 提供商出现（本机截图，2026-08）" width="100%" />
+<p class="caption">
+Figure 0.4: Positron 的 Language Model Providers 列表；DeepSeek 已作为 Experimental 提供商出现（本机截图，2026-08）
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:deepseek-auth-shot"></span>
+<img src="assets/screenshots/positron-deepseek-auth.png" alt="选择 DeepSeek 后的认证入口：只在安全输入框粘贴密钥，Base URL 默认为 https://api.deepseek.com（截图中未输入任何真实密钥）" width="100%" />
+<p class="caption">
+Figure 0.5: 选择 DeepSeek 后的认证入口：只在安全输入框粘贴密钥，Base URL 默认为 <a href="https://api.deepseek.com（截图中未输入任何真实密钥" class="uri">https://api.deepseek.com（截图中未输入任何真实密钥</a>）
+</p>
+</div>
+<p>也可在启动 Positron 前设置系统环境变量 <code>DEEPSEEK_API_KEY</code>。不要把真实密钥写进项目的 <code>.Renviron</code>；若教学演示必须使用环境文件，应放到用户级文件并确保不被同步或提交。</p>
+</div>
+<div id="兼容旧版custom-provider" class="section level3 hasAnchor" number="0.7.3">
+<h3><span class="header-section-number">0.7.3</span> 兼容旧版：Custom Provider<a href="intro.html#兼容旧版custom-provider" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>旧版 Positron 若没有 DeepSeek 选项：</p>
+<ol style="list-style-type: decimal">
+<li>选择 <strong>Custom Provider (Experimental)</strong>；</li>
+<li>Base URL 填写 <code>https://api.deepseek.com</code>；</li>
+<li>输入 DeepSeek API Key；</li>
+<li>如模型列表无法自动加载，在用户 <code>settings.json</code> 中配置：</li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb11-1"><a href="intro.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb11-2"><a href="intro.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;positron.assistant.models.overrides.customProvider&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb11-3"><a href="intro.html#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;DeepSeek V4 Flash&quot;</span><span class="fu">,</span> <span class="dt">&quot;identifier&quot;</span><span class="fu">:</span> <span class="st">&quot;deepseek-v4-flash&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb11-4"><a href="intro.html#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;DeepSeek V4 Pro&quot;</span><span class="fu">,</span> <span class="dt">&quot;identifier&quot;</span><span class="fu">:</span> <span class="st">&quot;deepseek-v4-pro&quot;</span><span class="fu">}</span></span>
+<span id="cb11-5"><a href="intro.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb11-6"><a href="intro.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>截至 2026-08，旧模型名 <code>deepseek-chat</code> 与 <code>deepseek-reasoner</code> 已进入弃用迁移阶段，课堂示例使用 V4 模型名。</p>
+</div>
+<div id="安全与验证清单" class="section level3 hasAnchor" number="0.7.4">
+<h3><span class="header-section-number">0.7.4</span> 安全与验证清单<a href="intro.html#安全与验证清单" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Assistant 会把提示、选中的代码与允许的上下文发送给所选模型提供商；先阅读提供商的数据政策；</li>
+<li>不发送未脱敏的学生信息、成绩、身份证号或研究敏感数据；</li>
+<li>首次练习保持 sandbox mode 开启；</li>
+<li>要求 AI 解释假设、包版本和预期输出；</li>
+<li>逐段运行，检查对象结构与异常输入；</li>
+<li>AI 生成结果不是证据，统计结论仍需人工复核。</li>
+</ul>
+<div class="task">
+<p><strong>课堂验证任务</strong>：让 Assistant 生成一个 <code>mtcars</code> 的散点图，然后检查它是否使用正确变量、是否加载了需要的包、坐标轴是否有意义。故意删掉一个右括号，再让 Assistant 只解释错误并给出最小修改。</p>
+</div>
+</div>
+</div>
+<div id="最小项目工作流" class="section level2 hasAnchor" number="0.8">
+<h2><span class="header-section-number">0.8</span> 最小项目工作流<a href="intro.html#最小项目工作流" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="第一步用-rstudio-图形界面建立项目边界" class="section level3 hasAnchor" number="0.8.1">
+<h3><span class="header-section-number">0.8.1</span> 第一步：用 RStudio 图形界面建立项目边界<a href="intro.html#第一步用-rstudio-图形界面建立项目边界" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>在 RStudio 点击右上角 <strong>Project: (None)</strong> 或工具栏的项目按钮，选择 <strong>New Project</strong>。项目向导提供三条路径：</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:project-wizard-shot"></span>
+<img src="assets/screenshots/rstudio-project-wizard.png" alt="RStudio New Project Wizard：新目录、现有目录、版本控制三种入口（本机截图，2026-08）" width="100%" />
+<p class="caption">
+Figure 0.6: RStudio New Project Wizard：新目录、现有目录、版本控制三种入口（本机截图，2026-08）
+</p>
+</div>
+<ol style="list-style-type: decimal">
+<li><strong>New Directory</strong>：课程新作业最常用；RStudio 新建文件夹并创建 <code>.Rproj</code>；</li>
+<li><strong>Existing Directory</strong>：已有数据和脚本时使用；把现有文件夹变成项目；</li>
+<li><strong>Version Control</strong>：从 Git 仓库开始，适合团队协作与版本管理。</li>
+</ol>
+<p>创建或打开项目后，右上角会显示项目名，Files 窗格以项目根目录为起点，Console 的工作目录也随项目切换。此时 <code>getwd()</code> 应指向项目目录。</p>
+</div>
+<div id="第二步用四窗格完成一次可复现循环" class="section level3 hasAnchor" number="0.8.2">
+<h3><span class="header-section-number">0.8.2</span> 第二步：用四窗格完成一次可复现循环<a href="intro.html#第二步用四窗格完成一次可复现循环" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rstudio-workflow-shot"></span>
+<img src="assets/screenshots/rstudio-interface.png" alt="RStudio 图形界面中的最小循环：Source 编写 → Console 运行 → Environment/Plots 检查 → Files 保存" width="100%" />
+<p class="caption">
+Figure 0.7: RStudio 图形界面中的最小循环：Source 编写 → Console 运行 → Environment/Plots 检查 → Files 保存
+</p>
+</div>
+<p>在界面上按以下顺序操作：</p>
+<ol style="list-style-type: decimal">
+<li>在 <strong>Files</strong> 新建 <code>R/</code>、<code>analysis/</code>、<code>output/</code> 等目录；</li>
+<li>在 <strong>Source</strong> 新建并保存脚本，不把长期代码只留在 Console；</li>
+<li>用 <code>Ctrl/⌘ + Enter</code> 将当前行或选区发送到 <strong>Console</strong>；</li>
+<li>在 <strong>Environment</strong> 检查对象名、类型与大小，在 <strong>Plots/Viewer</strong> 检查图形或 HTML；</li>
+<li>保存源文件，重启 R 后从头运行；只有完整成功才算可复现。</li>
+</ol>
+</div>
+<div id="第三步让目录结构支持相对路径" class="section level3 hasAnchor" number="0.8.3">
+<h3><span class="header-section-number">0.8.3</span> 第三步：让目录结构支持相对路径<a href="intro.html#第三步让目录结构支持相对路径" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>建议每个分析任务使用独立项目目录：</p>
+<pre class="text"><code>my-project/
+├── data/          # 原始数据（原则上只读）
+├── R/             # 可复用函数
+├── analysis/      # Rmd/Qmd 分析文件
+├── output/        # 图、表与报告
+├── README.md
+└── my-project.Rproj（使用 RStudio 时）</code></pre>
+<ol style="list-style-type: decimal">
+<li>打开项目目录；</li>
+<li>启动 R 会话并确认 <code>getwd()</code>；</li>
+<li>使用相对路径；</li>
+<li>在脚本或 R Markdown 中保存可复现代码；</li>
+<li>从空会话重新运行，确认结果可以复现。</li>
+</ol>
+</div>
+</div>
+<div id="本章小结" class="section level2 hasAnchor" number="0.9">
+<h2><span class="header-section-number">0.9</span> 本章小结<a href="intro.html#本章小结" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>R 是计算引擎；RStudio 与 Positron 是调用 R 的开发环境；</li>
+<li>RStudio 强在成熟、聚焦的 R 工作流，Positron 强在 R/Python、现代编辑和 AI 数据科学体验；</li>
+<li>学编程要把问题拆解为算法步骤，再逐片段翻译与调试；</li>
+<li>函数、对象与向量化是理解 R 的三把钥匙；</li>
+<li>Posit Assistant 可以接入 DeepSeek，但密钥安全、数据边界与结果验证不能交给 AI。</li>
+</ul>
+</div>
+<div id="课后练习" class="section level2 hasAnchor" number="0.10">
+<h2><span class="header-section-number">0.10</span> 课后练习<a href="intro.html#课后练习" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>完成 R、RStudio、Positron 安装，并提交三条验证结果：<code>R.version.string</code>、<code>getwd()</code>、<code>sessionInfo()</code>；</li>
+<li>用自己的话画出 R—IDE—R 包三层关系图；</li>
+<li>把“计算一组成绩的优秀率”分解为不少于四个算法步骤，再翻译成 R 代码；</li>
+<li>使用 Posit Assistant 请求代码解释，记录一处你发现并修正的 AI 问题；</li>
+<li>思考：什么时候应该关闭 Assistant 或不给它读取当前项目？</li>
+</ol>
+</div>
+<div id="本章来源与延伸阅读" class="section level2 unnumbered hasAnchor">
+<h2>本章来源与延伸阅读<a href="intro.html#本章来源与延伸阅读" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>张敬信：《R 语言编程：基于 tidyverse》，导语与第 1.1 节。</li>
+<li><a href="https://cran.r-project.org/">The R Project / CRAN</a></li>
+<li><a href="https://docs.posit.co/ide/user/ide/get-started/">RStudio User Guide: Get Started</a></li>
+<li><a href="https://positron.posit.co/install">Install Positron</a></li>
+<li><a href="https://positron.posit.co/assistant-getting-started">Posit Assistant: Get started</a></li>
+<li><a href="https://positron.posit.co/assistant-providers.html">Posit Assistant providers</a></li>
+<li><a href="https://api-docs.deepseek.com/quick_start/pricing-details-cny/">DeepSeek API: Your First API Call</a></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="author-bio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="basic-syntax.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": null,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  },
+  "toolbar": {
+    "position": "fixed"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

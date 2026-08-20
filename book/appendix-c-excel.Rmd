@@ -1,0 +1,3 @@
+# 用 R 实现 Excel 中的 VLOOKUP 与透视表 {#appendix-excel}
+
+本章框架对应教材附录 C。

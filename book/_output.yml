@@ -1,0 +1,28 @@
+bookdown::gitbook:
+  css: style.css
+  split_by: chapter
+  config:
+    toc:
+      collapse: section
+      before: |
+        <li class="course-brand"><a href="./">R 语言编程 · tidyverse</a></li>
+      after: |
+        <li class="course-meta">王芝皓 · 统计与数据科学学院</li>
+    toolbar:
+      position: fixed
+    search: true
+    sharing: null
+    download:
+      - pdf
+  code_folding: show
+  highlight: tango
+  df_print: paged
+
+bookdown::pdf_book:
+  latex_engine: xelatex
+  keep_tex: true
+  toc: true
+  number_sections: true
+  highlight: tango
+  includes:
+    in_header: preamble.tex

@@ -1,0 +1,22 @@
+book_filename: "R语言编程讲义"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "第 "
+rmd_files:
+  - index.Rmd
+  - author.Rmd
+  - 00-intro.Rmd
+  - 01-basic-syntax.Rmd
+  - 02-data-manipulation.Rmd
+  - 03-visualization-modeling.Rmd
+  - 04-applied-statistics.Rmd
+  - 05-eda.Rmd
+  - 06-communication.Rmd
+  - appendix-a-r6.Rmd
+  - appendix-b-debugging.Rmd
+  - appendix-c-excel.Rmd
+  - appendix-d-non-equi-join.Rmd
+  - appendix-e-web-scraping.Rmd
+  - appendix-f-hpc.Rmd
+  - appendix-g-ml.Rmd

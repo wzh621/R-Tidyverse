@@ -1,0 +1,22 @@
+.DS_Store
+.Rhistory
+.RData
+.Rproj.user/
+.Renviron
+
+# Local build products and LaTeX intermediates
+book/_book/
+book/*_files/
+book/*.log
+book/*.tex
+book/*.aux
+book/*.out
+book/*.toc
+slides/*.html
+
+# Public repositories must not include supplied or generated PDFs.
+*.pdf
+
+# Private working notes and duplicate source portrait.
+/个人简历.md
+/IMG_2784.JPG

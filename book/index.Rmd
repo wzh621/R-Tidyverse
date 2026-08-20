@@ -1,0 +1,58 @@
+---
+title: "R 语言编程：基于 tidyverse"
+subtitle: "课堂讲义"
+author: "王芝皓"
+institute: "统计与数据科学学院"
+date: "`r format(Sys.Date(), '%Y 年 %m 月')`"
+site: bookdown::bookdown_site
+documentclass: ctexbook
+classoption:
+  - UTF8
+  - openany
+  - fontset=none
+geometry: "a4paper,inner=28mm,outer=24mm,top=26mm,bottom=28mm"
+fontsize: 11pt
+linkcolor: courseblue
+urlcolor: courseteal
+citecolor: courseblue
+description: "基于指定教材与配套资料开发的 R 语言课程讲义。"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  collapse = TRUE,
+  comment = "#>",
+  fig.align = "center",
+  fig.width = 8,
+  fig.height = 4.8,
+  out.width = "92%",
+  warning = FALSE,
+  message = FALSE
+)
+options(width = 80)
+```
+
+# 前言 {-}
+
+本讲义以张敬信《R 语言编程：基于 tidyverse》（人民邮电出版社，2023）为主教材，参考其配套源代码、课堂课件、实验材料及课程教学大纲。课程强调：
+
+1. 夯实数据结构、控制结构与函数等基础语法；
+2. 建立整洁数据、函数式与向量化的数据编程思维；
+3. 能独立完成数据导入、整理、可视化、建模与可复现沟通；
+4. 负责任地使用 AI 辅助编程，并始终验证生成结果。
+
+> **课程原则**：先说清问题与算法，再把算法翻译成可运行、可检查、可复现的代码。
+
+## 教材章节与讲义文件对应关系 {-}
+
+| 教材部分 | 讲义文件 | 状态 |
+|---|---|---|
+| 导语（第 0 章） | `00-intro.Rmd` | 已完成 |
+| 第 1 章 基础语法 | `01-basic-syntax.Rmd` | 框架 |
+| 第 2 章 数据操作 | `02-data-manipulation.Rmd` | 框架 |
+| 第 3 章 可视化与建模技术 | `03-visualization-modeling.Rmd` | 框架 |
+| 第 4 章 应用统计 | `04-applied-statistics.Rmd` | 框架 |
+| 第 5 章 探索性数据分析 | `05-eda.Rmd` | 框架 |
+| 第 6 章 文档沟通 | `06-communication.Rmd` | 框架 |
+| 附录 A–G | `appendix-*.Rmd` | 框架 |

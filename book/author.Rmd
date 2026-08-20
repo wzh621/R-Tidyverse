@@ -1,0 +1,44 @@
+# 作者简介 {#author-bio .unnumbered}
+
+::: {.author-profile}
+
+```{r author-photo, echo=FALSE, out.width=if (knitr::is_latex_output()) "0.42\\linewidth" else "100%", out.extra=if (knitr::is_latex_output()) "angle=-90" else "", fig.align="center", fig.class="author-photo"}
+knitr::include_graphics("assets/author/IMG_2784.JPG")
+```
+
+::: {.author-summary}
+<p class="author-name">王芝皓</p>
+<p class="author-role">副教授 · 硕士生导师</p>
+<p>中国人民大学统计学博士，现任<strong>统计与数据科学学院统计系主任</strong>，兼任吉尔吉斯经济大学特聘导师。</p>
+<p>主要从事非参数统计模型、分位数回归、函数型数据分析、高维变量选择与旅游统计等方向的研究。</p>
+:::
+
+:::
+
+## 科研与教学工作 {-}
+
+主持或参与国家级项目 5 项、省部级项目 5 项、教育教学改革项目 1 项，以及厅局级项目 10 余项。当前主持或近期主持的代表性项目包括：
+
+| 项目 | 类别与编号 | 时间与状态 |
+|:---|:---|:---|
+| 教育统计视角下新疆教育事业发展现状、特征及路径探析 | 自治区教育厅教改项目 | 2026.07—2027.06，在研 |
+| 基于稳健回归理论的复杂函数型数据分析与应用研究 | 自治区自然科学基金，2023D01A74 | 2023.09—2026.08，在研 |
+| 新疆旅游融合发展中多重视角下旅游形象感知研究及应用 | 自治区社会科学基金，2023BTJ048 | 2023.06—2025.06，已结项 |
+| 文化润疆：基于新疆民族间文化认同的实践 | 新疆财经大学重大资政调研项目，XJWT202309 | 2023.04—2025.05，结项中 |
+| 新质生产力赋能新疆文旅融合发展策略与旅游形象感知重塑研究 | 新疆财经大学高层次人才专项，2024XGC033 | 2024.09—2026.08，在研 |
+
+## 学术成果 {-}
+
+在《中国科学·数学》《统计研究》《Journal of the Royal Statistical Society: Series A》《Insurance: Mathematics and Economics》《Statistica Sinica》《Biometrical Journal》《Statistical Papers》《系统科学与数学》《数理统计与管理》等期刊发表论文 10 余篇。代表性成果包括：
+
+- 李阳、王芝皓、胡晓雪、田茂再：具有潜在因子的变系数部分函数型线性模型的迭代最小二乘估计，《统计研究》，已录用。
+- Wang, Z., Yu, K., Ma, S., et al. *Sparse smoothed quantile estimation for partially linear functional additive models*. **Science China Mathematics**, 2026, 1–24.
+- Liu, Y., Wang, Z., Härdle, W. K., & Tian, M. *Estimation and Model Selection Procedures in Generalized Functional Partially Additive Hybrid Model with Diverging Number of Covariates*. **Statistica Sinica**, 2025. [doi:10.5705/ss.202024.0358](https://doi.org/10.5705/ss.202024.0358)
+- Wang, Z., Shi, Y., & Gao, G. *Additive tree latent variable models with applications to insurance loss prediction*. **Insurance: Mathematics and Economics**, 2025, 125, 103168. [doi:10.1016/j.insmatheco.2025.103168](https://doi.org/10.1016/j.insmatheco.2025.103168)
+- Ma, S., Tang, M., Yu, K., Härdle, W. K., Wang, Z., et al. *A censored quantile transformation model for Alzheimer’s Disease data with multiple functional covariates*. **Journal of the Royal Statistical Society: Series A**, 2025, 188(2), 515–538.
+- Wang, Z., Bai, Y., Härdle, W. K., et al. *Smoothed quantile regression for partially functional linear models in high dimensions*. **Biometrical Journal**, 2023, 65(7), 2200060.
+- 王芝皓、刘艳霞、田茂再、陈小昆：零膨胀计数数据函数型部分变系数模型，《统计研究》，2021，38(7)：127–139。
+
+::: {.callout .author-note}
+<strong>说明：</strong>本页根据课程资料《个人简历》整理，信息更新至 2026 年 8 月。
+:::

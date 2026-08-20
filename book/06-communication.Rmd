@@ -1,0 +1,10 @@
+# 文档沟通 {#communication}
+
+## R Markdown
+### R Markdown 基础
+### 输出格式与参数
+### 表格、图形与引用
+### 参数化报告与自动化
+## R 与 LaTeX、Git/GitHub 交互
+## R Shiny 与 Web 应用
+## 开发 R 包
