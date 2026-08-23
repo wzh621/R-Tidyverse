@@ -23,10 +23,17 @@ local({
 })
 
 message("[2/2] 编译 R Markdown 幻灯片……")
-rmarkdown::render(
+slide_sources <- c(
   "slides/00-intro.Rmd",
-  output_file = "00-intro.html",
-  envir = new.env(parent = globalenv())
+  "slides/01-basic-syntax.Rmd"
 )
+
+for (slide_source in slide_sources) {
+  rmarkdown::render(
+    slide_source,
+    output_file = sub("\\.Rmd$", ".html", basename(slide_source)),
+    envir = new.env(parent = globalenv())
+  )
+}
 
 message("编译完成。")

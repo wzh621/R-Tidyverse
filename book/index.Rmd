@@ -49,7 +49,7 @@ options(width = 80)
 | 教材部分 | 讲义文件 | 状态 |
 |---|---|---|
 | 导语（第 0 章） | `00-intro.Rmd` | 已完成 |
-| 第 1 章 基础语法 | `01-basic-syntax.Rmd` | 框架 |
+| 第 1 章 基础语法 | `01-basic-syntax.Rmd` | 已完成 |
 | 第 2 章 数据操作 | `02-data-manipulation.Rmd` | 框架 |
 | 第 3 章 可视化与建模技术 | `03-visualization-modeling.Rmd` | 框架 |
 | 第 4 章 应用统计 | `04-applied-statistics.Rmd` | 框架 |

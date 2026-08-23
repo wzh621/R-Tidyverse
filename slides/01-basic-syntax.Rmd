@@ -1,0 +1,855 @@
+---
+title: "第 1 章 · 基础语法"
+subtitle: "从数据结构到函数式迭代"
+author: "王芝皓"
+institute: "统计与数据科学学院"
+date: "`r format(Sys.Date(), '%Y 年 %m 月')`"
+output:
+  xaringan::moon_reader:
+    css: [default, "theme.css", "01-theme.css"]
+    chakra: "libs/remark-latest.min.js"
+    nature:
+      ratio: "16:9"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      navigation:
+        scroll: false
+        touch: true
+    seal: false
+    self_contained: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE, collapse = TRUE, comment = "#>",
+  fig.width = 8, fig.height = 4.3, fig.align = "center",
+  warning = FALSE, message = FALSE
+)
+library(tidyverse)
+library(lubridate)
+set.seed(2023)
+```
+
+class: inverse, center, middle
+
+# 本章真正要学的是什么？
+
+## 类型决定规则，结构决定操作，函数连接输入与输出
+
+<p class="big">语法是词汇，<span class="gold">数据思维与函数式编程</span>才是句法。</p>
+
+???
+请同学回答：看到一个陌生对象，第一步是立即写代码，还是先判断它的结构？
+
+---
+
+# 学习目标
+
+完成本章后，你能：
+
+- 在 Project 中建立可复现工作流
+- 选择向量、矩阵、数组、列表、数据框和因子
+- 正确区分 `[ ]`、`[[ ]]` 与 `$`
+- 用 stringr、lubridate 与正则处理真实字段
+- 在分支、循环、向量化和 `map_*()` 之间选择
+- 按输入—输出契约编写并验证函数
+
+---
+
+# 教材第 1 章路线图
+
+<div class="chapter-map">
+<div><b>1.1</b><span>环境与常用操作</span></div>
+<div><b>1.2–1.3</b><span>六类数据结构</span></div>
+<div><b>1.4–1.5</b><span>字符串、时间、正则</span></div>
+<div><b>1.6</b><span>分支与循环</span></div>
+<div><b>1.7</b><span>自定义函数</span></div>
+</div>
+
+<div class="callout" style="margin-top:1em">贯穿线索：把一个可靠规则应用到一组数据。</div>
+
+---
+
+class: inverse, center, middle
+
+# 1.1 环境与常用操作
+
+## 先让每次分析都能重新开始
+
+---
+
+# 一份可复现的开工检查单
+
+<div class="two">
+<div class="card">
+<h3>IDE 设置</h3>
+<ul>
+<li>UTF-8 编码</li>
+<li>不恢复 .RData</li>
+<li>退出不保存工作区</li>
+<li>每个分析一个 Project</li>
+</ul>
+</div>
+<div class="card">
+<h3>验证动作</h3>
+<ol>
+<li>重启 R</li>
+<li>从脚本第一行运行</li>
+<li>确认输入路径存在</li>
+<li>确认结果可以重建</li>
+</ol>
+</div>
+</div>
+
+<div class="warning small">Console 历史不是分析记录；脚本才是。</div>
+
+---
+
+# Project 比 setwd() 更可靠
+
+<div class="project-tree">
+<div class="root">my-analysis/</div>
+<div>├── my-analysis.Rproj</div>
+<div>├── R/</div>
+<div>├── data/</div>
+<div>└── output/</div>
+</div>
+
+```{r slide-path}
+file.path("data", "scores.csv")
+```
+
+<div class="callout small">相对路径表达“文件在项目中的位置”，项目移动后关系仍保持。</div>
+
+---
+
+# 包：安装一次，加载每次
+
+| 目的 | 写法 | 频率 |
+|---|---|---|
+| 安装 | `install.packages("stringr")` | 通常一次 |
+| 加载 | `library(stringr)` | 每个会话 |
+| 精确调用 | `stringr::str_trim()` | 随时 |
+| 查帮助 | `?stringr::str_trim` | 需要时 |
+
+```{r slide-package}
+stringr::str_to_upper("R language")
+```
+
+???
+强调不要把 install.packages 放进每次编译的 R Markdown。
+
+---
+
+# 对象、赋值与函数参数
+
+```{r slide-assignment}
+radius <- c(2, 4, 7)
+area <- pi * radius^2
+round(area, digits = 2)
+```
+
+<div class="three compact-cards">
+<div class="card"><h3><code>&lt;-</code></h3><p>给对象命名</p></div>
+<div class="card"><h3><code>=</code></h3><p>指定参数</p></div>
+<div class="card"><h3><code>f(x)</code></h3><p>函数作用于对象</p></div>
+</div>
+
+---
+
+# 浮点数：看起来相等 ≠ 内部完全相等
+
+```{r slide-floating}
+0.1 + 0.2
+0.1 + 0.2 == 0.3
+all.equal(0.1 + 0.2, 0.3)
+dplyr::near(0.1 + 0.2, 0.3)
+```
+
+<div class="callout">分析连续数值时，通常判断“是否足够接近”。</div>
+
+---
+
+# 四个容易混淆的特殊值
+
+<div class="four-grid">
+<div><b>NA</b><span>未知或缺失</span></div>
+<div><b>NaN</b><span>未定义数值</span></div>
+<div><b>Inf</b><span>无穷</span></div>
+<div><b>NULL</b><span>不存在</span></div>
+</div>
+
+```{r slide-missing}
+NA == NA
+is.na(NA)
+mean(c(80, NA, 90), na.rm = TRUE)
+```
+
+---
+
+# 如何阅读 R 帮助页？
+
+<div class="process-line help-line">
+<div><strong>1</strong>Usage</div>
+<div><strong>2</strong>Arguments</div>
+<div><strong>3</strong>Value</div>
+<div><strong>4</strong>Examples</div>
+</div>
+
+```r
+?mean
+vignette(package = "dplyr")
+```
+
+<div class="warning small">先确认输入类型和返回值，再复制示例。</div>
+
+---
+
+class: inverse, center, middle
+
+# 1.2–1.3 数据结构
+
+## 先问“维数”和“是否同质”
+
+---
+
+# 六类结构，一张决策图
+
+<div class="structure-grid">
+<div class="decision"><b>元素类型一致？</b></div>
+<div class="yes"><b>是</b><span>向量 → 矩阵 → 数组</span></div>
+<div class="no"><b>否</b><span>列表 → 数据框</span></div>
+<div class="semantic"><b>有限类别？</b><span>使用因子表达水平与顺序</span></div>
+</div>
+
+---
+
+# 向量：R 的基本计算单位
+
+```{r slide-vector}
+x <- c(2, 4, 6, 8)
+x + 1
+x * c(1, 10, 100, 1000)
+```
+
+<div class="callout">向量化：把同一规则同时应用到整组元素。</div>
+
+```{r slide-recycle}
+1:6 + c(10, 20)
+```
+
+<p class="small muted">隐式循环补齐要谨慎：长度不匹配往往意味着数据关系没有说清。</p>
+
+---
+
+# 逻辑向量就是筛选器
+
+```{r slide-logical}
+score <- c(58, 76, 91, NA, 84)
+passed <- score >= 60
+passed
+
+score[passed & !is.na(passed)]
+```
+
+<div class="two">
+<div class="card"><h3><code>==</code></h3><p>逐元素等于</p></div>
+<div class="card"><h3><code>%in%</code></h3><p>是否属于候选集合</p></div>
+</div>
+
+---
+
+# 索引：保留、排除、条件
+
+```{r slide-index}
+x <- c(A = 10, B = 20, C = 30, D = 40)
+x[c(1, 3)]
+x[-c(2, 4)]
+x[x >= 30]
+x[c("A", "D")]
+```
+
+<div class="warning small">一个索引中不要混用正数与负数；逻辑索引要检查 NA。</div>
+
+---
+
+# 矩阵：二维、同质
+
+```{r slide-matrix}
+A <- matrix(1:6, nrow = 2, byrow = TRUE)
+A
+A[, 1, drop = FALSE]
+A * A
+A %*% t(A)
+```
+
+<div class="two compact-cards">
+<div class="card"><h3><code>*</code></h3><p>逐元素乘</p></div>
+<div class="card"><h3><code>%*%</code></h3><p>矩阵乘法</p></div>
+</div>
+
+---
+
+# 数组：维度都具有业务含义
+
+```{r slide-array}
+cube <- array(
+  1:24,
+  dim = c(3, 4, 2),
+  dimnames = list(
+    student = paste0("S", 1:3),
+    subject = c("R", "统计", "英语", "数学"),
+    term = c("期中", "期末")
+  )
+)
+cube[, "R", "期末"]
+```
+
+---
+
+# 列表：异质对象的容器
+
+```{r slide-list}
+student <- list(
+  id = "S01",
+  score = c(86, 91, 88),
+  passed = TRUE,
+  meta = list(major = "统计学", grade = 2)
+)
+str(student)
+```
+
+<div class="callout small">模型对象也是列表：系数、残差、拟合值可以共处一个对象。</div>
+
+---
+
+# 糖果盒模型：`[ ]` 与 `[[ ]]`
+
+<div class="two">
+<div class="box-demo">
+<div class="box-title"><code>student["score"]</code></div>
+<div class="outer-box"><span>列表外壳</span><div class="candy">数值向量</div></div>
+</div>
+<div class="box-demo">
+<div class="box-title"><code>student[["score"]]</code></div>
+<div class="candy solo">数值向量本身</div>
+</div>
+</div>
+
+<div class="warning small"><code>$</code> 适合交互式读取已知名字；编程时动态名字常用 <code>[[ ]]</code>。</div>
+
+---
+
+# 数据框：等长列组成的命名列表
+
+```{r slide-tibble}
+persons <- tibble(
+  name = c("Ken", "Ashley", "Jennifer"),
+  age = c(24, 26, 23),
+  student = c(TRUE, FALSE, TRUE)
+)
+persons
+```
+
+<div class="three compact-cards">
+<div class="card"><h3>行</h3><p>观测</p></div>
+<div class="card"><h3>列</h3><p>变量</p></div>
+<div class="card"><h3>单元格</h3><p>一个值</p></div>
+</div>
+
+---
+
+# 同样取 age，结构不同
+
+```{r slide-df-extract}
+persons["age"]
+persons[["age"]]
+persons$age
+```
+
+<div class="callout small"><code>["age"]</code> 返回一列 tibble；<code>[["age"]]</code> 与 <code>$age</code> 返回向量。</div>
+
+---
+
+# 因子：类别 + 水平 + 顺序
+
+```{r slide-factor}
+grade <- factor(
+  c("中", "良", "优", "及格", "良"),
+  levels = c("不及格", "及格", "中", "良", "优"),
+  ordered = TRUE
+)
+grade
+sort(grade)
+```
+
+<div class="callout">因子顺序会进入汇总、模型与图形；它不是装饰。</div>
+
+---
+
+# forcats：把类别管理写成动词
+
+| 目标 | 函数 |
+|---|---|
+| 指定水平位置 | `fct_relevel()` |
+| 按频数排序 | `fct_infreq()` |
+| 按数值变量排序 | `fct_reorder()` |
+| 修改/合并标签 | `fct_recode()`, `fct_collapse()` |
+| 合并小类别 | `fct_lump_*()` |
+
+<div class="warning small">字符排序回答“字典顺序”；因子排序回答“业务顺序”。</div>
+
+---
+
+class: inverse, center, middle
+
+# 1.4–1.5 字符串、时间与正则
+
+## 把“脏字段”转成可分析变量
+
+---
+
+# stringr：函数名就是任务清单
+
+```{r slide-string}
+code <- c("BJ-2023-001", "SH-2023-014", "GZ-2024-107")
+str_split_fixed(code, "-", n = 3)
+str_detect(code, "2024")
+str_extract(code, "[0-9]{3}$")
+```
+
+<div class="function-chain">
+<span>检测</span><b>→</b><span>定位</span><b>→</b><span>提取</span><b>→</b><span>替换</span>
+</div>
+
+---
+
+# 日期解析：函数名表达字段顺序
+
+```{r slide-date}
+ymd(c("2023-02-20", "2024/03/01"))
+dmy("20-02-2023")
+ymd_hm("2023-02-20 14:35", tz = "Asia/Shanghai")
+```
+
+<div class="callout small">先把字符解析成日期时间类型，再提取年、月、日；不要靠截取字符串模拟日期运算。</div>
+
+---
+
+# 同一时刻，还是同一钟表时间？
+
+```{r slide-timezone}
+t <- ymd_hm("2023-02-20 14:35", tz = "Asia/Shanghai")
+with_tz(t, "America/New_York")
+force_tz(t, "America/New_York")
+```
+
+<div class="two compact-cards">
+<div class="card"><h3>with_tz</h3><p>真实时刻不变</p></div>
+<div class="card"><h3>force_tz</h3><p>钟表显示不变</p></div>
+</div>
+
+---
+
+# duration 与 period 的差别
+
+<div class="timeline-compare">
+<div><b>duration</b><span>固定秒数</span><em>适合计时</em></div>
+<div><b>period</b><span>日历单位</span><em>适合“下个月同日”</em></div>
+</div>
+
+```{r slide-month}
+start <- ymd("2024-01-31")
+start + months(1)
+start %m+% months(1)
+```
+
+---
+
+# 时间序列：值还需要时间索引
+
+```{r slide-ts}
+sales <- ts(c(120, 135, 128, 150, 142, 160, 158, 175),
+            start = c(2022, 1), frequency = 4)
+sales
+diff(sales)
+```
+
+<div class="two compact-cards">
+<div class="card"><h3>ts</h3><p>规则频率 + 经典分析</p></div>
+<div class="card"><h3>tsibble</h3><p>索引/键 + tidyverse</p></div>
+</div>
+
+---
+
+# 正则表达式：用模式概括字符串
+
+| 符号 | 含义 | 示例 |
+|---|---|---|
+| `^` / `$` | 开头 / 结尾 | `^[A-Z]+` |
+| `[ ]` | 字符集合 | `[0-9]` |
+| `*` / `+` / `?` | 重复次数 | `\d+` |
+| `{n,m}` | 限定重复 | `\d{3}` |
+| `( )` | 分组捕获 | `(\d+)` |
+
+<div class="warning small">R 字符串再转义一次：正则的 <code>\d</code> 在代码中写作 <code>"\\d"</code>。</div>
+
+---
+
+# 正则工作流：先小样本，再批量
+
+<div class="process-line regex-line">
+<div><strong>1</strong>找规律</div>
+<div><strong>2</strong>写模式</div>
+<div><strong>3</strong>看匹配</div>
+<div><strong>4</strong>提取/替换</div>
+</div>
+
+```{r slide-regex-direct}
+x <- c("CDK弱(+)10%+", "CDK(+)30%-", "CDK(-)0+")
+str_extract(x, "\\d+%?")
+```
+
+---
+
+# 零宽断言：标志参与定位，不进入结果
+
+```{r slide-lookaround}
+x <- c(
+  "175.10.237.40(湖南-长沙)",
+  "114.243.12.168(北京-北京)"
+)
+str_extract(x, "(?<=\\().*?(?=-)")
+str_extract(x, "^.*?(?=\\()")
+```
+
+<div class="callout small"><code>(?&lt;=左标志)</code> 内容 <code>(?=右标志)</code></div>
+
+---
+
+# 分组捕获：提取后还能重新排列
+
+```{r slide-capture}
+movie <- c("独行月球2022_Chinese", "蜘蛛侠USA_2021")
+str_replace(movie, "(\\d+)_(.+)$", "\\2_\\1")
+```
+
+<div class="two compact-cards">
+<div class="card"><h3><code>\1</code></h3><p>第 1 个捕获组</p></div>
+<div class="card"><h3><code>\2</code></h3><p>第 2 个捕获组</p></div>
+</div>
+
+---
+
+class: inverse, center, middle
+
+# 1.6 控制结构
+
+## 分支负责选择，循环负责重复
+
+---
+
+# if：条件必须是一个 TRUE/FALSE
+
+```{r slide-if}
+score <- 76
+if (score >= 60) {
+  result <- "通过"
+} else {
+  result <- "未通过"
+}
+result
+```
+
+<div class="warning small">若条件是一整个逻辑向量，应先用 <code>all()</code> / <code>any()</code> 汇总，或改用向量化分支。</div>
+
+---
+
+# 多分支：顺序就是规则的一部分
+
+```{r slide-case}
+scores <- c(95, 86, 73, 62, 48, NA)
+case_when(
+  is.na(scores) ~ NA_character_,
+  scores >= 90 ~ "优",
+  scores >= 80 ~ "良",
+  scores >= 70 ~ "中",
+  scores >= 60 ~ "及格",
+  .default = "不及格"
+)
+```
+
+<div class="callout small">从最严格条件向下写，保证分支互斥且覆盖完整。</div>
+
+---
+
+# 循环的三层表达
+
+<div class="levels">
+<div><b>1</b><span><code>for / while / repeat</code><small>显式看见状态与退出</small></span></div>
+<div><b>2</b><span><code>apply</code> 函数族<small>阅读大量既有 R 代码</small></span></div>
+<div><b>3</b><span><code>purrr::map_*()</code><small>函数式、返回类型明确</small></span></div>
+</div>
+
+---
+
+# for 循环的三个部件
+
+```{r slide-for}
+df <- as_tibble(iris[1:4])
+output <- vector("double", ncol(df)) # 1 输出
+
+for (i in seq_along(df)) {           # 2 迭代器
+  output[[i]] <- mean(df[[i]])       # 3 循环体
+}
+output
+```
+
+<div class="warning small">先分配存储空间；不要在循环里反复扩大对象。</div>
+
+---
+
+# while / repeat：次数未知时
+
+```{r slide-while}
+set.seed(123)
+x <- -Inf
+draws <- 0L
+while (x <= 1) {
+  x <- rnorm(1)
+  draws <- draws + 1L
+}
+c(draws = draws, last_value = x)
+```
+
+<div class="two compact-cards">
+<div class="card"><h3>next</h3><p>跳过本轮</p></div>
+<div class="card"><h3>break</h3><p>结束循环</p></div>
+</div>
+
+---
+
+# map：一组输入 + 一个函数
+
+<div class="map-diagram">
+<div class="inputs"><span>x₁</span><span>x₂</span><span>x₃</span></div>
+<div class="fn">f</div>
+<div class="outputs"><span>f(x₁)</span><span>f(x₂)</span><span>f(x₃)</span></div>
+</div>
+
+```{r slide-map}
+df |>
+  map_dbl(mean)
+```
+
+<div class="callout small">后缀声明输出契约：<code>_lgl</code>、<code>_int</code>、<code>_dbl</code>、<code>_chr</code>。</div>
+
+---
+
+# map2：两组对应输入 + 二元函数
+
+```{r slide-map2}
+height <- c(1.58, 1.76, 1.64)
+weight <- c(52, 73, 68)
+
+map2_dbl(height, weight, \(h, w) w / h^2)
+```
+
+<div class="pair-diagram">
+<span>(h₁, w₁)</span><span>(h₂, w₂)</span><span>(h₃, w₃)</span>
+</div>
+
+---
+
+# pmap：一行参数 + 多元函数
+
+```{r slide-pmap}
+plan <- tibble(
+  n = c(2, 3, 4),
+  mean = c(0, 5, 10),
+  sd = c(1, 2, 1)
+)
+set.seed(123)
+pmap(plan, rnorm)
+```
+
+<div class="callout small">列名与函数参数名一致时，每一行就是一次函数调用。</div>
+
+---
+
+# 何时不用 map？
+
+<div class="choice-grid">
+<div><b>向量化函数</b><span>直接调用：<code>sqrt(x)</code></span></div>
+<div><b>依赖前一轮状态</b><span>使用 <code>for</code></span></div>
+<div><b>未知次数 + 退出条件</b><span><code>while/repeat</code></span></div>
+<div><b>批量副作用</b><span><code>walk_*()</code></span></div>
+</div>
+
+---
+
+class: inverse, center, middle
+
+# 1.7 自定义函数
+
+## 把可靠步骤封装成规则
+
+---
+
+# 函数设计的四项契约
+
+<div class="contract-grid">
+<div><b>输入</b><span>类型、长度、范围</span></div>
+<div><b>处理</b><span>核心算法与分支</span></div>
+<div><b>输出</b><span>类型、结构、含义</span></div>
+<div><b>边界</b><span>NA、空值、越界</span></div>
+</div>
+
+<div class="callout" style="margin-top:1em">先用一个具体值调通，再封装；先让标量函数可靠，再决定如何推广。</div>
+
+---
+
+# 教材案例：百分制 → 五级制
+
+```{r slide-function, eval=FALSE}
+score_to_grade <- function(score) {
+  if (is.na(score)) return(NA_character_)
+  if (score < 0 || score > 100) {
+    stop("score 必须位于 0 到 100 之间")
+  }
+  if (score >= 90) "优"
+  else if (score >= 80) "良"
+  else if (score >= 70) "中"
+  else if (score >= 60) "及格"
+  else "不及格"
+}
+```
+
+---
+
+# 标量函数 + map = 向量化接口
+
+```{r slide-function-map}
+score_to_grade <- function(score) {
+  if (is.na(score)) return(NA_character_)
+  if (score >= 90) "优"
+  else if (score >= 80) "良"
+  else if (score >= 70) "中"
+  else if (score >= 60) "及格"
+  else "不及格"
+}
+
+map_chr(c(35, 67, 100, NA), score_to_grade)
+```
+
+---
+
+# 多个返回值：用命名列表打包
+
+```{r slide-return}
+mean_sd <- function(x, na.rm = FALSE) {
+  list(
+    mean = mean(x, na.rm = na.rm),
+    sd = sd(x, na.rm = na.rm),
+    n = sum(!is.na(x))
+  )
+}
+mean_sd(c(2, 6, 4, 9, 12))
+```
+
+---
+
+# `...`：把参数继续传下去
+
+```{r slide-dots}
+summarise_num <- function(x, ...) {
+  c(
+    mean = mean(x, ...),
+    sd = sd(x, ...)
+  )
+}
+
+summarise_num(c(1, 2, NA, 4), na.rm = TRUE)
+```
+
+<div class="warning small"><code>...</code> 很方便，也可能让参数去向不清；函数文档要说明它传给谁。</div>
+
+---
+
+# 概率函数：一个可迁移的命名系统
+
+<div class="four-grid probability">
+<div><b>d*</b><span>密度</span></div>
+<div><b>p*</b><span>累积概率</span></div>
+<div><b>q*</b><span>分位数</span></div>
+<div><b>r*</b><span>随机数</span></div>
+</div>
+
+```{r slide-prob}
+dnorm(0)
+pnorm(1.96)
+qnorm(0.975)
+set.seed(123); rnorm(3)
+```
+
+---
+
+# 综合练习：四种字段，一条工作流
+
+```{r slide-capstone}
+survey <- tribble(
+  ~id, ~date, ~score, ~satisfaction,
+  "BJ-001", "2023/02/20", 86, "满意",
+  "SH-014", "2023/02/21", 92, "非常满意",
+  "GZ-107", "2023/02/22", NA, "一般"
+)
+
+survey |>
+  mutate(
+    city = str_extract(id, "^[A-Z]+"),
+    date = ymd(date),
+    grade = map_chr(score, score_to_grade)
+  )
+```
+
+---
+
+# 课堂挑战
+
+在 12 分钟内完成：
+
+1. 提取 `id` 中的数字编号；
+2. 设置满意度的业务顺序；
+3. 用 `map_lgl()` 检查每列是否含 `NA`；
+4. 编写 `validate_score()` 检查 0–100；
+5. 从干净会话重新运行。
+
+<div class="warning">提交的不只是结果，还要说明每个对象的类型与结构。</div>
+
+---
+
+# 本章知识网络
+
+<div class="network">
+<div class="node center-node">函数</div>
+<div class="node n1">数据结构</div>
+<div class="node n2">索引</div>
+<div class="node n3">分支</div>
+<div class="node n4">迭代</div>
+<div class="node n5">字符串/时间</div>
+</div>
+
+<p class="center big">函数接收结构化输入，经由分支与迭代，返回可检查的输出。</p>
+
+---
+
+class: inverse, center, middle
+
+# 离堂题
+
+## 面对重复代码，你会向量化、写循环，还是定义函数再 map？
+
+<p class="big">请用“输入—处理—输出—边界”解释你的选择。</p>
+
+<p class="small">讲义：<a href="https://wzh621.github.io/R-Tidyverse/" target="_blank" rel="noopener">wzh621.github.io/R-Tidyverse/</a></p>

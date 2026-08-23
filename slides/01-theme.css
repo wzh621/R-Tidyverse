@@ -1,0 +1,127 @@
+.remark-slide-content::before {
+  content: "R 语言编程 · 第 1 章 基础语法";
+}
+
+.compact-cards .card { min-height: 0; text-align: center; }
+.compact-cards .card p { margin: .1em 0; }
+
+.chapter-map {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: .45em;
+  margin-top: 1.25em;
+}
+.chapter-map > div {
+  border: 1px solid var(--line);
+  border-top: 6px solid var(--teal);
+  background: white;
+  padding: .7em .45em;
+  text-align: center;
+}
+.chapter-map b { display: block; color: var(--navy); font-size: 1.15em; }
+.chapter-map span { display: block; color: var(--muted); font-size: .68em; }
+
+.project-tree {
+  width: 58%;
+  margin: .6em auto;
+  padding: .75em 1.2em;
+  border: 1px solid var(--line);
+  border-left: 8px solid var(--teal);
+  background: white;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  line-height: 1.55;
+}
+.project-tree .root { color: var(--navy); font-weight: 800; }
+
+.four-grid, .contract-grid, .choice-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .65em;
+  margin: .8em 0;
+}
+.four-grid > div, .contract-grid > div, .choice-grid > div {
+  background: white;
+  border: 1px solid var(--line);
+  border-bottom: 5px solid var(--teal);
+  padding: .7em .5em;
+  text-align: center;
+}
+.four-grid b, .contract-grid b, .choice-grid b { display: block; color: var(--navy); font-size: 1.1em; }
+.four-grid span, .contract-grid span, .choice-grid span { display: block; color: var(--muted); font-size: .7em; }
+.probability > div { border-bottom-color: var(--gold); }
+
+.help-line, .regex-line { grid-template-columns: repeat(4, 1fr); }
+.help-line::before, .regex-line::before { left: 10%; right: 10%; }
+
+.structure-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .75em;
+  margin-top: .9em;
+}
+.structure-grid > div { padding: .8em; background: white; border: 1px solid var(--line); }
+.structure-grid .decision { grid-column: 1 / 3; text-align: center; background: var(--navy); color: white; }
+.structure-grid b, .structure-grid span { display: block; }
+.structure-grid span { margin-top: .3em; color: var(--muted); font-size: .75em; }
+.structure-grid .semantic { grid-column: 1 / 3; border-left: 7px solid var(--gold); }
+
+.box-demo { text-align: center; }
+.box-title { margin-bottom: .45em; font-weight: 700; }
+.outer-box { border: 5px solid var(--navy); padding: .35em .75em .7em; background: #edf4f8; }
+.outer-box > span { display: block; color: var(--muted); font-size: .62em; }
+.candy { background: var(--soft-gold); border: 2px solid var(--gold); padding: .7em; color: var(--navy); font-weight: 800; }
+.candy.solo { margin-top: 1.92em; }
+
+.function-chain, .pair-diagram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .6em;
+  margin-top: .9em;
+}
+.function-chain span, .pair-diagram span {
+  border: 2px solid var(--teal);
+  background: white;
+  padding: .35em .7em;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.function-chain b { color: var(--gold); }
+
+.timeline-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+  margin: .65em 0;
+}
+.timeline-compare > div { padding: .7em; background: white; border: 1px solid var(--line); border-left: 7px solid var(--teal); }
+.timeline-compare b, .timeline-compare span, .timeline-compare em { display: block; }
+.timeline-compare b { color: var(--navy); }
+.timeline-compare span { font-size: .8em; }
+.timeline-compare em { color: var(--muted); font-size: .62em; }
+
+.levels { display: grid; gap: .55em; margin-top: .7em; }
+.levels > div { display: grid; grid-template-columns: 2.2em 1fr; align-items: center; background: white; border: 1px solid var(--line); }
+.levels b { display: grid; place-items: center; height: 100%; background: var(--teal); color: white; font-size: 1.2em; }
+.levels span { padding: .45em .7em; color: var(--navy); font-weight: 700; }
+.levels small { display: block; color: var(--muted); font-weight: 400; }
+
+.map-diagram { display: grid; grid-template-columns: 1fr 90px 1fr; align-items: center; gap: .7em; margin: .5em 0; }
+.map-diagram .inputs, .map-diagram .outputs { display: grid; gap: .28em; }
+.map-diagram span { display: block; text-align: center; padding: .2em; background: white; border: 1px solid var(--line); }
+.map-diagram .fn { display: grid; place-items: center; width: 70px; height: 70px; border-radius: 50%; background: var(--gold); color: var(--navy); font-size: 1.5em; font-weight: 900; }
+.map-diagram .outputs span { border-left: 5px solid var(--teal); }
+
+.choice-grid { grid-template-columns: repeat(2, 1fr); }
+.choice-grid > div { text-align: left; }
+
+.network { position: relative; width: 620px; height: 330px; margin: .1em auto; }
+.node { position: absolute; display: grid; place-items: center; width: 150px; height: 66px; border: 2px solid var(--teal); background: white; color: var(--navy); font-weight: 800; }
+.center-node { left: 235px; top: 128px; border-radius: 50%; background: var(--navy); color: white; border-color: var(--navy); }
+.n1 { left: 20px; top: 20px; }
+.n2 { right: 20px; top: 20px; }
+.n3 { left: 20px; bottom: 20px; }
+.n4 { right: 20px; bottom: 20px; }
+.n5 { left: 235px; top: 10px; }
+.network::before, .network::after { content: ""; position: absolute; left: 115px; right: 115px; top: 160px; height: 2px; background: #b8d9d5; z-index: -1; transform: rotate(25deg); }
+.network::after { transform: rotate(-25deg); }

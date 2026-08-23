@@ -192,6 +192,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1" data-path="basic-syntax.html"><a href="basic-syntax.html"><i class="fa fa-check"></i><b>1</b> 基础语法</a>
 <ul>
+<li class="chapter" data-level="" data-path="basic-syntax.html"><a href="basic-syntax.html#本章学习目标"><i class="fa fa-check"></i>本章学习目标</a></li>
 <li class="chapter" data-level="1.1" data-path="basic-syntax.html"><a href="basic-syntax.html#搭建-r-环境及常用操作"><i class="fa fa-check"></i><b>1.1</b> 搭建 R 环境及常用操作</a>
 <ul>
 <li class="chapter" data-level="1.1.1" data-path="basic-syntax.html"><a href="basic-syntax.html#搭建-r-环境"><i class="fa fa-check"></i><b>1.1.1</b> 搭建 R 环境</a></li>
@@ -201,12 +202,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.2.1" data-path="basic-syntax.html"><a href="basic-syntax.html#向量一维数据"><i class="fa fa-check"></i><b>1.2.1</b> 向量（一维数据）</a></li>
 <li class="chapter" data-level="1.2.2" data-path="basic-syntax.html"><a href="basic-syntax.html#矩阵二维数据"><i class="fa fa-check"></i><b>1.2.2</b> 矩阵（二维数据）</a></li>
-<li class="chapter" data-level="1.2.3" data-path="basic-syntax.html"><a href="basic-syntax.html#多维数组多维数据"><i class="fa fa-check"></i><b>1.2.3</b> 多维数组（多维数据）</a></li>
+<li class="chapter" data-level="1.2.3" data-path="basic-syntax.html"><a href="basic-syntax.html#多维数组"><i class="fa fa-check"></i><b>1.2.3</b> 多维数组</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="basic-syntax.html"><a href="basic-syntax.html#数据结构列表数据框因子"><i class="fa fa-check"></i><b>1.3</b> 数据结构：列表、数据框、因子</a>
 <ul>
 <li class="chapter" data-level="1.3.1" data-path="basic-syntax.html"><a href="basic-syntax.html#列表"><i class="fa fa-check"></i><b>1.3.1</b> 列表</a></li>
-<li class="chapter" data-level="1.3.2" data-path="basic-syntax.html"><a href="basic-syntax.html#数据框数据表"><i class="fa fa-check"></i><b>1.3.2</b> 数据框（数据表）</a></li>
+<li class="chapter" data-level="1.3.2" data-path="basic-syntax.html"><a href="basic-syntax.html#数据框"><i class="fa fa-check"></i><b>1.3.2</b> 数据框</a></li>
 <li class="chapter" data-level="1.3.3" data-path="basic-syntax.html"><a href="basic-syntax.html#因子"><i class="fa fa-check"></i><b>1.3.3</b> 因子</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="basic-syntax.html"><a href="basic-syntax.html#数据结构字符串日期时间"><i class="fa fa-check"></i><b>1.4</b> 数据结构：字符串、日期时间</a>
@@ -230,6 +231,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7.1" data-path="basic-syntax.html"><a href="basic-syntax.html#自定义函数-1"><i class="fa fa-check"></i><b>1.7.1</b> 自定义函数</a></li>
 <li class="chapter" data-level="1.7.2" data-path="basic-syntax.html"><a href="basic-syntax.html#r-自带的函数"><i class="fa fa-check"></i><b>1.7.2</b> R 自带的函数</a></li>
 </ul></li>
+<li class="chapter" data-level="1.8" data-path="basic-syntax.html"><a href="basic-syntax.html#综合练习把基础语法连成工作流"><i class="fa fa-check"></i><b>1.8</b> 综合练习：把基础语法连成工作流</a></li>
+<li class="chapter" data-level="" data-path="basic-syntax.html"><a href="basic-syntax.html#本章小结-1"><i class="fa fa-check"></i>本章小结</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>2</b> 数据操作</a>
 <ul>
@@ -402,78 +405,1313 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="basic-syntax" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">第 1</span> 基础语法<a href="basic-syntax.html#basic-syntax" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>本章严格沿用教材第 1 章的知识顺序：先建立可复现的 R 工作环境，再学习数据结构、字符串与日期时间、正则表达式、控制结构和函数。与“记住所有函数”相比，本章更重要的目标是建立一套稳定的判断框架：<strong>对象是什么类型、具有怎样的结构、函数接收什么输入、返回什么输出，以及怎样把一次操作推广到一组数据。</strong></p>
+<blockquote>
+<p><strong>教材主线</strong>：基础语法是载体，向量化、函数式编程和数据思维才是贯穿全章的核心。</p>
+</blockquote>
+<div id="本章学习目标" class="section level2 unnumbered hasAnchor">
+<h2>本章学习目标<a href="basic-syntax.html#本章学习目标" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>完成本章后，你应当能够：</p>
+<ol style="list-style-type: decimal">
+<li>在 R Project 中组织脚本、数据和输出，并从干净会话重现分析；</li>
+<li>根据数据是否同质、维数多少，选择向量、矩阵、数组、列表、数据框或因子；</li>
+<li>正确使用 <code>[ ]</code>、<code>[[ ]]</code> 与 <code>$</code> 提取对象；</li>
+<li>用 <code>stringr</code>、正则表达式和 <code>lubridate</code> 处理常见文本与日期时间；</li>
+<li>在分支、循环、向量化和 <code>purrr::map_*()</code> 之间作出合理选择；</li>
+<li>按“输入—处理—输出—验证”的契约设计自定义函数。</li>
+</ol>
+<div class="callout">
+<p><strong>建议的学习方法</strong>：每段代码都先预测结果，再运行；遇到错误时先检查 <code>class()</code>、<code>typeof()</code>、<code>length()</code>、<code>dim()</code> 和 <code>str()</code>。</p>
+</div>
+</div>
 <div id="搭建-r-环境及常用操作" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> 搭建 R 环境及常用操作<a href="basic-syntax.html#搭建-r-环境及常用操作" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="搭建-r-环境" class="section level3 hasAnchor" number="1.1.1">
 <h3><span class="header-section-number">1.1.1</span> 搭建 R 环境<a href="basic-syntax.html#搭建-r-环境" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>第 0 章已经完成 R、RStudio 与 Positron 的安装。这里把教材中的环境设置转化为一份“开工检查单”。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="basic-syntax.html#cb13-1" aria-hidden="true" tabindex="-1"></a>R.version.string</span>
+<span id="cb13-2"><a href="basic-syntax.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;R version 4.6.1 (2026-06-24)&quot;</span></span>
+<span id="cb13-3"><a href="basic-syntax.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">basename</span>(<span class="fu">getwd</span>()) <span class="co"># 只显示项目目录名，避免公开本机完整路径</span></span>
+<span id="cb13-4"><a href="basic-syntax.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;book&quot;</span></span>
+<span id="cb13-5"><a href="basic-syntax.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()[<span class="fu">c</span>(<span class="st">&quot;R.version&quot;</span>, <span class="st">&quot;platform&quot;</span>)]</span>
+<span id="cb13-6"><a href="basic-syntax.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $R.version</span></span>
+<span id="cb13-7"><a href="basic-syntax.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $R.version$platform</span></span>
+<span id="cb13-8"><a href="basic-syntax.html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;aarch64-apple-darwin23&quot;</span></span>
+<span id="cb13-9"><a href="basic-syntax.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-10"><a href="basic-syntax.html#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $R.version$arch</span></span>
+<span id="cb13-11"><a href="basic-syntax.html#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;aarch64&quot;</span></span>
+<span id="cb13-12"><a href="basic-syntax.html#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-13"><a href="basic-syntax.html#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $R.version$os</span></span>
+<span id="cb13-14"><a href="basic-syntax.html#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;darwin23&quot;</span></span>
+<span id="cb13-15"><a href="basic-syntax.html#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-16"><a href="basic-syntax.html#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $R.version$system</span></span>
+<span id="cb13-17"><a href="basic-syntax.html#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;aarch64, darwin23&quot;</span></span>
+<span id="cb13-18"><a href="basic-syntax.html#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-19"><a href="basic-syntax.html#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $R.version$status</span></span>
+<span id="cb13-20"><a href="basic-syntax.html#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;&quot;</span></span>
+<span id="cb13-21"><a href="basic-syntax.html#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-22"><a href="basic-syntax.html#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $R.version$major</span></span>
+<span id="cb13-23"><a href="basic-syntax.html#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;4&quot;</span></span>
+<span id="cb13-24"><a href="basic-syntax.html#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-25"><a href="basic-syntax.html#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $R.version$minor</span></span>
+<span id="cb13-26"><a href="basic-syntax.html#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;6.1&quot;</span></span>
+<span id="cb13-27"><a href="basic-syntax.html#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-28"><a href="basic-syntax.html#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $R.version$year</span></span>
+<span id="cb13-29"><a href="basic-syntax.html#cb13-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2026&quot;</span></span>
+<span id="cb13-30"><a href="basic-syntax.html#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-31"><a href="basic-syntax.html#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $R.version$month</span></span>
+<span id="cb13-32"><a href="basic-syntax.html#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;06&quot;</span></span>
+<span id="cb13-33"><a href="basic-syntax.html#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-34"><a href="basic-syntax.html#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $R.version$day</span></span>
+<span id="cb13-35"><a href="basic-syntax.html#cb13-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;24&quot;</span></span>
+<span id="cb13-36"><a href="basic-syntax.html#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-37"><a href="basic-syntax.html#cb13-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $R.version$`svn rev`</span></span>
+<span id="cb13-38"><a href="basic-syntax.html#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;90187&quot;</span></span>
+<span id="cb13-39"><a href="basic-syntax.html#cb13-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-40"><a href="basic-syntax.html#cb13-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $R.version$language</span></span>
+<span id="cb13-41"><a href="basic-syntax.html#cb13-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;R&quot;</span></span>
+<span id="cb13-42"><a href="basic-syntax.html#cb13-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-43"><a href="basic-syntax.html#cb13-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $R.version$version.string</span></span>
+<span id="cb13-44"><a href="basic-syntax.html#cb13-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;R version 4.6.1 (2026-06-24)&quot;</span></span>
+<span id="cb13-45"><a href="basic-syntax.html#cb13-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-46"><a href="basic-syntax.html#cb13-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $R.version$nickname</span></span>
+<span id="cb13-47"><a href="basic-syntax.html#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Happy Hop&quot;</span></span>
+<span id="cb13-48"><a href="basic-syntax.html#cb13-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-49"><a href="basic-syntax.html#cb13-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-50"><a href="basic-syntax.html#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $platform</span></span>
+<span id="cb13-51"><a href="basic-syntax.html#cb13-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;aarch64-apple-darwin23&quot;</span></span></code></pre></div>
+</details>
+<p>R 是计算引擎；RStudio 和 Positron 是调用 R、管理项目和编写文档的 IDE。无论使用哪一个 IDE，真正执行表达式、管理对象和调用扩展包的仍是 R。</p>
+<div id="首次设置的原则" class="section level4 hasAnchor" number="1.1.1.1">
+<h4><span class="header-section-number">1.1.1.1</span> 首次设置的原则<a href="basic-syntax.html#首次设置的原则" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>文件编码使用 UTF-8；</li>
+<li>不在启动时自动恢复 <code>.RData</code>，退出时不自动保存工作区；</li>
+<li>每个分析使用独立的 R Project；</li>
+<li>重要对象由脚本生成，重要结果明确写入文件；</li>
+<li>需要复现时，重启 R 后从第一行重新运行。</li>
+</ul>
+<p>教材介绍了通过 <code>setwd()</code> 改变工作目录的方法。它适合临时诊断，但课程项目中优先使用 <strong>Project 根目录 + 相对路径</strong>。这样项目移动到另一台电脑后仍可运行。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="basic-syntax.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">basename</span>(<span class="fu">getwd</span>())</span>
+<span id="cb14-2"><a href="basic-syntax.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;book&quot;</span></span>
+<span id="cb14-3"><a href="basic-syntax.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">file.path</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;scores.csv&quot;</span>)</span>
+<span id="cb14-4"><a href="basic-syntax.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;data/scores.csv&quot;</span></span></code></pre></div>
+</details>
+</div>
 </div>
 <div id="常用操作" class="section level3 hasAnchor" number="1.1.2">
 <h3><span class="header-section-number">1.1.2</span> 常用操作<a href="basic-syntax.html#常用操作" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="扩展包的生命周期" class="section level4 hasAnchor" number="1.1.2.1">
+<h4><span class="header-section-number">1.1.2.1</span> 扩展包的生命周期<a href="basic-syntax.html#扩展包的生命周期" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<table>
+<thead>
+<tr class="header">
+<th>任务</th>
+<th>常用方式</th>
+<th>何时执行</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>安装</td>
+<td><code>install.packages("pkg")</code></td>
+<td>一台电脑通常一次</td>
+</tr>
+<tr class="even">
+<td>加载</td>
+<td><code>library(pkg)</code></td>
+<td>每个新会话一次</td>
+</tr>
+<tr class="odd">
+<td>单次调用</td>
+<td><code>pkg::fun()</code></td>
+<td>无需加载整个包</td>
+</tr>
+<tr class="even">
+<td>更新</td>
+<td><code>update.packages()</code></td>
+<td>有计划地更新并重新验证项目</td>
+</tr>
+<tr class="odd">
+<td>删除</td>
+<td><code>remove.packages("pkg")</code></td>
+<td>确认不再需要时</td>
+</tr>
+</tbody>
+</table>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="basic-syntax.html#cb15-1" aria-hidden="true" tabindex="-1"></a>stringr<span class="sc">::</span><span class="fu">str_to_upper</span>(<span class="st">&quot;R language&quot;</span>)</span>
+<span id="cb15-2"><a href="basic-syntax.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;R LANGUAGE&quot;</span></span></code></pre></div>
+</details>
+<p>安装和加载是两件不同的事。不要把 <code>install.packages()</code> 放进每次都运行的分析脚本；项目脚本只需要加载或用 <code>::</code> 调用。</p>
+</div>
+<div id="赋值与对象" class="section level4 hasAnchor" number="1.1.2.2">
+<h4><span class="header-section-number">1.1.2.2</span> 赋值与对象<a href="basic-syntax.html#赋值与对象" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>R 同时支持 <code>&lt;-</code> 和 <code>=</code>。课程代码使用 <code>&lt;-</code> 给对象赋值，用 <code>=</code> 指定函数参数，使阅读时角色更清楚。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="basic-syntax.html#cb16-1" aria-hidden="true" tabindex="-1"></a>radius <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>)</span>
+<span id="cb16-2"><a href="basic-syntax.html#cb16-2" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span> pi <span class="sc">*</span> radius<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb16-3"><a href="basic-syntax.html#cb16-3" aria-hidden="true" tabindex="-1"></a>area</span>
+<span id="cb16-4"><a href="basic-syntax.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  12.56637  50.26548 153.93804</span></span></code></pre></div>
+</details>
+<p>对象名应表达含义。R 区分大小写，<code>score</code> 与 <code>Score</code> 是两个对象；对象名可以包含字母、数字、点和下划线，但不能以数字开头。</p>
+</div>
+<div id="基本运算与比较" class="section level4 hasAnchor" number="1.1.2.3">
+<h4><span class="header-section-number">1.1.2.3</span> 基本运算与比较<a href="basic-syntax.html#基本运算与比较" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="basic-syntax.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="sc">%/%</span> <span class="dv">3</span></span>
+<span id="cb17-2"><a href="basic-syntax.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2</span></span>
+<span id="cb17-3"><a href="basic-syntax.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="sc">%%</span> <span class="dv">3</span></span>
+<span id="cb17-4"><a href="basic-syntax.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
+<span id="cb17-5"><a href="basic-syntax.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">5</span></span>
+<span id="cb17-6"><a href="basic-syntax.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 32</span></span>
+<span id="cb17-7"><a href="basic-syntax.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb17-8"><a href="basic-syntax.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE  TRUE FALSE</span></span></code></pre></div>
+</details>
+<p>浮点数由有限位二进制数近似存储，因此不要把“打印出来相同”误认为内部值绝对相等。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="basic-syntax.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.1</span> <span class="sc">+</span> <span class="fl">0.2</span> <span class="sc">==</span> <span class="fl">0.3</span></span>
+<span id="cb18-2"><a href="basic-syntax.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span>
+<span id="cb18-3"><a href="basic-syntax.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fl">0.1</span> <span class="sc">+</span> <span class="fl">0.2</span>, <span class="fl">0.3</span>)</span>
+<span id="cb18-4"><a href="basic-syntax.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb18-5"><a href="basic-syntax.html#cb18-5" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">near</span>(<span class="fl">0.1</span> <span class="sc">+</span> <span class="fl">0.2</span>, <span class="fl">0.3</span>)</span>
+<span id="cb18-6"><a href="basic-syntax.html#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+</details>
+<p><code>&amp;</code>、<code>|</code> 对逻辑向量逐元素运算；<code>&amp;&amp;</code>、<code>||</code> 只判断第一个元素，常用于 <code>if</code> 或 <code>while</code> 的单一条件。</p>
+</div>
+<div id="基本数据类型与特殊值" class="section level4 hasAnchor" number="1.1.2.4">
+<h4><span class="header-section-number">1.1.2.4</span> 基本数据类型与特殊值<a href="basic-syntax.html#基本数据类型与特殊值" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>R 的原子类型包括逻辑型、整数型、双精度数值型、字符型、复数型和原始型。实际数据分析最常见的是前四类。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="basic-syntax.html#cb19-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">NA</span>)</span>
+<span id="cb19-2"><a href="basic-syntax.html#cb19-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(1L, 2L, 3L)</span>
+<span id="cb19-3"><a href="basic-syntax.html#cb19-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.5</span>, <span class="cn">NaN</span>, <span class="cn">Inf</span>)</span>
+<span id="cb19-4"><a href="basic-syntax.html#cb19-4" aria-hidden="true" tabindex="-1"></a>txt <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb19-5"><a href="basic-syntax.html#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="basic-syntax.html#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb19-7"><a href="basic-syntax.html#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">object =</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>, <span class="st">&quot;txt&quot;</span>),</span>
+<span id="cb19-8"><a href="basic-syntax.html#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">class =</span> <span class="fu">c</span>(<span class="fu">class</span>(x), <span class="fu">class</span>(y), <span class="fu">class</span>(z), <span class="fu">class</span>(txt)),</span>
+<span id="cb19-9"><a href="basic-syntax.html#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">typeof =</span> <span class="fu">c</span>(<span class="fu">typeof</span>(x), <span class="fu">typeof</span>(y), <span class="fu">typeof</span>(z), <span class="fu">typeof</span>(txt))</span>
+<span id="cb19-10"><a href="basic-syntax.html#cb19-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</details>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["object"],"name":[1],"type":["chr"],"align":["left"]},{"label":["class"],"name":[2],"type":["chr"],"align":["left"]},{"label":["typeof"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"x","2":"logical","3":"logical"},{"1":"y","2":"integer","3":"integer"},{"1":"z","2":"numeric","3":"double"},{"1":"txt","2":"character","3":"character"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th>值</th>
+<th>含义</th>
+<th>常用判断</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>NA</code></td>
+<td>缺失或未知</td>
+<td><code>is.na()</code></td>
+</tr>
+<tr class="even">
+<td><code>NaN</code></td>
+<td>未定义的数值结果</td>
+<td><code>is.nan()</code></td>
+</tr>
+<tr class="odd">
+<td><code>Inf</code>, <code>-Inf</code></td>
+<td>正、负无穷</td>
+<td><code>is.infinite()</code></td>
+</tr>
+<tr class="even">
+<td><code>NULL</code></td>
+<td>对象或成分不存在</td>
+<td><code>is.null()</code></td>
+</tr>
+</tbody>
+</table>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="basic-syntax.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">80</span>, <span class="cn">NA</span>, <span class="dv">90</span>))</span>
+<span id="cb20-2"><a href="basic-syntax.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA</span></span>
+<span id="cb20-3"><a href="basic-syntax.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">80</span>, <span class="cn">NA</span>, <span class="dv">90</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb20-4"><a href="basic-syntax.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 85</span></span>
+<span id="cb20-5"><a href="basic-syntax.html#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="cn">NA</span> <span class="sc">==</span> <span class="cn">NA</span></span>
+<span id="cb20-6"><a href="basic-syntax.html#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA</span></span>
+<span id="cb20-7"><a href="basic-syntax.html#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(<span class="cn">NA</span>)</span>
+<span id="cb20-8"><a href="basic-syntax.html#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+</details>
+<p><code>NA == NA</code> 的结果仍是 <code>NA</code>，因为“一个未知值是否等于另一个未知值”不能确定。检测特殊值要使用相应的 <code>is.*()</code> 函数。</p>
+</div>
+<div id="保存载入与清理" class="section level4 hasAnchor" number="1.1.2.5">
+<h4><span class="header-section-number">1.1.2.5</span> 保存、载入与清理<a href="basic-syntax.html#保存载入与清理" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="basic-syntax.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(area, <span class="st">&quot;output/area.rds&quot;</span>)</span>
+<span id="cb21-2"><a href="basic-syntax.html#cb21-2" aria-hidden="true" tabindex="-1"></a>area_again <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;output/area.rds&quot;</span>)</span>
+<span id="cb21-3"><a href="basic-syntax.html#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="basic-syntax.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(<span class="fu">tibble</span>(radius, area), <span class="st">&quot;output/circle_area.csv&quot;</span>)</span>
+<span id="cb21-5"><a href="basic-syntax.html#cb21-5" aria-hidden="true" tabindex="-1"></a>circle_area <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;output/circle_area.csv&quot;</span>)</span></code></pre></div>
+</details>
+<p>课程推荐保存“明确命名的数据或结果”，而不是保存整个工作区。清空环境并不能修复不可复现的代码；更可靠的做法是重启 R，然后运行完整脚本。</p>
+</div>
+<div id="获取帮助" class="section level4 hasAnchor" number="1.1.2.6">
+<h4><span class="header-section-number">1.1.2.6</span> 获取帮助<a href="basic-syntax.html#获取帮助" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="basic-syntax.html#cb22-1" aria-hidden="true" tabindex="-1"></a>?mean</span>
+<span id="cb22-2"><a href="basic-syntax.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">help.search</span>(<span class="st">&quot;linear model&quot;</span>)</span>
+<span id="cb22-3"><a href="basic-syntax.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="at">package =</span> <span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb22-4"><a href="basic-syntax.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">browseVignettes</span>(<span class="st">&quot;stringr&quot;</span>)</span></code></pre></div>
+</details>
+<p>阅读帮助页时依次看：Usage（调用形式）、Arguments（参数）、Value（返回值）、Examples（示例）。遇到函数同名时使用 <code>包名::函数名()</code>，如 <code>stats::filter()</code> 与 <code>dplyr::filter()</code>。</p>
+</div>
+<div id="scriptproject-与-r-markdown" class="section level4 hasAnchor" number="1.1.2.7">
+<h4><span class="header-section-number">1.1.2.7</span> Script、Project 与 R Markdown<a href="basic-syntax.html#scriptproject-与-r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<table>
+<thead>
+<tr class="header">
+<th>载体</th>
+<th>主要职责</th>
+<th>课堂建议</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>.R</code> 脚本</td>
+<td>保存可重复执行的代码</td>
+<td>一个脚本完成一个明确任务</td>
+</tr>
+<tr class="even">
+<td><code>.Rproj</code> 项目</td>
+<td>确定项目边界与相对路径起点</td>
+<td>每次从项目文件进入</td>
+</tr>
+<tr class="odd">
+<td><code>.Rmd</code> 文档</td>
+<td>组合叙述、代码与结果</td>
+<td>编译检验可复现性</td>
+</tr>
+</tbody>
+</table>
+<div class="task">
+<p><strong>课堂检查 1</strong>：关闭“恢复/保存工作区”，新建一个 R Project，创建 <code>R/</code>、<code>data/</code> 和 <code>output/</code> 三个目录；重启 R 后确认脚本仍可从头运行。</p>
+</div>
+</div>
 </div>
 </div>
 <div id="数据结构向量矩阵多维数组" class="section level2 hasAnchor" number="1.2">
 <h2><span class="header-section-number">1.2</span> 数据结构：向量、矩阵、多维数组<a href="basic-syntax.html#数据结构向量矩阵多维数组" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>向量、矩阵和数组都要求元素类型一致，区别主要在维数。</p>
+<table>
+<thead>
+<tr class="header">
+<th>结构</th>
+<th align="right">维数</th>
+<th>类型是否一致</th>
+<th>典型创建函数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>原子向量</td>
+<td align="right">1</td>
+<td>是</td>
+<td><code>c()</code>, <code>seq()</code>, <code>rep()</code></td>
+</tr>
+<tr class="even">
+<td>矩阵</td>
+<td align="right">2</td>
+<td>是</td>
+<td><code>matrix()</code></td>
+</tr>
+<tr class="odd">
+<td>数组</td>
+<td align="right">2 维以上</td>
+<td>是</td>
+<td><code>array()</code></td>
+</tr>
+</tbody>
+</table>
 <div id="向量一维数据" class="section level3 hasAnchor" number="1.2.1">
 <h3><span class="header-section-number">1.2.1</span> 向量（一维数据）<a href="basic-syntax.html#向量一维数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="创建与向量化运算" class="section level4 hasAnchor" number="1.2.1.1">
+<h4><span class="header-section-number">1.2.1.1</span> 创建与向量化运算<a href="basic-syntax.html#创建与向量化运算" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="basic-syntax.html#cb23-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span>
+<span id="cb23-2"><a href="basic-syntax.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.25</span>)</span>
+<span id="cb23-3"><a href="basic-syntax.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.00 0.25 0.50 0.75 1.00</span></span>
+<span id="cb23-4"><a href="basic-syntax.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="at">times =</span> <span class="dv">2</span>)</span>
+<span id="cb23-5"><a href="basic-syntax.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot;</span></span>
+<span id="cb23-6"><a href="basic-syntax.html#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="basic-syntax.html#cb23-7" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb23-8"><a href="basic-syntax.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3 5 7 9</span></span>
+<span id="cb23-9"><a href="basic-syntax.html#cb23-9" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>)</span>
+<span id="cb23-10"><a href="basic-syntax.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]    2   40  600 8000</span></span></code></pre></div>
+</details>
+<p>R 的许多函数天然接收向量并逐元素工作，这就是向量化。较短向量参与运算时可能被循环补齐（recycling）；除非这种对应关系十分明确，否则应避免依赖隐式循环补齐。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="basic-syntax.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span> <span class="sc">+</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>)</span>
+<span id="cb24-2"><a href="basic-syntax.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11 22 13 24 15 26</span></span></code></pre></div>
+</details>
+</div>
+<div id="逻辑向量与筛选" class="section level4 hasAnchor" number="1.2.1.2">
+<h4><span class="header-section-number">1.2.1.2</span> 逻辑向量与筛选<a href="basic-syntax.html#逻辑向量与筛选" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="basic-syntax.html#cb25-1" aria-hidden="true" tabindex="-1"></a>score <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">58</span>, <span class="dv">76</span>, <span class="dv">91</span>, <span class="cn">NA</span>, <span class="dv">84</span>)</span>
+<span id="cb25-2"><a href="basic-syntax.html#cb25-2" aria-hidden="true" tabindex="-1"></a>passed <span class="ot">&lt;-</span> score <span class="sc">&gt;=</span> <span class="dv">60</span></span>
+<span id="cb25-3"><a href="basic-syntax.html#cb25-3" aria-hidden="true" tabindex="-1"></a>passed</span>
+<span id="cb25-4"><a href="basic-syntax.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE  TRUE  TRUE    NA  TRUE</span></span>
+<span id="cb25-5"><a href="basic-syntax.html#cb25-5" aria-hidden="true" tabindex="-1"></a>score[passed <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(passed)]</span>
+<span id="cb25-6"><a href="basic-syntax.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 76 91 84</span></span></code></pre></div>
+</details>
+<p><code>==</code> 是逐元素比较；<code>%in%</code> 判断左侧每个元素是否属于右侧集合，尤其适合多个候选值。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="basic-syntax.html#cb26-1" aria-hidden="true" tabindex="-1"></a>major <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;统计学&quot;</span>, <span class="st">&quot;经济学&quot;</span>, <span class="st">&quot;数据科学&quot;</span>, <span class="st">&quot;数学&quot;</span>)</span>
+<span id="cb26-2"><a href="basic-syntax.html#cb26-2" aria-hidden="true" tabindex="-1"></a>major <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;统计学&quot;</span>, <span class="st">&quot;数据科学&quot;</span>)</span>
+<span id="cb26-3"><a href="basic-syntax.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  TRUE FALSE  TRUE FALSE</span></span></code></pre></div>
+</details>
+</div>
+<div id="字符向量与类型转换" class="section level4 hasAnchor" number="1.2.1.3">
+<h4><span class="header-section-number">1.2.1.3</span> 字符向量与类型转换<a href="basic-syntax.html#字符向量与类型转换" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="basic-syntax.html#cb27-1" aria-hidden="true" tabindex="-1"></a>mixed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">TRUE</span>, <span class="st">&quot;R&quot;</span>)</span>
+<span id="cb27-2"><a href="basic-syntax.html#cb27-2" aria-hidden="true" tabindex="-1"></a>mixed</span>
+<span id="cb27-3"><a href="basic-syntax.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1&quot;    &quot;TRUE&quot; &quot;R&quot;</span></span>
+<span id="cb27-4"><a href="basic-syntax.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(mixed)</span>
+<span id="cb27-5"><a href="basic-syntax.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;character&quot;</span></span></code></pre></div>
+</details>
+<p>原子向量必须同质，混合类型时 R 会向能够容纳全部元素的类型转换。教材中可将其记为常见方向：逻辑型 → 整数型 → 双精度型 → 字符型。</p>
+</div>
+<div id="访问与修改子集" class="section level4 hasAnchor" number="1.2.1.4">
+<h4><span class="header-section-number">1.2.1.4</span> 访问与修改子集<a href="basic-syntax.html#访问与修改子集" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="basic-syntax.html#cb28-1" aria-hidden="true" tabindex="-1"></a>letters5 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>)</span>
+<span id="cb28-2"><a href="basic-syntax.html#cb28-2" aria-hidden="true" tabindex="-1"></a>letters5[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]</span>
+<span id="cb28-3"><a href="basic-syntax.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a&quot; &quot;c&quot; &quot;e&quot;</span></span>
+<span id="cb28-4"><a href="basic-syntax.html#cb28-4" aria-hidden="true" tabindex="-1"></a>letters5[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)]</span>
+<span id="cb28-5"><a href="basic-syntax.html#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a&quot; &quot;c&quot; &quot;e&quot;</span></span>
+<span id="cb28-6"><a href="basic-syntax.html#cb28-6" aria-hidden="true" tabindex="-1"></a>letters5[<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)]</span>
+<span id="cb28-7"><a href="basic-syntax.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a&quot; &quot;c&quot; &quot;e&quot;</span></span>
+<span id="cb28-8"><a href="basic-syntax.html#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="basic-syntax.html#cb28-9" aria-hidden="true" tabindex="-1"></a>letters5[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;D&quot;</span>)</span>
+<span id="cb28-10"><a href="basic-syntax.html#cb28-10" aria-hidden="true" tabindex="-1"></a>letters5</span>
+<span id="cb28-11"><a href="basic-syntax.html#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;a&quot; &quot;B&quot; &quot;c&quot; &quot;D&quot; &quot;e&quot;</span></span></code></pre></div>
+</details>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="basic-syntax.html#cb29-1" aria-hidden="true" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">Beijing =</span> <span class="dv">28</span>, <span class="at">Shanghai =</span> <span class="dv">31</span>, <span class="at">Guangzhou =</span> <span class="dv">33</span>)</span>
+<span id="cb29-2"><a href="basic-syntax.html#cb29-2" aria-hidden="true" tabindex="-1"></a>temperature[<span class="fu">c</span>(<span class="st">&quot;Beijing&quot;</span>, <span class="st">&quot;Guangzhou&quot;</span>)]</span>
+<span id="cb29-3"><a href="basic-syntax.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Beijing Guangzhou </span></span>
+<span id="cb29-4"><a href="basic-syntax.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        28        33</span></span></code></pre></div>
+</details>
+<p>教材用“糖果盒”作类比：<code>[ ]</code> 取出一个仍保持原容器性质的子集，<code>[[ ]]</code> 取出其中一个元素本身。对原子向量而言差别不大；对列表和数据框而言非常关键。</p>
+</div>
+<div id="排序" class="section level4 hasAnchor" number="1.2.1.5">
+<h4><span class="header-section-number">1.2.1.5</span> 排序<a href="basic-syntax.html#排序" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="basic-syntax.html#cb30-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">20</span>)</span>
+<span id="cb30-2"><a href="basic-syntax.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(x)</span>
+<span id="cb30-3"><a href="basic-syntax.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10 20 30 40</span></span>
+<span id="cb30-4"><a href="basic-syntax.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">order</span>(x)</span>
+<span id="cb30-5"><a href="basic-syntax.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 4 3 1</span></span>
+<span id="cb30-6"><a href="basic-syntax.html#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rank</span>(x)</span>
+<span id="cb30-7"><a href="basic-syntax.html#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4 1 3 2</span></span>
+<span id="cb30-8"><a href="basic-syntax.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rev</span>(x)</span>
+<span id="cb30-9"><a href="basic-syntax.html#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 20 30 10 40</span></span></code></pre></div>
+</details>
+<p><code>sort(x)</code> 返回排好的值，<code>order(x)</code> 返回能把原向量排好的位置，后者可用于按一列顺序重排其他列。</p>
+</div>
 </div>
 <div id="矩阵二维数据" class="section level3 hasAnchor" number="1.2.2">
 <h3><span class="header-section-number">1.2.2</span> 矩阵（二维数据）<a href="basic-syntax.html#矩阵二维数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="basic-syntax.html#cb31-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb31-2"><a href="basic-syntax.html#cb31-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;r1&quot;</span>, <span class="st">&quot;r2&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;c1&quot;</span>, <span class="st">&quot;c2&quot;</span>, <span class="st">&quot;c3&quot;</span>)))</span>
+<span id="cb31-3"><a href="basic-syntax.html#cb31-3" aria-hidden="true" tabindex="-1"></a>A</span>
+<span id="cb31-4"><a href="basic-syntax.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    c1 c2 c3</span></span>
+<span id="cb31-5"><a href="basic-syntax.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; r1  1  2  3</span></span>
+<span id="cb31-6"><a href="basic-syntax.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; r2  4  5  6</span></span>
+<span id="cb31-7"><a href="basic-syntax.html#cb31-7" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb31-8"><a href="basic-syntax.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6</span></span>
+<span id="cb31-9"><a href="basic-syntax.html#cb31-9" aria-hidden="true" tabindex="-1"></a>A[, <span class="fu">c</span>(<span class="st">&quot;c1&quot;</span>, <span class="st">&quot;c3&quot;</span>), drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb31-10"><a href="basic-syntax.html#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    c1 c3</span></span>
+<span id="cb31-11"><a href="basic-syntax.html#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; r1  1  3</span></span>
+<span id="cb31-12"><a href="basic-syntax.html#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; r2  4  6</span></span></code></pre></div>
+</details>
+<p><code>drop = FALSE</code> 可以避免只取一行或一列时自动降维，在编写稳定函数时尤其有用。矩阵的 <code>*</code> 是逐元素乘法，<code>%*%</code> 才是线性代数中的矩阵乘法。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="basic-syntax.html#cb32-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb32-2"><a href="basic-syntax.html#cb32-2" aria-hidden="true" tabindex="-1"></a>B <span class="sc">*</span> B</span>
+<span id="cb32-3"><a href="basic-syntax.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span id="cb32-4"><a href="basic-syntax.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    4    9</span></span>
+<span id="cb32-5"><a href="basic-syntax.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]   16   25   36</span></span>
+<span id="cb32-6"><a href="basic-syntax.html#cb32-6" aria-hidden="true" tabindex="-1"></a>B <span class="sc">%*%</span> <span class="fu">t</span>(B)</span>
+<span id="cb32-7"><a href="basic-syntax.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
+<span id="cb32-8"><a href="basic-syntax.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]   14   32</span></span>
+<span id="cb32-9"><a href="basic-syntax.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]   32   77</span></span>
+<span id="cb32-10"><a href="basic-syntax.html#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rowMeans</span>(B)</span>
+<span id="cb32-11"><a href="basic-syntax.html#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 5</span></span>
+<span id="cb32-12"><a href="basic-syntax.html#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(B)</span>
+<span id="cb32-13"><a href="basic-syntax.html#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5 7 9</span></span></code></pre></div>
+</details>
 </div>
-<div id="多维数组多维数据" class="section level3 hasAnchor" number="1.2.3">
-<h3><span class="header-section-number">1.2.3</span> 多维数组（多维数据）<a href="basic-syntax.html#多维数组多维数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="多维数组" class="section level3 hasAnchor" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> 多维数组<a href="basic-syntax.html#多维数组" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="basic-syntax.html#cb33-1" aria-hidden="true" tabindex="-1"></a>cube <span class="ot">&lt;-</span> <span class="fu">array</span>(</span>
+<span id="cb33-2"><a href="basic-syntax.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">:</span><span class="dv">24</span>,</span>
+<span id="cb33-3"><a href="basic-syntax.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>),</span>
+<span id="cb33-4"><a href="basic-syntax.html#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dimnames =</span> <span class="fu">list</span>(</span>
+<span id="cb33-5"><a href="basic-syntax.html#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">student =</span> <span class="fu">paste0</span>(<span class="st">&quot;S&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>),</span>
+<span id="cb33-6"><a href="basic-syntax.html#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subject =</span> <span class="fu">c</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;统计&quot;</span>, <span class="st">&quot;英语&quot;</span>, <span class="st">&quot;数学&quot;</span>),</span>
+<span id="cb33-7"><a href="basic-syntax.html#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">term =</span> <span class="fu">c</span>(<span class="st">&quot;期中&quot;</span>, <span class="st">&quot;期末&quot;</span>)</span>
+<span id="cb33-8"><a href="basic-syntax.html#cb33-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb33-9"><a href="basic-syntax.html#cb33-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb33-10"><a href="basic-syntax.html#cb33-10" aria-hidden="true" tabindex="-1"></a>cube[, <span class="st">&quot;R&quot;</span>, <span class="st">&quot;期末&quot;</span>]</span>
+<span id="cb33-11"><a href="basic-syntax.html#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; S1 S2 S3 </span></span>
+<span id="cb33-12"><a href="basic-syntax.html#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 14 15</span></span></code></pre></div>
+</details>
+<p>数组适合每一维含义清楚、元素同质的数据。若不同变量具有不同类型，通常应使用数据框。</p>
+<div class="task">
+<p><strong>课堂检查 2</strong>：创建 5 名学生、3 门课程的成绩矩阵，计算每名学生均分和每门课程均分；再增加“期中/期末”一维，解释为什么它成为数组。</p>
+</div>
 </div>
 </div>
 <div id="数据结构列表数据框因子" class="section level2 hasAnchor" number="1.3">
 <h2><span class="header-section-number">1.3</span> 数据结构：列表、数据框、因子<a href="basic-syntax.html#数据结构列表数据框因子" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="列表" class="section level3 hasAnchor" number="1.3.1">
 <h3><span class="header-section-number">1.3.1</span> 列表<a href="basic-syntax.html#列表" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>列表允许每个成分有不同类型、长度和结构，因此既能保存模型，也能保存一组异质结果。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="basic-syntax.html#cb34-1" aria-hidden="true" tabindex="-1"></a>student <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb34-2"><a href="basic-syntax.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;S01&quot;</span>,</span>
+<span id="cb34-3"><a href="basic-syntax.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">score =</span> <span class="fu">c</span>(<span class="dv">86</span>, <span class="dv">91</span>, <span class="dv">88</span>),</span>
+<span id="cb34-4"><a href="basic-syntax.html#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">passed =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb34-5"><a href="basic-syntax.html#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">meta =</span> <span class="fu">list</span>(<span class="at">major =</span> <span class="st">&quot;统计学&quot;</span>, <span class="at">grade =</span> <span class="dv">2</span>)</span>
+<span id="cb34-6"><a href="basic-syntax.html#cb34-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-7"><a href="basic-syntax.html#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="basic-syntax.html#cb34-8" aria-hidden="true" tabindex="-1"></a>student<span class="sc">$</span>id</span>
+<span id="cb34-9"><a href="basic-syntax.html#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;S01&quot;</span></span>
+<span id="cb34-10"><a href="basic-syntax.html#cb34-10" aria-hidden="true" tabindex="-1"></a>student[[<span class="st">&quot;score&quot;</span>]]</span>
+<span id="cb34-11"><a href="basic-syntax.html#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 86 91 88</span></span>
+<span id="cb34-12"><a href="basic-syntax.html#cb34-12" aria-hidden="true" tabindex="-1"></a>student[<span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;score&quot;</span>)]</span>
+<span id="cb34-13"><a href="basic-syntax.html#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $id</span></span>
+<span id="cb34-14"><a href="basic-syntax.html#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;S01&quot;</span></span>
+<span id="cb34-15"><a href="basic-syntax.html#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb34-16"><a href="basic-syntax.html#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $score</span></span>
+<span id="cb34-17"><a href="basic-syntax.html#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 86 91 88</span></span></code></pre></div>
+</details>
+<table>
+<thead>
+<tr class="header">
+<th>写法</th>
+<th>返回内容</th>
+<th>是否保留列表外壳</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>x[i]</code></td>
+<td>一个子列表</td>
+<td>是</td>
+</tr>
+<tr class="even">
+<td><code>x[[i]]</code></td>
+<td>第 <code>i</code> 个成分</td>
+<td>否</td>
+</tr>
+<tr class="odd">
+<td><code>x$name</code></td>
+<td>名为 <code>name</code> 的成分</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="basic-syntax.html#cb35-1" aria-hidden="true" tabindex="-1"></a>student<span class="sc">$</span>score[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">95</span></span>
+<span id="cb35-2"><a href="basic-syntax.html#cb35-2" aria-hidden="true" tabindex="-1"></a>student<span class="sc">$</span>note <span class="ot">&lt;-</span> <span class="st">&quot;复核完成&quot;</span></span>
+<span id="cb35-3"><a href="basic-syntax.html#cb35-3" aria-hidden="true" tabindex="-1"></a>student<span class="sc">$</span>note <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb35-4"><a href="basic-syntax.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(student)</span>
+<span id="cb35-5"><a href="basic-syntax.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 4</span></span>
+<span id="cb35-6"><a href="basic-syntax.html#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ id    : chr &quot;S01&quot;</span></span>
+<span id="cb35-7"><a href="basic-syntax.html#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ score : num [1:3] 86 95 88</span></span>
+<span id="cb35-8"><a href="basic-syntax.html#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ passed: logi TRUE</span></span>
+<span id="cb35-9"><a href="basic-syntax.html#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ meta  :List of 2</span></span>
+<span id="cb35-10"><a href="basic-syntax.html#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ major: chr &quot;统计学&quot;</span></span>
+<span id="cb35-11"><a href="basic-syntax.html#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ grade: num 2</span></span></code></pre></div>
+</details>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="basic-syntax.html#cb36-1" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">pluck</span>(student, <span class="st">&quot;meta&quot;</span>, <span class="st">&quot;major&quot;</span>)</span>
+<span id="cb36-2"><a href="basic-syntax.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;统计学&quot;</span></span></code></pre></div>
+</details>
 </div>
-<div id="数据框数据表" class="section level3 hasAnchor" number="1.3.2">
-<h3><span class="header-section-number">1.3.2</span> 数据框（数据表）<a href="basic-syntax.html#数据框数据表" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="数据框" class="section level3 hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> 数据框<a href="basic-syntax.html#数据框" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>数据框本质上是“每一列长度相同的命名列表”：列可以有不同类型，但同一列内部应保持一致。行通常表示观测，列表示变量。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="basic-syntax.html#cb37-1" aria-hidden="true" tabindex="-1"></a>persons <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb37-2"><a href="basic-syntax.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Ken&quot;</span>, <span class="st">&quot;Ashley&quot;</span>, <span class="st">&quot;Jennifer&quot;</span>),</span>
+<span id="cb37-3"><a href="basic-syntax.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">26</span>, <span class="dv">23</span>),</span>
+<span id="cb37-4"><a href="basic-syntax.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">student =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb37-5"><a href="basic-syntax.html#cb37-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb37-6"><a href="basic-syntax.html#cb37-6" aria-hidden="true" tabindex="-1"></a>persons</span></code></pre></div>
+</details>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["age"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["student"],"name":[3],"type":["lgl"],"align":["right"]}],"data":[{"1":"Ken","2":"24","3":"TRUE"},{"1":"Ashley","2":"26","3":"FALSE"},{"1":"Jennifer","2":"23","3":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>本课程优先使用 tibble。它不自动改变字符类型和列名，不使用行名，并且只打印屏幕能容纳的部分。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="basic-syntax.html#cb38-1" aria-hidden="true" tabindex="-1"></a>persons<span class="sc">$</span>name</span>
+<span id="cb38-2"><a href="basic-syntax.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Ken&quot;      &quot;Ashley&quot;   &quot;Jennifer&quot;</span></span>
+<span id="cb38-3"><a href="basic-syntax.html#cb38-3" aria-hidden="true" tabindex="-1"></a>persons[[<span class="st">&quot;age&quot;</span>]]</span>
+<span id="cb38-4"><a href="basic-syntax.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 24 26 23</span></span>
+<span id="cb38-5"><a href="basic-syntax.html#cb38-5" aria-hidden="true" tabindex="-1"></a>persons[<span class="st">&quot;age&quot;</span>]</span></code></pre></div>
+</details>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["age"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"24"},{"1":"26"},{"1":"23"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="basic-syntax.html#cb39-1" aria-hidden="true" tabindex="-1"></a>persons[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;age&quot;</span>)]</span></code></pre></div>
+</details>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["age"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Ken","2":"24"},{"1":"Ashley","2":"26"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="basic-syntax.html#cb40-1" aria-hidden="true" tabindex="-1"></a>persons[persons<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">24</span>, ]</span></code></pre></div>
+</details>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["age"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["student"],"name":[3],"type":["lgl"],"align":["right"]}],"data":[{"1":"Ken","2":"24","3":"TRUE"},{"1":"Ashley","2":"26","3":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="basic-syntax.html#cb41-1" aria-hidden="true" tabindex="-1"></a>persons<span class="sc">$</span>age_next_year <span class="ot">&lt;-</span> persons<span class="sc">$</span>age <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb41-2"><a href="basic-syntax.html#cb41-2" aria-hidden="true" tabindex="-1"></a>persons[persons<span class="sc">$</span>name <span class="sc">==</span> <span class="st">&quot;Ken&quot;</span>, <span class="st">&quot;student&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb41-3"><a href="basic-syntax.html#cb41-3" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(persons)</span>
+<span id="cb41-4"><a href="basic-syntax.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Rows: 3</span></span>
+<span id="cb41-5"><a href="basic-syntax.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Columns: 4</span></span>
+<span id="cb41-6"><a href="basic-syntax.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ name          &lt;chr&gt; &quot;Ken&quot;, &quot;Ashley&quot;, &quot;Jennifer&quot;</span></span>
+<span id="cb41-7"><a href="basic-syntax.html#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ age           &lt;dbl&gt; 24, 26, 23</span></span>
+<span id="cb41-8"><a href="basic-syntax.html#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ student       &lt;lgl&gt; FALSE, FALSE, TRUE</span></span>
+<span id="cb41-9"><a href="basic-syntax.html#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ age_next_year &lt;dbl&gt; 25, 27, 24</span></span>
+<span id="cb41-10"><a href="basic-syntax.html#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(persons)</span>
+<span id="cb41-11"><a href="basic-syntax.html#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         name        age         student        age_next_year  </span></span>
+<span id="cb41-12"><a href="basic-syntax.html#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Length   :3   Min.   :23.00   Mode :logical   Min.   :24.00  </span></span>
+<span id="cb41-13"><a href="basic-syntax.html#cb41-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  N.unique :3   1st Qu.:23.50   FALSE:2         1st Qu.:24.50  </span></span>
+<span id="cb41-14"><a href="basic-syntax.html#cb41-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  N.blank  :0   Median :24.00   TRUE :1         Median :25.00  </span></span>
+<span id="cb41-15"><a href="basic-syntax.html#cb41-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Min.nchar:3   Mean   :24.33                   Mean   :25.33  </span></span>
+<span id="cb41-16"><a href="basic-syntax.html#cb41-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Max.nchar:8   3rd Qu.:25.00                   3rd Qu.:26.00  </span></span>
+<span id="cb41-17"><a href="basic-syntax.html#cb41-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                Max.   :26.00                   Max.   :27.00</span></span></code></pre></div>
+</details>
+<p>虽然数据框支持矩阵式索引，后续章节会优先使用 <code>filter()</code>、<code>select()</code>、<code>mutate()</code> 和 <code>arrange()</code>，因为它们更能表达数据操作意图。</p>
 </div>
 <div id="因子" class="section level3 hasAnchor" number="1.3.3">
 <h3><span class="header-section-number">1.3.3</span> 因子<a href="basic-syntax.html#因子" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>因子用于表示有限的类别集合。其内部可理解为“整数编码 + 水平标签”，水平顺序还决定统计汇总和图形显示顺序。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="basic-syntax.html#cb42-1" aria-hidden="true" tabindex="-1"></a>grade <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb42-2"><a href="basic-syntax.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;中&quot;</span>, <span class="st">&quot;良&quot;</span>, <span class="st">&quot;优&quot;</span>, <span class="st">&quot;及格&quot;</span>, <span class="st">&quot;良&quot;</span>),</span>
+<span id="cb42-3"><a href="basic-syntax.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;不及格&quot;</span>, <span class="st">&quot;及格&quot;</span>, <span class="st">&quot;中&quot;</span>, <span class="st">&quot;良&quot;</span>, <span class="st">&quot;优&quot;</span>),</span>
+<span id="cb42-4"><a href="basic-syntax.html#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="cn">TRUE</span></span>
+<span id="cb42-5"><a href="basic-syntax.html#cb42-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-6"><a href="basic-syntax.html#cb42-6" aria-hidden="true" tabindex="-1"></a>grade</span>
+<span id="cb42-7"><a href="basic-syntax.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 中   良   优   及格 良  </span></span>
+<span id="cb42-8"><a href="basic-syntax.html#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: 不及格 &lt; 及格 &lt; 中 &lt; 良 &lt; 优</span></span>
+<span id="cb42-9"><a href="basic-syntax.html#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(grade)</span>
+<span id="cb42-10"><a href="basic-syntax.html#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 及格 中   良   良   优  </span></span>
+<span id="cb42-11"><a href="basic-syntax.html#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: 不及格 &lt; 及格 &lt; 中 &lt; 良 &lt; 优</span></span>
+<span id="cb42-12"><a href="basic-syntax.html#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(grade)</span>
+<span id="cb42-13"><a href="basic-syntax.html#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; grade</span></span>
+<span id="cb42-14"><a href="basic-syntax.html#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 不及格   及格     中     良     优 </span></span>
+<span id="cb42-15"><a href="basic-syntax.html#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      0      1      1      2      1</span></span></code></pre></div>
+</details>
+<p>“设置水平顺序”与“声明有序因子”不是一回事：前者控制显示顺序，后者还表示类别之间存在大小关系。</p>
+<table>
+<thead>
+<tr class="header">
+<th>任务</th>
+<th>代表函数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>改变顺序</td>
+<td><code>fct_relevel()</code>, <code>fct_infreq()</code>, <code>fct_reorder()</code></td>
+</tr>
+<tr class="even">
+<td>改变标签</td>
+<td><code>fct_recode()</code>, <code>fct_collapse()</code></td>
+</tr>
+<tr class="odd">
+<td>合并少数类别</td>
+<td><code>fct_lump_*()</code></td>
+</tr>
+<tr class="even">
+<td>增删水平</td>
+<td><code>fct_drop()</code>, <code>fct_expand()</code></td>
+</tr>
+</tbody>
+</table>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="basic-syntax.html#cb43-1" aria-hidden="true" tabindex="-1"></a>class_count <span class="ot">&lt;-</span> ggplot2<span class="sc">::</span>mpg <span class="sc">|&gt;</span></span>
+<span id="cb43-2"><a href="basic-syntax.html#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(class) <span class="sc">|&gt;</span></span>
+<span id="cb43-3"><a href="basic-syntax.html#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class =</span> forcats<span class="sc">::</span><span class="fu">fct_reorder</span>(class, n))</span>
+<span id="cb43-4"><a href="basic-syntax.html#cb43-4" aria-hidden="true" tabindex="-1"></a>class_count</span></code></pre></div>
+</details>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["class"],"name":[1],"type":["fct"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"2seater","2":"5"},{"1":"compact","2":"47"},{"1":"midsize","2":"41"},{"1":"minivan","2":"11"},{"1":"pickup","2":"33"},{"1":"subcompact","2":"35"},{"1":"suv","2":"62"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="task">
+<p><strong>课堂检查 3</strong>：解释下面三个结果的结构为何不同：<code>persons[“age”]</code>、<code>persons[[“age”]]</code>、<code>persons$age</code>。再把课程满意度设置为“非常不满意”到“非常满意”的有序因子。</p>
+</div>
 </div>
 </div>
 <div id="数据结构字符串日期时间" class="section level2 hasAnchor" number="1.4">
 <h2><span class="header-section-number">1.4</span> 数据结构：字符串、日期时间<a href="basic-syntax.html#数据结构字符串日期时间" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="字符串" class="section level3 hasAnchor" number="1.4.1">
 <h3><span class="header-section-number">1.4.1</span> 字符串<a href="basic-syntax.html#字符串" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>stringr</code> 的函数名以 <code>str_</code> 开头，参数顺序一致，并且大多是向量化的。教材按“长度—合并—拆分—格式化—排序—检测—提取—修改”的任务顺序组织，本节沿用这一结构。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="basic-syntax.html#cb44-1" aria-hidden="true" tabindex="-1"></a>raw_name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;  Wang Zhihao &quot;</span>, <span class="st">&quot;Li Ming&quot;</span>, <span class="cn">NA</span>)</span>
+<span id="cb44-2"><a href="basic-syntax.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_length</span>(raw_name)</span>
+<span id="cb44-3"><a href="basic-syntax.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 14  7 NA</span></span>
+<span id="cb44-4"><a href="basic-syntax.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_trim</span>(raw_name)</span>
+<span id="cb44-5"><a href="basic-syntax.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Wang Zhihao&quot; &quot;Li Ming&quot;     NA</span></span>
+<span id="cb44-6"><a href="basic-syntax.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_title</span>(<span class="fu">str_trim</span>(raw_name))</span>
+<span id="cb44-7"><a href="basic-syntax.html#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Wang Zhihao&quot; &quot;Li Ming&quot;     NA</span></span></code></pre></div>
+</details>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>任务</th>
+<th>常用函数</th>
+<th>返回结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>长度、填充、截断、去空格</td>
+<td><code>str_length()</code>, <code>str_pad()</code>, <code>str_trunc()</code>, <code>str_trim()</code></td>
+<td>字符或数值向量</td>
+</tr>
+<tr class="even">
+<td>合并、重复</td>
+<td><code>str_c()</code>, <code>str_glue()</code>, <code>str_dup()</code></td>
+<td>字符向量</td>
+</tr>
+<tr class="odd">
+<td>拆分</td>
+<td><code>str_split()</code>, <code>str_split_fixed()</code></td>
+<td>列表或矩阵</td>
+</tr>
+<tr class="even">
+<td>检测、定位、计数</td>
+<td><code>str_detect()</code>, <code>str_locate()</code>, <code>str_count()</code></td>
+<td>逻辑、矩阵或数值</td>
+</tr>
+<tr class="odd">
+<td>提取</td>
+<td><code>str_sub()</code>, <code>str_extract()</code>, <code>str_match()</code></td>
+<td>字符向量或矩阵</td>
+</tr>
+<tr class="even">
+<td>修改</td>
+<td><code>str_replace()</code>, <code>str_replace_all()</code></td>
+<td>字符向量</td>
+</tr>
+</tbody>
+</table>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="basic-syntax.html#cb45-1" aria-hidden="true" tabindex="-1"></a>code <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;BJ-2023-001&quot;</span>, <span class="st">&quot;SH-2023-014&quot;</span>, <span class="st">&quot;GZ-2024-107&quot;</span>)</span>
+<span id="cb45-2"><a href="basic-syntax.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split_fixed</span>(code, <span class="st">&quot;-&quot;</span>, <span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb45-3"><a href="basic-syntax.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]   [,3] </span></span>
+<span id="cb45-4"><a href="basic-syntax.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] &quot;BJ&quot; &quot;2023&quot; &quot;001&quot;</span></span>
+<span id="cb45-5"><a href="basic-syntax.html#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] &quot;SH&quot; &quot;2023&quot; &quot;014&quot;</span></span>
+<span id="cb45-6"><a href="basic-syntax.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,] &quot;GZ&quot; &quot;2024&quot; &quot;107&quot;</span></span>
+<span id="cb45-7"><a href="basic-syntax.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(code, <span class="st">&quot;2024&quot;</span>)</span>
+<span id="cb45-8"><a href="basic-syntax.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE FALSE  TRUE</span></span>
+<span id="cb45-9"><a href="basic-syntax.html#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(code, <span class="st">&quot;[0-9]{3}$&quot;</span>)</span>
+<span id="cb45-10"><a href="basic-syntax.html#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;001&quot; &quot;014&quot; &quot;107&quot;</span></span>
+<span id="cb45-11"><a href="basic-syntax.html#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(code, <span class="st">&quot;-&quot;</span>, <span class="st">&quot;/&quot;</span>)</span>
+<span id="cb45-12"><a href="basic-syntax.html#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;BJ/2023-001&quot; &quot;SH/2023-014&quot; &quot;GZ/2024-107&quot;</span></span></code></pre></div>
+</details>
+<p>带 <code>_all</code> 后缀的函数处理每个字符串中的全部匹配；不带 <code>_all</code> 的版本通常只处理第一个匹配。</p>
 </div>
 <div id="日期时间" class="section level3 hasAnchor" number="1.4.2">
 <h3><span class="header-section-number">1.4.2</span> 日期时间<a href="basic-syntax.html#日期时间" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R 的 <code>Date</code> 以天为基本单位，日期时间通常使用 <code>POSIXct</code>，其底层以秒记录。<code>lubridate</code> 用函数名表达年月日的出现顺序。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="basic-syntax.html#cb46-1" aria-hidden="true" tabindex="-1"></a>dates <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="fu">c</span>(<span class="st">&quot;2023-02-20&quot;</span>, <span class="st">&quot;2024/03/01&quot;</span>, <span class="st">&quot;2025.04.18&quot;</span>))</span>
+<span id="cb46-2"><a href="basic-syntax.html#cb46-2" aria-hidden="true" tabindex="-1"></a>times <span class="ot">&lt;-</span> <span class="fu">ymd_hm</span>(<span class="fu">c</span>(<span class="st">&quot;2023-02-20 08:30&quot;</span>, <span class="st">&quot;2023-02-20 14:15&quot;</span>), <span class="at">tz =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>)</span>
+<span id="cb46-3"><a href="basic-syntax.html#cb46-3" aria-hidden="true" tabindex="-1"></a>dates</span>
+<span id="cb46-4"><a href="basic-syntax.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2023-02-20&quot; &quot;2024-03-01&quot; &quot;2025-04-18&quot;</span></span>
+<span id="cb46-5"><a href="basic-syntax.html#cb46-5" aria-hidden="true" tabindex="-1"></a>times</span>
+<span id="cb46-6"><a href="basic-syntax.html#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2023-02-20 08:30:00 CST&quot; &quot;2023-02-20 14:15:00 CST&quot;</span></span></code></pre></div>
+</details>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="basic-syntax.html#cb47-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">&quot;2023-02-20 14:35:27&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;Asia/Shanghai&quot;</span>)</span>
+<span id="cb47-2"><a href="basic-syntax.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb47-3"><a href="basic-syntax.html#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="fu">year</span>(t), <span class="at">quarter =</span> <span class="fu">quarter</span>(t), <span class="at">month =</span> <span class="fu">month</span>(t), <span class="at">day =</span> <span class="fu">day</span>(t),</span>
+<span id="cb47-4"><a href="basic-syntax.html#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weekday =</span> <span class="fu">wday</span>(t, <span class="at">label =</span> <span class="cn">TRUE</span>), <span class="at">hour =</span> <span class="fu">hour</span>(t)</span>
+<span id="cb47-5"><a href="basic-syntax.html#cb47-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</details>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["quarter"],"name":[2],"type":["int"],"align":["right"]},{"label":["month"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["day"],"name":[4],"type":["int"],"align":["right"]},{"label":["weekday"],"name":[5],"type":["ord"],"align":["right"]},{"label":["hour"],"name":[6],"type":["int"],"align":["right"]}],"data":[{"1":"2023","2":"1","3":"2","4":"20","5":"Mon","6":"14"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>时区操作要区分：<code>with_tz()</code> 表示同一时刻换时区显示；<code>force_tz()</code> 保留钟表时间但重新解释时区。</p>
+<table>
+<thead>
+<tr class="header">
+<th>类型</th>
+<th>表示什么</th>
+<th>是否遵循日历</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>interval</code></td>
+<td>两个确定时间点之间的区间</td>
+<td>有起点和终点</td>
+</tr>
+<tr class="even">
+<td><code>duration</code></td>
+<td>固定秒数</td>
+<td>否</td>
+</tr>
+<tr class="odd">
+<td><code>period</code></td>
+<td>年、月、日等日历单位</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="basic-syntax.html#cb48-1" aria-hidden="true" tabindex="-1"></a>start <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">&quot;2024-01-31&quot;</span>)</span>
+<span id="cb48-2"><a href="basic-syntax.html#cb48-2" aria-hidden="true" tabindex="-1"></a>start <span class="sc">+</span> <span class="fu">months</span>(<span class="dv">1</span>)</span>
+<span id="cb48-3"><a href="basic-syntax.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA</span></span>
+<span id="cb48-4"><a href="basic-syntax.html#cb48-4" aria-hidden="true" tabindex="-1"></a>start <span class="sc">%m+%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span>
+<span id="cb48-5"><a href="basic-syntax.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;2024-02-29&quot;</span></span>
+<span id="cb48-6"><a href="basic-syntax.html#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-7"><a href="basic-syntax.html#cb48-7" aria-hidden="true" tabindex="-1"></a>gap <span class="ot">&lt;-</span> <span class="fu">interval</span>(<span class="fu">ymd_hm</span>(<span class="st">&quot;2023-08-10 14:00&quot;</span>),</span>
+<span id="cb48-8"><a href="basic-syntax.html#cb48-8" aria-hidden="true" tabindex="-1"></a>                <span class="fu">ymd_hm</span>(<span class="st">&quot;2024-03-05 18:15&quot;</span>))</span>
+<span id="cb48-9"><a href="basic-syntax.html#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="fu">time_length</span>(gap, <span class="st">&quot;day&quot;</span>)</span>
+<span id="cb48-10"><a href="basic-syntax.html#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 208.1771</span></span></code></pre></div>
+</details>
+<p>月底加一个月是日期分析中的典型陷阱。<code>%m+%</code> 在目标月份不存在同一日期时会回退到该月末。</p>
 </div>
 <div id="时间序列" class="section level3 hasAnchor" number="1.4.3">
 <h3><span class="header-section-number">1.4.3</span> 时间序列<a href="basic-syntax.html#时间序列" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="basic-syntax.html#cb49-1" aria-hidden="true" tabindex="-1"></a>sales <span class="ot">&lt;-</span> <span class="fu">ts</span>(<span class="fu">c</span>(<span class="dv">120</span>, <span class="dv">135</span>, <span class="dv">128</span>, <span class="dv">150</span>, <span class="dv">142</span>, <span class="dv">160</span>, <span class="dv">158</span>, <span class="dv">175</span>),</span>
+<span id="cb49-2"><a href="basic-syntax.html#cb49-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2022</span>, <span class="dv">1</span>), <span class="at">frequency =</span> <span class="dv">4</span>)</span>
+<span id="cb49-3"><a href="basic-syntax.html#cb49-3" aria-hidden="true" tabindex="-1"></a>sales</span>
+<span id="cb49-4"><a href="basic-syntax.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Qtr1 Qtr2 Qtr3 Qtr4</span></span>
+<span id="cb49-5"><a href="basic-syntax.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2022  120  135  128  150</span></span>
+<span id="cb49-6"><a href="basic-syntax.html#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2023  142  160  158  175</span></span>
+<span id="cb49-7"><a href="basic-syntax.html#cb49-7" aria-hidden="true" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">lag</span>(sales, <span class="dv">1</span>)</span>
+<span id="cb49-8"><a href="basic-syntax.html#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Qtr1 Qtr2 Qtr3 Qtr4</span></span>
+<span id="cb49-9"><a href="basic-syntax.html#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2021                 120</span></span>
+<span id="cb49-10"><a href="basic-syntax.html#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2022  135  128  150  142</span></span>
+<span id="cb49-11"><a href="basic-syntax.html#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2023  160  158  175</span></span>
+<span id="cb49-12"><a href="basic-syntax.html#cb49-12" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(sales)</span>
+<span id="cb49-13"><a href="basic-syntax.html#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Qtr1 Qtr2 Qtr3 Qtr4</span></span>
+<span id="cb49-14"><a href="basic-syntax.html#cb49-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2022        15   -7   22</span></span>
+<span id="cb49-15"><a href="basic-syntax.html#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2023   -8   18   -2   17</span></span></code></pre></div>
+</details>
+<p><code>ts</code> 是“数值向量 + 时间属性”，适合规则频率的经典时间序列。教材随后介绍的 <code>tsibble</code> 以数据框为基础，明确指定时间索引和序列键，更方便进入 tidyverse 工作流。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="basic-syntax.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tsibble)</span>
+<span id="cb50-2"><a href="basic-syntax.html#cb50-2" aria-hidden="true" tabindex="-1"></a>quarterly_sales <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb50-3"><a href="basic-syntax.html#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">quarter =</span> <span class="fu">yearquarter</span>(<span class="fu">c</span>(<span class="st">&quot;2023 Q1&quot;</span>, <span class="st">&quot;2023 Q2&quot;</span>, <span class="st">&quot;2023 Q3&quot;</span>)),</span>
+<span id="cb50-4"><a href="basic-syntax.html#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">region =</span> <span class="st">&quot;华东&quot;</span>, <span class="at">sales =</span> <span class="fu">c</span>(<span class="dv">120</span>, <span class="dv">135</span>, <span class="dv">142</span>)</span>
+<span id="cb50-5"><a href="basic-syntax.html#cb50-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb50-6"><a href="basic-syntax.html#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tsibble</span>(<span class="at">index =</span> quarter, <span class="at">key =</span> region)</span></code></pre></div>
+</details>
 </div>
 </div>
 <div id="正则表达式" class="section level2 hasAnchor" number="1.5">
 <h2><span class="header-section-number">1.5</span> 正则表达式<a href="basic-syntax.html#正则表达式" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>正则表达式用模式概括一组字符串。处理任务通常分为四步：<strong>发现规律 → 写出模式 → 在小样本上查看匹配 → 提取或替换。</strong></p>
 <div id="基本语法" class="section level3 hasAnchor" number="1.5.1">
 <h3><span class="header-section-number">1.5.1</span> 基本语法<a href="basic-syntax.html#基本语法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<thead>
+<tr class="header">
+<th>类别</th>
+<th>符号</th>
+<th>含义示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>位置</td>
+<td><code>^</code>, <code>$</code></td>
+<td>字符串开头、结尾</td>
+</tr>
+<tr class="even">
+<td>任意与选择</td>
+<td><code>.</code>, <code>|</code></td>
+<td>任意字符、二选一</td>
+</tr>
+<tr class="odd">
+<td>字符集合</td>
+<td><code>[abc]</code>, <code>[^abc]</code></td>
+<td>集合内任一字符、集合外字符</td>
+</tr>
+<tr class="even">
+<td>重复</td>
+<td><code>*</code>, <code>+</code>, <code>?</code>, <code>{n,m}</code></td>
+<td>0 次以上、1 次以上、可选、限定次数</td>
+</tr>
+<tr class="odd">
+<td>字符类</td>
+<td><code>\\d</code>, <code>\\s</code>, <code>\\w</code></td>
+<td>数字、空白、单词字符</td>
+</tr>
+<tr class="even">
+<td>分组</td>
+<td><code>( )</code></td>
+<td>组合、捕获和控制优先级</td>
+</tr>
+</tbody>
+</table>
+<p>R 字符串本身也使用反斜线转义，因此正则中的 <code>\d</code> 在 R 代码里通常写成 <code>"\\d"</code>。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="basic-syntax.html#cb51-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;CDK弱(+)10%+&quot;</span>, <span class="st">&quot;CDK(+)30%-&quot;</span>, <span class="st">&quot;CDK(-)0+&quot;</span>, <span class="st">&quot;CDK(++)60%*&quot;</span>)</span>
+<span id="cb51-2"><a href="basic-syntax.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(x, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+%?&quot;</span>)</span>
+<span id="cb51-3"><a href="basic-syntax.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;10%&quot; &quot;30%&quot; &quot;0&quot;   &quot;60%&quot;</span></span></code></pre></div>
+</details>
 </div>
 <div id="若干实例" class="section level3 hasAnchor" number="1.5.2">
 <h3><span class="header-section-number">1.5.2</span> 若干实例<a href="basic-syntax.html#若干实例" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="basic-syntax.html#cb52-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;S-2023-008&quot;</span>, <span class="st">&quot;S-2024-115&quot;</span>)</span>
+<span id="cb52-2"><a href="basic-syntax.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(id, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{3}$&quot;</span>)</span>
+<span id="cb52-3"><a href="basic-syntax.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;008&quot; &quot;115&quot;</span></span></code></pre></div>
+</details>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="basic-syntax.html#cb53-1" aria-hidden="true" tabindex="-1"></a>ip_location <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb53-2"><a href="basic-syntax.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;175.10.237.40(湖南-长沙)&quot;</span>,</span>
+<span id="cb53-3"><a href="basic-syntax.html#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;114.243.12.168(北京-北京)&quot;</span>,</span>
+<span id="cb53-4"><a href="basic-syntax.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;125.211.78.251(黑龙江-哈尔滨)&quot;</span></span>
+<span id="cb53-5"><a href="basic-syntax.html#cb53-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb53-6"><a href="basic-syntax.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(ip_location, <span class="st">&quot;(?&lt;=</span><span class="sc">\\</span><span class="st">().*?(?=-)&quot;</span>)</span>
+<span id="cb53-7"><a href="basic-syntax.html#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;湖南&quot;   &quot;北京&quot;   &quot;黑龙江&quot;</span></span>
+<span id="cb53-8"><a href="basic-syntax.html#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(ip_location, <span class="st">&quot;^.*?(?=</span><span class="sc">\\</span><span class="st">()&quot;</span>)</span>
+<span id="cb53-9"><a href="basic-syntax.html#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;175.10.237.40&quot;  &quot;114.243.12.168&quot; &quot;125.211.78.251&quot;</span></span></code></pre></div>
+</details>
+<p><code>(?&lt;=左标志)</code> 是向后查看，<code>(?=右标志)</code> 是向前查看；标志参与定位但不进入返回结果。这里使用 <code>.*?</code> 的懒惰匹配，避免跨过最近的右标志。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="basic-syntax.html#cb54-1" aria-hidden="true" tabindex="-1"></a>movie <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;独行月球2022_Chinese&quot;</span>, <span class="st">&quot;蜘蛛侠USA_2021&quot;</span>)</span>
+<span id="cb54-2"><a href="basic-syntax.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(movie, <span class="st">&quot;(</span><span class="sc">\\</span><span class="st">d+)_(.+)$&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">2_</span><span class="sc">\\</span><span class="st">1&quot;</span>)</span>
+<span id="cb54-3"><a href="basic-syntax.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;独行月球Chinese_2022&quot; &quot;蜘蛛侠USA_2021&quot;</span></span></code></pre></div>
+</details>
+<div class="callout">
+<p><strong>调试策略</strong>：先用 <code>str_view()</code> 或 <code>str_detect()</code> 验证模式，再使用 <code>str_extract()</code> 或 <code>str_replace()</code>。正则表达式越复杂，越需要小样本和边界测试。</p>
+</div>
+<div class="task">
+<p><strong>课堂检查 4</strong>：从 <code>c(“2023级统计学1班”, “2024级数据科学2班”)</code> 中分别提取年级、专业和班号，并为每一部分解释正则模式。</p>
+</div>
 </div>
 </div>
 <div id="控制结构" class="section level2 hasAnchor" number="1.6">
 <h2><span class="header-section-number">1.6</span> 控制结构<a href="basic-syntax.html#控制结构" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="分支结构" class="section level3 hasAnchor" number="1.6.1">
 <h3><span class="header-section-number">1.6.1</span> 分支结构<a href="basic-syntax.html#分支结构" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>分支结构根据一个长度为 1 的逻辑条件选择路径。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="basic-syntax.html#cb55-1" aria-hidden="true" tabindex="-1"></a>score_one <span class="ot">&lt;-</span> <span class="dv">76</span></span>
+<span id="cb55-2"><a href="basic-syntax.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (score_one <span class="sc">&gt;=</span> <span class="dv">60</span>) {</span>
+<span id="cb55-3"><a href="basic-syntax.html#cb55-3" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="st">&quot;通过&quot;</span></span>
+<span id="cb55-4"><a href="basic-syntax.html#cb55-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb55-5"><a href="basic-syntax.html#cb55-5" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="st">&quot;未通过&quot;</span></span>
+<span id="cb55-6"><a href="basic-syntax.html#cb55-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb55-7"><a href="basic-syntax.html#cb55-7" aria-hidden="true" tabindex="-1"></a>result</span>
+<span id="cb55-8"><a href="basic-syntax.html#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;通过&quot;</span></span></code></pre></div>
+</details>
+<p>多个分支要按互斥且覆盖完整的顺序组织。教材的百分制转五级制案例必须从最高分界向下判断，否则较高分数会被较低门槛提前截获。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="basic-syntax.html#cb56-1" aria-hidden="true" tabindex="-1"></a>score_one <span class="ot">&lt;-</span> <span class="dv">86</span></span>
+<span id="cb56-2"><a href="basic-syntax.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (score_one <span class="sc">&gt;=</span> <span class="dv">90</span>) {</span>
+<span id="cb56-3"><a href="basic-syntax.html#cb56-3" aria-hidden="true" tabindex="-1"></a>  grade_one <span class="ot">&lt;-</span> <span class="st">&quot;优&quot;</span></span>
+<span id="cb56-4"><a href="basic-syntax.html#cb56-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (score_one <span class="sc">&gt;=</span> <span class="dv">80</span>) {</span>
+<span id="cb56-5"><a href="basic-syntax.html#cb56-5" aria-hidden="true" tabindex="-1"></a>  grade_one <span class="ot">&lt;-</span> <span class="st">&quot;良&quot;</span></span>
+<span id="cb56-6"><a href="basic-syntax.html#cb56-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (score_one <span class="sc">&gt;=</span> <span class="dv">70</span>) {</span>
+<span id="cb56-7"><a href="basic-syntax.html#cb56-7" aria-hidden="true" tabindex="-1"></a>  grade_one <span class="ot">&lt;-</span> <span class="st">&quot;中&quot;</span></span>
+<span id="cb56-8"><a href="basic-syntax.html#cb56-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (score_one <span class="sc">&gt;=</span> <span class="dv">60</span>) {</span>
+<span id="cb56-9"><a href="basic-syntax.html#cb56-9" aria-hidden="true" tabindex="-1"></a>  grade_one <span class="ot">&lt;-</span> <span class="st">&quot;及格&quot;</span></span>
+<span id="cb56-10"><a href="basic-syntax.html#cb56-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb56-11"><a href="basic-syntax.html#cb56-11" aria-hidden="true" tabindex="-1"></a>  grade_one <span class="ot">&lt;-</span> <span class="st">&quot;不及格&quot;</span></span>
+<span id="cb56-12"><a href="basic-syntax.html#cb56-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb56-13"><a href="basic-syntax.html#cb56-13" aria-hidden="true" tabindex="-1"></a>grade_one</span>
+<span id="cb56-14"><a href="basic-syntax.html#cb56-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;良&quot;</span></span></code></pre></div>
+</details>
+<p><code>if</code> 负责流程控制，只接受单一条件；<code>ifelse()</code> 接受逻辑向量并返回向量。多个向量化条件更适合 <code>dplyr::case_when()</code>。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="basic-syntax.html#cb57-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">95</span>, <span class="dv">86</span>, <span class="dv">73</span>, <span class="dv">62</span>, <span class="dv">48</span>, <span class="cn">NA</span>)</span>
+<span id="cb57-2"><a href="basic-syntax.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">case_when</span>(</span>
+<span id="cb57-3"><a href="basic-syntax.html#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">is.na</span>(scores) <span class="sc">~</span> <span class="cn">NA_character_</span>,</span>
+<span id="cb57-4"><a href="basic-syntax.html#cb57-4" aria-hidden="true" tabindex="-1"></a>  scores <span class="sc">&gt;=</span> <span class="dv">90</span> <span class="sc">~</span> <span class="st">&quot;优&quot;</span>, scores <span class="sc">&gt;=</span> <span class="dv">80</span> <span class="sc">~</span> <span class="st">&quot;良&quot;</span>, scores <span class="sc">&gt;=</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">&quot;中&quot;</span>,</span>
+<span id="cb57-5"><a href="basic-syntax.html#cb57-5" aria-hidden="true" tabindex="-1"></a>  scores <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">&quot;及格&quot;</span>, <span class="at">.default =</span> <span class="st">&quot;不及格&quot;</span></span>
+<span id="cb57-6"><a href="basic-syntax.html#cb57-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb57-7"><a href="basic-syntax.html#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;优&quot;     &quot;良&quot;     &quot;中&quot;     &quot;及格&quot;   &quot;不及格&quot; NA</span></span></code></pre></div>
+</details>
 </div>
 <div id="循环结构" class="section level3 hasAnchor" number="1.6.2">
 <h3><span class="header-section-number">1.6.2</span> 循环结构<a href="basic-syntax.html#循环结构" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>教材把循环迭代分为三个层次：显式循环、<code>apply</code> 函数族和 <code>purrr</code> 泛函式。它们不是互相排斥的“新旧语法”，而是对不同问题的表达工具。</p>
+<div id="for-循环看见迭代的三个部件" class="section level4 hasAnchor" number="1.6.2.1">
+<h4><span class="header-section-number">1.6.2.1</span> <code>for</code> 循环：看见迭代的三个部件<a href="basic-syntax.html#for-循环看见迭代的三个部件" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="basic-syntax.html#cb58-1" aria-hidden="true" tabindex="-1"></a>numeric_iris <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(iris[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
+<span id="cb58-2"><a href="basic-syntax.html#cb58-2" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="fu">ncol</span>(numeric_iris))</span>
+<span id="cb58-3"><a href="basic-syntax.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(numeric_iris)) {</span>
+<span id="cb58-4"><a href="basic-syntax.html#cb58-4" aria-hidden="true" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> <span class="fu">mean</span>(numeric_iris[[i]])</span>
+<span id="cb58-5"><a href="basic-syntax.html#cb58-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb58-6"><a href="basic-syntax.html#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(output) <span class="ot">&lt;-</span> <span class="fu">names</span>(numeric_iris)</span>
+<span id="cb58-7"><a href="basic-syntax.html#cb58-7" aria-hidden="true" tabindex="-1"></a>output</span>
+<span id="cb58-8"><a href="basic-syntax.html#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sepal.Length  Sepal.Width Petal.Length  Petal.Width </span></span>
+<span id="cb58-9"><a href="basic-syntax.html#cb58-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     5.843333     3.057333     3.758000     1.199333</span></span></code></pre></div>
+</details>
+<p>一个稳定的 <code>for</code> 循环包含：预先分配的输出、迭代序列、循环体。不要在每次循环中用 <code>c()</code> 或 <code>rbind()</code> 不断扩大对象；先保存到预分配向量或列表，最后一次合并。</p>
+</div>
+<div id="while-与-repeat" class="section level4 hasAnchor" number="1.6.2.2">
+<h4><span class="header-section-number">1.6.2.2</span> <code>while</code> 与 <code>repeat</code><a href="basic-syntax.html#while-与-repeat" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="basic-syntax.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb59-2"><a href="basic-syntax.html#cb59-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="cn">Inf</span></span>
+<span id="cb59-3"><a href="basic-syntax.html#cb59-3" aria-hidden="true" tabindex="-1"></a>draws <span class="ot">&lt;-</span> 0L</span>
+<span id="cb59-4"><a href="basic-syntax.html#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (x <span class="sc">&lt;=</span> <span class="dv">1</span>) {</span>
+<span id="cb59-5"><a href="basic-syntax.html#cb59-5" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>)</span>
+<span id="cb59-6"><a href="basic-syntax.html#cb59-6" aria-hidden="true" tabindex="-1"></a>  draws <span class="ot">&lt;-</span> draws <span class="sc">+</span> 1L</span>
+<span id="cb59-7"><a href="basic-syntax.html#cb59-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb59-8"><a href="basic-syntax.html#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">draws =</span> draws, <span class="at">last_value =</span> x)</span>
+<span id="cb59-9"><a href="basic-syntax.html#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      draws last_value </span></span>
+<span id="cb59-10"><a href="basic-syntax.html#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   3.000000   1.558708</span></span></code></pre></div>
+</details>
+<p><code>while</code> 适用于迭代次数未知、先判断再执行；<code>repeat</code> 至少执行一次，必须设计清晰的 <code>break</code> 条件。<code>next</code> 跳过当前一轮，<code>break</code> 结束整个循环。</p>
+</div>
+<div id="apply-函数族" class="section level4 hasAnchor" number="1.6.2.3">
+<h4><span class="header-section-number">1.6.2.3</span> <code>apply</code> 函数族<a href="basic-syntax.html#apply-函数族" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<table>
+<thead>
+<tr class="header">
+<th>函数</th>
+<th>输入</th>
+<th>迭代单位</th>
+<th>典型输出</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>apply()</code></td>
+<td>矩阵、数组</td>
+<td>行、列或更高维</td>
+<td>简化后的向量/数组</td>
+</tr>
+<tr class="even">
+<td><code>tapply()</code></td>
+<td>向量 + 分组因子</td>
+<td>每个组</td>
+<td>数组</td>
+</tr>
+<tr class="odd">
+<td><code>lapply()</code></td>
+<td>列表、数据框、向量</td>
+<td>每个元素/列</td>
+<td>列表</td>
+</tr>
+<tr class="even">
+<td><code>sapply()</code></td>
+<td>同 <code>lapply()</code></td>
+<td>每个元素/列</td>
+<td>尝试简化</td>
+</tr>
+</tbody>
+</table>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="basic-syntax.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(<span class="fu">as.matrix</span>(numeric_iris), <span class="dv">2</span>, mean)</span>
+<span id="cb60-2"><a href="basic-syntax.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sepal.Length  Sepal.Width Petal.Length  Petal.Width </span></span>
+<span id="cb60-3"><a href="basic-syntax.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     5.843333     3.057333     3.758000     1.199333</span></span>
+<span id="cb60-4"><a href="basic-syntax.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(numeric_iris, mean)</span>
+<span id="cb60-5"><a href="basic-syntax.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Sepal.Length</span></span>
+<span id="cb60-6"><a href="basic-syntax.html#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5.843333</span></span>
+<span id="cb60-7"><a href="basic-syntax.html#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb60-8"><a href="basic-syntax.html#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Sepal.Width</span></span>
+<span id="cb60-9"><a href="basic-syntax.html#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3.057333</span></span>
+<span id="cb60-10"><a href="basic-syntax.html#cb60-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb60-11"><a href="basic-syntax.html#cb60-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Petal.Length</span></span>
+<span id="cb60-12"><a href="basic-syntax.html#cb60-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3.758</span></span>
+<span id="cb60-13"><a href="basic-syntax.html#cb60-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb60-14"><a href="basic-syntax.html#cb60-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Petal.Width</span></span>
+<span id="cb60-15"><a href="basic-syntax.html#cb60-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.199333</span></span>
+<span id="cb60-16"><a href="basic-syntax.html#cb60-16" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(numeric_iris, mean)</span>
+<span id="cb60-17"><a href="basic-syntax.html#cb60-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sepal.Length  Sepal.Width Petal.Length  Petal.Width </span></span>
+<span id="cb60-18"><a href="basic-syntax.html#cb60-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     5.843333     3.057333     3.758000     1.199333</span></span></code></pre></div>
+</details>
+<p>学习 <code>apply</code> 族有助于阅读大量既有 R 代码；新课程代码优先使用返回类型更明确的 <code>purrr</code> 或专用函数，如 <code>rowMeans()</code>、<code>colMeans()</code>。</p>
+</div>
+<div id="purrr-泛函式迭代" class="section level4 hasAnchor" number="1.6.2.4">
+<h4><span class="header-section-number">1.6.2.4</span> <code>purrr</code> 泛函式迭代<a href="basic-syntax.html#purrr-泛函式迭代" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>泛函式是“以函数作为输入的函数”。<code>map(.x, .f)</code> 把同一个函数 <code>.f</code> 映射到序列 <code>.x</code> 的每个元素，并收集结果。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="basic-syntax.html#cb61-1" aria-hidden="true" tabindex="-1"></a>numeric_iris <span class="sc">|&gt;</span></span>
+<span id="cb61-2"><a href="basic-syntax.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dbl</span>(mean)</span>
+<span id="cb61-3"><a href="basic-syntax.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sepal.Length  Sepal.Width Petal.Length  Petal.Width </span></span>
+<span id="cb61-4"><a href="basic-syntax.html#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     5.843333     3.057333     3.758000     1.199333</span></span></code></pre></div>
+</details>
+<p>选择后缀就是声明输出契约：<code>map_lgl()</code> 返回逻辑向量、<code>map_int()</code> 返回整数向量、<code>map_dbl()</code> 返回双精度向量、<code>map_chr()</code> 返回字符向量，<code>map()</code> 返回列表。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="basic-syntax.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>), <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb62-2"><a href="basic-syntax.html#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dbl</span>(\(x) <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb62-3"><a href="basic-syntax.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.5 5.0</span></span></code></pre></div>
+</details>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="basic-syntax.html#cb63-1" aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.58</span>, <span class="fl">1.76</span>, <span class="fl">1.64</span>)</span>
+<span id="cb63-2"><a href="basic-syntax.html#cb63-2" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">52</span>, <span class="dv">73</span>, <span class="dv">68</span>)</span>
+<span id="cb63-3"><a href="basic-syntax.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dbl</span>(height, weight, \(h, w) w <span class="sc">/</span> h<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb63-4"><a href="basic-syntax.html#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 20.83000 23.56663 25.28257</span></span></code></pre></div>
+</details>
+<p><code>pmap()</code> 把多元函数应用到多个对应序列；当输入是数据框时，可把每一行视为一组参数。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="basic-syntax.html#cb64-1" aria-hidden="true" tabindex="-1"></a>simulation_plan <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb64-2"><a href="basic-syntax.html#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb64-3"><a href="basic-syntax.html#cb64-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb64-4"><a href="basic-syntax.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb64-5"><a href="basic-syntax.html#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap</span>(simulation_plan, rnorm)</span>
+<span id="cb64-6"><a href="basic-syntax.html#cb64-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb64-7"><a href="basic-syntax.html#cb64-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -0.5604756 -0.2301775</span></span>
+<span id="cb64-8"><a href="basic-syntax.html#cb64-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb64-9"><a href="basic-syntax.html#cb64-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb64-10"><a href="basic-syntax.html#cb64-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 8.117417 5.141017 5.258575</span></span>
+<span id="cb64-11"><a href="basic-syntax.html#cb64-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb64-12"><a href="basic-syntax.html#cb64-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb64-13"><a href="basic-syntax.html#cb64-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11.715065 10.460916  8.734939  9.313147</span></span></code></pre></div>
+</details>
+<table>
+<thead>
+<tr class="header">
+<th>问题</th>
+<th>首选</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>同一个函数作用于一个序列</td>
+<td><code>map_*()</code></td>
+</tr>
+<tr class="even">
+<td>二元函数作用于两组对应值</td>
+<td><code>map2_*()</code></td>
+</tr>
+<tr class="odd">
+<td>多元函数作用于多列对应值</td>
+<td><code>pmap_*()</code></td>
+</tr>
+<tr class="even">
+<td>依赖前一轮状态或提前退出</td>
+<td><code>for</code> / <code>while</code> / <code>repeat</code></td>
+</tr>
+</tbody>
+</table>
+<div class="task">
+<p><strong>课堂检查 5</strong>：分别用 <code>for</code> 和 <code>map_dbl()</code> 计算 <code>mtcars</code> 每个数值列的标准差；说明两个版本的输入、输出和迭代单位。</p>
+</div>
+</div>
 </div>
 </div>
 <div id="自定义函数" class="section level2 hasAnchor" number="1.7">
 <h2><span class="header-section-number">1.7</span> 自定义函数<a href="basic-syntax.html#自定义函数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="自定义函数-1" class="section level3 hasAnchor" number="1.7.1">
 <h3><span class="header-section-number">1.7.1</span> 自定义函数<a href="basic-syntax.html#自定义函数-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>函数把一套步骤封装为可复用规则。教材建议先分析输入和输出，再用一个具体值逐步调试，最后才封装。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="basic-syntax.html#cb65-1" aria-hidden="true" tabindex="-1"></a>score_to_grade <span class="ot">&lt;-</span> <span class="cf">function</span>(score) {</span>
+<span id="cb65-2"><a href="basic-syntax.html#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(score) <span class="sc">!=</span> 1L <span class="sc">||</span> <span class="fu">is.na</span>(score)) {</span>
+<span id="cb65-3"><a href="basic-syntax.html#cb65-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NA_character_</span>)</span>
+<span id="cb65-4"><a href="basic-syntax.html#cb65-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb65-5"><a href="basic-syntax.html#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (score <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">||</span> score <span class="sc">&gt;</span> <span class="dv">100</span>) {</span>
+<span id="cb65-6"><a href="basic-syntax.html#cb65-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&quot;score 必须位于 0 到 100 之间&quot;</span>)</span>
+<span id="cb65-7"><a href="basic-syntax.html#cb65-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb65-8"><a href="basic-syntax.html#cb65-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">90</span>) {</span>
+<span id="cb65-9"><a href="basic-syntax.html#cb65-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;优&quot;</span></span>
+<span id="cb65-10"><a href="basic-syntax.html#cb65-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">80</span>) {</span>
+<span id="cb65-11"><a href="basic-syntax.html#cb65-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;良&quot;</span></span>
+<span id="cb65-12"><a href="basic-syntax.html#cb65-12" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">70</span>) {</span>
+<span id="cb65-13"><a href="basic-syntax.html#cb65-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;中&quot;</span></span>
+<span id="cb65-14"><a href="basic-syntax.html#cb65-14" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">60</span>) {</span>
+<span id="cb65-15"><a href="basic-syntax.html#cb65-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;及格&quot;</span></span>
+<span id="cb65-16"><a href="basic-syntax.html#cb65-16" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb65-17"><a href="basic-syntax.html#cb65-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;不及格&quot;</span></span>
+<span id="cb65-18"><a href="basic-syntax.html#cb65-18" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb65-19"><a href="basic-syntax.html#cb65-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb65-20"><a href="basic-syntax.html#cb65-20" aria-hidden="true" tabindex="-1"></a><span class="fu">score_to_grade</span>(<span class="dv">86</span>)</span>
+<span id="cb65-21"><a href="basic-syntax.html#cb65-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;良&quot;</span></span></code></pre></div>
+</details>
+<p>设计函数时写清四件事：输入参数的类型与范围、核心处理步骤、返回值的类型与结构、边界与缺失值处理。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="basic-syntax.html#cb66-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">35</span>, <span class="dv">67</span>, <span class="dv">100</span>, <span class="cn">NA</span>)</span>
+<span id="cb66-2"><a href="basic-syntax.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map_chr</span>(scores, score_to_grade)</span>
+<span id="cb66-3"><a href="basic-syntax.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;不及格&quot; &quot;及格&quot;   &quot;优&quot;     NA</span></span></code></pre></div>
+</details>
+<p>如果一个函数有多个返回结果，应组合成一个有名字的列表或数据框。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="basic-syntax.html#cb67-1" aria-hidden="true" tabindex="-1"></a>mean_sd <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb67-2"><a href="basic-syntax.html#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb67-3"><a href="basic-syntax.html#cb67-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm),</span>
+<span id="cb67-4"><a href="basic-syntax.html#cb67-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm),</span>
+<span id="cb67-5"><a href="basic-syntax.html#cb67-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(x))</span>
+<span id="cb67-6"><a href="basic-syntax.html#cb67-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb67-7"><a href="basic-syntax.html#cb67-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb67-8"><a href="basic-syntax.html#cb67-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_sd</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">12</span>))</span>
+<span id="cb67-9"><a href="basic-syntax.html#cb67-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $mean</span></span>
+<span id="cb67-10"><a href="basic-syntax.html#cb67-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6.6</span></span>
+<span id="cb67-11"><a href="basic-syntax.html#cb67-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb67-12"><a href="basic-syntax.html#cb67-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $sd</span></span>
+<span id="cb67-13"><a href="basic-syntax.html#cb67-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3.974921</span></span>
+<span id="cb67-14"><a href="basic-syntax.html#cb67-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb67-15"><a href="basic-syntax.html#cb67-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $n</span></span>
+<span id="cb67-16"><a href="basic-syntax.html#cb67-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+</details>
+<p>默认参数表达最常见的用法；<code>...</code> 用于把额外参数传给另一个函数，但应谨慎，避免参数去向不清。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="basic-syntax.html#cb68-1" aria-hidden="true" tabindex="-1"></a>summarise_num <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
+<span id="cb68-2"><a href="basic-syntax.html#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">mean =</span> <span class="fu">mean</span>(x, ...), <span class="at">sd =</span> <span class="fu">sd</span>(x, ...))</span>
+<span id="cb68-3"><a href="basic-syntax.html#cb68-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb68-4"><a href="basic-syntax.html#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise_num</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb68-5"><a href="basic-syntax.html#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mean       sd </span></span>
+<span id="cb68-6"><a href="basic-syntax.html#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2.333333 1.527525</span></span></code></pre></div>
+</details>
 </div>
 <div id="r-自带的函数" class="section level3 hasAnchor" number="1.7.2">
 <h3><span class="header-section-number">1.7.2</span> R 自带的函数<a href="basic-syntax.html#r-自带的函数" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-
+<p>教材按用途汇总了 Base R 常用函数。与其逐一背诵，不如记住“函数家族 + 帮助入口”。</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>家族</th>
+<th>代表函数</th>
+<th>识别方法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>基本数学</td>
+<td><code>abs()</code>, <code>sqrt()</code>, <code>log()</code>, <code>round()</code></td>
+<td>输入数值，返回变换结果</td>
+</tr>
+<tr class="even">
+<td>矩阵运算</td>
+<td><code>t()</code>, <code>solve()</code>, <code>eigen()</code>, <code>svd()</code></td>
+<td>关注维数与线性代数含义</td>
+</tr>
+<tr class="odd">
+<td>统计汇总</td>
+<td><code>mean()</code>, <code>median()</code>, <code>sd()</code>, <code>quantile()</code></td>
+<td>留意 <code>na.rm</code></td>
+</tr>
+<tr class="even">
+<td>概率分布</td>
+<td><code>d*()</code>, <code>p*()</code>, <code>q*()</code>, <code>r*()</code></td>
+<td>密度、分布、分位数、随机数</td>
+</tr>
+<tr class="odd">
+<td>时间序列</td>
+<td><code>lag()</code>, <code>diff()</code></td>
+<td>留意包之间同名函数</td>
+</tr>
+<tr class="even">
+<td>对象与文件</td>
+<td><code>unique()</code>, <code>duplicated()</code>, <code>list.files()</code></td>
+<td>检查返回类型与副作用</td>
+</tr>
+</tbody>
+</table>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="basic-syntax.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="dv">0</span>)</span>
+<span id="cb69-2"><a href="basic-syntax.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.3989423</span></span>
+<span id="cb69-3"><a href="basic-syntax.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.96</span>)</span>
+<span id="cb69-4"><a href="basic-syntax.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.9750021</span></span>
+<span id="cb69-5"><a href="basic-syntax.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb69-6"><a href="basic-syntax.html#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.959964</span></span>
+<span id="cb69-7"><a href="basic-syntax.html#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb69-8"><a href="basic-syntax.html#cb69-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">3</span>)</span>
+<span id="cb69-9"><a href="basic-syntax.html#cb69-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -0.5604756 -0.2301775  1.5587083</span></span></code></pre></div>
+</details>
+<p>随机模拟应在需要复现时设置种子。不要在函数内部无条件 <code>set.seed()</code>，否则每次调用都会产生完全相同的“随机”结果。</p>
 </div>
+</div>
+<div id="综合练习把基础语法连成工作流" class="section level2 hasAnchor" number="1.8">
+<h2><span class="header-section-number">1.8</span> 综合练习：把基础语法连成工作流<a href="basic-syntax.html#综合练习把基础语法连成工作流" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="basic-syntax.html#cb70-1" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb70-2"><a href="basic-syntax.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>id,       <span class="sc">~</span>date,        <span class="sc">~</span>score, <span class="sc">~</span>satisfaction,</span>
+<span id="cb70-3"><a href="basic-syntax.html#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;BJ-001&quot;</span>, <span class="st">&quot;2023/02/20&quot;</span>, <span class="dv">86</span>,     <span class="st">&quot;满意&quot;</span>,</span>
+<span id="cb70-4"><a href="basic-syntax.html#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;SH-014&quot;</span>, <span class="st">&quot;2023/02/21&quot;</span>, <span class="dv">92</span>,     <span class="st">&quot;非常满意&quot;</span>,</span>
+<span id="cb70-5"><a href="basic-syntax.html#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;GZ-107&quot;</span>, <span class="st">&quot;2023/02/22&quot;</span>, <span class="cn">NA</span>,     <span class="st">&quot;一般&quot;</span>,</span>
+<span id="cb70-6"><a href="basic-syntax.html#cb70-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;BJ-203&quot;</span>, <span class="st">&quot;2023/02/22&quot;</span>, <span class="dv">58</span>,     <span class="st">&quot;不满意&quot;</span></span>
+<span id="cb70-7"><a href="basic-syntax.html#cb70-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb70-8"><a href="basic-syntax.html#cb70-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-9"><a href="basic-syntax.html#cb70-9" aria-hidden="true" tabindex="-1"></a>survey_clean <span class="ot">&lt;-</span> survey <span class="sc">|&gt;</span></span>
+<span id="cb70-10"><a href="basic-syntax.html#cb70-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb70-11"><a href="basic-syntax.html#cb70-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">city =</span> <span class="fu">str_extract</span>(id, <span class="st">&quot;^[A-Z]+&quot;</span>),</span>
+<span id="cb70-12"><a href="basic-syntax.html#cb70-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">ymd</span>(date),</span>
+<span id="cb70-13"><a href="basic-syntax.html#cb70-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">grade =</span> <span class="fu">map_chr</span>(score, score_to_grade),</span>
+<span id="cb70-14"><a href="basic-syntax.html#cb70-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">satisfaction =</span> <span class="fu">factor</span>(</span>
+<span id="cb70-15"><a href="basic-syntax.html#cb70-15" aria-hidden="true" tabindex="-1"></a>      satisfaction,</span>
+<span id="cb70-16"><a href="basic-syntax.html#cb70-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;非常不满意&quot;</span>, <span class="st">&quot;不满意&quot;</span>, <span class="st">&quot;一般&quot;</span>, <span class="st">&quot;满意&quot;</span>, <span class="st">&quot;非常满意&quot;</span>),</span>
+<span id="cb70-17"><a href="basic-syntax.html#cb70-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">ordered =</span> <span class="cn">TRUE</span></span>
+<span id="cb70-18"><a href="basic-syntax.html#cb70-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb70-19"><a href="basic-syntax.html#cb70-19" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb70-20"><a href="basic-syntax.html#cb70-20" aria-hidden="true" tabindex="-1"></a>survey_clean</span></code></pre></div>
+</details>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["id"],"name":[1],"type":["chr"],"align":["left"]},{"label":["date"],"name":[2],"type":["date"],"align":["right"]},{"label":["score"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["satisfaction"],"name":[4],"type":["ord"],"align":["right"]},{"label":["city"],"name":[5],"type":["chr"],"align":["left"]},{"label":["grade"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"BJ-001","2":"2023-02-20","3":"86","4":"满意","5":"BJ","6":"良"},{"1":"SH-014","2":"2023-02-21","3":"92","4":"非常满意","5":"SH","6":"优"},{"1":"GZ-107","2":"2023-02-22","3":"NA","4":"一般","5":"GZ","6":"NA"},{"1":"BJ-203","2":"2023-02-22","3":"58","4":"不满意","5":"BJ","6":"不及格"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>请完成以下任务：</p>
+<ol style="list-style-type: decimal">
+<li>用 <code>str_extract()</code> 提取编号中的数字部分；</li>
+<li>统计每个城市的平均分，并明确处理缺失值；</li>
+<li>用 <code>map_lgl()</code> 检查每列是否包含缺失值；</li>
+<li>编写 <code>validate_score()</code> 检查分数是否处于 0–100；</li>
+<li>从干净会话重新运行本章代码，并解释任何警告或错误。</li>
+</ol>
+</div>
+<div id="本章小结-1" class="section level2 unnumbered hasAnchor">
+<h2>本章小结<a href="basic-syntax.html#本章小结-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>数据结构决定了可以怎样索引、计算和迭代；</li>
+<li><code>[ ]</code> 保留容器，<code>[[ ]]</code> 或 <code>$</code> 通常取出成分；</li>
+<li>字符串、日期时间和因子不是“显示格式”，而是具有明确语义的数据类型；</li>
+<li>分支负责选择路径，循环负责重复，函数负责封装；</li>
+<li><code>map()</code>、<code>map2()</code>、<code>pmap()</code> 分别对应一元、二元和多元函数式迭代；</li>
+<li>可复现项目依赖脚本和明确输入，不依赖控制台历史或自动保存的工作区。</li>
+</ul>
+<blockquote>
+<p><strong>离开本章前的自测</strong>：给出一个陌生 R 对象，你是否会先判断类型与结构，再决定如何提取和处理？给出一段重复代码，你是否能判断应该向量化、写循环，还是先定义函数再映射？</p>
+</blockquote>
+
 </div>
 </div>
             </section>

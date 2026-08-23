@@ -1,26 +1,811 @@
-# 基础语法 {#basic-syntax}
+#  基础语法 {#basic-syntax}
+
+```{r ch01-setup, include=FALSE}
+library(tidyverse)
+library(lubridate)
+set.seed(2023)
+```
+
+本章严格沿用教材第 1 章的知识顺序：先建立可复现的 R 工作环境，再学习数据结构、字符串与日期时间、正则表达式、控制结构和函数。与“记住所有函数”相比，本章更重要的目标是建立一套稳定的判断框架：**对象是什么类型、具有怎样的结构、函数接收什么输入、返回什么输出，以及怎样把一次操作推广到一组数据。**
+
+> **教材主线**：基础语法是载体，向量化、函数式编程和数据思维才是贯穿全章的核心。
+
+## 本章学习目标 {-}
+
+完成本章后，你应当能够：
+
+1. 在 R Project 中组织脚本、数据和输出，并从干净会话重现分析；
+2. 根据数据是否同质、维数多少，选择向量、矩阵、数组、列表、数据框或因子；
+3. 正确使用 `[ ]`、`[[ ]]` 与 `$` 提取对象；
+4. 用 `stringr`、正则表达式和 `lubridate` 处理常见文本与日期时间；
+5. 在分支、循环、向量化和 `purrr::map_*()` 之间作出合理选择；
+6. 按“输入—处理—输出—验证”的契约设计自定义函数。
+
+<div class="callout">
+<strong>建议的学习方法</strong>：每段代码都先预测结果，再运行；遇到错误时先检查 <code>class()</code>、<code>typeof()</code>、<code>length()</code>、<code>dim()</code> 和 <code>str()</code>。
+</div>
 
 ## 搭建 R 环境及常用操作
+
 ### 搭建 R 环境
+
+第 0 章已经完成 R、RStudio 与 Positron 的安装。这里把教材中的环境设置转化为一份“开工检查单”。
+
+```{r ch01-environment-check}
+R.version.string
+basename(getwd()) # 只显示项目目录名，避免公开本机完整路径
+sessionInfo()[c("R.version", "platform")]
+```
+
+R 是计算引擎；RStudio 和 Positron 是调用 R、管理项目和编写文档的 IDE。无论使用哪一个 IDE，真正执行表达式、管理对象和调用扩展包的仍是 R。
+
+#### 首次设置的原则
+
+- 文件编码使用 UTF-8；
+- 不在启动时自动恢复 `.RData`，退出时不自动保存工作区；
+- 每个分析使用独立的 R Project；
+- 重要对象由脚本生成，重要结果明确写入文件；
+- 需要复现时，重启 R 后从第一行重新运行。
+
+教材介绍了通过 `setwd()` 改变工作目录的方法。它适合临时诊断，但课程项目中优先使用 **Project 根目录 + 相对路径**。这样项目移动到另一台电脑后仍可运行。
+
+```{r ch01-paths}
+basename(getwd())
+file.path("data", "scores.csv")
+```
+
 ### 常用操作
+
+#### 扩展包的生命周期
+
+| 任务 | 常用方式 | 何时执行 |
+|---|---|---|
+| 安装 | `install.packages("pkg")` | 一台电脑通常一次 |
+| 加载 | `library(pkg)` | 每个新会话一次 |
+| 单次调用 | `pkg::fun()` | 无需加载整个包 |
+| 更新 | `update.packages()` | 有计划地更新并重新验证项目 |
+| 删除 | `remove.packages("pkg")` | 确认不再需要时 |
+
+```{r ch01-package-call}
+stringr::str_to_upper("R language")
+```
+
+安装和加载是两件不同的事。不要把 `install.packages()` 放进每次都运行的分析脚本；项目脚本只需要加载或用 `::` 调用。
+
+#### 赋值与对象
+
+R 同时支持 `<-` 和 `=`。课程代码使用 `<-` 给对象赋值，用 `=` 指定函数参数，使阅读时角色更清楚。
+
+```{r ch01-assignment}
+radius <- c(2, 4, 7)
+area <- pi * radius^2
+area
+```
+
+对象名应表达含义。R 区分大小写，`score` 与 `Score` 是两个对象；对象名可以包含字母、数字、点和下划线，但不能以数字开头。
+
+#### 基本运算与比较
+
+```{r ch01-operators}
+7 %/% 3
+7 %% 3
+2^5
+c(1, 3, 5) %in% c(2, 3, 4)
+```
+
+浮点数由有限位二进制数近似存储，因此不要把“打印出来相同”误认为内部值绝对相等。
+
+```{r ch01-floating-point}
+0.1 + 0.2 == 0.3
+all.equal(0.1 + 0.2, 0.3)
+dplyr::near(0.1 + 0.2, 0.3)
+```
+
+`&`、`|` 对逻辑向量逐元素运算；`&&`、`||` 只判断第一个元素，常用于 `if` 或 `while` 的单一条件。
+
+#### 基本数据类型与特殊值
+
+R 的原子类型包括逻辑型、整数型、双精度数值型、字符型、复数型和原始型。实际数据分析最常见的是前四类。
+
+```{r ch01-types}
+x <- c(TRUE, FALSE, NA)
+y <- c(1L, 2L, 3L)
+z <- c(1.5, NaN, Inf)
+txt <- c("R", "tidyverse")
+
+tibble(
+  object = c("x", "y", "z", "txt"),
+  class = c(class(x), class(y), class(z), class(txt)),
+  typeof = c(typeof(x), typeof(y), typeof(z), typeof(txt))
+)
+```
+
+| 值 | 含义 | 常用判断 |
+|---|---|---|
+| `NA` | 缺失或未知 | `is.na()` |
+| `NaN` | 未定义的数值结果 | `is.nan()` |
+| `Inf`, `-Inf` | 正、负无穷 | `is.infinite()` |
+| `NULL` | 对象或成分不存在 | `is.null()` |
+
+```{r ch01-missing}
+mean(c(80, NA, 90))
+mean(c(80, NA, 90), na.rm = TRUE)
+NA == NA
+is.na(NA)
+```
+
+`NA == NA` 的结果仍是 `NA`，因为“一个未知值是否等于另一个未知值”不能确定。检测特殊值要使用相应的 `is.*()` 函数。
+
+#### 保存、载入与清理
+
+```{r ch01-save-load, eval=FALSE}
+saveRDS(area, "output/area.rds")
+area_again <- readRDS("output/area.rds")
+
+write_csv(tibble(radius, area), "output/circle_area.csv")
+circle_area <- read_csv("output/circle_area.csv")
+```
+
+课程推荐保存“明确命名的数据或结果”，而不是保存整个工作区。清空环境并不能修复不可复现的代码；更可靠的做法是重启 R，然后运行完整脚本。
+
+#### 获取帮助
+
+```{r ch01-help, eval=FALSE}
+?mean
+help.search("linear model")
+vignette(package = "dplyr")
+browseVignettes("stringr")
+```
+
+阅读帮助页时依次看：Usage（调用形式）、Arguments（参数）、Value（返回值）、Examples（示例）。遇到函数同名时使用 `包名::函数名()`，如 `stats::filter()` 与 `dplyr::filter()`。
+
+#### Script、Project 与 R Markdown
+
+| 载体 | 主要职责 | 课堂建议 |
+|---|---|---|
+| `.R` 脚本 | 保存可重复执行的代码 | 一个脚本完成一个明确任务 |
+| `.Rproj` 项目 | 确定项目边界与相对路径起点 | 每次从项目文件进入 |
+| `.Rmd` 文档 | 组合叙述、代码与结果 | 编译检验可复现性 |
+
+<div class="task">
+<strong>课堂检查 1</strong>：关闭“恢复/保存工作区”，新建一个 R Project，创建 <code>R/</code>、<code>data/</code> 和 <code>output/</code> 三个目录；重启 R 后确认脚本仍可从头运行。
+</div>
+
 ## 数据结构：向量、矩阵、多维数组
+
+向量、矩阵和数组都要求元素类型一致，区别主要在维数。
+
+| 结构 | 维数 | 类型是否一致 | 典型创建函数 |
+|---|---:|---|---|
+| 原子向量 | 1 | 是 | `c()`, `seq()`, `rep()` |
+| 矩阵 | 2 | 是 | `matrix()` |
+| 数组 | 2 维以上 | 是 | `array()` |
+
 ### 向量（一维数据）
+
+#### 创建与向量化运算
+
+```{r ch01-vector-create}
+x <- c(2, 4, 6, 8)
+seq(from = 0, to = 1, by = 0.25)
+rep(c("A", "B"), times = 2)
+
+x + 1
+x * c(1, 10, 100, 1000)
+```
+
+R 的许多函数天然接收向量并逐元素工作，这就是向量化。较短向量参与运算时可能被循环补齐（recycling）；除非这种对应关系十分明确，否则应避免依赖隐式循环补齐。
+
+```{r ch01-vector-recycle}
+1:6 + c(10, 20)
+```
+
+#### 逻辑向量与筛选
+
+```{r ch01-logical-vector}
+score <- c(58, 76, 91, NA, 84)
+passed <- score >= 60
+passed
+score[passed & !is.na(passed)]
+```
+
+`==` 是逐元素比较；`%in%` 判断左侧每个元素是否属于右侧集合，尤其适合多个候选值。
+
+```{r ch01-in}
+major <- c("统计学", "经济学", "数据科学", "数学")
+major %in% c("统计学", "数据科学")
+```
+
+#### 字符向量与类型转换
+
+```{r ch01-character-vector}
+mixed <- c(1, TRUE, "R")
+mixed
+typeof(mixed)
+```
+
+原子向量必须同质，混合类型时 R 会向能够容纳全部元素的类型转换。教材中可将其记为常见方向：逻辑型 → 整数型 → 双精度型 → 字符型。
+
+#### 访问与修改子集
+
+```{r ch01-vector-subset}
+letters5 <- c("a", "b", "c", "d", "e")
+letters5[c(1, 3, 5)]
+letters5[-c(2, 4)]
+letters5[c(TRUE, FALSE, TRUE, FALSE, TRUE)]
+
+letters5[c(2, 4)] <- c("B", "D")
+letters5
+```
+
+```{r ch01-vector-names}
+temperature <- c(Beijing = 28, Shanghai = 31, Guangzhou = 33)
+temperature[c("Beijing", "Guangzhou")]
+```
+
+教材用“糖果盒”作类比：`[ ]` 取出一个仍保持原容器性质的子集，`[[ ]]` 取出其中一个元素本身。对原子向量而言差别不大；对列表和数据框而言非常关键。
+
+#### 排序
+
+```{r ch01-vector-sort}
+x <- c(40, 10, 30, 20)
+sort(x)
+order(x)
+rank(x)
+rev(x)
+```
+
+`sort(x)` 返回排好的值，`order(x)` 返回能把原向量排好的位置，后者可用于按一列顺序重排其他列。
+
 ### 矩阵（二维数据）
-### 多维数组（多维数据）
+
+```{r ch01-matrix-create}
+A <- matrix(1:6, nrow = 2, byrow = TRUE,
+            dimnames = list(c("r1", "r2"), c("c1", "c2", "c3")))
+A
+A[2, 3]
+A[, c("c1", "c3"), drop = FALSE]
+```
+
+`drop = FALSE` 可以避免只取一行或一列时自动降维，在编写稳定函数时尤其有用。矩阵的 `*` 是逐元素乘法，`%*%` 才是线性代数中的矩阵乘法。
+
+```{r ch01-matrix-math}
+B <- matrix(1:6, nrow = 2, byrow = TRUE)
+B * B
+B %*% t(B)
+rowMeans(B)
+colSums(B)
+```
+
+### 多维数组
+
+```{r ch01-array}
+cube <- array(
+  1:24,
+  dim = c(3, 4, 2),
+  dimnames = list(
+    student = paste0("S", 1:3),
+    subject = c("R", "统计", "英语", "数学"),
+    term = c("期中", "期末")
+  )
+)
+cube[, "R", "期末"]
+```
+
+数组适合每一维含义清楚、元素同质的数据。若不同变量具有不同类型，通常应使用数据框。
+
+<div class="task">
+<strong>课堂检查 2</strong>：创建 5 名学生、3 门课程的成绩矩阵，计算每名学生均分和每门课程均分；再增加“期中/期末”一维，解释为什么它成为数组。
+</div>
+
 ## 数据结构：列表、数据框、因子
+
 ### 列表
-### 数据框（数据表）
+
+列表允许每个成分有不同类型、长度和结构，因此既能保存模型，也能保存一组异质结果。
+
+```{r ch01-list-create}
+student <- list(
+  id = "S01",
+  score = c(86, 91, 88),
+  passed = TRUE,
+  meta = list(major = "统计学", grade = 2)
+)
+
+student$id
+student[["score"]]
+student[c("id", "score")]
+```
+
+| 写法 | 返回内容 | 是否保留列表外壳 |
+|---|---|---|
+| `x[i]` | 一个子列表 | 是 |
+| `x[[i]]` | 第 `i` 个成分 | 否 |
+| `x$name` | 名为 `name` 的成分 | 否 |
+
+```{r ch01-list-modify}
+student$score[2] <- 95
+student$note <- "复核完成"
+student$note <- NULL
+str(student)
+```
+
+```{r ch01-list-pluck}
+purrr::pluck(student, "meta", "major")
+```
+
+### 数据框
+
+数据框本质上是“每一列长度相同的命名列表”：列可以有不同类型，但同一列内部应保持一致。行通常表示观测，列表示变量。
+
+```{r ch01-tibble-create}
+persons <- tibble(
+  name = c("Ken", "Ashley", "Jennifer"),
+  age = c(24, 26, 23),
+  student = c(TRUE, FALSE, TRUE)
+)
+persons
+```
+
+本课程优先使用 tibble。它不自动改变字符类型和列名，不使用行名，并且只打印屏幕能容纳的部分。
+
+```{r ch01-dataframe-subset}
+persons$name
+persons[["age"]]
+persons["age"]
+persons[1:2, c("name", "age")]
+persons[persons$age >= 24, ]
+```
+
+```{r ch01-dataframe-modify}
+persons$age_next_year <- persons$age + 1
+persons[persons$name == "Ken", "student"] <- FALSE
+dplyr::glimpse(persons)
+summary(persons)
+```
+
+虽然数据框支持矩阵式索引，后续章节会优先使用 `filter()`、`select()`、`mutate()` 和 `arrange()`，因为它们更能表达数据操作意图。
+
 ### 因子
+
+因子用于表示有限的类别集合。其内部可理解为“整数编码 + 水平标签”，水平顺序还决定统计汇总和图形显示顺序。
+
+```{r ch01-factor}
+grade <- factor(
+  c("中", "良", "优", "及格", "良"),
+  levels = c("不及格", "及格", "中", "良", "优"),
+  ordered = TRUE
+)
+grade
+sort(grade)
+table(grade)
+```
+
+“设置水平顺序”与“声明有序因子”不是一回事：前者控制显示顺序，后者还表示类别之间存在大小关系。
+
+| 任务 | 代表函数 |
+|---|---|
+| 改变顺序 | `fct_relevel()`, `fct_infreq()`, `fct_reorder()` |
+| 改变标签 | `fct_recode()`, `fct_collapse()` |
+| 合并少数类别 | `fct_lump_*()` |
+| 增删水平 | `fct_drop()`, `fct_expand()` |
+
+```{r ch01-forcats}
+class_count <- ggplot2::mpg |>
+  count(class) |>
+  mutate(class = forcats::fct_reorder(class, n))
+class_count
+```
+
+<div class="task">
+<strong>课堂检查 3</strong>：解释下面三个结果的结构为何不同：<code>persons["age"]</code>、<code>persons[["age"]]</code>、<code>persons$age</code>。再把课程满意度设置为“非常不满意”到“非常满意”的有序因子。
+</div>
+
 ## 数据结构：字符串、日期时间
+
 ### 字符串
+
+`stringr` 的函数名以 `str_` 开头，参数顺序一致，并且大多是向量化的。教材按“长度—合并—拆分—格式化—排序—检测—提取—修改”的任务顺序组织，本节沿用这一结构。
+
+```{r ch01-string-overview}
+raw_name <- c("  Wang Zhihao ", "Li Ming", NA)
+str_length(raw_name)
+str_trim(raw_name)
+str_to_title(str_trim(raw_name))
+```
+
+| 任务 | 常用函数 | 返回结果 |
+|---|---|---|
+| 长度、填充、截断、去空格 | `str_length()`, `str_pad()`, `str_trunc()`, `str_trim()` | 字符或数值向量 |
+| 合并、重复 | `str_c()`, `str_glue()`, `str_dup()` | 字符向量 |
+| 拆分 | `str_split()`, `str_split_fixed()` | 列表或矩阵 |
+| 检测、定位、计数 | `str_detect()`, `str_locate()`, `str_count()` | 逻辑、矩阵或数值 |
+| 提取 | `str_sub()`, `str_extract()`, `str_match()` | 字符向量或矩阵 |
+| 修改 | `str_replace()`, `str_replace_all()` | 字符向量 |
+
+```{r ch01-string-tasks}
+code <- c("BJ-2023-001", "SH-2023-014", "GZ-2024-107")
+str_split_fixed(code, "-", n = 3)
+str_detect(code, "2024")
+str_extract(code, "[0-9]{3}$")
+str_replace(code, "-", "/")
+```
+
+带 `_all` 后缀的函数处理每个字符串中的全部匹配；不带 `_all` 的版本通常只处理第一个匹配。
+
 ### 日期时间
+
+R 的 `Date` 以天为基本单位，日期时间通常使用 `POSIXct`，其底层以秒记录。`lubridate` 用函数名表达年月日的出现顺序。
+
+```{r ch01-datetime-parse}
+dates <- ymd(c("2023-02-20", "2024/03/01", "2025.04.18"))
+times <- ymd_hm(c("2023-02-20 08:30", "2023-02-20 14:15"), tz = "Asia/Shanghai")
+dates
+times
+```
+
+```{r ch01-datetime-components}
+t <- ymd_hms("2023-02-20 14:35:27", tz = "Asia/Shanghai")
+tibble(
+  year = year(t), quarter = quarter(t), month = month(t), day = day(t),
+  weekday = wday(t, label = TRUE), hour = hour(t)
+)
+```
+
+时区操作要区分：`with_tz()` 表示同一时刻换时区显示；`force_tz()` 保留钟表时间但重新解释时区。
+
+| 类型 | 表示什么 | 是否遵循日历 |
+|---|---|---|
+| `interval` | 两个确定时间点之间的区间 | 有起点和终点 |
+| `duration` | 固定秒数 | 否 |
+| `period` | 年、月、日等日历单位 | 是 |
+
+```{r ch01-time-span}
+start <- ymd("2024-01-31")
+start + months(1)
+start %m+% months(1)
+
+gap <- interval(ymd_hm("2023-08-10 14:00"),
+                ymd_hm("2024-03-05 18:15"))
+time_length(gap, "day")
+```
+
+月底加一个月是日期分析中的典型陷阱。`%m+%` 在目标月份不存在同一日期时会回退到该月末。
+
 ### 时间序列
+
+```{r ch01-ts}
+sales <- ts(c(120, 135, 128, 150, 142, 160, 158, 175),
+            start = c(2022, 1), frequency = 4)
+sales
+stats::lag(sales, 1)
+diff(sales)
+```
+
+`ts` 是“数值向量 + 时间属性”，适合规则频率的经典时间序列。教材随后介绍的 `tsibble` 以数据框为基础，明确指定时间索引和序列键，更方便进入 tidyverse 工作流。
+
+```{r ch01-tsibble, eval=FALSE}
+library(tsibble)
+quarterly_sales <- tibble(
+  quarter = yearquarter(c("2023 Q1", "2023 Q2", "2023 Q3")),
+  region = "华东", sales = c(120, 135, 142)
+) |>
+  as_tsibble(index = quarter, key = region)
+```
+
 ## 正则表达式
+
+正则表达式用模式概括一组字符串。处理任务通常分为四步：**发现规律 → 写出模式 → 在小样本上查看匹配 → 提取或替换。**
+
 ### 基本语法
+
+| 类别 | 符号 | 含义示例 |
+|---|---|---|
+| 位置 | `^`, `$` | 字符串开头、结尾 |
+| 任意与选择 | `.`, `|` | 任意字符、二选一 |
+| 字符集合 | `[abc]`, `[^abc]` | 集合内任一字符、集合外字符 |
+| 重复 | `*`, `+`, `?`, `{n,m}` | 0 次以上、1 次以上、可选、限定次数 |
+| 字符类 | `\\d`, `\\s`, `\\w` | 数字、空白、单词字符 |
+| 分组 | `( )` | 组合、捕获和控制优先级 |
+
+R 字符串本身也使用反斜线转义，因此正则中的 `\d` 在 R 代码里通常写成 `"\\d"`。
+
+```{r ch01-regex-basic}
+x <- c("CDK弱(+)10%+", "CDK(+)30%-", "CDK(-)0+", "CDK(++)60%*")
+str_extract(x, "\\d+%?")
+```
+
 ### 若干实例
+
+```{r ch01-regex-direct}
+id <- c("S-2023-008", "S-2024-115")
+str_extract(id, "\\d{3}$")
+```
+
+```{r ch01-regex-lookaround}
+ip_location <- c(
+  "175.10.237.40(湖南-长沙)",
+  "114.243.12.168(北京-北京)",
+  "125.211.78.251(黑龙江-哈尔滨)"
+)
+str_extract(ip_location, "(?<=\\().*?(?=-)")
+str_extract(ip_location, "^.*?(?=\\()")
+```
+
+`(?<=左标志)` 是向后查看，`(?=右标志)` 是向前查看；标志参与定位但不进入返回结果。这里使用 `.*?` 的懒惰匹配，避免跨过最近的右标志。
+
+```{r ch01-regex-capture}
+movie <- c("独行月球2022_Chinese", "蜘蛛侠USA_2021")
+str_replace(movie, "(\\d+)_(.+)$", "\\2_\\1")
+```
+
+<div class="callout">
+<strong>调试策略</strong>：先用 <code>str_view()</code> 或 <code>str_detect()</code> 验证模式，再使用 <code>str_extract()</code> 或 <code>str_replace()</code>。正则表达式越复杂，越需要小样本和边界测试。
+</div>
+
+<div class="task">
+<strong>课堂检查 4</strong>：从 <code>c("2023级统计学1班", "2024级数据科学2班")</code> 中分别提取年级、专业和班号，并为每一部分解释正则模式。
+</div>
+
 ## 控制结构
+
 ### 分支结构
+
+分支结构根据一个长度为 1 的逻辑条件选择路径。
+
+```{r ch01-if}
+score_one <- 76
+if (score_one >= 60) {
+  result <- "通过"
+} else {
+  result <- "未通过"
+}
+result
+```
+
+多个分支要按互斥且覆盖完整的顺序组织。教材的百分制转五级制案例必须从最高分界向下判断，否则较高分数会被较低门槛提前截获。
+
+```{r ch01-if-grade}
+score_one <- 86
+if (score_one >= 90) {
+  grade_one <- "优"
+} else if (score_one >= 80) {
+  grade_one <- "良"
+} else if (score_one >= 70) {
+  grade_one <- "中"
+} else if (score_one >= 60) {
+  grade_one <- "及格"
+} else {
+  grade_one <- "不及格"
+}
+grade_one
+```
+
+`if` 负责流程控制，只接受单一条件；`ifelse()` 接受逻辑向量并返回向量。多个向量化条件更适合 `dplyr::case_when()`。
+
+```{r ch01-vector-branch}
+scores <- c(95, 86, 73, 62, 48, NA)
+case_when(
+  is.na(scores) ~ NA_character_,
+  scores >= 90 ~ "优", scores >= 80 ~ "良", scores >= 70 ~ "中",
+  scores >= 60 ~ "及格", .default = "不及格"
+)
+```
+
 ### 循环结构
+
+教材把循环迭代分为三个层次：显式循环、`apply` 函数族和 `purrr` 泛函式。它们不是互相排斥的“新旧语法”，而是对不同问题的表达工具。
+
+#### `for` 循环：看见迭代的三个部件
+
+```{r ch01-for}
+numeric_iris <- as_tibble(iris[1:4])
+output <- vector("double", ncol(numeric_iris))
+for (i in seq_along(numeric_iris)) {
+  output[[i]] <- mean(numeric_iris[[i]])
+}
+names(output) <- names(numeric_iris)
+output
+```
+
+一个稳定的 `for` 循环包含：预先分配的输出、迭代序列、循环体。不要在每次循环中用 `c()` 或 `rbind()` 不断扩大对象；先保存到预分配向量或列表，最后一次合并。
+
+#### `while` 与 `repeat`
+
+```{r ch01-while}
+set.seed(123)
+x <- -Inf
+draws <- 0L
+while (x <= 1) {
+  x <- rnorm(1)
+  draws <- draws + 1L
+}
+c(draws = draws, last_value = x)
+```
+
+`while` 适用于迭代次数未知、先判断再执行；`repeat` 至少执行一次，必须设计清晰的 `break` 条件。`next` 跳过当前一轮，`break` 结束整个循环。
+
+#### `apply` 函数族
+
+| 函数 | 输入 | 迭代单位 | 典型输出 |
+|---|---|---|---|
+| `apply()` | 矩阵、数组 | 行、列或更高维 | 简化后的向量/数组 |
+| `tapply()` | 向量 + 分组因子 | 每个组 | 数组 |
+| `lapply()` | 列表、数据框、向量 | 每个元素/列 | 列表 |
+| `sapply()` | 同 `lapply()` | 每个元素/列 | 尝试简化 |
+
+```{r ch01-apply}
+apply(as.matrix(numeric_iris), 2, mean)
+lapply(numeric_iris, mean)
+sapply(numeric_iris, mean)
+```
+
+学习 `apply` 族有助于阅读大量既有 R 代码；新课程代码优先使用返回类型更明确的 `purrr` 或专用函数，如 `rowMeans()`、`colMeans()`。
+
+#### `purrr` 泛函式迭代
+
+泛函式是“以函数作为输入的函数”。`map(.x, .f)` 把同一个函数 `.f` 映射到序列 `.x` 的每个元素，并收集结果。
+
+```{r ch01-map}
+numeric_iris |>
+  map_dbl(mean)
+```
+
+选择后缀就是声明输出契约：`map_lgl()` 返回逻辑向量、`map_int()` 返回整数向量、`map_dbl()` 返回双精度向量、`map_chr()` 返回字符向量，`map()` 返回列表。
+
+```{r ch01-map-anonymous}
+list(c(1, 2, NA), c(4, 5, 6)) |>
+  map_dbl(\(x) mean(x, na.rm = TRUE))
+```
+
+```{r ch01-map2}
+height <- c(1.58, 1.76, 1.64)
+weight <- c(52, 73, 68)
+map2_dbl(height, weight, \(h, w) w / h^2)
+```
+
+`pmap()` 把多元函数应用到多个对应序列；当输入是数据框时，可把每一行视为一组参数。
+
+```{r ch01-pmap}
+simulation_plan <- tibble(
+  n = c(2, 3, 4), mean = c(0, 5, 10), sd = c(1, 2, 1)
+)
+set.seed(123)
+pmap(simulation_plan, rnorm)
+```
+
+| 问题 | 首选 |
+|---|---|
+| 同一个函数作用于一个序列 | `map_*()` |
+| 二元函数作用于两组对应值 | `map2_*()` |
+| 多元函数作用于多列对应值 | `pmap_*()` |
+| 依赖前一轮状态或提前退出 | `for` / `while` / `repeat` |
+
+<div class="task">
+<strong>课堂检查 5</strong>：分别用 <code>for</code> 和 <code>map_dbl()</code> 计算 <code>mtcars</code> 每个数值列的标准差；说明两个版本的输入、输出和迭代单位。
+</div>
+
 ## 自定义函数
+
 ### 自定义函数
+
+函数把一套步骤封装为可复用规则。教材建议先分析输入和输出，再用一个具体值逐步调试，最后才封装。
+
+```{r ch01-function-contract}
+score_to_grade <- function(score) {
+  if (length(score) != 1L || is.na(score)) {
+    return(NA_character_)
+  }
+  if (score < 0 || score > 100) {
+    stop("score 必须位于 0 到 100 之间")
+  }
+  if (score >= 90) {
+    "优"
+  } else if (score >= 80) {
+    "良"
+  } else if (score >= 70) {
+    "中"
+  } else if (score >= 60) {
+    "及格"
+  } else {
+    "不及格"
+  }
+}
+score_to_grade(86)
+```
+
+设计函数时写清四件事：输入参数的类型与范围、核心处理步骤、返回值的类型与结构、边界与缺失值处理。
+
+```{r ch01-function-vectorise}
+scores <- c(35, 67, 100, NA)
+map_chr(scores, score_to_grade)
+```
+
+如果一个函数有多个返回结果，应组合成一个有名字的列表或数据框。
+
+```{r ch01-multiple-return}
+mean_sd <- function(x, na.rm = FALSE) {
+  list(
+    mean = mean(x, na.rm = na.rm),
+    sd = sd(x, na.rm = na.rm),
+    n = sum(!is.na(x))
+  )
+}
+mean_sd(c(2, 6, 4, 9, 12))
+```
+
+默认参数表达最常见的用法；`...` 用于把额外参数传给另一个函数，但应谨慎，避免参数去向不清。
+
+```{r ch01-dots}
+summarise_num <- function(x, ...) {
+  c(mean = mean(x, ...), sd = sd(x, ...))
+}
+summarise_num(c(1, 2, NA, 4), na.rm = TRUE)
+```
+
 ### R 自带的函数
+
+教材按用途汇总了 Base R 常用函数。与其逐一背诵，不如记住“函数家族 + 帮助入口”。
+
+| 家族 | 代表函数 | 识别方法 |
+|---|---|---|
+| 基本数学 | `abs()`, `sqrt()`, `log()`, `round()` | 输入数值，返回变换结果 |
+| 矩阵运算 | `t()`, `solve()`, `eigen()`, `svd()` | 关注维数与线性代数含义 |
+| 统计汇总 | `mean()`, `median()`, `sd()`, `quantile()` | 留意 `na.rm` |
+| 概率分布 | `d*()`, `p*()`, `q*()`, `r*()` | 密度、分布、分位数、随机数 |
+| 时间序列 | `lag()`, `diff()` | 留意包之间同名函数 |
+| 对象与文件 | `unique()`, `duplicated()`, `list.files()` | 检查返回类型与副作用 |
+
+```{r ch01-distribution-family}
+dnorm(0)
+pnorm(1.96)
+qnorm(0.975)
+set.seed(123)
+rnorm(3)
+```
+
+随机模拟应在需要复现时设置种子。不要在函数内部无条件 `set.seed()`，否则每次调用都会产生完全相同的“随机”结果。
+
+## 综合练习：把基础语法连成工作流
+
+```{r ch01-capstone-data}
+survey <- tribble(
+  ~id,       ~date,        ~score, ~satisfaction,
+  "BJ-001", "2023/02/20", 86,     "满意",
+  "SH-014", "2023/02/21", 92,     "非常满意",
+  "GZ-107", "2023/02/22", NA,     "一般",
+  "BJ-203", "2023/02/22", 58,     "不满意"
+)
+
+survey_clean <- survey |>
+  mutate(
+    city = str_extract(id, "^[A-Z]+"),
+    date = ymd(date),
+    grade = map_chr(score, score_to_grade),
+    satisfaction = factor(
+      satisfaction,
+      levels = c("非常不满意", "不满意", "一般", "满意", "非常满意"),
+      ordered = TRUE
+    )
+  )
+survey_clean
+```
+
+请完成以下任务：
+
+1. 用 `str_extract()` 提取编号中的数字部分；
+2. 统计每个城市的平均分，并明确处理缺失值；
+3. 用 `map_lgl()` 检查每列是否包含缺失值；
+4. 编写 `validate_score()` 检查分数是否处于 0–100；
+5. 从干净会话重新运行本章代码，并解释任何警告或错误。
+
+## 本章小结 {-}
+
+- 数据结构决定了可以怎样索引、计算和迭代；
+- `[ ]` 保留容器，`[[ ]]` 或 `$` 通常取出成分；
+- 字符串、日期时间和因子不是“显示格式”，而是具有明确语义的数据类型；
+- 分支负责选择路径，循环负责重复，函数负责封装；
+- `map()`、`map2()`、`pmap()` 分别对应一元、二元和多元函数式迭代；
+- 可复现项目依赖脚本和明确输入，不依赖控制台历史或自动保存的工作区。
+
+> **离开本章前的自测**：给出一个陌生 R 对象，你是否会先判断类型与结构，再决定如何提取和处理？给出一段重复代码，你是否能判断应该向量化、写循环，还是先定义函数再映射？
