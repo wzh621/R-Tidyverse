@@ -65,6 +65,11 @@ class: inverse, center, middle
 真正的门槛，在第二步与第三步之间。
 </div>
 
+<div class="warning" style="margin-top:2.5em; font-size:1.2em">
+课程讲义请阅读: <a href="https://wzh621.github.io/R-Tidyverse/" target="_blank" rel="noopener">https://wzh621.github.io/R-Tidyverse/</a>
+</div>
+
+
 ???
 教材导语明确反对只照抄代码。课堂上先把思维步骤说完整，再展示完整程序。
 

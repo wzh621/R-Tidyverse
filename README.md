@@ -7,8 +7,8 @@
 
 ## 目录
 
-- `book/`：bookdown 讲义工程；第 0、1、2 章已完成，其余章节已建立与教材一致的文件框架。
-- `slides/`：R Markdown / xaringan 幻灯片工程；第 0、1、2 章已完成。
+- `book/`：bookdown 讲义工程；第 0、1、2、3 章已完成，其余章节已建立与教材一致的文件框架。
+- `slides/`：R Markdown / xaringan 幻灯片工程；第 0、1、2、3 章已完成。
 - `assets/`：共享截图与素材。
 - `MATERIALS.md`：教材、30 讲课件、源代码、实验与数据资源的课程映射。
 - `build.R`：依次编译 HTML 讲义、LaTeX PDF 讲义与幻灯片。
@@ -33,6 +33,7 @@ local({
 rmarkdown::render("slides/00-intro.Rmd")
 rmarkdown::render("slides/01-basic-syntax.Rmd")
 rmarkdown::render("slides/02-data-manipulation.Rmd")
+rmarkdown::render("slides/03-visualization-modeling.Rmd")
 ```
 
 PDF 版本使用 XeLaTeX 与 `ctexbook` 生成。编译环境需要能够调用 `xelatex`；在当前 Positron 环境中已配置并验证成功。
@@ -58,6 +59,7 @@ source("publish.R")
 - `slides/00-intro.html`
 - `slides/01-basic-syntax.html`
 - `slides/02-data-manipulation.html`
+- `slides/03-visualization-modeling.html`
 - `docs/index.html`（公开发布版）
 
 ## 说明

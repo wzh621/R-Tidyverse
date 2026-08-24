@@ -78,6 +78,18 @@ ul { line-height: 1.5; }
   letter-spacing: .08em;
 }
 .remark-slide-content::after { right: 30px; bottom: 17px; font-size: 13px; }
+.title-slide::after,
+.inverse::after {
+  content: "王芝皓 xjufe";
+  position: absolute;
+  left: 34px;
+  right: auto;
+  bottom: 17px;
+  color: rgba(255, 255, 255, .78);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .06em;
+}
 h1 {
   margin: .12em 0 .45em;
   font-size: 2em;

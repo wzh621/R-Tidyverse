@@ -26,7 +26,8 @@ message("[2/2] 编译 R Markdown 幻灯片……")
 slide_sources <- c(
   "slides/00-intro.Rmd",
   "slides/01-basic-syntax.Rmd",
-  "slides/02-data-manipulation.Rmd"
+  "slides/02-data-manipulation.Rmd",
+  "slides/03-visualization-modeling.Rmd"
 )
 
 for (slide_source in slide_sources) {
