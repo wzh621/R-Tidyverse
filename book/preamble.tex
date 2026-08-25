@@ -1,0 +1,60 @@
+% PDF 版讲义的中文字体、色彩与版式设置（XeLaTeX）
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Menlo}[Scale=0.86]
+\setCJKmainfont{Songti SC}
+\setCJKsansfont{Heiti SC}
+\setCJKmonofont{Songti SC}
+
+\definecolor{coursenavy}{HTML}{12304A}
+\definecolor{courseblue}{HTML}{2F6F9F}
+\definecolor{courseteal}{HTML}{168F83}
+\definecolor{coursegold}{HTML}{D59618}
+
+\titleformat{\chapter}[display]
+  {\normalfont\sffamily\bfseries\color{coursenavy}}
+  {\filleft\Large\color{courseteal}\thechapter}
+  {0.6ex}
+  {\titlerule[1.2pt]\vspace{1.1ex}\Huge}
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\sffamily\bfseries\color{coursenavy}}
+  {}
+  {0pt}
+  {\titlerule[1.2pt]\vspace{1.1ex}\Huge}
+\titleformat{\section}
+  {\Large\sffamily\bfseries\color{coursenavy}}
+  {\thesection}{0.7em}{}
+\titleformat{\subsection}
+  {\large\sffamily\bfseries\color{courseblue}}
+  {\thesubsection}{0.7em}{}
+\titleformat{\subsubsection}[hang]
+  {\normalfont\normalsize\sffamily\bfseries\color{courseblue}\raggedright}
+  {\thesubsubsection}{0.7em}{}
+
+\setlist{itemsep=0.25em,topsep=0.45em}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.2em}
+\setlength{\emergencystretch}{3em}
+\renewcommand{\arraystretch}{1.18}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\sffamily\color{courseblue} R 语言编程：基于 tidyverse}
+\fancyhead[RO]{\small\sffamily\color{courseblue}统计与数据科学学院}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\small\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}

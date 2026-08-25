@@ -9,6 +9,7 @@ book/_book/
 book/*_files/
 book/*.log
 book/*.tex
+!book/preamble.tex
 book/*.aux
 book/*.out
 book/*.toc

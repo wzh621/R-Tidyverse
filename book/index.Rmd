@@ -52,7 +52,7 @@ options(width = 80)
 | 第 1 章 基础语法 | `01-basic-syntax.Rmd` | 已完成 |
 | 第 2 章 数据操作 | `02-data-manipulation.Rmd` | 已完成 |
 | 第 3 章 可视化与建模技术 | `03-visualization-modeling.Rmd` | 已完成 |
-| 第 4 章 应用统计 | `04-applied-statistics.Rmd` | 框架 |
-| 第 5 章 探索性数据分析 | `05-eda.Rmd` | 框架 |
-| 第 6 章 文档沟通 | `06-communication.Rmd` | 框架 |
+| 第 4 章 应用统计 | `04-applied-statistics.Rmd` | 已完成 |
+| 第 5 章 探索性数据分析 | `05-eda.Rmd` | 已完成 |
+| 第 6 章 文档沟通 | `06-communication.Rmd` | 已完成 |
 | 附录 A–G | `appendix-*.Rmd` | 框架 |

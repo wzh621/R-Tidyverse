@@ -1,0 +1,72 @@
+.remark-slide-content::before {
+  content: "R 语言编程 · 第 5 章 探索性数据分析";
+}
+
+/* 封面标题组相对整张页面水平、垂直居中。 */
+.title-slide {
+  padding: 1.05em 1.75em 1.15em;
+  text-align: center;
+}
+.title-slide h1,
+.title-slide h2,
+.title-slide h3 {
+  width: 100%;
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+.title-slide h1 { margin-top: 0; }
+
+.three-chapters {
+  grid-template-columns: repeat(3, 1fr);
+  width: 82%;
+  margin: 1.45em auto 0;
+}
+
+.textbook-figure { text-align: center; margin: .15em auto 0; }
+.textbook-figure img {
+  max-width: 94%;
+  max-height: 465px;
+  object-fit: contain;
+  background: white;
+  border: 1px solid var(--line);
+  padding: .25em;
+}
+.textbook-figure p { color: var(--muted); font-size: .55em; margin-top: .2em; }
+.textbook-figure.compact img { max-height: 390px; }
+.textbook-figure.mini-result img { max-height: 260px; }
+
+.four-methods {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .6em;
+  margin: .7em 0 1em;
+}
+.four-methods > div {
+  background: white;
+  border: 1px solid var(--line);
+  border-bottom: 6px solid var(--teal);
+  padding: .65em .4em;
+  text-align: center;
+}
+.four-methods b { display: block; color: var(--navy); }
+.four-methods span { display: block; color: var(--muted); font-size: .65em; }
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .65em;
+  margin-top: 1.2em;
+}
+.summary-grid > div {
+  background: white;
+  border: 1px solid var(--line);
+  border-bottom: 6px solid var(--teal);
+  padding: .75em .45em;
+  text-align: center;
+}
+.summary-grid b { display: block; color: var(--navy); font-size: 1.08em; }
+.summary-grid span { display: block; color: var(--muted); font-size: .62em; margin-top: .3em; }
+
+.remark-code { font-size: .59em; line-height: 1.24; }
+.remark-slide-content table { font-size: .65em; }

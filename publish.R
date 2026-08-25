@@ -24,6 +24,7 @@ local({
 })
 
 file.create(file.path(publish_dir, ".nojekyll"))
+file.copy("book/404.html", file.path(publish_dir, "404.html"), overwrite = TRUE)
 
 published_files <- list.files(publish_dir, recursive = TRUE, all.files = TRUE)
 pdf_files <- published_files[grepl("\\.pdf$", published_files, ignore.case = TRUE)]
