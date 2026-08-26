@@ -11,6 +11,24 @@ if (length(missing_ch06)) {
   stop("第 6 章缺少 R 包：", paste(missing_ch06, collapse = ", "))
 }
 library(tidyverse)
+
+# 三个链接由教材 Shiny 代码生成，并在 Shinylive 官方环境中通过
+# WebAssembly 直接运行；服务器不会执行课程代码。
+shinylive_greeting_url <- paste0(
+  "https://shinylive.io/r/app/#code=",
+  "NobwRAdghgtgpmAXGKAHVA6ASmANGAYwHsIAXOMpMAGwEsAjAJykYE8AKAZwAtaJWAlAB0IIgMQACQJqmgBXNAf2oSAbBgDMAFkBY-4GT4wKaKgZc1AsCqA4FUAw-4EZXCZziMAbtYmB8V0AIRoDvUwJgKgW+jAQAwiArrQkAHgBaCQAzan8AEwAFKABzOHYRCQlyAA9SAEkIVF9SZMhYOCE8CVLAd+jdQAqDQBC3Qw1SgVwUtLhMgHl8vILS+MY4OFI+eKaRYVEIK1t7EPDfCAJhknY+HtwJIm78jatOTloSAQkQVq3SHoASfsHhiHig0IGIKOsAFXaC04hU1NQoTjkAAMhWqgF9NcplNb5S7QeAbUqAQH+xj8JABfCZokQiHh8VgAQXQ7H8EgAvBJ-LtrHZGGTLNTrBM8GBSKxUAhkBlSGA0QBdIA",
+  "&h=0"
+)
+shinylive_clt_url <- paste0(
+  "https://shinylive.io/r/app/#code=",
+  "NobwRAdghgtgpmAXGKAHVA6ASmANGAYwHsIAXOMpMAGwEsAjAJykYE8AKAZwAtaJWAlAB0IdJiw4BzSampFSAJmEQRAYgAEgTVNACuaA-tXUA2DAGYDgLH-AWAmBx+MCcpoA3lQGBKgYD1AMSqBCK0D7RoCHlQA6mgIcjAfe1AWjlAYf1AQPNABTTALO1AMBdAIAYRAFdadQAeAFp1ADNqZIATAAUoSTh2EXV1UlpSajgiiDhqMrBAFHtALk9QyNihMAFccvVOWjy4ehYAGShWIkTSMogKitQiIaqSdQBedR7GWkluUh7+hcWhkbHGesb5xdPGuAJSAEkIVFnmvNpOUkYj7bBnGY-gRmoBxdUAAMp-HqAGLlAJ4ZULAgCmbQB+5gjAODGPh6Aj6A1unDoI0YLzecx6nFgsjgnARgHi0wBc5nZAPOJPiBeHUAEZcByAAzcrns7k4k54glwImvd49CBDGAIzyAdgtADTmjNZ-N5fJ56rVvK53zgqE2mqFtwq+OGYuJkrA9D41LZPUAhuaAI30WX8BdquQBWQW49TGxYwKB8K5NWTyADysxJzTDh16ygqymUIk4YoAbmK0pksokII9aCR2HwSVyZqQSQJ1CABgANC5Z9SMOBQfMZ9jV4XqDSANeVAOn69KZgCo5HzuDxKxkJTsLDLqYuzAAk5JglOpnZgDbnpHn0tospUnY0gEhjQAUroB2I0AkAmAS6NACFuzkA+K6ABCN1OuAOvqBaD+k+Se3AAenAbTgAHdqgIbgbhNTd50+b5GGOE1-ghHpDUYXNaCydh1wAKnfLkNXZf1bhheEwBQm0ICIGBMPUHCIDVPCTEIxYehRZCtkYZYvmo2ivSYioegxNjGzgX9UG43COQTRZkwPdRAHnrd91E-BlGUAIRtQUAHgVABh-3tAAYlZ8lKVTSf0WPIoFIKAMCyZh4HYX8UKIICAFlm2lTDzN2X87M4Lk8yIahDQgbEpIAXxkioyxJedYwbJsIEJAo5DmDtbmkWN2DrFh2D6dQoCpOzsXUABqX0KhKSiAH1eG+IhJBsiCEKgahUG4KBDW5DAFC5ciAK2KCevghDsloagAq2MlyEaehcjgYF-KIRhDR6aaWwAax6Uq-QGMKRBCkQU14fgAEF0HYZJDWSXV00zLZU0YDNGGUPAwFIVhUAQZByF-UgwBCgBdIA",
+  "&h=0"
+)
+shinylive_dashboard_url <- paste0(
+  "https://shinylive.io/r/app/#code=",
+  paste(readLines("../apps/ch06-dashboard/shinylive-code.txt"), collapse = ""),
+  "&h=0"
+)
 ```
 
 ## R Markdown
@@ -650,8 +668,21 @@ server <- function(input, output, session) {
 shiny::shinyApp(ui = ui, server = server)
 ```
 
-```{r ch06-shiny-greeting-figure, echo=FALSE, fig.cap="教材图 6.34：简单姓名交互应用。", out.width="76%"}
-knitr::include_graphics("assets/textbook/ch06/tx26360.png")
+HTML 讲义中的应用由浏览器直接运行；PDF 讲义仍使用教材截图。
+
+```{r ch06-shiny-greeting-figure, echo=FALSE, results='asis', fig.cap="教材图 6.34：简单姓名交互应用。", out.width="76%"}
+if (knitr::is_html_output()) {
+  knitr::asis_output(paste0(
+    '<figure class="interactive-example">',
+    '<iframe class="shinylive-frame greeting-frame" ',
+    'src="', gsub("&", "&amp;", shinylive_greeting_url, fixed = TRUE), '" ',
+    'title="教材图 6.34：简单姓名交互应用" loading="lazy" credentialless></iframe>',
+    '<figcaption>教材图 6.34：简单姓名交互应用（可直接输入姓名）。</figcaption>',
+    '</figure>'
+  ))
+} else {
+  knitr::include_graphics("assets/textbook/ch06/tx26360.png")
+}
 ```
 
 ### 响应表达式
@@ -708,8 +739,21 @@ server <- function(input, output) {
 shiny::shinyApp(ui = ui, server = server)
 ```
 
-```{r ch06-shiny-clt-figure, echo=FALSE, fig.cap="教材图 6.36：中心极限定理 Shiny 应用。", out.width="88%"}
-knitr::include_graphics("assets/textbook/ch06/tx26634.png")
+HTML 讲义中可以改变分布、随机变量数、模拟样本量和条形数；PDF 讲义仍使用教材截图。
+
+```{r ch06-shiny-clt-figure, echo=FALSE, results='asis', fig.cap="教材图 6.36：中心极限定理 Shiny 应用。", out.width="88%"}
+if (knitr::is_html_output()) {
+  knitr::asis_output(paste0(
+    '<figure class="interactive-example">',
+    '<iframe class="shinylive-frame clt-frame" ',
+    'src="', gsub("&", "&amp;", shinylive_clt_url, fixed = TRUE), '" ',
+    'title="教材图 6.36：中心极限定理 Shiny 应用" loading="lazy" credentialless></iframe>',
+    '<figcaption>教材图 6.36：中心极限定理 Shiny 应用（可调整参数）。</figcaption>',
+    '</figure>'
+  ))
+} else {
+  knitr::include_graphics("assets/textbook/ch06/tx26634.png")
+}
 ```
 
 ### 案例：探索性数据展板
@@ -761,10 +805,24 @@ server <- function(input, output) {
 shiny::shinyApp(ui = ui, server = server)
 ```
 
-```{r ch06-shiny-dashboard-figures, echo=FALSE, fig.cap="教材图 6.37—6.38：数据展板的图形页与数据表页。", out.width="96%"}
-knitr::include_graphics(c(
-  "assets/textbook/ch06/tx26642.png", "assets/textbook/ch06/tx26649.png"
-))
+HTML 讲义中的展板可以选择地区、缩放和悬停查看 Plotly 图形，也可以切换到数据表进行搜索、排序和导出；PDF 讲义仍使用教材截图。
+
+```{r ch06-shiny-dashboard-figures, echo=FALSE, results='asis', fig.cap="教材图 6.37—6.38：数据展板的图形页与数据表页。", out.width="96%"}
+if (knitr::is_html_output()) {
+  knitr::asis_output(paste0(
+    '<figure class="interactive-example">',
+    '<iframe class="shinylive-frame dashboard-frame" ',
+    'src="', gsub("&", "&amp;", shinylive_dashboard_url, fixed = TRUE), '" ',
+    'title="教材图 6.37—6.38：交互探索 ecostats 数据" ',
+    'loading="lazy" credentialless></iframe>',
+    '<figcaption>教材图 6.37—6.38：交互探索 ecostats 数据（可选择地区并切换图形与数据表）。</figcaption>',
+    '</figure>'
+  ))
+} else {
+  knitr::include_graphics(c(
+    "assets/textbook/ch06/tx26642.png", "assets/textbook/ch06/tx26649.png"
+  ))
+}
 ```
 
 ## 开发 R 包

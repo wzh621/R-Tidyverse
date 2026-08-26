@@ -41,3 +41,27 @@ code { color: #a63355; }
   .author-profile { grid-template-columns: 1fr; }
   .author-photo img { height: 320px; }
 }
+/* 第 6 章：HTML 中嵌入的浏览器端 Shiny 示例。 */
+.interactive-example {
+  margin: 1.4rem auto 2rem;
+  text-align: center;
+}
+
+.shinylive-frame {
+  display: block;
+  width: 100%;
+  border: 1px solid #c9dedb;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(23, 50, 77, 0.08);
+}
+
+.greeting-frame { height: 360px; }
+.clt-frame { height: 720px; }
+.dashboard-frame { height: 760px; }
+
+.interactive-example figcaption {
+  margin-top: 0.65rem;
+  color: #526779;
+  font-size: 0.92rem;
+}

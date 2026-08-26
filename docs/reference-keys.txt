@@ -115,11 +115,7 @@ fig:ch06-git-workflow-1
 fig:ch06-git-workflow-2
 fig:ch06-shiny-create
 fig:ch06-shiny-controls-figure
-fig:ch06-shiny-greeting-figure
 fig:ch06-shiny-reactive-diagram
-fig:ch06-shiny-clt-figure
-fig:ch06-shiny-dashboard-figures-1
-fig:ch06-shiny-dashboard-figures-2
 fig:ch06-package-files
 fig:ch06-function-help
 fig:ch06-cran-figures-1
