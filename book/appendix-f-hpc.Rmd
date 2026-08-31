@@ -6,18 +6,19 @@ R 代码具有较高的开发效率，但在计算密集型任务或超大数据
 
 `future` 为 R 提供统一的并行与分布式计算接口。
 
-```{r appendix-f-future, eval=FALSE}
+```{r appendix-f-future}
 library(future)
 
 # 查看当前环境可用的处理核心数
 availableCores()
 
-# 启用多会话并行；workers 可指定工作进程数
-plan(multisession)
+# 启用多会话并行；这里使用 2 个工作进程，避免占满课堂电脑
+plan(multisession, workers = 2)
 
 # 把需要并行执行的表达式放入 future()
+# 这里以计算 iris 花萼长度均值为例
 f <- future({
-  # 此处放置耗时计算
+  mean(iris$Sepal.Length)
 })
 
 # 等待并取得并行计算结果
@@ -29,12 +30,12 @@ plan(sequential)
 
 `furrr` 为 `purrr` 的映射函数提供并行版本，只需给函数名增加 `future_` 前缀。
 
-```{r appendix-f-furrr, eval=FALSE}
+```{r appendix-f-furrr}
 library(furrr)
 library(purrr)
 
-# 启用 6 个工作进程
-plan(multisession, workers = 6)
+# 启用 2 个工作进程
+plan(multisession, workers = 2)
 
 # 并行计算 iris 前四列的均值
 future_map_dbl(iris[1:4], mean)
@@ -62,7 +63,7 @@ int add(int x, int y) {
 add(1, 2)
 ```
 
-也可以把以下代码保存为 `test.cpp`，再使用 `sourceCpp("test.cpp")` 编译运行：
+也可以把以下代码保存为 `code/appendix-f-mean.cpp`，再用 `sourceCpp()` 编译运行：
 
 ```cpp
 #include <Rcpp.h>
@@ -79,25 +80,55 @@ double meanC(NumericVector x) {
 }
 
 /*** R
-# 比较 R 内置 mean() 与 C++ 函数 meanC() 的速度
+# 固定随机种子，使两种均值函数处理完全相同的数据
+set.seed(123)
 x <- runif(1e5)
-bench::mark(mean(x), meanC(x))
+
+# 先核对两种函数的计算结果
+mean(x)
+meanC(x)
+
+# 比较运行速度，并检查两种表达式的结果是否一致
+bench::mark(mean(x), meanC(x), check = TRUE)[, 1:6]
 */
 ```
+
+```{r appendix-f-rcpp-file-run}
+# 编译并运行上面的 C++ 文件
+# 文件中的 /*** R 区块会在编译完成后自动执行
+Rcpp::sourceCpp("code/appendix-f-mean.cpp")
+```
+
+两种均值函数应给出完全相同的数值。基准测试中的具体时间取决于电脑，但 `meanC()` 在本次测试中运行更快。
 
 ## 处理超出内存容量的数据集
 
 若数据仍可放入内存，教材建议优先使用 `data.table`。当数据超出内存但未超过硬盘容量时，`disk.frame` 可以把数据分块存储到硬盘，并使用类似 `dplyr` 的语法操作。
 
-```{r appendix-f-diskframe, eval=FALSE}
+::: {.rmdnote}
+`disk.frame` 已从 CRAN 主仓库归档，并在启动信息中标记为 soft-deprecated。下面仍保留并实跑教材示例；当前环境使用的是经过 R 4.6 兼容处理的归档版 0.8.3，分块、筛选与收集逻辑均保持不变。
+:::
+
+```{r appendix-f-diskframe}
 library(disk.frame)
 
-# 启用 disk.frame 的并行设置
-setup_disk.frame()
+# 启用 2 个工作进程，并允许进程之间传递较大的对象
+setup_disk.frame(workers = 2)
 options(future.globals.maxSize = Inf)
 
-# 把内存数据框转换为硬盘分块对象
-flights <- as.disk.frame(nycflights13::flights)
+# 把教材使用的航班数据转换为硬盘分块对象
+flights <- as.disk.frame(
+  nycflights13::flights,
+  outdir = tempfile(fileext = ".df"),
+  overwrite = TRUE
+)
+
+# 输出分块数、行数和列数，确认硬盘数据集创建成功
+tibble::tibble(
+  数据块数 = nchunks(flights),
+  行数 = nrow(flights),
+  列数 = ncol(flights)
+)
 ```
 
 ```{r appendix-f-diskframe-image, echo=FALSE, fig.cap="disk.frame 分割后的数据集", out.width="84%"}
@@ -106,8 +137,8 @@ knitr::include_graphics("assets/textbook/appendices/tx28809.png")
 
 `disk.frame` 使用懒惰计算，调用 `collect()` 后才真正执行并把结果取回内存。
 
-```{r appendix-f-diskframe-query, eval=FALSE}
-flights |>
+```{r appendix-f-diskframe-query}
+flight_result <- flights |>
   # 筛选指定日期与航空公司
   filter(
     month == 5,
@@ -123,6 +154,13 @@ flights |>
   # 排序应放在 collect() 之后
   arrange(carrier) |>
   head()
+
+# 显示教材中的前 6 行结果
+flight_result
+
+# 删除本示例产生的临时硬盘数据，并恢复顺序执行
+invisible(disk.frame::delete(flights))
+future::plan(future::sequential)
 ```
 
 真正的多机分布式计算，可以使用 `sparklyr` 连接 Apache Spark。
@@ -135,8 +173,15 @@ flights |>
 knitr::include_graphics("assets/textbook/appendices/tx28817.png")
 ```
 
-```{r appendix-f-bigstatsr, eval=FALSE}
+```{r appendix-f-bigstatsr}
 library(bigstatsr)
+
+# 固定随机种子，使列和结果可以重复得到
+set.seed(123)
+
+# 创建教材使用的临时目录，并清理可能残留的旧后端文件
+dir.create("temp", showWarnings = FALSE)
+unlink(c("temp/test.bk", "temp/test.rds"))
 
 # 创建 10000 × 1000 的文件后端大矩阵
 X <- FBM(
@@ -154,13 +199,19 @@ typeof(X)
 # 每 500 列为一块，使用 2 个核心计算各列之和
 sums <- big_apply(
   X,
-  a.FUN = function(X, ind) colSums(X[, ind]),
+  a.FUN = function(X, ind) {
+    colSums(X[, ind])
+  },
   a.combine = "c",
   block.size = 500,
   ncores = 2
 )
 
+# 显示前 5 列的列和
 sums[1:5]
+
+# 删除示例产生的 80 MB 后端文件，避免污染课程项目
+unlink(c(X$backingfile, sub("\\.bk$", ".rds", X$backingfile)))
 ```
 
 `bigstatsr` 还提供大规模回归、SVD、矩阵乘法、转置、读写和列统计等函数。
