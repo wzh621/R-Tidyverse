@@ -1,3 +1,119 @@
 # 非等连接与滚动连接 {#appendix-non-equi}
 
-本章框架对应教材附录 D。
+等值连接要求连接键完全相等；非等连接只要求行满足指定条件。滚动连接则常用于按时间寻找最近一次发生在之前或之后的事件。本附录按照教材案例使用 `data.table` 语法演示这两类连接。
+
+## 非等连接
+
+教材使用房源、租客和已成交租赁三张表：
+
+```{r appendix-d-read-data, eval=FALSE}
+library(data.table)
+
+# 读取房源、租客和已成交租赁数据
+Houses <- fread("data/House.csv")
+Renters <- fread("data/Renters.csv")
+Deals <- fread("data/Deals.csv")
+
+Houses
+Renters
+Deals
+```
+
+### 找出可以合租的人
+
+这个问题是 `Renters` 表的自连接：先按首选区域等值匹配，再以 `id < id` 避免同一组合重复出现。
+
+```{r appendix-d-roommates, eval=FALSE}
+Renters[
+  Renters,
+  # preferred 相等，同时只保留左侧 id 小于右侧 id 的组合
+  on = .(preferred, id < id)
+][
+  # 保留两位租客姓名及其共同首选区域
+  , .(name, preferred, i.name)
+] |>
+  na.omit()
+```
+
+### 找出满足租客要求的可用房源
+
+一个房源需要同时满足：位于首选区域、租金在接受范围内、卧室数量足够，并且尚未成交。
+
+```{r appendix-d-house-match, eval=FALSE}
+# 先排除已经出租的房源，再与租客需求进行非等连接
+Houses[!id %in% Deals$house_id][
+  Renters,
+  on = .(
+    district == preferred,      # 地区必须相同
+    rent >= min_rent,           # 租金不低于租客下限
+    rent <= max_rent,           # 租金不高于租客上限
+    bedrooms >= min_bedrooms    # 卧室数满足最低需求
+  )
+][
+  , -(5:6)                      # 删除连接后不需要的中间列
+] |>
+  na.omit()
+```
+
+## 滚动连接
+
+滚动连接的基本形式如下：
+
+```{r appendix-d-roll-syntax, eval=FALSE}
+# roll = TRUE：匹配同一 id 下不晚于目标日期的最近一条记录
+x[y, on = .(id, date), roll = TRUE]
+
+# roll = -Inf：匹配同一 id 下不早于目标日期的最近一条记录
+x[y, on = .(id, date), roll = -Inf]
+```
+
+教材用网页会话与支付数据演示时间上的事件匹配。
+
+```{r appendix-d-roll-data, eval=FALSE}
+# 读取网页会话与支付记录
+website <- fread("data/website.csv")
+paypal <- fread("data/paypal.csv")
+
+# 为每个不同的用户—时间组合创建编号，便于观察连接结果
+website[, session_id := .GRP, by = .(name, session_time)]
+paypal[, payment_id := .GRP, by = .(name, purchase_time)]
+
+# 复制一列作为统一的滚动连接时间键
+website[, join_time := session_time]
+paypal[, join_time := purchase_time]
+
+# 两张表都按姓名和连接时间建立键
+setkey(website, name, join_time)
+setkey(paypal, name, join_time)
+```
+
+### 前滚连接：支付前最近的网页会话
+
+```{r appendix-d-forward-roll, eval=FALSE}
+# 对每次支付，寻找同一用户在支付之前最近的一次会话
+website[paypal, roll = TRUE] |>
+  na.omit()
+```
+
+### 后滚连接：网页会话后的最近支付
+
+```{r appendix-d-backward-roll, eval=FALSE}
+# 对每次网页会话，寻找同一用户在会话之后最近的一次支付
+paypal[website, roll = -Inf] |>
+  na.omit()
+```
+
+### 滚动窗口连接
+
+还可以限制允许滚动的最长时间，只匹配网页会话后指定窗口内发生的支付。
+
+```{r appendix-d-window-roll, eval=FALSE}
+# 教材代码将滚动窗口换算为秒
+twelve_hours <- 60 * 60 * 20
+
+# 仅在给定时间窗口内向后寻找支付记录
+paypal[website, roll = -twelve_hours] |>
+  na.omit()
+```
+
+`rollends` 参数是长度为 2 的逻辑向量，可控制是否对每组首个值之前、末个值之后的记录继续滚动。

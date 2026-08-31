@@ -406,13 +406,86 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>附录</b></span></li>
-<li class="chapter" data-level="A" data-path="appendix-r6.html"><a href="appendix-r6.html"><i class="fa fa-check"></i><b>A</b> R6 类面向对象编程简单实例</a></li>
-<li class="chapter" data-level="B" data-path="appendix-debugging.html"><a href="appendix-debugging.html"><i class="fa fa-check"></i><b>B</b> 错误与调试</a></li>
-<li class="chapter" data-level="C" data-path="appendix-excel.html"><a href="appendix-excel.html"><i class="fa fa-check"></i><b>C</b> 用 R 实现 Excel 中的 VLOOKUP 与透视表</a></li>
-<li class="chapter" data-level="D" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html"><i class="fa fa-check"></i><b>D</b> 非等连接与滚动连接</a></li>
-<li class="chapter" data-level="E" data-path="appendix-web.html"><a href="appendix-web.html"><i class="fa fa-check"></i><b>E</b> R 与网络爬虫</a></li>
-<li class="chapter" data-level="F" data-path="appendix-hpc.html"><a href="appendix-hpc.html"><i class="fa fa-check"></i><b>F</b> R 与高性能计算</a></li>
-<li class="chapter" data-level="G" data-path="appendix-ml.html"><a href="appendix-ml.html"><i class="fa fa-check"></i><b>G</b> R 机器学习框架</a></li>
+<li class="chapter" data-level="A" data-path="appendix-r6.html"><a href="appendix-r6.html"><i class="fa fa-check"></i><b>A</b> R6 类面向对象编程简单实例</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="appendix-r6.html"><a href="appendix-r6.html#定义银行账户类"><i class="fa fa-check"></i><b>A.1</b> 定义银行账户类</a></li>
+<li class="chapter" data-level="A.2" data-path="appendix-r6.html"><a href="appendix-r6.html#创建并使用对象"><i class="fa fa-check"></i><b>A.2</b> 创建并使用对象</a></li>
+<li class="chapter" data-level="A.3" data-path="appendix-r6.html"><a href="appendix-r6.html#继承可透支银行账户"><i class="fa fa-check"></i><b>A.3</b> 继承：可透支银行账户</a></li>
+<li class="chapter" data-level="A.4" data-path="appendix-r6.html"><a href="appendix-r6.html#拓展学习"><i class="fa fa-check"></i><b>A.4</b> 拓展学习</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="appendix-debugging.html"><a href="appendix-debugging.html"><i class="fa fa-check"></i><b>B</b> 错误与调试</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="appendix-debugging.html"><a href="appendix-debugging.html#解决报错的一般策略"><i class="fa fa-check"></i><b>B.1</b> 解决报错的一般策略</a></li>
+<li class="chapter" data-level="B.2" data-path="appendix-debugging.html"><a href="appendix-debugging.html#错误调试技术"><i class="fa fa-check"></i><b>B.2</b> 错误调试技术</a>
+<ul>
+<li class="chapter" data-level="B.2.1" data-path="appendix-debugging.html"><a href="appendix-debugging.html#设置断点"><i class="fa fa-check"></i><b>B.2.1</b> 设置断点</a></li>
+<li class="chapter" data-level="B.2.2" data-path="appendix-debugging.html"><a href="appendix-debugging.html#使用-traceback-查看调用栈"><i class="fa fa-check"></i><b>B.2.2</b> 使用 <code>traceback()</code> 查看调用栈</a></li>
+<li class="chapter" data-level="B.2.3" data-path="appendix-debugging.html"><a href="appendix-debugging.html#使用-browser-在指定位置暂停"><i class="fa fa-check"></i><b>B.2.3</b> 使用 <code>browser()</code> 在指定位置暂停</a></li>
+<li class="chapter" data-level="B.2.4" data-path="appendix-debugging.html"><a href="appendix-debugging.html#使用-debug-进入函数内部"><i class="fa fa-check"></i><b>B.2.4</b> 使用 <code>debug()</code> 进入函数内部</a></li>
+</ul></li>
+<li class="chapter" data-level="B.3" data-path="appendix-debugging.html"><a href="appendix-debugging.html#异常处理"><i class="fa fa-check"></i><b>B.3</b> 异常处理</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="appendix-debugging.html"><a href="appendix-debugging.html#使用-trycatch-捕获异常"><i class="fa fa-check"></i><b>B.3.1</b> 使用 <code>tryCatch()</code> 捕获异常</a></li>
+<li class="chapter" data-level="B.3.2" data-path="appendix-debugging.html"><a href="appendix-debugging.html#使用-rlang-构造带类别的错误"><i class="fa fa-check"></i><b>B.3.2</b> 使用 <code>rlang</code> 构造带类别的错误</a></li>
+<li class="chapter" data-level="B.3.3" data-path="appendix-debugging.html"><a href="appendix-debugging.html#在-purrr-迭代中处理错误"><i class="fa fa-check"></i><b>B.3.3</b> 在 <code>purrr</code> 迭代中处理错误</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="appendix-excel.html"><a href="appendix-excel.html"><i class="fa fa-check"></i><b>C</b> 用 R 实现 Excel 中的 VLOOKUP 与透视表</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="appendix-excel.html"><a href="appendix-excel.html#vlookup-查询"><i class="fa fa-check"></i><b>C.1</b> VLOOKUP 查询</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="appendix-excel.html"><a href="appendix-excel.html#单条件与多条件查询"><i class="fa fa-check"></i><b>C.1.1</b> 单条件与多条件查询</a></li>
+<li class="chapter" data-level="C.1.2" data-path="appendix-excel.html"><a href="appendix-excel.html#反向查询文本匹配与区间划分"><i class="fa fa-check"></i><b>C.1.2</b> 反向查询、文本匹配与区间划分</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="appendix-excel.html"><a href="appendix-excel.html#数据透视表"><i class="fa fa-check"></i><b>C.2</b> 数据透视表</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="appendix-excel.html"><a href="appendix-excel.html#方法一分组汇总后转为宽表"><i class="fa fa-check"></i><b>C.2.1</b> 方法一：分组汇总后转为宽表</a></li>
+<li class="chapter" data-level="C.2.2" data-path="appendix-excel.html"><a href="appendix-excel.html#方法二tidyquantpivot_table"><i class="fa fa-check"></i><b>C.2.2</b> 方法二：<code>tidyquant::pivot_table()</code></a></li>
+<li class="chapter" data-level="C.2.3" data-path="appendix-excel.html"><a href="appendix-excel.html#方法三pivottabler-包"><i class="fa fa-check"></i><b>C.2.3</b> 方法三：<code>pivottabler</code> 包</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html"><i class="fa fa-check"></i><b>D</b> 非等连接与滚动连接</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#非等连接"><i class="fa fa-check"></i><b>D.1</b> 非等连接</a>
+<ul>
+<li class="chapter" data-level="D.1.1" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#找出可以合租的人"><i class="fa fa-check"></i><b>D.1.1</b> 找出可以合租的人</a></li>
+<li class="chapter" data-level="D.1.2" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#找出满足租客要求的可用房源"><i class="fa fa-check"></i><b>D.1.2</b> 找出满足租客要求的可用房源</a></li>
+</ul></li>
+<li class="chapter" data-level="D.2" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#滚动连接"><i class="fa fa-check"></i><b>D.2</b> 滚动连接</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#前滚连接支付前最近的网页会话"><i class="fa fa-check"></i><b>D.2.1</b> 前滚连接：支付前最近的网页会话</a></li>
+<li class="chapter" data-level="D.2.2" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#后滚连接网页会话后的最近支付"><i class="fa fa-check"></i><b>D.2.2</b> 后滚连接：网页会话后的最近支付</a></li>
+<li class="chapter" data-level="D.2.3" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#滚动窗口连接"><i class="fa fa-check"></i><b>D.2.3</b> 滚动窗口连接</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="appendix-web.html"><a href="appendix-web.html"><i class="fa fa-check"></i><b>E</b> R 与网络爬虫</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="appendix-web.html"><a href="appendix-web.html#rvest-爬取静态网页"><i class="fa fa-check"></i><b>E.1</b> <code>rvest</code> 爬取静态网页</a>
+<ul>
+<li class="chapter" data-level="E.1.1" data-path="appendix-web.html"><a href="appendix-web.html#批量下载并解析网页"><i class="fa fa-check"></i><b>E.1.1</b> 批量下载并解析网页</a></li>
+<li class="chapter" data-level="E.1.2" data-path="appendix-web.html"><a href="appendix-web.html#定位并提取网页元素"><i class="fa fa-check"></i><b>E.1.2</b> 定位并提取网页元素</a></li>
+<li class="chapter" data-level="E.1.3" data-path="appendix-web.html"><a href="appendix-web.html#清洗并保存结果"><i class="fa fa-check"></i><b>E.1.3</b> 清洗并保存结果</a></li>
+</ul></li>
+<li class="chapter" data-level="E.2" data-path="appendix-web.html"><a href="appendix-web.html#用-httr-爬取动态网页"><i class="fa fa-check"></i><b>E.2</b> 用 <code>httr</code> 爬取动态网页</a>
+<ul>
+<li class="chapter" data-level="E.2.1" data-path="appendix-web.html"><a href="appendix-web.html#找到数据请求"><i class="fa fa-check"></i><b>E.2.1</b> 找到数据请求</a></li>
+<li class="chapter" data-level="E.2.2" data-path="appendix-web.html"><a href="appendix-web.html#构造并发送-post-请求"><i class="fa fa-check"></i><b>E.2.2</b> 构造并发送 POST 请求</a></li>
+<li class="chapter" data-level="E.2.3" data-path="appendix-web.html"><a href="appendix-web.html#解析返回结果"><i class="fa fa-check"></i><b>E.2.3</b> 解析返回结果</a></li>
+<li class="chapter" data-level="E.2.4" data-path="appendix-web.html"><a href="appendix-web.html#批量处理所有页面"><i class="fa fa-check"></i><b>E.2.4</b> 批量处理所有页面</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="appendix-hpc.html"><a href="appendix-hpc.html"><i class="fa fa-check"></i><b>F</b> R 与高性能计算</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="appendix-hpc.html"><a href="appendix-hpc.html#并行计算"><i class="fa fa-check"></i><b>F.1</b> 并行计算</a></li>
+<li class="chapter" data-level="F.2" data-path="appendix-hpc.html"><a href="appendix-hpc.html#运行-c-代码"><i class="fa fa-check"></i><b>F.2</b> 运行 C++ 代码</a></li>
+<li class="chapter" data-level="F.3" data-path="appendix-hpc.html"><a href="appendix-hpc.html#处理超出内存容量的数据集"><i class="fa fa-check"></i><b>F.3</b> 处理超出内存容量的数据集</a></li>
+<li class="chapter" data-level="F.4" data-path="appendix-hpc.html"><a href="appendix-hpc.html#大型矩阵运算"><i class="fa fa-check"></i><b>F.4</b> 大型矩阵运算</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="appendix-ml.html"><a href="appendix-ml.html"><i class="fa fa-check"></i><b>G</b> R 机器学习框架</a>
+<ul>
+<li class="chapter" data-level="G.1" data-path="appendix-ml.html"><a href="appendix-ml.html#mlr3verse"><i class="fa fa-check"></i><b>G.1</b> <code>mlr3verse</code></a></li>
+<li class="chapter" data-level="G.2" data-path="appendix-ml.html"><a href="appendix-ml.html#tidymodels"><i class="fa fa-check"></i><b>G.2</b> <code>tidymodels</code></a></li>
+</ul></li>
 <li class="divider"></li>
 <li class="course-meta">王芝皓 · 统计与数据科学学院</li>
 
@@ -547,7 +620,7 @@ Figure 6.13: 教材图 6.12—6.13：新建 R Markdown 与默认模板。
 <div class="sourceCode" id="cb276"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb276-1"><a href="communication.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb276-2"><a href="communication.html#cb276-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;R Markdown 示例&quot;</span></span>
 <span id="cb276-3"><a href="communication.html#cb276-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;王芝皓&quot;</span></span>
-<span id="cb276-4"><a href="communication.html#cb276-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;2026-08-26&quot;</span></span>
+<span id="cb276-4"><a href="communication.html#cb276-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;2026-09-01&quot;</span></span>
 <span id="cb276-5"><a href="communication.html#cb276-5" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
 <span id="cb276-6"><a href="communication.html#cb276-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
 <span id="cb276-7"><a href="communication.html#cb276-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>

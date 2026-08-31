@@ -406,13 +406,86 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>附录</b></span></li>
-<li class="chapter" data-level="A" data-path="appendix-r6.html"><a href="appendix-r6.html"><i class="fa fa-check"></i><b>A</b> R6 类面向对象编程简单实例</a></li>
-<li class="chapter" data-level="B" data-path="appendix-debugging.html"><a href="appendix-debugging.html"><i class="fa fa-check"></i><b>B</b> 错误与调试</a></li>
-<li class="chapter" data-level="C" data-path="appendix-excel.html"><a href="appendix-excel.html"><i class="fa fa-check"></i><b>C</b> 用 R 实现 Excel 中的 VLOOKUP 与透视表</a></li>
-<li class="chapter" data-level="D" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html"><i class="fa fa-check"></i><b>D</b> 非等连接与滚动连接</a></li>
-<li class="chapter" data-level="E" data-path="appendix-web.html"><a href="appendix-web.html"><i class="fa fa-check"></i><b>E</b> R 与网络爬虫</a></li>
-<li class="chapter" data-level="F" data-path="appendix-hpc.html"><a href="appendix-hpc.html"><i class="fa fa-check"></i><b>F</b> R 与高性能计算</a></li>
-<li class="chapter" data-level="G" data-path="appendix-ml.html"><a href="appendix-ml.html"><i class="fa fa-check"></i><b>G</b> R 机器学习框架</a></li>
+<li class="chapter" data-level="A" data-path="appendix-r6.html"><a href="appendix-r6.html"><i class="fa fa-check"></i><b>A</b> R6 类面向对象编程简单实例</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="appendix-r6.html"><a href="appendix-r6.html#定义银行账户类"><i class="fa fa-check"></i><b>A.1</b> 定义银行账户类</a></li>
+<li class="chapter" data-level="A.2" data-path="appendix-r6.html"><a href="appendix-r6.html#创建并使用对象"><i class="fa fa-check"></i><b>A.2</b> 创建并使用对象</a></li>
+<li class="chapter" data-level="A.3" data-path="appendix-r6.html"><a href="appendix-r6.html#继承可透支银行账户"><i class="fa fa-check"></i><b>A.3</b> 继承：可透支银行账户</a></li>
+<li class="chapter" data-level="A.4" data-path="appendix-r6.html"><a href="appendix-r6.html#拓展学习"><i class="fa fa-check"></i><b>A.4</b> 拓展学习</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="appendix-debugging.html"><a href="appendix-debugging.html"><i class="fa fa-check"></i><b>B</b> 错误与调试</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="appendix-debugging.html"><a href="appendix-debugging.html#解决报错的一般策略"><i class="fa fa-check"></i><b>B.1</b> 解决报错的一般策略</a></li>
+<li class="chapter" data-level="B.2" data-path="appendix-debugging.html"><a href="appendix-debugging.html#错误调试技术"><i class="fa fa-check"></i><b>B.2</b> 错误调试技术</a>
+<ul>
+<li class="chapter" data-level="B.2.1" data-path="appendix-debugging.html"><a href="appendix-debugging.html#设置断点"><i class="fa fa-check"></i><b>B.2.1</b> 设置断点</a></li>
+<li class="chapter" data-level="B.2.2" data-path="appendix-debugging.html"><a href="appendix-debugging.html#使用-traceback-查看调用栈"><i class="fa fa-check"></i><b>B.2.2</b> 使用 <code>traceback()</code> 查看调用栈</a></li>
+<li class="chapter" data-level="B.2.3" data-path="appendix-debugging.html"><a href="appendix-debugging.html#使用-browser-在指定位置暂停"><i class="fa fa-check"></i><b>B.2.3</b> 使用 <code>browser()</code> 在指定位置暂停</a></li>
+<li class="chapter" data-level="B.2.4" data-path="appendix-debugging.html"><a href="appendix-debugging.html#使用-debug-进入函数内部"><i class="fa fa-check"></i><b>B.2.4</b> 使用 <code>debug()</code> 进入函数内部</a></li>
+</ul></li>
+<li class="chapter" data-level="B.3" data-path="appendix-debugging.html"><a href="appendix-debugging.html#异常处理"><i class="fa fa-check"></i><b>B.3</b> 异常处理</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="appendix-debugging.html"><a href="appendix-debugging.html#使用-trycatch-捕获异常"><i class="fa fa-check"></i><b>B.3.1</b> 使用 <code>tryCatch()</code> 捕获异常</a></li>
+<li class="chapter" data-level="B.3.2" data-path="appendix-debugging.html"><a href="appendix-debugging.html#使用-rlang-构造带类别的错误"><i class="fa fa-check"></i><b>B.3.2</b> 使用 <code>rlang</code> 构造带类别的错误</a></li>
+<li class="chapter" data-level="B.3.3" data-path="appendix-debugging.html"><a href="appendix-debugging.html#在-purrr-迭代中处理错误"><i class="fa fa-check"></i><b>B.3.3</b> 在 <code>purrr</code> 迭代中处理错误</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="appendix-excel.html"><a href="appendix-excel.html"><i class="fa fa-check"></i><b>C</b> 用 R 实现 Excel 中的 VLOOKUP 与透视表</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="appendix-excel.html"><a href="appendix-excel.html#vlookup-查询"><i class="fa fa-check"></i><b>C.1</b> VLOOKUP 查询</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="appendix-excel.html"><a href="appendix-excel.html#单条件与多条件查询"><i class="fa fa-check"></i><b>C.1.1</b> 单条件与多条件查询</a></li>
+<li class="chapter" data-level="C.1.2" data-path="appendix-excel.html"><a href="appendix-excel.html#反向查询文本匹配与区间划分"><i class="fa fa-check"></i><b>C.1.2</b> 反向查询、文本匹配与区间划分</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="appendix-excel.html"><a href="appendix-excel.html#数据透视表"><i class="fa fa-check"></i><b>C.2</b> 数据透视表</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="appendix-excel.html"><a href="appendix-excel.html#方法一分组汇总后转为宽表"><i class="fa fa-check"></i><b>C.2.1</b> 方法一：分组汇总后转为宽表</a></li>
+<li class="chapter" data-level="C.2.2" data-path="appendix-excel.html"><a href="appendix-excel.html#方法二tidyquantpivot_table"><i class="fa fa-check"></i><b>C.2.2</b> 方法二：<code>tidyquant::pivot_table()</code></a></li>
+<li class="chapter" data-level="C.2.3" data-path="appendix-excel.html"><a href="appendix-excel.html#方法三pivottabler-包"><i class="fa fa-check"></i><b>C.2.3</b> 方法三：<code>pivottabler</code> 包</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html"><i class="fa fa-check"></i><b>D</b> 非等连接与滚动连接</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#非等连接"><i class="fa fa-check"></i><b>D.1</b> 非等连接</a>
+<ul>
+<li class="chapter" data-level="D.1.1" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#找出可以合租的人"><i class="fa fa-check"></i><b>D.1.1</b> 找出可以合租的人</a></li>
+<li class="chapter" data-level="D.1.2" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#找出满足租客要求的可用房源"><i class="fa fa-check"></i><b>D.1.2</b> 找出满足租客要求的可用房源</a></li>
+</ul></li>
+<li class="chapter" data-level="D.2" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#滚动连接"><i class="fa fa-check"></i><b>D.2</b> 滚动连接</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#前滚连接支付前最近的网页会话"><i class="fa fa-check"></i><b>D.2.1</b> 前滚连接：支付前最近的网页会话</a></li>
+<li class="chapter" data-level="D.2.2" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#后滚连接网页会话后的最近支付"><i class="fa fa-check"></i><b>D.2.2</b> 后滚连接：网页会话后的最近支付</a></li>
+<li class="chapter" data-level="D.2.3" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#滚动窗口连接"><i class="fa fa-check"></i><b>D.2.3</b> 滚动窗口连接</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="appendix-web.html"><a href="appendix-web.html"><i class="fa fa-check"></i><b>E</b> R 与网络爬虫</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="appendix-web.html"><a href="appendix-web.html#rvest-爬取静态网页"><i class="fa fa-check"></i><b>E.1</b> <code>rvest</code> 爬取静态网页</a>
+<ul>
+<li class="chapter" data-level="E.1.1" data-path="appendix-web.html"><a href="appendix-web.html#批量下载并解析网页"><i class="fa fa-check"></i><b>E.1.1</b> 批量下载并解析网页</a></li>
+<li class="chapter" data-level="E.1.2" data-path="appendix-web.html"><a href="appendix-web.html#定位并提取网页元素"><i class="fa fa-check"></i><b>E.1.2</b> 定位并提取网页元素</a></li>
+<li class="chapter" data-level="E.1.3" data-path="appendix-web.html"><a href="appendix-web.html#清洗并保存结果"><i class="fa fa-check"></i><b>E.1.3</b> 清洗并保存结果</a></li>
+</ul></li>
+<li class="chapter" data-level="E.2" data-path="appendix-web.html"><a href="appendix-web.html#用-httr-爬取动态网页"><i class="fa fa-check"></i><b>E.2</b> 用 <code>httr</code> 爬取动态网页</a>
+<ul>
+<li class="chapter" data-level="E.2.1" data-path="appendix-web.html"><a href="appendix-web.html#找到数据请求"><i class="fa fa-check"></i><b>E.2.1</b> 找到数据请求</a></li>
+<li class="chapter" data-level="E.2.2" data-path="appendix-web.html"><a href="appendix-web.html#构造并发送-post-请求"><i class="fa fa-check"></i><b>E.2.2</b> 构造并发送 POST 请求</a></li>
+<li class="chapter" data-level="E.2.3" data-path="appendix-web.html"><a href="appendix-web.html#解析返回结果"><i class="fa fa-check"></i><b>E.2.3</b> 解析返回结果</a></li>
+<li class="chapter" data-level="E.2.4" data-path="appendix-web.html"><a href="appendix-web.html#批量处理所有页面"><i class="fa fa-check"></i><b>E.2.4</b> 批量处理所有页面</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="appendix-hpc.html"><a href="appendix-hpc.html"><i class="fa fa-check"></i><b>F</b> R 与高性能计算</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="appendix-hpc.html"><a href="appendix-hpc.html#并行计算"><i class="fa fa-check"></i><b>F.1</b> 并行计算</a></li>
+<li class="chapter" data-level="F.2" data-path="appendix-hpc.html"><a href="appendix-hpc.html#运行-c-代码"><i class="fa fa-check"></i><b>F.2</b> 运行 C++ 代码</a></li>
+<li class="chapter" data-level="F.3" data-path="appendix-hpc.html"><a href="appendix-hpc.html#处理超出内存容量的数据集"><i class="fa fa-check"></i><b>F.3</b> 处理超出内存容量的数据集</a></li>
+<li class="chapter" data-level="F.4" data-path="appendix-hpc.html"><a href="appendix-hpc.html#大型矩阵运算"><i class="fa fa-check"></i><b>F.4</b> 大型矩阵运算</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="appendix-ml.html"><a href="appendix-ml.html"><i class="fa fa-check"></i><b>G</b> R 机器学习框架</a>
+<ul>
+<li class="chapter" data-level="G.1" data-path="appendix-ml.html"><a href="appendix-ml.html#mlr3verse"><i class="fa fa-check"></i><b>G.1</b> <code>mlr3verse</code></a></li>
+<li class="chapter" data-level="G.2" data-path="appendix-ml.html"><a href="appendix-ml.html#tidymodels"><i class="fa fa-check"></i><b>G.2</b> <code>tidymodels</code></a></li>
+</ul></li>
 <li class="divider"></li>
 <li class="course-meta">王芝皓 · 统计与数据科学学院</li>
 
@@ -435,8 +508,97 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="appendix-ml" class="section level1 hasAnchor" number="13">
 <h1><span class="header-section-number">G</span> R 机器学习框架<a href="appendix-ml.html#appendix-ml" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>本章框架对应教材附录 G。</p>
+<p>本附录按照教材介绍两个 R 机器学习框架：基于 R6 与 <code>data.table</code> 的 <code>mlr3verse</code>，以及延续 tidyverse 工作流风格的 <code>tidymodels</code>。</p>
+<div id="mlr3verse" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">G.1</span> <code>mlr3verse</code><a href="appendix-ml.html#mlr3verse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>mlr3verse</code> 为机器学习任务提供统一接口，并支持并行计算、特征工程、调参和图学习器。</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:appendix-g-mlr3-ecosystem"></span>
+<img src="assets/textbook/appendices/tx29055.png" alt="mlr3verse 机器学习框架生态" width="92%" />
+<p class="caption">
+Figure G.1: mlr3verse 机器学习框架生态
+</p>
+</div>
+<p>核心组件包括 <code>mlr3</code>、<code>mlr3db</code>、<code>mlr3filters</code>、<code>mlr3learners</code>、<code>mlr3pipelines</code>、<code>mlr3tuning</code>、<code>mlr3viz</code> 与 <code>paradox</code>。一个基本工作流由任务、学习器、度量、重抽样和管道构成。</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:appendix-g-mlr3-workflow"></span>
+<img src="assets/textbook/appendices/tx29064.png" alt="mlr3verse 机器学习基本工作流" width="92%" />
+<p class="caption">
+Figure G.2: mlr3verse 机器学习基本工作流
+</p>
+</div>
+<ul>
+<li><strong>任务（Task）</strong>：封装数据及目标变量等元信息；</li>
+<li><strong>学习器（Learner）</strong>：封装算法与超参数；</li>
+<li><strong>度量（Measure）</strong>：评价预测结果；</li>
+<li><strong>重抽样（Resampling）</strong>：生成训练集和测试集；</li>
+<li><strong>管道（Pipelines）</strong>：组合预处理、特征选择与模型步骤。</li>
+</ul>
+<p>教材用 <code>iris</code> 数据建立决策树分类模型：</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="appendix-ml.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlr3verse)</span>
+<span id="cb353-2"><a href="appendix-ml.html#cb353-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb353-3"><a href="appendix-ml.html#cb353-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建分类任务，并指定 Species 为目标变量</span></span>
+<span id="cb353-4"><a href="appendix-ml.html#cb353-4" aria-hidden="true" tabindex="-1"></a>task <span class="ot">&lt;-</span> <span class="fu">as_task_classif</span>(iris, <span class="at">target =</span> <span class="st">&quot;Species&quot;</span>)</span>
+<span id="cb353-5"><a href="appendix-ml.html#cb353-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb353-6"><a href="appendix-ml.html#cb353-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 选择决策树学习器，并设置最大深度和最小分支节点数</span></span>
+<span id="cb353-7"><a href="appendix-ml.html#cb353-7" aria-hidden="true" tabindex="-1"></a>learner <span class="ot">&lt;-</span> <span class="fu">lrn</span>(<span class="st">&quot;classif.rpart&quot;</span>, <span class="at">maxdepth =</span> <span class="dv">3</span>, <span class="at">minsplit =</span> <span class="dv">10</span>)</span>
+<span id="cb353-8"><a href="appendix-ml.html#cb353-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb353-9"><a href="appendix-ml.html#cb353-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 按 70% : 30% 划分训练集与测试集</span></span>
+<span id="cb353-10"><a href="appendix-ml.html#cb353-10" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb353-11"><a href="appendix-ml.html#cb353-11" aria-hidden="true" tabindex="-1"></a>split <span class="ot">&lt;-</span> <span class="fu">partition</span>(task, <span class="at">ratio =</span> <span class="fl">0.7</span>)</span>
+<span id="cb353-12"><a href="appendix-ml.html#cb353-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb353-13"><a href="appendix-ml.html#cb353-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用训练部分拟合模型</span></span>
+<span id="cb353-14"><a href="appendix-ml.html#cb353-14" aria-hidden="true" tabindex="-1"></a>learner<span class="sc">$</span><span class="fu">train</span>(task, <span class="at">row_ids =</span> split<span class="sc">$</span>train)</span>
+<span id="cb353-15"><a href="appendix-ml.html#cb353-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb353-16"><a href="appendix-ml.html#cb353-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 对测试部分进行预测</span></span>
+<span id="cb353-17"><a href="appendix-ml.html#cb353-17" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> learner<span class="sc">$</span><span class="fu">predict</span>(task, <span class="at">row_ids =</span> split<span class="sc">$</span>test)</span>
+<span id="cb353-18"><a href="appendix-ml.html#cb353-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb353-19"><a href="appendix-ml.html#cb353-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看混淆矩阵与分类准确率</span></span>
+<span id="cb353-20"><a href="appendix-ml.html#cb353-20" aria-hidden="true" tabindex="-1"></a>predictions<span class="sc">$</span>confusion</span>
+<span id="cb353-21"><a href="appendix-ml.html#cb353-21" aria-hidden="true" tabindex="-1"></a>predictions<span class="sc">$</span><span class="fu">score</span>(<span class="fu">msr</span>(<span class="st">&quot;classif.acc&quot;</span>))</span></code></pre></div>
+</details>
+</div>
+<div id="tidymodels" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">G.2</span> <code>tidymodels</code><a href="appendix-ml.html#tidymodels" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>tidymodels</code> 提供统一的统计建模与机器学习接口。其核心包包括：用于模型拟合的 <code>parsnip</code>、预处理的 <code>recipes</code>、重抽样的 <code>rsample</code>、评价的 <code>yardstick</code>、调参空间的 <code>dials</code>、调参的 <code>tune</code> 和工作流的 <code>workflows</code>。</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:appendix-g-tidymodels-ecosystem"></span>
+<img src="assets/textbook/appendices/tx29075.png" alt="tidymodels 核心包及其功能" width="92%" />
+<p class="caption">
+Figure G.3: tidymodels 核心包及其功能
+</p>
+</div>
+<p>下面仍以 <code>iris</code> 决策树分类为例：</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="appendix-ml.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb354-2"><a href="appendix-ml.html#cb354-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb354-3"><a href="appendix-ml.html#cb354-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 按 Species 分层划分训练集与测试集</span></span>
+<span id="cb354-4"><a href="appendix-ml.html#cb354-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb354-5"><a href="appendix-ml.html#cb354-5" aria-hidden="true" tabindex="-1"></a>split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(iris, <span class="at">prop =</span> <span class="fl">0.7</span>, <span class="at">strata =</span> Species)</span>
+<span id="cb354-6"><a href="appendix-ml.html#cb354-6" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">training</span>(split)</span>
+<span id="cb354-7"><a href="appendix-ml.html#cb354-7" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">testing</span>(split)</span>
+<span id="cb354-8"><a href="appendix-ml.html#cb354-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb354-9"><a href="appendix-ml.html#cb354-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 指定决策树模式、超参数和底层 rpart 引擎，然后拟合模型</span></span>
+<span id="cb354-10"><a href="appendix-ml.html#cb354-10" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">decision_tree</span>(</span>
+<span id="cb354-11"><a href="appendix-ml.html#cb354-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">&quot;classification&quot;</span>,</span>
+<span id="cb354-12"><a href="appendix-ml.html#cb354-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">tree_depth =</span> <span class="dv">3</span>,</span>
+<span id="cb354-13"><a href="appendix-ml.html#cb354-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">min_n =</span> <span class="dv">10</span></span>
+<span id="cb354-14"><a href="appendix-ml.html#cb354-14" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb354-15"><a href="appendix-ml.html#cb354-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">&quot;rpart&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb354-16"><a href="appendix-ml.html#cb354-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(Species <span class="sc">~</span> ., <span class="at">data =</span> train)</span>
+<span id="cb354-17"><a href="appendix-ml.html#cb354-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb354-18"><a href="appendix-ml.html#cb354-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 预测测试集类别，并拼接真实类别</span></span>
+<span id="cb354-19"><a href="appendix-ml.html#cb354-19" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, test) <span class="sc">|&gt;</span></span>
+<span id="cb354-20"><a href="appendix-ml.html#cb354-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(<span class="fu">select</span>(test, Species))</span>
+<span id="cb354-21"><a href="appendix-ml.html#cb354-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb354-22"><a href="appendix-ml.html#cb354-22" aria-hidden="true" tabindex="-1"></a><span class="co"># 用混淆矩阵和准确率评价模型</span></span>
+<span id="cb354-23"><a href="appendix-ml.html#cb354-23" aria-hidden="true" tabindex="-1"></a>pred <span class="sc">|&gt;</span></span>
+<span id="cb354-24"><a href="appendix-ml.html#cb354-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">conf_mat</span>(<span class="at">truth =</span> Species, <span class="at">estimate =</span> .pred_class)</span>
+<span id="cb354-25"><a href="appendix-ml.html#cb354-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb354-26"><a href="appendix-ml.html#cb354-26" aria-hidden="true" tabindex="-1"></a>pred <span class="sc">|&gt;</span></span>
+<span id="cb354-27"><a href="appendix-ml.html#cb354-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">accuracy</span>(<span class="at">truth =</span> Species, <span class="at">estimate =</span> .pred_class)</span></code></pre></div>
+</details>
+<p>进一步学习可参考教材列出的 <em>mlr3book</em>、<em>mlr3gallery</em> 与 <em>Tidy Modeling with R</em>。</p>
 
+</div>
 </div>
             </section>
 

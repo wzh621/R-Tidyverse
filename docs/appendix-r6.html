@@ -406,13 +406,86 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>附录</b></span></li>
-<li class="chapter" data-level="A" data-path="appendix-r6.html"><a href="appendix-r6.html"><i class="fa fa-check"></i><b>A</b> R6 类面向对象编程简单实例</a></li>
-<li class="chapter" data-level="B" data-path="appendix-debugging.html"><a href="appendix-debugging.html"><i class="fa fa-check"></i><b>B</b> 错误与调试</a></li>
-<li class="chapter" data-level="C" data-path="appendix-excel.html"><a href="appendix-excel.html"><i class="fa fa-check"></i><b>C</b> 用 R 实现 Excel 中的 VLOOKUP 与透视表</a></li>
-<li class="chapter" data-level="D" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html"><i class="fa fa-check"></i><b>D</b> 非等连接与滚动连接</a></li>
-<li class="chapter" data-level="E" data-path="appendix-web.html"><a href="appendix-web.html"><i class="fa fa-check"></i><b>E</b> R 与网络爬虫</a></li>
-<li class="chapter" data-level="F" data-path="appendix-hpc.html"><a href="appendix-hpc.html"><i class="fa fa-check"></i><b>F</b> R 与高性能计算</a></li>
-<li class="chapter" data-level="G" data-path="appendix-ml.html"><a href="appendix-ml.html"><i class="fa fa-check"></i><b>G</b> R 机器学习框架</a></li>
+<li class="chapter" data-level="A" data-path="appendix-r6.html"><a href="appendix-r6.html"><i class="fa fa-check"></i><b>A</b> R6 类面向对象编程简单实例</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="appendix-r6.html"><a href="appendix-r6.html#定义银行账户类"><i class="fa fa-check"></i><b>A.1</b> 定义银行账户类</a></li>
+<li class="chapter" data-level="A.2" data-path="appendix-r6.html"><a href="appendix-r6.html#创建并使用对象"><i class="fa fa-check"></i><b>A.2</b> 创建并使用对象</a></li>
+<li class="chapter" data-level="A.3" data-path="appendix-r6.html"><a href="appendix-r6.html#继承可透支银行账户"><i class="fa fa-check"></i><b>A.3</b> 继承：可透支银行账户</a></li>
+<li class="chapter" data-level="A.4" data-path="appendix-r6.html"><a href="appendix-r6.html#拓展学习"><i class="fa fa-check"></i><b>A.4</b> 拓展学习</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="appendix-debugging.html"><a href="appendix-debugging.html"><i class="fa fa-check"></i><b>B</b> 错误与调试</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="appendix-debugging.html"><a href="appendix-debugging.html#解决报错的一般策略"><i class="fa fa-check"></i><b>B.1</b> 解决报错的一般策略</a></li>
+<li class="chapter" data-level="B.2" data-path="appendix-debugging.html"><a href="appendix-debugging.html#错误调试技术"><i class="fa fa-check"></i><b>B.2</b> 错误调试技术</a>
+<ul>
+<li class="chapter" data-level="B.2.1" data-path="appendix-debugging.html"><a href="appendix-debugging.html#设置断点"><i class="fa fa-check"></i><b>B.2.1</b> 设置断点</a></li>
+<li class="chapter" data-level="B.2.2" data-path="appendix-debugging.html"><a href="appendix-debugging.html#使用-traceback-查看调用栈"><i class="fa fa-check"></i><b>B.2.2</b> 使用 <code>traceback()</code> 查看调用栈</a></li>
+<li class="chapter" data-level="B.2.3" data-path="appendix-debugging.html"><a href="appendix-debugging.html#使用-browser-在指定位置暂停"><i class="fa fa-check"></i><b>B.2.3</b> 使用 <code>browser()</code> 在指定位置暂停</a></li>
+<li class="chapter" data-level="B.2.4" data-path="appendix-debugging.html"><a href="appendix-debugging.html#使用-debug-进入函数内部"><i class="fa fa-check"></i><b>B.2.4</b> 使用 <code>debug()</code> 进入函数内部</a></li>
+</ul></li>
+<li class="chapter" data-level="B.3" data-path="appendix-debugging.html"><a href="appendix-debugging.html#异常处理"><i class="fa fa-check"></i><b>B.3</b> 异常处理</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="appendix-debugging.html"><a href="appendix-debugging.html#使用-trycatch-捕获异常"><i class="fa fa-check"></i><b>B.3.1</b> 使用 <code>tryCatch()</code> 捕获异常</a></li>
+<li class="chapter" data-level="B.3.2" data-path="appendix-debugging.html"><a href="appendix-debugging.html#使用-rlang-构造带类别的错误"><i class="fa fa-check"></i><b>B.3.2</b> 使用 <code>rlang</code> 构造带类别的错误</a></li>
+<li class="chapter" data-level="B.3.3" data-path="appendix-debugging.html"><a href="appendix-debugging.html#在-purrr-迭代中处理错误"><i class="fa fa-check"></i><b>B.3.3</b> 在 <code>purrr</code> 迭代中处理错误</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="appendix-excel.html"><a href="appendix-excel.html"><i class="fa fa-check"></i><b>C</b> 用 R 实现 Excel 中的 VLOOKUP 与透视表</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="appendix-excel.html"><a href="appendix-excel.html#vlookup-查询"><i class="fa fa-check"></i><b>C.1</b> VLOOKUP 查询</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="appendix-excel.html"><a href="appendix-excel.html#单条件与多条件查询"><i class="fa fa-check"></i><b>C.1.1</b> 单条件与多条件查询</a></li>
+<li class="chapter" data-level="C.1.2" data-path="appendix-excel.html"><a href="appendix-excel.html#反向查询文本匹配与区间划分"><i class="fa fa-check"></i><b>C.1.2</b> 反向查询、文本匹配与区间划分</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="appendix-excel.html"><a href="appendix-excel.html#数据透视表"><i class="fa fa-check"></i><b>C.2</b> 数据透视表</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="appendix-excel.html"><a href="appendix-excel.html#方法一分组汇总后转为宽表"><i class="fa fa-check"></i><b>C.2.1</b> 方法一：分组汇总后转为宽表</a></li>
+<li class="chapter" data-level="C.2.2" data-path="appendix-excel.html"><a href="appendix-excel.html#方法二tidyquantpivot_table"><i class="fa fa-check"></i><b>C.2.2</b> 方法二：<code>tidyquant::pivot_table()</code></a></li>
+<li class="chapter" data-level="C.2.3" data-path="appendix-excel.html"><a href="appendix-excel.html#方法三pivottabler-包"><i class="fa fa-check"></i><b>C.2.3</b> 方法三：<code>pivottabler</code> 包</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html"><i class="fa fa-check"></i><b>D</b> 非等连接与滚动连接</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#非等连接"><i class="fa fa-check"></i><b>D.1</b> 非等连接</a>
+<ul>
+<li class="chapter" data-level="D.1.1" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#找出可以合租的人"><i class="fa fa-check"></i><b>D.1.1</b> 找出可以合租的人</a></li>
+<li class="chapter" data-level="D.1.2" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#找出满足租客要求的可用房源"><i class="fa fa-check"></i><b>D.1.2</b> 找出满足租客要求的可用房源</a></li>
+</ul></li>
+<li class="chapter" data-level="D.2" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#滚动连接"><i class="fa fa-check"></i><b>D.2</b> 滚动连接</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#前滚连接支付前最近的网页会话"><i class="fa fa-check"></i><b>D.2.1</b> 前滚连接：支付前最近的网页会话</a></li>
+<li class="chapter" data-level="D.2.2" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#后滚连接网页会话后的最近支付"><i class="fa fa-check"></i><b>D.2.2</b> 后滚连接：网页会话后的最近支付</a></li>
+<li class="chapter" data-level="D.2.3" data-path="appendix-non-equi.html"><a href="appendix-non-equi.html#滚动窗口连接"><i class="fa fa-check"></i><b>D.2.3</b> 滚动窗口连接</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="appendix-web.html"><a href="appendix-web.html"><i class="fa fa-check"></i><b>E</b> R 与网络爬虫</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="appendix-web.html"><a href="appendix-web.html#rvest-爬取静态网页"><i class="fa fa-check"></i><b>E.1</b> <code>rvest</code> 爬取静态网页</a>
+<ul>
+<li class="chapter" data-level="E.1.1" data-path="appendix-web.html"><a href="appendix-web.html#批量下载并解析网页"><i class="fa fa-check"></i><b>E.1.1</b> 批量下载并解析网页</a></li>
+<li class="chapter" data-level="E.1.2" data-path="appendix-web.html"><a href="appendix-web.html#定位并提取网页元素"><i class="fa fa-check"></i><b>E.1.2</b> 定位并提取网页元素</a></li>
+<li class="chapter" data-level="E.1.3" data-path="appendix-web.html"><a href="appendix-web.html#清洗并保存结果"><i class="fa fa-check"></i><b>E.1.3</b> 清洗并保存结果</a></li>
+</ul></li>
+<li class="chapter" data-level="E.2" data-path="appendix-web.html"><a href="appendix-web.html#用-httr-爬取动态网页"><i class="fa fa-check"></i><b>E.2</b> 用 <code>httr</code> 爬取动态网页</a>
+<ul>
+<li class="chapter" data-level="E.2.1" data-path="appendix-web.html"><a href="appendix-web.html#找到数据请求"><i class="fa fa-check"></i><b>E.2.1</b> 找到数据请求</a></li>
+<li class="chapter" data-level="E.2.2" data-path="appendix-web.html"><a href="appendix-web.html#构造并发送-post-请求"><i class="fa fa-check"></i><b>E.2.2</b> 构造并发送 POST 请求</a></li>
+<li class="chapter" data-level="E.2.3" data-path="appendix-web.html"><a href="appendix-web.html#解析返回结果"><i class="fa fa-check"></i><b>E.2.3</b> 解析返回结果</a></li>
+<li class="chapter" data-level="E.2.4" data-path="appendix-web.html"><a href="appendix-web.html#批量处理所有页面"><i class="fa fa-check"></i><b>E.2.4</b> 批量处理所有页面</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="appendix-hpc.html"><a href="appendix-hpc.html"><i class="fa fa-check"></i><b>F</b> R 与高性能计算</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="appendix-hpc.html"><a href="appendix-hpc.html#并行计算"><i class="fa fa-check"></i><b>F.1</b> 并行计算</a></li>
+<li class="chapter" data-level="F.2" data-path="appendix-hpc.html"><a href="appendix-hpc.html#运行-c-代码"><i class="fa fa-check"></i><b>F.2</b> 运行 C++ 代码</a></li>
+<li class="chapter" data-level="F.3" data-path="appendix-hpc.html"><a href="appendix-hpc.html#处理超出内存容量的数据集"><i class="fa fa-check"></i><b>F.3</b> 处理超出内存容量的数据集</a></li>
+<li class="chapter" data-level="F.4" data-path="appendix-hpc.html"><a href="appendix-hpc.html#大型矩阵运算"><i class="fa fa-check"></i><b>F.4</b> 大型矩阵运算</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="appendix-ml.html"><a href="appendix-ml.html"><i class="fa fa-check"></i><b>G</b> R 机器学习框架</a>
+<ul>
+<li class="chapter" data-level="G.1" data-path="appendix-ml.html"><a href="appendix-ml.html#mlr3verse"><i class="fa fa-check"></i><b>G.1</b> <code>mlr3verse</code></a></li>
+<li class="chapter" data-level="G.2" data-path="appendix-ml.html"><a href="appendix-ml.html#tidymodels"><i class="fa fa-check"></i><b>G.2</b> <code>tidymodels</code></a></li>
+</ul></li>
 <li class="divider"></li>
 <li class="course-meta">王芝皓 · 统计与数据科学学院</li>
 
@@ -435,8 +508,133 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="appendix-r6" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">A</span> R6 类面向对象编程简单实例<a href="appendix-r6.html#appendix-r6" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>本章框架对应教材附录 A。</p>
+<p><code>R6</code> 包为 R 提供了一套封装式的面向对象编程系统。与 S3、S4 相比，R6 类采用<strong>引用语义</strong>：当对象的方法修改自身字段时，不需要把修改后的对象重新赋值回来。</p>
+<p>和其他面向对象系统一样，R6 类也包含构造函数、属性与方法。下面按照教材中的银行账户案例，认识公共成员、私有成员、方法链和继承。</p>
+<div id="定义银行账户类" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">A.1</span> 定义银行账户类<a href="appendix-r6.html#定义银行账户类" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="appendix-r6.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 加载 R6 包，用于创建 R6 类</span></span>
+<span id="cb309-2"><a href="appendix-r6.html#cb309-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(R6)</span>
+<span id="cb309-3"><a href="appendix-r6.html#cb309-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-4"><a href="appendix-r6.html#cb309-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义一个银行账户类</span></span>
+<span id="cb309-5"><a href="appendix-r6.html#cb309-5" aria-hidden="true" tabindex="-1"></a>BankAccount <span class="ot">&lt;-</span> <span class="fu">R6Class</span>(</span>
+<span id="cb309-6"><a href="appendix-r6.html#cb309-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">classname =</span> <span class="st">&quot;BankAccount&quot;</span>,</span>
+<span id="cb309-7"><a href="appendix-r6.html#cb309-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-8"><a href="appendix-r6.html#cb309-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># public 中的字段和方法可以从对象外部访问</span></span>
+<span id="cb309-9"><a href="appendix-r6.html#cb309-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">public =</span> <span class="fu">list</span>(</span>
+<span id="cb309-10"><a href="appendix-r6.html#cb309-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="cn">NULL</span>,</span>
+<span id="cb309-11"><a href="appendix-r6.html#cb309-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="cn">NA</span>,</span>
+<span id="cb309-12"><a href="appendix-r6.html#cb309-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-13"><a href="appendix-r6.html#cb309-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># initialize() 是构造函数，在创建对象时自动执行</span></span>
+<span id="cb309-14"><a href="appendix-r6.html#cb309-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">initialize =</span> <span class="cf">function</span>(name, age, balance) {</span>
+<span id="cb309-15"><a href="appendix-r6.html#cb309-15" aria-hidden="true" tabindex="-1"></a>      self<span class="sc">$</span>name <span class="ot">&lt;-</span> name</span>
+<span id="cb309-16"><a href="appendix-r6.html#cb309-16" aria-hidden="true" tabindex="-1"></a>      self<span class="sc">$</span>age <span class="ot">&lt;-</span> age</span>
+<span id="cb309-17"><a href="appendix-r6.html#cb309-17" aria-hidden="true" tabindex="-1"></a>      private<span class="sc">$</span>balance <span class="ot">&lt;-</span> balance</span>
+<span id="cb309-18"><a href="appendix-r6.html#cb309-18" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb309-19"><a href="appendix-r6.html#cb309-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-20"><a href="appendix-r6.html#cb309-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 打印账户的基本信息</span></span>
+<span id="cb309-21"><a href="appendix-r6.html#cb309-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">printInfo =</span> <span class="cf">function</span>() {</span>
+<span id="cb309-22"><a href="appendix-r6.html#cb309-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cat</span>(<span class="st">&quot;姓名：&quot;</span>, self<span class="sc">$</span>name, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb309-23"><a href="appendix-r6.html#cb309-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cat</span>(<span class="st">&quot;年龄：&quot;</span>, self<span class="sc">$</span>age, <span class="st">&quot;岁</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb309-24"><a href="appendix-r6.html#cb309-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cat</span>(<span class="st">&quot;存款：&quot;</span>, private<span class="sc">$</span>balance, <span class="st">&quot;元</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb309-25"><a href="appendix-r6.html#cb309-25" aria-hidden="true" tabindex="-1"></a>      <span class="fu">invisible</span>(self)</span>
+<span id="cb309-26"><a href="appendix-r6.html#cb309-26" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb309-27"><a href="appendix-r6.html#cb309-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-28"><a href="appendix-r6.html#cb309-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 存款：在原余额上增加 dep</span></span>
+<span id="cb309-29"><a href="appendix-r6.html#cb309-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">deposit =</span> <span class="cf">function</span>(<span class="at">dep =</span> <span class="dv">0</span>) {</span>
+<span id="cb309-30"><a href="appendix-r6.html#cb309-30" aria-hidden="true" tabindex="-1"></a>      private<span class="sc">$</span>balance <span class="ot">&lt;-</span> private<span class="sc">$</span>balance <span class="sc">+</span> dep</span>
+<span id="cb309-31"><a href="appendix-r6.html#cb309-31" aria-hidden="true" tabindex="-1"></a>      <span class="fu">invisible</span>(self)</span>
+<span id="cb309-32"><a href="appendix-r6.html#cb309-32" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb309-33"><a href="appendix-r6.html#cb309-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-34"><a href="appendix-r6.html#cb309-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 取款：在原余额上减去 draw</span></span>
+<span id="cb309-35"><a href="appendix-r6.html#cb309-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">withdraw =</span> <span class="cf">function</span>(draw) {</span>
+<span id="cb309-36"><a href="appendix-r6.html#cb309-36" aria-hidden="true" tabindex="-1"></a>      private<span class="sc">$</span>balance <span class="ot">&lt;-</span> private<span class="sc">$</span>balance <span class="sc">-</span> draw</span>
+<span id="cb309-37"><a href="appendix-r6.html#cb309-37" aria-hidden="true" tabindex="-1"></a>      <span class="fu">invisible</span>(self)</span>
+<span id="cb309-38"><a href="appendix-r6.html#cb309-38" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb309-39"><a href="appendix-r6.html#cb309-39" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb309-40"><a href="appendix-r6.html#cb309-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-41"><a href="appendix-r6.html#cb309-41" aria-hidden="true" tabindex="-1"></a>  <span class="co"># private 中的字段只能在类的内部访问</span></span>
+<span id="cb309-42"><a href="appendix-r6.html#cb309-42" aria-hidden="true" tabindex="-1"></a>  <span class="at">private =</span> <span class="fu">list</span>(<span class="at">balance =</span> <span class="dv">0</span>)</span>
+<span id="cb309-43"><a href="appendix-r6.html#cb309-43" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</details>
+<p>代码中的 <code>self$name</code> 和 <code>self$age</code> 指向当前对象的公共字段；<code>private$balance</code> 指向私有余额。三个方法末尾都返回 <code>invisible(self)</code>，因此可以连续调用多个方法。</p>
+</div>
+<div id="创建并使用对象" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">A.2</span> 创建并使用对象<a href="appendix-r6.html#创建并使用对象" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>使用 <code>$new()</code> 创建银行账户对象：</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="appendix-r6.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建一个姓名为“张三”的账户</span></span>
+<span id="cb310-2"><a href="appendix-r6.html#cb310-2" aria-hidden="true" tabindex="-1"></a>account <span class="ot">&lt;-</span> BankAccount<span class="sc">$</span><span class="fu">new</span>(<span class="st">&quot;张三&quot;</span>, <span class="at">age =</span> <span class="dv">40</span>, <span class="at">balance =</span> <span class="dv">10000</span>)</span>
+<span id="cb310-3"><a href="appendix-r6.html#cb310-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb310-4"><a href="appendix-r6.html#cb310-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看账户信息</span></span>
+<span id="cb310-5"><a href="appendix-r6.html#cb310-5" aria-hidden="true" tabindex="-1"></a>account<span class="sc">$</span><span class="fu">printInfo</span>()</span>
+<span id="cb310-6"><a href="appendix-r6.html#cb310-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 姓名：张三</span></span>
+<span id="cb310-7"><a href="appendix-r6.html#cb310-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 年龄：40岁</span></span>
+<span id="cb310-8"><a href="appendix-r6.html#cb310-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 存款：10000元</span></span>
+<span id="cb310-9"><a href="appendix-r6.html#cb310-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb310-10"><a href="appendix-r6.html#cb310-10" aria-hidden="true" tabindex="-1"></a><span class="co"># balance 是私有字段，不能从对象外部直接读取</span></span>
+<span id="cb310-11"><a href="appendix-r6.html#cb310-11" aria-hidden="true" tabindex="-1"></a>account<span class="sc">$</span>balance</span>
+<span id="cb310-12"><a href="appendix-r6.html#cb310-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
+<span id="cb310-13"><a href="appendix-r6.html#cb310-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb310-14"><a href="appendix-r6.html#cb310-14" aria-hidden="true" tabindex="-1"></a><span class="co"># age 是公共字段，可以直接读取</span></span>
+<span id="cb310-15"><a href="appendix-r6.html#cb310-15" aria-hidden="true" tabindex="-1"></a>account<span class="sc">$</span>age</span>
+<span id="cb310-16"><a href="appendix-r6.html#cb310-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 40</span></span></code></pre></div>
+</details>
+<p>下面依次完成存款、取款和信息打印。由于各方法返回对象本身，可以把操作写成一条方法链：</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="appendix-r6.html#cb311-1" aria-hidden="true" tabindex="-1"></a>account<span class="sc">$</span></span>
+<span id="cb311-2"><a href="appendix-r6.html#cb311-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">deposit</span>(<span class="dv">5000</span>)<span class="sc">$</span>      <span class="co"># 存入 5000 元</span></span>
+<span id="cb311-3"><a href="appendix-r6.html#cb311-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">withdraw</span>(<span class="dv">7000</span>)<span class="sc">$</span>     <span class="co"># 取出 7000 元</span></span>
+<span id="cb311-4"><a href="appendix-r6.html#cb311-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">printInfo</span>()         <span class="co"># 查看操作后的余额</span></span>
+<span id="cb311-5"><a href="appendix-r6.html#cb311-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 姓名：张三</span></span>
+<span id="cb311-6"><a href="appendix-r6.html#cb311-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 年龄：40岁</span></span>
+<span id="cb311-7"><a href="appendix-r6.html#cb311-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 存款：8000元</span></span></code></pre></div>
+</details>
+</div>
+<div id="继承可透支银行账户" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">A.3</span> 继承：可透支银行账户<a href="appendix-r6.html#继承可透支银行账户" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在普通银行账户的基础上，教材定义了一个允许透支的子类。当取款后余额将小于 0 时，额外收取 100 元费用。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="appendix-r6.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义 BankAccount 的子类</span></span>
+<span id="cb312-2"><a href="appendix-r6.html#cb312-2" aria-hidden="true" tabindex="-1"></a>BanckAcountCharge <span class="ot">&lt;-</span> <span class="fu">R6Class</span>(</span>
+<span id="cb312-3"><a href="appendix-r6.html#cb312-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">classname =</span> <span class="st">&quot;BankAccountCharge&quot;</span>,</span>
+<span id="cb312-4"><a href="appendix-r6.html#cb312-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">inherit =</span> BankAccount,</span>
+<span id="cb312-5"><a href="appendix-r6.html#cb312-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb312-6"><a href="appendix-r6.html#cb312-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">public =</span> <span class="fu">list</span>(</span>
+<span id="cb312-7"><a href="appendix-r6.html#cb312-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 覆盖父类的 withdraw() 方法</span></span>
+<span id="cb312-8"><a href="appendix-r6.html#cb312-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">withdraw =</span> <span class="cf">function</span>(<span class="at">draw =</span> <span class="dv">0</span>) {</span>
+<span id="cb312-9"><a href="appendix-r6.html#cb312-9" aria-hidden="true" tabindex="-1"></a>      <span class="co"># 若本次取款会造成透支，则追加 100 元费用</span></span>
+<span id="cb312-10"><a href="appendix-r6.html#cb312-10" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (private<span class="sc">$</span>balance <span class="sc">-</span> draw <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb312-11"><a href="appendix-r6.html#cb312-11" aria-hidden="true" tabindex="-1"></a>        draw <span class="ot">&lt;-</span> draw <span class="sc">+</span> <span class="dv">100</span></span>
+<span id="cb312-12"><a href="appendix-r6.html#cb312-12" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb312-13"><a href="appendix-r6.html#cb312-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb312-14"><a href="appendix-r6.html#cb312-14" aria-hidden="true" tabindex="-1"></a>      <span class="co"># 调用父类的取款方法完成余额更新</span></span>
+<span id="cb312-15"><a href="appendix-r6.html#cb312-15" aria-hidden="true" tabindex="-1"></a>      super<span class="sc">$</span><span class="fu">withdraw</span>(<span class="at">draw =</span> draw)</span>
+<span id="cb312-16"><a href="appendix-r6.html#cb312-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb312-17"><a href="appendix-r6.html#cb312-17" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb312-18"><a href="appendix-r6.html#cb312-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb312-19"><a href="appendix-r6.html#cb312-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb312-20"><a href="appendix-r6.html#cb312-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建可透支账户并取款</span></span>
+<span id="cb312-21"><a href="appendix-r6.html#cb312-21" aria-hidden="true" tabindex="-1"></a>charge_account <span class="ot">&lt;-</span> BanckAcountCharge<span class="sc">$</span><span class="fu">new</span>(</span>
+<span id="cb312-22"><a href="appendix-r6.html#cb312-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;李四&quot;</span>,</span>
+<span id="cb312-23"><a href="appendix-r6.html#cb312-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="dv">35</span>,</span>
+<span id="cb312-24"><a href="appendix-r6.html#cb312-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">balance =</span> <span class="dv">1000</span></span>
+<span id="cb312-25"><a href="appendix-r6.html#cb312-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb312-26"><a href="appendix-r6.html#cb312-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb312-27"><a href="appendix-r6.html#cb312-27" aria-hidden="true" tabindex="-1"></a>charge_account<span class="sc">$</span></span>
+<span id="cb312-28"><a href="appendix-r6.html#cb312-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">withdraw</span>(<span class="dv">2000</span>)<span class="sc">$</span>     <span class="co"># 透支 1000 元，并额外收取 100 元</span></span>
+<span id="cb312-29"><a href="appendix-r6.html#cb312-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">printInfo</span>()</span>
+<span id="cb312-30"><a href="appendix-r6.html#cb312-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 姓名：李四</span></span>
+<span id="cb312-31"><a href="appendix-r6.html#cb312-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 年龄：35岁</span></span>
+<span id="cb312-32"><a href="appendix-r6.html#cb312-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 存款：-1100元</span></span></code></pre></div>
+</details>
+<p>这个例子展示了 R6 继承中的两个关键对象：<code>private</code> 用于访问私有字段，<code>super</code> 用于调用父类的方法。</p>
+</div>
+<div id="拓展学习" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">A.4</span> 拓展学习<a href="appendix-r6.html#拓展学习" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>若要进一步学习 R6 面向对象编程，可阅读 Hadley Wickham 编写的 <em>Advanced R</em>（第 2 版）第 14 章，以及 R6 包的官方文档。</p>
 
+</div>
 </div>
             </section>
 

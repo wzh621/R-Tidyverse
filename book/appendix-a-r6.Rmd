@@ -2,4 +2,125 @@
 
 # R6 类面向对象编程简单实例 {#appendix-r6}
 
-本章框架对应教材附录 A。
+`R6` 包为 R 提供了一套封装式的面向对象编程系统。与 S3、S4 相比，R6 类采用**引用语义**：当对象的方法修改自身字段时，不需要把修改后的对象重新赋值回来。
+
+和其他面向对象系统一样，R6 类也包含构造函数、属性与方法。下面按照教材中的银行账户案例，认识公共成员、私有成员、方法链和继承。
+
+## 定义银行账户类
+
+```{r appendix-a-bank-class}
+# 加载 R6 包，用于创建 R6 类
+library(R6)
+
+# 定义一个银行账户类
+BankAccount <- R6Class(
+  classname = "BankAccount",
+
+  # public 中的字段和方法可以从对象外部访问
+  public = list(
+    name = NULL,
+    age = NA,
+
+    # initialize() 是构造函数，在创建对象时自动执行
+    initialize = function(name, age, balance) {
+      self$name <- name
+      self$age <- age
+      private$balance <- balance
+    },
+
+    # 打印账户的基本信息
+    printInfo = function() {
+      cat("姓名：", self$name, "\n", sep = "")
+      cat("年龄：", self$age, "岁\n", sep = "")
+      cat("存款：", private$balance, "元\n", sep = "")
+      invisible(self)
+    },
+
+    # 存款：在原余额上增加 dep
+    deposit = function(dep = 0) {
+      private$balance <- private$balance + dep
+      invisible(self)
+    },
+
+    # 取款：在原余额上减去 draw
+    withdraw = function(draw) {
+      private$balance <- private$balance - draw
+      invisible(self)
+    }
+  ),
+
+  # private 中的字段只能在类的内部访问
+  private = list(balance = 0)
+)
+```
+
+代码中的 `self$name` 和 `self$age` 指向当前对象的公共字段；`private$balance` 指向私有余额。三个方法末尾都返回 `invisible(self)`，因此可以连续调用多个方法。
+
+## 创建并使用对象
+
+使用 `$new()` 创建银行账户对象：
+
+```{r appendix-a-bank-use}
+# 创建一个姓名为“张三”的账户
+account <- BankAccount$new("张三", age = 40, balance = 10000)
+
+# 查看账户信息
+account$printInfo()
+
+# balance 是私有字段，不能从对象外部直接读取
+account$balance
+
+# age 是公共字段，可以直接读取
+account$age
+```
+
+下面依次完成存款、取款和信息打印。由于各方法返回对象本身，可以把操作写成一条方法链：
+
+```{r appendix-a-method-chain}
+account$
+  deposit(5000)$      # 存入 5000 元
+  withdraw(7000)$     # 取出 7000 元
+  printInfo()         # 查看操作后的余额
+```
+
+## 继承：可透支银行账户
+
+在普通银行账户的基础上，教材定义了一个允许透支的子类。当取款后余额将小于 0 时，额外收取 100 元费用。
+
+```{r appendix-a-inheritance}
+# 定义 BankAccount 的子类
+BanckAcountCharge <- R6Class(
+  classname = "BankAccountCharge",
+  inherit = BankAccount,
+
+  public = list(
+    # 覆盖父类的 withdraw() 方法
+    withdraw = function(draw = 0) {
+      # 若本次取款会造成透支，则追加 100 元费用
+      if (private$balance - draw < 0) {
+        draw <- draw + 100
+      }
+
+      # 调用父类的取款方法完成余额更新
+      super$withdraw(draw = draw)
+    }
+  )
+)
+
+# 创建可透支账户并取款
+charge_account <- BanckAcountCharge$new(
+  "李四",
+  age = 35,
+  balance = 1000
+)
+
+charge_account$
+  withdraw(2000)$     # 透支 1000 元，并额外收取 100 元
+  printInfo()
+```
+
+这个例子展示了 R6 继承中的两个关键对象：`private` 用于访问私有字段，`super` 用于调用父类的方法。
+
+## 拓展学习
+
+若要进一步学习 R6 面向对象编程，可阅读 Hadley Wickham 编写的 *Advanced R*（第 2 版）第 14 章，以及 R6 包的官方文档。
