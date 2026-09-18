@@ -1,6 +1,6 @@
 # 数据操作 {#data-manipulation}
 
-```{r ch02-setup, include=FALSE}
+```{r ch02-setup, echo=TRUE}
 library(tidyverse)
 set.seed(2023)
 
