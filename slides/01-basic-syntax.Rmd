@@ -44,6 +44,20 @@ class: inverse, center, middle
 
 ---
 
+# 基础语法到底解决什么问题？
+
+| 现实任务 | 需要的语法 | 目的 |
+|---|---|---|
+| 保存不同类型的数据 | 向量 / 列表 / 数据框 / 因子 | 让 R 正确理解数据 |
+| 取出符合条件的记录 | 索引 / 逻辑向量 | 得到真正需要的部分 |
+| 根据条件执行不同步骤 | `if` / `case_when()` | 把判断规则程序化 |
+| 对很多列重复同一操作 | 向量化 / 循环 / `map_*()` | 消除复制粘贴 |
+| 下次继续使用可靠步骤 | 自定义函数 | 封装可复用规则 |
+
+<div class="callout small">学习语法不是背命令，而是把现实问题拆成 R 能稳定执行的步骤。</div>
+
+---
+
 # 学习目标
 
 完成本章后，你能：
@@ -485,59 +499,169 @@ diff(sales)
 
 # 正则表达式：用模式概括字符串
 
-| 符号 | 含义 | 示例 |
+<div class="two compact-cards">
+<div class="card"><h3>什么时候需要？</h3><p>目标位置固定、左右标志稳定，或内容有“若干位数字”这样的共同规律。</p></div>
+<div class="card"><h3>最终做什么？</h3><p>检测、定位、提取或替换一批字符串，而不是逐条手工处理。</p></div>
+</div>
+
+| 构造问题 | 常用符号 | 读法 |
 |---|---|---|
-| `^` / `$` | 开头 / 结尾 | `^[A-Z]+` |
-| `[ ]` | 字符集合 | `[0-9]` |
-| `*` / `+` / `?` | 重复次数 | `\d+` |
-| `{n,m}` | 限定重复 | `\d{3}` |
-| `( )` | 分组捕获 | `(\d+)` |
+| 在哪里？ | `^` / `$` | 开头 / 结尾 |
+| 是什么？ | `\d` / `[ ]` / `.` | 数字 / 集合 / 任意字符 |
+| 有几个？ | `+` / `?` / `{n}` | 至少一个 / 可选 / 固定个数 |
+| 怎样组合？ | `( )` | 整体或捕获组 |
 
 <div class="warning small">R 字符串再转义一次：正则的 <code>\d</code> 在代码中写作 <code>"\\d"</code>。</div>
 
 ---
 
-# 正则工作流：先小样本，再批量
+# 先从任务出发，不要从符号出发
 
-<div class="process-line regex-line">
-<div><strong>1</strong>找规律</div>
-<div><strong>2</strong>写模式</div>
-<div><strong>3</strong>看匹配</div>
-<div><strong>4</strong>提取/替换</div>
-</div>
+```{r slide-regex-problem}
+x <- c("CDK弱(+)10%+", "CDK(+)30%-", "CDK(-)0+", "CDK(++)60%*")
+```
+
+**任务：** 从每条记录中提取百分数。
+
+| 人的描述 | 正则片段 |
+|---|---|
+| 一位数字 | `\d` |
+| 数字出现一次或多次 | `\d+` |
+| 后面可以有一个 `%` | `\d+%?` |
 
 ```{r slide-regex-direct}
-x <- c("CDK弱(+)10%+", "CDK(+)30%-", "CDK(-)0+")
+# str_extract() 决定“提取”；模式决定“提取什么”
 str_extract(x, "\\d+%?")
 ```
 
 ---
 
+# 正则工作流：先说规律，再写代码
+
+<div class="process-line regex-line">
+<div><strong>1</strong>中文描述目标</div>
+<div><strong>2</strong>确定内容与边界</div>
+<div><strong>3</strong>小样本检查</div>
+<div><strong>4</strong>批量处理</div>
+</div>
+
+| 匹配后要做什么 | stringr 函数 | 返回什么 |
+|---|---|---|
+| 判断是否出现 | `str_detect()` | 逻辑向量，可用于筛选 |
+| 高亮检查 | `str_view()` | Viewer 中的匹配预览 |
+| 取出内容 | `str_extract()` | 新的字符向量 |
+| 修改内容 | `str_replace()` | 清洗后的字符向量 |
+
+<div class="callout small">模式只定义“什么算匹配”；函数决定“匹配之后做什么”。</div>
+
+---
+
+# 结尾三位数字：为什么必须写 `$`？
+
+```{r slide-regex-end}
+id <- c("S-2023-008", "S-2024-115")
+
+str_extract(id, "\\d{3}")   # 先遇到年份中的 202
+str_extract(id, "\\d{3}$")  # $ 要求三位数字必须贴着结尾
+```
+
+<div class="two compact-cards">
+<div class="card"><h3><code>\d{3}</code></h3><p>只说明内容：三位数字</p></div>
+<div class="card"><h3><code>\d{3}$</code></h3><p>再说明位置：字符串结尾</p></div>
+</div>
+
+---
+
 # 零宽断言：标志参与定位，不进入结果
+
+**任务：** 从“IP(省份-城市)”中提取省份和 IP，结果里不要括号与连字符。
 
 ```{r slide-lookaround}
 x <- c(
   "175.10.237.40(湖南-长沙)",
   "114.243.12.168(北京-北京)"
 )
+
+# 左侧必须是“(”，右侧必须是“-”；两个标志都不进入结果
 str_extract(x, "(?<=\\().*?(?=-)")
+
+# 从开头提取，在“(”前停止
 str_extract(x, "^.*?(?=\\()")
 ```
 
-<div class="callout small"><code>(?&lt;=左标志)</code> 内容 <code>(?=右标志)</code></div>
+<div class="callout small"><code>(?&lt;=左标志)</code> + 目标内容 + <code>(?=右标志)</code>：左右标志只负责定位。</div>
+
+---
+
+# 同一思路：提取长短不一的专业
+
+```{r slide-regex-major}
+class_text <- c("18级能源动力工程2班", "19级统计学1班")
+
+# 专业本身没有固定长度，但边界固定：左边是“级”，右边是数字
+str_extract(class_text, "(?<=级).*?(?=[0-9])")
+```
+
+| 片段 | 含义 |
+|---|---|
+| `(?<=级)` | 左边必须紧挨“级”，但不返回“级” |
+| `.*?` | 提取中间任意长度的内容，并尽早停止 |
+| `(?=[0-9])` | 右边必须紧挨班号数字，但不返回数字 |
+
+---
+
+# 贪婪与懒惰：到底在哪里停？
+
+```{r slide-regex-greedy}
+txt <- "(1st) other (2nd)"
+
+# + 默认尽可能多：停在最后一个右括号
+str_extract(txt, "\\(.+\\)")
+
+# +? 尽可能少：停在第一个满足条件的右括号
+str_extract(txt, "\\(.+?\\)")
+```
+
+<div class="warning small">字符串中有多个相同右边界时，必须明确要“最长匹配”还是“最短匹配”。</div>
 
 ---
 
 # 分组捕获：提取后还能重新排列
 
 ```{r slide-capture}
-movie <- c("独行月球2022_Chinese", "蜘蛛侠USA_2021")
-str_replace(movie, "(\\d+)_(.+)$", "\\2_\\1")
+movie <- c("独行月球2022_Chinese", "蜘蛛侠USA_2021", "人生大事2022_Chinese")
+
+# (\d+) 保存为第 1 组，(.+) 保存为第 2 组
+# 用“第 2 组_第 1 组”替换，统一为“国别_年份”
+str_replace(movie, "(\\d+)_(.+)", "\\2_\\1")
 ```
 
 <div class="two compact-cards">
 <div class="card"><h3><code>\1</code></h3><p>第 1 个捕获组</p></div>
 <div class="card"><h3><code>\2</code></h3><p>第 2 个捕获组</p></div>
+</div>
+
+<div class="callout small">不符合模式的“蜘蛛侠USA_2021”保持原样——运行后还要检查哪些记录没有匹配。</div>
+
+---
+
+# 分组捕获还有什么实际用途？
+
+```{r slide-regex-time}
+compact_time <- c("194631", "174223")
+
+# 每两位数字为一组，在每组后补冒号
+time_text <- str_replace_all(compact_time, "(\\d{2})", "\\1:")
+time_text
+
+# 清洗后的字符可以交给 lubridate 解析
+hms(time_text)
+```
+
+<div class="process-line">
+<div><strong>194631</strong>原始字符</div>
+<div><strong>19:46:31:</strong>统一结构</div>
+<div><strong>19H 46M 31S</strong>时间对象</div>
 </div>
 
 ---

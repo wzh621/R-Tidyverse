@@ -192,6 +192,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1" data-path="basic-syntax.html"><a href="basic-syntax.html"><i class="fa fa-check"></i><b>1</b> 基础语法</a>
 <ul>
+<li class="chapter" data-level="" data-path="basic-syntax.html"><a href="basic-syntax.html#基础语法究竟有什么用"><i class="fa fa-check"></i>基础语法究竟有什么用？</a></li>
 <li class="chapter" data-level="" data-path="basic-syntax.html"><a href="basic-syntax.html#本章学习目标"><i class="fa fa-check"></i>本章学习目标</a></li>
 <li class="chapter" data-level="1.1" data-path="basic-syntax.html"><a href="basic-syntax.html#搭建-r-环境及常用操作"><i class="fa fa-check"></i><b>1.1</b> 搭建 R 环境及常用操作</a>
 <ul>
@@ -218,8 +219,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="basic-syntax.html"><a href="basic-syntax.html#正则表达式"><i class="fa fa-check"></i><b>1.5</b> 正则表达式</a>
 <ul>
-<li class="chapter" data-level="1.5.1" data-path="basic-syntax.html"><a href="basic-syntax.html#基本语法"><i class="fa fa-check"></i><b>1.5.1</b> 基本语法</a></li>
-<li class="chapter" data-level="1.5.2" data-path="basic-syntax.html"><a href="basic-syntax.html#若干实例"><i class="fa fa-check"></i><b>1.5.2</b> 若干实例</a></li>
+<li class="chapter" data-level="1.5.1" data-path="basic-syntax.html"><a href="basic-syntax.html#先明确为什么要用正则表达式"><i class="fa fa-check"></i><b>1.5.1</b> 先明确：为什么要用正则表达式</a></li>
+<li class="chapter" data-level="1.5.2" data-path="basic-syntax.html"><a href="basic-syntax.html#基本语法"><i class="fa fa-check"></i><b>1.5.2</b> 基本语法</a></li>
+<li class="chapter" data-level="1.5.3" data-path="basic-syntax.html"><a href="basic-syntax.html#若干实例"><i class="fa fa-check"></i><b>1.5.3</b> 若干实例</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="basic-syntax.html"><a href="basic-syntax.html#控制结构"><i class="fa fa-check"></i><b>1.6</b> 控制结构</a>
 <ul>
@@ -580,27 +582,27 @@ Figure G.2: mlr3verse 机器学习基本工作流
 </ul>
 <p>教材用 <code>iris</code> 数据建立决策树分类模型：</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="appendix-ml.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlr3verse)</span>
-<span id="cb356-2"><a href="appendix-ml.html#cb356-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-3"><a href="appendix-ml.html#cb356-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建分类任务，并指定 Species 为目标变量</span></span>
-<span id="cb356-4"><a href="appendix-ml.html#cb356-4" aria-hidden="true" tabindex="-1"></a>task <span class="ot">&lt;-</span> <span class="fu">as_task_classif</span>(iris, <span class="at">target =</span> <span class="st">&quot;Species&quot;</span>)</span>
-<span id="cb356-5"><a href="appendix-ml.html#cb356-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-6"><a href="appendix-ml.html#cb356-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 选择决策树学习器，并设置最大深度和最小分支节点数</span></span>
-<span id="cb356-7"><a href="appendix-ml.html#cb356-7" aria-hidden="true" tabindex="-1"></a>learner <span class="ot">&lt;-</span> <span class="fu">lrn</span>(<span class="st">&quot;classif.rpart&quot;</span>, <span class="at">maxdepth =</span> <span class="dv">3</span>, <span class="at">minsplit =</span> <span class="dv">10</span>)</span>
-<span id="cb356-8"><a href="appendix-ml.html#cb356-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-9"><a href="appendix-ml.html#cb356-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 按 70% : 30% 划分训练集与测试集</span></span>
-<span id="cb356-10"><a href="appendix-ml.html#cb356-10" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb356-11"><a href="appendix-ml.html#cb356-11" aria-hidden="true" tabindex="-1"></a>split <span class="ot">&lt;-</span> <span class="fu">partition</span>(task, <span class="at">ratio =</span> <span class="fl">0.7</span>)</span>
-<span id="cb356-12"><a href="appendix-ml.html#cb356-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-13"><a href="appendix-ml.html#cb356-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用训练部分拟合模型</span></span>
-<span id="cb356-14"><a href="appendix-ml.html#cb356-14" aria-hidden="true" tabindex="-1"></a>learner<span class="sc">$</span><span class="fu">train</span>(task, <span class="at">row_ids =</span> split<span class="sc">$</span>train)</span>
-<span id="cb356-15"><a href="appendix-ml.html#cb356-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-16"><a href="appendix-ml.html#cb356-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 对测试部分进行预测</span></span>
-<span id="cb356-17"><a href="appendix-ml.html#cb356-17" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> learner<span class="sc">$</span><span class="fu">predict</span>(task, <span class="at">row_ids =</span> split<span class="sc">$</span>test)</span>
-<span id="cb356-18"><a href="appendix-ml.html#cb356-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-19"><a href="appendix-ml.html#cb356-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看混淆矩阵与分类准确率</span></span>
-<span id="cb356-20"><a href="appendix-ml.html#cb356-20" aria-hidden="true" tabindex="-1"></a>predictions<span class="sc">$</span>confusion</span>
-<span id="cb356-21"><a href="appendix-ml.html#cb356-21" aria-hidden="true" tabindex="-1"></a>predictions<span class="sc">$</span><span class="fu">score</span>(<span class="fu">msr</span>(<span class="st">&quot;classif.acc&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="appendix-ml.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlr3verse)</span>
+<span id="cb361-2"><a href="appendix-ml.html#cb361-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb361-3"><a href="appendix-ml.html#cb361-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建分类任务，并指定 Species 为目标变量</span></span>
+<span id="cb361-4"><a href="appendix-ml.html#cb361-4" aria-hidden="true" tabindex="-1"></a>task <span class="ot">&lt;-</span> <span class="fu">as_task_classif</span>(iris, <span class="at">target =</span> <span class="st">&quot;Species&quot;</span>)</span>
+<span id="cb361-5"><a href="appendix-ml.html#cb361-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb361-6"><a href="appendix-ml.html#cb361-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 选择决策树学习器，并设置最大深度和最小分支节点数</span></span>
+<span id="cb361-7"><a href="appendix-ml.html#cb361-7" aria-hidden="true" tabindex="-1"></a>learner <span class="ot">&lt;-</span> <span class="fu">lrn</span>(<span class="st">&quot;classif.rpart&quot;</span>, <span class="at">maxdepth =</span> <span class="dv">3</span>, <span class="at">minsplit =</span> <span class="dv">10</span>)</span>
+<span id="cb361-8"><a href="appendix-ml.html#cb361-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb361-9"><a href="appendix-ml.html#cb361-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 按 70% : 30% 划分训练集与测试集</span></span>
+<span id="cb361-10"><a href="appendix-ml.html#cb361-10" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb361-11"><a href="appendix-ml.html#cb361-11" aria-hidden="true" tabindex="-1"></a>split <span class="ot">&lt;-</span> <span class="fu">partition</span>(task, <span class="at">ratio =</span> <span class="fl">0.7</span>)</span>
+<span id="cb361-12"><a href="appendix-ml.html#cb361-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb361-13"><a href="appendix-ml.html#cb361-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用训练部分拟合模型</span></span>
+<span id="cb361-14"><a href="appendix-ml.html#cb361-14" aria-hidden="true" tabindex="-1"></a>learner<span class="sc">$</span><span class="fu">train</span>(task, <span class="at">row_ids =</span> split<span class="sc">$</span>train)</span>
+<span id="cb361-15"><a href="appendix-ml.html#cb361-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb361-16"><a href="appendix-ml.html#cb361-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 对测试部分进行预测</span></span>
+<span id="cb361-17"><a href="appendix-ml.html#cb361-17" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> learner<span class="sc">$</span><span class="fu">predict</span>(task, <span class="at">row_ids =</span> split<span class="sc">$</span>test)</span>
+<span id="cb361-18"><a href="appendix-ml.html#cb361-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb361-19"><a href="appendix-ml.html#cb361-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看混淆矩阵与分类准确率</span></span>
+<span id="cb361-20"><a href="appendix-ml.html#cb361-20" aria-hidden="true" tabindex="-1"></a>predictions<span class="sc">$</span>confusion</span>
+<span id="cb361-21"><a href="appendix-ml.html#cb361-21" aria-hidden="true" tabindex="-1"></a>predictions<span class="sc">$</span><span class="fu">score</span>(<span class="fu">msr</span>(<span class="st">&quot;classif.acc&quot;</span>))</span></code></pre></div>
 </details>
 </div>
 <div id="tidymodels" class="section level2 hasAnchor" number="13.2">
@@ -614,33 +616,33 @@ Figure G.3: tidymodels 核心包及其功能
 </div>
 <p>下面仍以 <code>iris</code> 决策树分类为例：</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="appendix-ml.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb357-2"><a href="appendix-ml.html#cb357-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb357-3"><a href="appendix-ml.html#cb357-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 按 Species 分层划分训练集与测试集</span></span>
-<span id="cb357-4"><a href="appendix-ml.html#cb357-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb357-5"><a href="appendix-ml.html#cb357-5" aria-hidden="true" tabindex="-1"></a>split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(iris, <span class="at">prop =</span> <span class="fl">0.7</span>, <span class="at">strata =</span> Species)</span>
-<span id="cb357-6"><a href="appendix-ml.html#cb357-6" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">training</span>(split)</span>
-<span id="cb357-7"><a href="appendix-ml.html#cb357-7" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">testing</span>(split)</span>
-<span id="cb357-8"><a href="appendix-ml.html#cb357-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb357-9"><a href="appendix-ml.html#cb357-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 指定决策树模式、超参数和底层 rpart 引擎，然后拟合模型</span></span>
-<span id="cb357-10"><a href="appendix-ml.html#cb357-10" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">decision_tree</span>(</span>
-<span id="cb357-11"><a href="appendix-ml.html#cb357-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">&quot;classification&quot;</span>,</span>
-<span id="cb357-12"><a href="appendix-ml.html#cb357-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">tree_depth =</span> <span class="dv">3</span>,</span>
-<span id="cb357-13"><a href="appendix-ml.html#cb357-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">min_n =</span> <span class="dv">10</span></span>
-<span id="cb357-14"><a href="appendix-ml.html#cb357-14" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb357-15"><a href="appendix-ml.html#cb357-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">&quot;rpart&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb357-16"><a href="appendix-ml.html#cb357-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(Species <span class="sc">~</span> ., <span class="at">data =</span> train)</span>
-<span id="cb357-17"><a href="appendix-ml.html#cb357-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb357-18"><a href="appendix-ml.html#cb357-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 预测测试集类别，并拼接真实类别</span></span>
-<span id="cb357-19"><a href="appendix-ml.html#cb357-19" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, test) <span class="sc">|&gt;</span></span>
-<span id="cb357-20"><a href="appendix-ml.html#cb357-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(<span class="fu">select</span>(test, Species))</span>
-<span id="cb357-21"><a href="appendix-ml.html#cb357-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb357-22"><a href="appendix-ml.html#cb357-22" aria-hidden="true" tabindex="-1"></a><span class="co"># 用混淆矩阵和准确率评价模型</span></span>
-<span id="cb357-23"><a href="appendix-ml.html#cb357-23" aria-hidden="true" tabindex="-1"></a>pred <span class="sc">|&gt;</span></span>
-<span id="cb357-24"><a href="appendix-ml.html#cb357-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">conf_mat</span>(<span class="at">truth =</span> Species, <span class="at">estimate =</span> .pred_class)</span>
-<span id="cb357-25"><a href="appendix-ml.html#cb357-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb357-26"><a href="appendix-ml.html#cb357-26" aria-hidden="true" tabindex="-1"></a>pred <span class="sc">|&gt;</span></span>
-<span id="cb357-27"><a href="appendix-ml.html#cb357-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">accuracy</span>(<span class="at">truth =</span> Species, <span class="at">estimate =</span> .pred_class)</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="appendix-ml.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb362-2"><a href="appendix-ml.html#cb362-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb362-3"><a href="appendix-ml.html#cb362-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 按 Species 分层划分训练集与测试集</span></span>
+<span id="cb362-4"><a href="appendix-ml.html#cb362-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb362-5"><a href="appendix-ml.html#cb362-5" aria-hidden="true" tabindex="-1"></a>split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(iris, <span class="at">prop =</span> <span class="fl">0.7</span>, <span class="at">strata =</span> Species)</span>
+<span id="cb362-6"><a href="appendix-ml.html#cb362-6" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">training</span>(split)</span>
+<span id="cb362-7"><a href="appendix-ml.html#cb362-7" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">testing</span>(split)</span>
+<span id="cb362-8"><a href="appendix-ml.html#cb362-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb362-9"><a href="appendix-ml.html#cb362-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 指定决策树模式、超参数和底层 rpart 引擎，然后拟合模型</span></span>
+<span id="cb362-10"><a href="appendix-ml.html#cb362-10" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">decision_tree</span>(</span>
+<span id="cb362-11"><a href="appendix-ml.html#cb362-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">&quot;classification&quot;</span>,</span>
+<span id="cb362-12"><a href="appendix-ml.html#cb362-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">tree_depth =</span> <span class="dv">3</span>,</span>
+<span id="cb362-13"><a href="appendix-ml.html#cb362-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">min_n =</span> <span class="dv">10</span></span>
+<span id="cb362-14"><a href="appendix-ml.html#cb362-14" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb362-15"><a href="appendix-ml.html#cb362-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">&quot;rpart&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb362-16"><a href="appendix-ml.html#cb362-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(Species <span class="sc">~</span> ., <span class="at">data =</span> train)</span>
+<span id="cb362-17"><a href="appendix-ml.html#cb362-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb362-18"><a href="appendix-ml.html#cb362-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 预测测试集类别，并拼接真实类别</span></span>
+<span id="cb362-19"><a href="appendix-ml.html#cb362-19" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, test) <span class="sc">|&gt;</span></span>
+<span id="cb362-20"><a href="appendix-ml.html#cb362-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(<span class="fu">select</span>(test, Species))</span>
+<span id="cb362-21"><a href="appendix-ml.html#cb362-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb362-22"><a href="appendix-ml.html#cb362-22" aria-hidden="true" tabindex="-1"></a><span class="co"># 用混淆矩阵和准确率评价模型</span></span>
+<span id="cb362-23"><a href="appendix-ml.html#cb362-23" aria-hidden="true" tabindex="-1"></a>pred <span class="sc">|&gt;</span></span>
+<span id="cb362-24"><a href="appendix-ml.html#cb362-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">conf_mat</span>(<span class="at">truth =</span> Species, <span class="at">estimate =</span> .pred_class)</span>
+<span id="cb362-25"><a href="appendix-ml.html#cb362-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb362-26"><a href="appendix-ml.html#cb362-26" aria-hidden="true" tabindex="-1"></a>pred <span class="sc">|&gt;</span></span>
+<span id="cb362-27"><a href="appendix-ml.html#cb362-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">accuracy</span>(<span class="at">truth =</span> Species, <span class="at">estimate =</span> .pred_class)</span></code></pre></div>
 </details>
 <p>进一步学习可参考教材列出的 <em>mlr3book</em>、<em>mlr3gallery</em> 与 <em>Tidy Modeling with R</em>。</p>
 

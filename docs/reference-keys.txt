@@ -143,6 +143,7 @@ fig:appendix-f-bigapply-image
 fig:appendix-g-mlr3-ecosystem
 fig:appendix-g-mlr3-workflow
 fig:appendix-g-tidymodels-ecosystem
+fig:ph-full-workflow
 fig:ph-layout-image
 fig:ph-interpreter-image
 fig:ph-example-output
@@ -207,8 +208,13 @@ scriptproject-与-r-markdown
 日期时间
 时间序列
 正则表达式
+先明确为什么要用正则表达式
 基本语法
 若干实例
+直接匹配目标本身有规律
+零宽断言目标没有规律但边界有规律
+贪婪与懒惰遇到多个边界时在哪里停
+分组捕获记住匹配片段并重新使用
 控制结构
 分支结构
 循环结构

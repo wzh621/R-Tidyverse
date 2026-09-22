@@ -192,6 +192,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1" data-path="basic-syntax.html"><a href="basic-syntax.html"><i class="fa fa-check"></i><b>1</b> 基础语法</a>
 <ul>
+<li class="chapter" data-level="" data-path="basic-syntax.html"><a href="basic-syntax.html#基础语法究竟有什么用"><i class="fa fa-check"></i>基础语法究竟有什么用？</a></li>
 <li class="chapter" data-level="" data-path="basic-syntax.html"><a href="basic-syntax.html#本章学习目标"><i class="fa fa-check"></i>本章学习目标</a></li>
 <li class="chapter" data-level="1.1" data-path="basic-syntax.html"><a href="basic-syntax.html#搭建-r-环境及常用操作"><i class="fa fa-check"></i><b>1.1</b> 搭建 R 环境及常用操作</a>
 <ul>
@@ -218,8 +219,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="basic-syntax.html"><a href="basic-syntax.html#正则表达式"><i class="fa fa-check"></i><b>1.5</b> 正则表达式</a>
 <ul>
-<li class="chapter" data-level="1.5.1" data-path="basic-syntax.html"><a href="basic-syntax.html#基本语法"><i class="fa fa-check"></i><b>1.5.1</b> 基本语法</a></li>
-<li class="chapter" data-level="1.5.2" data-path="basic-syntax.html"><a href="basic-syntax.html#若干实例"><i class="fa fa-check"></i><b>1.5.2</b> 若干实例</a></li>
+<li class="chapter" data-level="1.5.1" data-path="basic-syntax.html"><a href="basic-syntax.html#先明确为什么要用正则表达式"><i class="fa fa-check"></i><b>1.5.1</b> 先明确：为什么要用正则表达式</a></li>
+<li class="chapter" data-level="1.5.2" data-path="basic-syntax.html"><a href="basic-syntax.html#基本语法"><i class="fa fa-check"></i><b>1.5.2</b> 基本语法</a></li>
+<li class="chapter" data-level="1.5.3" data-path="basic-syntax.html"><a href="basic-syntax.html#若干实例"><i class="fa fa-check"></i><b>1.5.3</b> 若干实例</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="basic-syntax.html"><a href="basic-syntax.html#控制结构"><i class="fa fa-check"></i><b>1.6</b> 控制结构</a>
 <ul>
@@ -566,62 +568,62 @@ Figure C.1: Excel 查询示例数据
 </div>
 <p>教材数据可按下面的方式读入：</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="appendix-excel.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 加载数据处理与 Excel 读取包</span></span>
-<span id="cb323-2"><a href="appendix-excel.html#cb323-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb323-3"><a href="appendix-excel.html#cb323-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb323-4"><a href="appendix-excel.html#cb323-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb323-5"><a href="appendix-excel.html#cb323-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取教材配套工作簿</span></span>
-<span id="cb323-6"><a href="appendix-excel.html#cb323-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/VLOOKUP综合.xlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="appendix-excel.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 加载数据处理与 Excel 读取包</span></span>
+<span id="cb328-2"><a href="appendix-excel.html#cb328-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb328-3"><a href="appendix-excel.html#cb328-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb328-4"><a href="appendix-excel.html#cb328-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb328-5"><a href="appendix-excel.html#cb328-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取教材配套工作簿</span></span>
+<span id="cb328-6"><a href="appendix-excel.html#cb328-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/VLOOKUP综合.xlsx&quot;</span>)</span></code></pre></div>
 </details>
 <div id="单条件与多条件查询" class="section level3 hasAnchor" number="9.1.1">
 <h3><span class="header-section-number">C.1.1</span> 单条件与多条件查询<a href="appendix-excel.html#单条件与多条件查询" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="appendix-excel.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 单条件查询：先找到销售员“王东”，再保留姓名和销量</span></span>
-<span id="cb324-2"><a href="appendix-excel.html#cb324-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
-<span id="cb324-3"><a href="appendix-excel.html#cb324-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(销售员 <span class="sc">==</span> <span class="st">&quot;王东&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb324-4"><a href="appendix-excel.html#cb324-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(销售员, 销量)</span>
-<span id="cb324-5"><a href="appendix-excel.html#cb324-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb324-6"><a href="appendix-excel.html#cb324-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 多条件查询：条件之间用逗号分隔，表示同时满足</span></span>
-<span id="cb324-7"><a href="appendix-excel.html#cb324-7" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
-<span id="cb324-8"><a href="appendix-excel.html#cb324-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(销售员 <span class="sc">==</span> <span class="st">&quot;王东&quot;</span>, 地区 <span class="sc">==</span> <span class="st">&quot;北京&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb324-9"><a href="appendix-excel.html#cb324-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(销售员, 地区, 销量)</span>
-<span id="cb324-10"><a href="appendix-excel.html#cb324-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb324-11"><a href="appendix-excel.html#cb324-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 多列查询：不使用 select()，即可保留该销售员的全部信息</span></span>
-<span id="cb324-12"><a href="appendix-excel.html#cb324-12" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
-<span id="cb324-13"><a href="appendix-excel.html#cb324-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(销售员 <span class="sc">==</span> <span class="st">&quot;王东&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="appendix-excel.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 单条件查询：先找到销售员“王东”，再保留姓名和销量</span></span>
+<span id="cb329-2"><a href="appendix-excel.html#cb329-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb329-3"><a href="appendix-excel.html#cb329-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(销售员 <span class="sc">==</span> <span class="st">&quot;王东&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb329-4"><a href="appendix-excel.html#cb329-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(销售员, 销量)</span>
+<span id="cb329-5"><a href="appendix-excel.html#cb329-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb329-6"><a href="appendix-excel.html#cb329-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 多条件查询：条件之间用逗号分隔，表示同时满足</span></span>
+<span id="cb329-7"><a href="appendix-excel.html#cb329-7" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb329-8"><a href="appendix-excel.html#cb329-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(销售员 <span class="sc">==</span> <span class="st">&quot;王东&quot;</span>, 地区 <span class="sc">==</span> <span class="st">&quot;北京&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb329-9"><a href="appendix-excel.html#cb329-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(销售员, 地区, 销量)</span>
+<span id="cb329-10"><a href="appendix-excel.html#cb329-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb329-11"><a href="appendix-excel.html#cb329-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 多列查询：不使用 select()，即可保留该销售员的全部信息</span></span>
+<span id="cb329-12"><a href="appendix-excel.html#cb329-12" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb329-13"><a href="appendix-excel.html#cb329-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(销售员 <span class="sc">==</span> <span class="st">&quot;王东&quot;</span>)</span></code></pre></div>
 </details>
 <p>若要查询多个姓名，可以使用 <code>%in%</code>。如果待查询的姓名保存在另一张表 <code>df2</code> 中，则可以通过右连接完成批量查询：</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="appendix-excel.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 让 df2 中每位销售员都保留在结果中，再从 df 匹配销量</span></span>
-<span id="cb325-2"><a href="appendix-excel.html#cb325-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
-<span id="cb325-3"><a href="appendix-excel.html#cb325-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(df2, <span class="at">by =</span> <span class="st">&quot;销售员&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb325-4"><a href="appendix-excel.html#cb325-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(销售员, 销量)</span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="appendix-excel.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 让 df2 中每位销售员都保留在结果中，再从 df 匹配销量</span></span>
+<span id="cb330-2"><a href="appendix-excel.html#cb330-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb330-3"><a href="appendix-excel.html#cb330-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(df2, <span class="at">by =</span> <span class="st">&quot;销售员&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb330-4"><a href="appendix-excel.html#cb330-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(销售员, 销量)</span></code></pre></div>
 </details>
 </div>
 <div id="反向查询文本匹配与区间划分" class="section level3 hasAnchor" number="9.1.2">
 <h3><span class="header-section-number">C.1.2</span> 反向查询、文本匹配与区间划分<a href="appendix-excel.html#反向查询文本匹配与区间划分" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="appendix-excel.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 根据销量反查销售员；在 R 中不受“从左向右查询”的限制</span></span>
-<span id="cb326-2"><a href="appendix-excel.html#cb326-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
-<span id="cb326-3"><a href="appendix-excel.html#cb326-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(销量 <span class="sc">==</span> <span class="dv">66</span>) <span class="sc">|&gt;</span></span>
-<span id="cb326-4"><a href="appendix-excel.html#cb326-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(销量, 销售员)</span>
-<span id="cb326-5"><a href="appendix-excel.html#cb326-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb326-6"><a href="appendix-excel.html#cb326-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 查找姓名中包含“中”字的销售员</span></span>
-<span id="cb326-7"><a href="appendix-excel.html#cb326-7" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
-<span id="cb326-8"><a href="appendix-excel.html#cb326-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(stringr<span class="sc">::</span><span class="fu">str_detect</span>(销售员, <span class="st">&quot;中&quot;</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb326-9"><a href="appendix-excel.html#cb326-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(销售员, 销量)</span>
-<span id="cb326-10"><a href="appendix-excel.html#cb326-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb326-11"><a href="appendix-excel.html#cb326-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 按销量所在区间生成等级变量</span></span>
-<span id="cb326-12"><a href="appendix-excel.html#cb326-12" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
-<span id="cb326-13"><a href="appendix-excel.html#cb326-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb326-14"><a href="appendix-excel.html#cb326-14" aria-hidden="true" tabindex="-1"></a>    销量等级 <span class="ot">=</span> <span class="fu">case_when</span>(</span>
-<span id="cb326-15"><a href="appendix-excel.html#cb326-15" aria-hidden="true" tabindex="-1"></a>      销量 <span class="sc">&lt;</span> <span class="dv">60</span>  <span class="sc">~</span> <span class="st">&quot;不及格&quot;</span>,</span>
-<span id="cb326-16"><a href="appendix-excel.html#cb326-16" aria-hidden="true" tabindex="-1"></a>      销量 <span class="sc">&lt;</span> <span class="dv">85</span>  <span class="sc">~</span> <span class="st">&quot;及格&quot;</span>,</span>
-<span id="cb326-17"><a href="appendix-excel.html#cb326-17" aria-hidden="true" tabindex="-1"></a>      销量 <span class="sc">&lt;</span> <span class="dv">95</span>  <span class="sc">~</span> <span class="st">&quot;良好&quot;</span>,</span>
-<span id="cb326-18"><a href="appendix-excel.html#cb326-18" aria-hidden="true" tabindex="-1"></a>      销量 <span class="sc">&lt;</span> <span class="dv">100</span> <span class="sc">~</span> <span class="st">&quot;优秀&quot;</span>,</span>
-<span id="cb326-19"><a href="appendix-excel.html#cb326-19" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>       <span class="sc">~</span> <span class="st">&quot;满分&quot;</span></span>
-<span id="cb326-20"><a href="appendix-excel.html#cb326-20" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb326-21"><a href="appendix-excel.html#cb326-21" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="appendix-excel.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 根据销量反查销售员；在 R 中不受“从左向右查询”的限制</span></span>
+<span id="cb331-2"><a href="appendix-excel.html#cb331-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb331-3"><a href="appendix-excel.html#cb331-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(销量 <span class="sc">==</span> <span class="dv">66</span>) <span class="sc">|&gt;</span></span>
+<span id="cb331-4"><a href="appendix-excel.html#cb331-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(销量, 销售员)</span>
+<span id="cb331-5"><a href="appendix-excel.html#cb331-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb331-6"><a href="appendix-excel.html#cb331-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 查找姓名中包含“中”字的销售员</span></span>
+<span id="cb331-7"><a href="appendix-excel.html#cb331-7" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb331-8"><a href="appendix-excel.html#cb331-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(stringr<span class="sc">::</span><span class="fu">str_detect</span>(销售员, <span class="st">&quot;中&quot;</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb331-9"><a href="appendix-excel.html#cb331-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(销售员, 销量)</span>
+<span id="cb331-10"><a href="appendix-excel.html#cb331-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb331-11"><a href="appendix-excel.html#cb331-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 按销量所在区间生成等级变量</span></span>
+<span id="cb331-12"><a href="appendix-excel.html#cb331-12" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb331-13"><a href="appendix-excel.html#cb331-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb331-14"><a href="appendix-excel.html#cb331-14" aria-hidden="true" tabindex="-1"></a>    销量等级 <span class="ot">=</span> <span class="fu">case_when</span>(</span>
+<span id="cb331-15"><a href="appendix-excel.html#cb331-15" aria-hidden="true" tabindex="-1"></a>      销量 <span class="sc">&lt;</span> <span class="dv">60</span>  <span class="sc">~</span> <span class="st">&quot;不及格&quot;</span>,</span>
+<span id="cb331-16"><a href="appendix-excel.html#cb331-16" aria-hidden="true" tabindex="-1"></a>      销量 <span class="sc">&lt;</span> <span class="dv">85</span>  <span class="sc">~</span> <span class="st">&quot;及格&quot;</span>,</span>
+<span id="cb331-17"><a href="appendix-excel.html#cb331-17" aria-hidden="true" tabindex="-1"></a>      销量 <span class="sc">&lt;</span> <span class="dv">95</span>  <span class="sc">~</span> <span class="st">&quot;良好&quot;</span>,</span>
+<span id="cb331-18"><a href="appendix-excel.html#cb331-18" aria-hidden="true" tabindex="-1"></a>      销量 <span class="sc">&lt;</span> <span class="dv">100</span> <span class="sc">~</span> <span class="st">&quot;优秀&quot;</span>,</span>
+<span id="cb331-19"><a href="appendix-excel.html#cb331-19" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>       <span class="sc">~</span> <span class="st">&quot;满分&quot;</span></span>
+<span id="cb331-20"><a href="appendix-excel.html#cb331-20" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb331-21"><a href="appendix-excel.html#cb331-21" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 </details>
 <p>需要把结果写回 Excel 时，可在管道末尾调用 <code>writexl::write_xlsx("filename.xlsx")</code>。</p>
 </div>
@@ -638,55 +640,55 @@ Figure C.2: Excel 数据透视表示例
 <div id="方法一分组汇总后转为宽表" class="section level3 hasAnchor" number="9.2.1">
 <h3><span class="header-section-number">C.2.1</span> 方法一：分组汇总后转为宽表<a href="appendix-excel.html#方法一分组汇总后转为宽表" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="appendix-excel.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取数据并加载日期处理包</span></span>
-<span id="cb327-2"><a href="appendix-excel.html#cb327-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;data/数据透视表.xlsx&quot;</span>)</span>
-<span id="cb327-3"><a href="appendix-excel.html#cb327-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb327-4"><a href="appendix-excel.html#cb327-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb327-5"><a href="appendix-excel.html#cb327-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 从订购日期提取年份，并按年份、地区分组求和</span></span>
-<span id="cb327-6"><a href="appendix-excel.html#cb327-6" aria-hidden="true" tabindex="-1"></a>pt <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
-<span id="cb327-7"><a href="appendix-excel.html#cb327-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(年份 <span class="ot">=</span> <span class="fu">year</span>(订购日期), 地区) <span class="sc">|&gt;</span></span>
-<span id="cb327-8"><a href="appendix-excel.html#cb327-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(销售额 <span class="ot">=</span> <span class="fu">sum</span>(销售额), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>)</span>
-<span id="cb327-9"><a href="appendix-excel.html#cb327-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb327-10"><a href="appendix-excel.html#cb327-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 把地区的取值展开为列，得到 Excel 风格的宽表</span></span>
-<span id="cb327-11"><a href="appendix-excel.html#cb327-11" aria-hidden="true" tabindex="-1"></a>pt <span class="ot">&lt;-</span> pt <span class="sc">|&gt;</span></span>
-<span id="cb327-12"><a href="appendix-excel.html#cb327-12" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> 地区, <span class="at">values_from =</span> 销售额)</span>
-<span id="cb327-13"><a href="appendix-excel.html#cb327-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb327-14"><a href="appendix-excel.html#cb327-14" aria-hidden="true" tabindex="-1"></a>pt</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="appendix-excel.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取数据并加载日期处理包</span></span>
+<span id="cb332-2"><a href="appendix-excel.html#cb332-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;data/数据透视表.xlsx&quot;</span>)</span>
+<span id="cb332-3"><a href="appendix-excel.html#cb332-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb332-4"><a href="appendix-excel.html#cb332-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb332-5"><a href="appendix-excel.html#cb332-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 从订购日期提取年份，并按年份、地区分组求和</span></span>
+<span id="cb332-6"><a href="appendix-excel.html#cb332-6" aria-hidden="true" tabindex="-1"></a>pt <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb332-7"><a href="appendix-excel.html#cb332-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(年份 <span class="ot">=</span> <span class="fu">year</span>(订购日期), 地区) <span class="sc">|&gt;</span></span>
+<span id="cb332-8"><a href="appendix-excel.html#cb332-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(销售额 <span class="ot">=</span> <span class="fu">sum</span>(销售额), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>)</span>
+<span id="cb332-9"><a href="appendix-excel.html#cb332-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb332-10"><a href="appendix-excel.html#cb332-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 把地区的取值展开为列，得到 Excel 风格的宽表</span></span>
+<span id="cb332-11"><a href="appendix-excel.html#cb332-11" aria-hidden="true" tabindex="-1"></a>pt <span class="ot">&lt;-</span> pt <span class="sc">|&gt;</span></span>
+<span id="cb332-12"><a href="appendix-excel.html#cb332-12" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> 地区, <span class="at">values_from =</span> 销售额)</span>
+<span id="cb332-13"><a href="appendix-excel.html#cb332-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb332-14"><a href="appendix-excel.html#cb332-14" aria-hidden="true" tabindex="-1"></a>pt</span></code></pre></div>
 </details>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="appendix-excel.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 同时增加行合计与列合计</span></span>
-<span id="cb328-2"><a href="appendix-excel.html#cb328-2" aria-hidden="true" tabindex="-1"></a>pt <span class="sc">|&gt;</span></span>
-<span id="cb328-3"><a href="appendix-excel.html#cb328-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">adorn_totals</span>(<span class="at">where =</span> <span class="fu">c</span>(<span class="st">&quot;row&quot;</span>, <span class="st">&quot;col&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="appendix-excel.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 同时增加行合计与列合计</span></span>
+<span id="cb333-2"><a href="appendix-excel.html#cb333-2" aria-hidden="true" tabindex="-1"></a>pt <span class="sc">|&gt;</span></span>
+<span id="cb333-3"><a href="appendix-excel.html#cb333-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">adorn_totals</span>(<span class="at">where =</span> <span class="fu">c</span>(<span class="st">&quot;row&quot;</span>, <span class="st">&quot;col&quot;</span>))</span></code></pre></div>
 </details>
 </div>
 <div id="方法二tidyquantpivot_table" class="section level3 hasAnchor" number="9.2.2">
 <h3><span class="header-section-number">C.2.2</span> 方法二：<code>tidyquant::pivot_table()</code><a href="appendix-excel.html#方法二tidyquantpivot_table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>pivot_table()</code> 把分组、汇总和长表转宽表合并为一步：</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="appendix-excel.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
-<span id="cb329-2"><a href="appendix-excel.html#cb329-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb329-3"><a href="appendix-excel.html#cb329-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
-<span id="cb329-4"><a href="appendix-excel.html#cb329-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_table</span>(</span>
-<span id="cb329-5"><a href="appendix-excel.html#cb329-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">.rows =</span> <span class="sc">~</span> <span class="fu">YEAR</span>(订购日期),</span>
-<span id="cb329-6"><a href="appendix-excel.html#cb329-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">.columns =</span> 地区,</span>
-<span id="cb329-7"><a href="appendix-excel.html#cb329-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.values =</span> <span class="sc">~</span> <span class="fu">SUM</span>(销售额)</span>
-<span id="cb329-8"><a href="appendix-excel.html#cb329-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb329-9"><a href="appendix-excel.html#cb329-9" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">adorn_totals</span>(<span class="at">where =</span> <span class="fu">c</span>(<span class="st">&quot;row&quot;</span>, <span class="st">&quot;col&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="appendix-excel.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
+<span id="cb334-2"><a href="appendix-excel.html#cb334-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb334-3"><a href="appendix-excel.html#cb334-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb334-4"><a href="appendix-excel.html#cb334-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_table</span>(</span>
+<span id="cb334-5"><a href="appendix-excel.html#cb334-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">.rows =</span> <span class="sc">~</span> <span class="fu">YEAR</span>(订购日期),</span>
+<span id="cb334-6"><a href="appendix-excel.html#cb334-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">.columns =</span> 地区,</span>
+<span id="cb334-7"><a href="appendix-excel.html#cb334-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.values =</span> <span class="sc">~</span> <span class="fu">SUM</span>(销售额)</span>
+<span id="cb334-8"><a href="appendix-excel.html#cb334-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb334-9"><a href="appendix-excel.html#cb334-9" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">adorn_totals</span>(<span class="at">where =</span> <span class="fu">c</span>(<span class="st">&quot;row&quot;</span>, <span class="st">&quot;col&quot;</span>))</span></code></pre></div>
 </details>
 </div>
 <div id="方法三pivottabler-包" class="section level3 hasAnchor" number="9.2.3">
 <h3><span class="header-section-number">C.2.3</span> 方法三：<code>pivottabler</code> 包<a href="appendix-excel.html#方法三pivottabler-包" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="appendix-excel.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pivottabler)</span>
-<span id="cb330-2"><a href="appendix-excel.html#cb330-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb330-3"><a href="appendix-excel.html#cb330-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 按年份生成行、按地区生成列，并汇总销售额</span></span>
-<span id="cb330-4"><a href="appendix-excel.html#cb330-4" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
-<span id="cb330-5"><a href="appendix-excel.html#cb330-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(年份 <span class="ot">=</span> lubridate<span class="sc">::</span><span class="fu">year</span>(订购日期)) <span class="sc">|&gt;</span></span>
-<span id="cb330-6"><a href="appendix-excel.html#cb330-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">qpvt</span>(</span>
-<span id="cb330-7"><a href="appendix-excel.html#cb330-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">rows =</span> <span class="st">&quot;年份&quot;</span>,</span>
-<span id="cb330-8"><a href="appendix-excel.html#cb330-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="st">&quot;地区&quot;</span>,</span>
-<span id="cb330-9"><a href="appendix-excel.html#cb330-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">calculations =</span> <span class="st">&quot;sum(销售额)&quot;</span></span>
-<span id="cb330-10"><a href="appendix-excel.html#cb330-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="appendix-excel.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pivottabler)</span>
+<span id="cb335-2"><a href="appendix-excel.html#cb335-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb335-3"><a href="appendix-excel.html#cb335-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 按年份生成行、按地区生成列，并汇总销售额</span></span>
+<span id="cb335-4"><a href="appendix-excel.html#cb335-4" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb335-5"><a href="appendix-excel.html#cb335-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(年份 <span class="ot">=</span> lubridate<span class="sc">::</span><span class="fu">year</span>(订购日期)) <span class="sc">|&gt;</span></span>
+<span id="cb335-6"><a href="appendix-excel.html#cb335-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">qpvt</span>(</span>
+<span id="cb335-7"><a href="appendix-excel.html#cb335-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">rows =</span> <span class="st">&quot;年份&quot;</span>,</span>
+<span id="cb335-8"><a href="appendix-excel.html#cb335-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="st">&quot;地区&quot;</span>,</span>
+<span id="cb335-9"><a href="appendix-excel.html#cb335-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">calculations =</span> <span class="st">&quot;sum(销售额)&quot;</span></span>
+<span id="cb335-10"><a href="appendix-excel.html#cb335-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 </details>
 <p>该方法默认增加行、列合计。进一步的格式定制和 Excel 导出可借助 <code>openxlsx</code> 包完成。</p>
 

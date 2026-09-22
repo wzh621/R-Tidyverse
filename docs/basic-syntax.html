@@ -192,6 +192,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1" data-path="basic-syntax.html"><a href="basic-syntax.html"><i class="fa fa-check"></i><b>1</b> 基础语法</a>
 <ul>
+<li class="chapter" data-level="" data-path="basic-syntax.html"><a href="basic-syntax.html#基础语法究竟有什么用"><i class="fa fa-check"></i>基础语法究竟有什么用？</a></li>
 <li class="chapter" data-level="" data-path="basic-syntax.html"><a href="basic-syntax.html#本章学习目标"><i class="fa fa-check"></i>本章学习目标</a></li>
 <li class="chapter" data-level="1.1" data-path="basic-syntax.html"><a href="basic-syntax.html#搭建-r-环境及常用操作"><i class="fa fa-check"></i><b>1.1</b> 搭建 R 环境及常用操作</a>
 <ul>
@@ -218,8 +219,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="basic-syntax.html"><a href="basic-syntax.html#正则表达式"><i class="fa fa-check"></i><b>1.5</b> 正则表达式</a>
 <ul>
-<li class="chapter" data-level="1.5.1" data-path="basic-syntax.html"><a href="basic-syntax.html#基本语法"><i class="fa fa-check"></i><b>1.5.1</b> 基本语法</a></li>
-<li class="chapter" data-level="1.5.2" data-path="basic-syntax.html"><a href="basic-syntax.html#若干实例"><i class="fa fa-check"></i><b>1.5.2</b> 若干实例</a></li>
+<li class="chapter" data-level="1.5.1" data-path="basic-syntax.html"><a href="basic-syntax.html#先明确为什么要用正则表达式"><i class="fa fa-check"></i><b>1.5.1</b> 先明确：为什么要用正则表达式</a></li>
+<li class="chapter" data-level="1.5.2" data-path="basic-syntax.html"><a href="basic-syntax.html#基本语法"><i class="fa fa-check"></i><b>1.5.2</b> 基本语法</a></li>
+<li class="chapter" data-level="1.5.3" data-path="basic-syntax.html"><a href="basic-syntax.html#若干实例"><i class="fa fa-check"></i><b>1.5.3</b> 若干实例</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="basic-syntax.html"><a href="basic-syntax.html#控制结构"><i class="fa fa-check"></i><b>1.6</b> 控制结构</a>
 <ul>
@@ -558,6 +560,52 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <p><strong>教材主线</strong>：基础语法是载体，向量化、函数式编程和数据思维才是贯穿全章的核心。</p>
 </blockquote>
+<div id="基础语法究竟有什么用" class="section level3 unnumbered hasAnchor">
+<h3>基础语法究竟有什么用？<a href="basic-syntax.html#基础语法究竟有什么用" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>一段数据分析代码，本质上是在回答五类问题。基础语法并不是彼此孤立的命令，而是完成这些任务所需的“零件”。</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>分析问题</th>
+<th>对应语法</th>
+<th>学它的目的</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>数据应当怎样保存？</td>
+<td>向量、矩阵、列表、数据框、因子</td>
+<td>选择合适的容器，避免类型和维度错误</td>
+</tr>
+<tr class="even">
+<td>怎样取出需要的部分？</td>
+<td><code>[ ]</code>、<code>[[ ]]</code>、<code>$</code>、逻辑条件</td>
+<td>从完整数据中准确取得目标数据</td>
+</tr>
+<tr class="odd">
+<td>遇到不同情况怎么办？</td>
+<td><code>if</code>、<code>case_when()</code></td>
+<td>把判断规则写成可重复执行的程序</td>
+</tr>
+<tr class="even">
+<td>同一步骤要执行很多次怎么办？</td>
+<td>向量化、循环、<code>map_*()</code></td>
+<td>避免复制粘贴，让一套规则处理一组数据</td>
+</tr>
+<tr class="odd">
+<td>怎样把可靠步骤留给以后使用？</td>
+<td>自定义函数</td>
+<td>把输入、处理和输出封装成可复用工具</td>
+</tr>
+</tbody>
+</table>
+<p>例如，问卷系统导出的“<code>18级能源动力工程2班</code>”只是一个字符串。要统计各专业人数，必须先用字符串和正则表达式把“能源动力工程”提取出来；要逐行处理所有学生，需要向量化或迭代；要在下次导入新问卷时继续使用，则应把步骤封装成函数。<strong>这就是基础语法的用途：把现实问题拆成计算机能够稳定执行的步骤。</strong></p>
+</div>
 <div id="本章学习目标" class="section level2 unnumbered hasAnchor">
 <h2>本章学习目标<a href="basic-syntax.html#本章学习目标" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>完成本章后，你应当能够：</p>
@@ -570,11 +618,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li>按“输入—处理—输出—验证”的契约设计自定义函数。</li>
 </ol>
 <div class="callout">
-<p><strong>建议的学习方法</strong>：每段代码都先预测结果，再运行；遇到错误时先检查 <code>class()</code>、<code>typeof()</code>、<code>length()</code>、<code>dim()</code> 和 <code>str()</code>。</p>
+<p><strong>阅读每段代码的五个问题</strong>：① 输入数据是什么；② 这一行要解决什么问题；③ 为什么选择这个函数或参数；④ 返回值是什么类型和结构；⑤ 下一行准备怎样使用它。先预测结果再运行；遇到错误时检查 <code>class()</code>、<code>typeof()</code>、<code>length()</code>、<code>dim()</code> 和 <code>str()</code>。</p>
 </div>
 </div>
 <div id="搭建-r-环境及常用操作" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> 搭建 R 环境及常用操作<a href="basic-syntax.html#搭建-r-环境及常用操作" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>这一节解决的不是“RStudio 按钮在哪里”，而是一个更重要的问题：<strong>今天得到的结果，明天或换一台电脑后还能不能重新得到？</strong> 工作目录、扩展包、对象与脚本共同决定代码能否复现。</p>
 <div id="搭建-r-环境" class="section level3 hasAnchor" number="1.1.1">
 <h3><span class="header-section-number">1.1.1</span> 搭建 R 环境<a href="basic-syntax.html#搭建-r-环境" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>第 0 章已经完成 R、RStudio 与 Positron 的安装。这里把教材中的环境设置转化为一份“开工检查单”。</p>
@@ -700,25 +749,33 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">1.1.2.2</span> 赋值与对象<a href="basic-syntax.html#赋值与对象" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>R 同时支持 <code>&lt;-</code> 和 <code>=</code>。课程代码使用 <code>&lt;-</code> 给对象赋值，用 <code>=</code> 指定函数参数，使阅读时角色更清楚。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="basic-syntax.html#cb16-1" aria-hidden="true" tabindex="-1"></a>radius <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>)</span>
-<span id="cb16-2"><a href="basic-syntax.html#cb16-2" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span> pi <span class="sc">*</span> radius<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb16-3"><a href="basic-syntax.html#cb16-3" aria-hidden="true" tabindex="-1"></a>area</span>
-<span id="cb16-4"><a href="basic-syntax.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  12.56637  50.26548 153.93804</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="basic-syntax.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 三个圆的半径是输入数据，c() 把它们组成一个数值向量</span></span>
+<span id="cb16-2"><a href="basic-syntax.html#cb16-2" aria-hidden="true" tabindex="-1"></a>radius <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>)</span>
+<span id="cb16-3"><a href="basic-syntax.html#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="basic-syntax.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 把计算结果保存为 area，后续绘图或导出时可以继续使用</span></span>
+<span id="cb16-5"><a href="basic-syntax.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 因为 radius 是向量，所以同一个公式会依次作用于三个半径</span></span>
+<span id="cb16-6"><a href="basic-syntax.html#cb16-6" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span> pi <span class="sc">*</span> radius<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb16-7"><a href="basic-syntax.html#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="basic-syntax.html#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 单独写对象名，目的是查看刚刚生成的结果</span></span>
+<span id="cb16-9"><a href="basic-syntax.html#cb16-9" aria-hidden="true" tabindex="-1"></a>area</span>
+<span id="cb16-10"><a href="basic-syntax.html#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  12.56637  50.26548 153.93804</span></span></code></pre></div>
 </details>
+<p>这里写 <code>&lt;-</code> 的目的不是“产生一个箭头”，而是给中间结果命名。若不赋值，结果只会打印在控制台；赋值后，后续代码可以继续引用 <code>area</code>，整段分析也因此能够一步步衔接。</p>
 <p>对象名应表达含义。R 区分大小写，<code>score</code> 与 <code>Score</code> 是两个对象；对象名可以包含字母、数字、点和下划线，但不能以数字开头。</p>
 </div>
 <div id="基本运算与比较" class="section level4 hasAnchor" number="1.1.2.3">
 <h4><span class="header-section-number">1.1.2.3</span> 基本运算与比较<a href="basic-syntax.html#基本运算与比较" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="basic-syntax.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="sc">%/%</span> <span class="dv">3</span></span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="basic-syntax.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="sc">%/%</span> <span class="dv">3</span>                         <span class="co"># 整除：3 能完整放进 7 几次</span></span>
 <span id="cb17-2"><a href="basic-syntax.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2</span></span>
-<span id="cb17-3"><a href="basic-syntax.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="sc">%%</span> <span class="dv">3</span></span>
+<span id="cb17-3"><a href="basic-syntax.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="sc">%%</span> <span class="dv">3</span>                          <span class="co"># 取余：整除之后还剩多少</span></span>
 <span id="cb17-4"><a href="basic-syntax.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
-<span id="cb17-5"><a href="basic-syntax.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">5</span></span>
+<span id="cb17-5"><a href="basic-syntax.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">5</span>                             <span class="co"># 乘方：2 的 5 次方</span></span>
 <span id="cb17-6"><a href="basic-syntax.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 32</span></span>
-<span id="cb17-7"><a href="basic-syntax.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb17-7"><a href="basic-syntax.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)     <span class="co"># 逐个判断左侧元素是否属于右侧集合</span></span>
 <span id="cb17-8"><a href="basic-syntax.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE  TRUE FALSE</span></span></code></pre></div>
 </details>
+<p>这些运算符服务于具体任务：<code>%/%</code> 和 <code>%%</code> 可把总分钟拆成小时与剩余分钟；<code>%in%</code> 可筛选“专业是否属于指定名单”。阅读运算符时，要先说出它在回答什么问题，再记符号。</p>
 <p>浮点数由有限位二进制数近似存储，因此不要把“打印出来相同”误认为内部值绝对相等。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="basic-syntax.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.1</span> <span class="sc">+</span> <span class="fl">0.2</span> <span class="sc">==</span> <span class="fl">0.3</span></span>
@@ -850,7 +907,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="数据结构向量矩阵多维数组" class="section level2 hasAnchor" number="1.2">
 <h2><span class="header-section-number">1.2</span> 数据结构：向量、矩阵、多维数组<a href="basic-syntax.html#数据结构向量矩阵多维数组" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>向量、矩阵和数组都要求元素类型一致，区别主要在维数。</p>
+<p>数据结构决定 R 如何理解一组值，也决定后续可以怎样索引、计算和建模。选择结构时先问两个问题：<strong>所有元素是否必须同一类型？数据有几个维度？</strong> 向量、矩阵和数组都要求元素类型一致，区别主要在维数。</p>
 <table>
 <thead>
 <tr class="header">
@@ -886,16 +943,21 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="创建与向量化运算" class="section level4 hasAnchor" number="1.2.1.1">
 <h4><span class="header-section-number">1.2.1.1</span> 创建与向量化运算<a href="basic-syntax.html#创建与向量化运算" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="basic-syntax.html#cb23-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span>
-<span id="cb23-2"><a href="basic-syntax.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.25</span>)</span>
-<span id="cb23-3"><a href="basic-syntax.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.00 0.25 0.50 0.75 1.00</span></span>
-<span id="cb23-4"><a href="basic-syntax.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="at">times =</span> <span class="dv">2</span>)</span>
-<span id="cb23-5"><a href="basic-syntax.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot;</span></span>
-<span id="cb23-6"><a href="basic-syntax.html#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-7"><a href="basic-syntax.html#cb23-7" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb23-8"><a href="basic-syntax.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3 5 7 9</span></span>
-<span id="cb23-9"><a href="basic-syntax.html#cb23-9" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>)</span>
-<span id="cb23-10"><a href="basic-syntax.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]    2   40  600 8000</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="basic-syntax.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># c() 用于收集一组已知值</span></span>
+<span id="cb23-2"><a href="basic-syntax.html#cb23-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span>
+<span id="cb23-3"><a href="basic-syntax.html#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="basic-syntax.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># seq() 用于生成有固定步长的连续取值</span></span>
+<span id="cb23-5"><a href="basic-syntax.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.25</span>)</span>
+<span id="cb23-6"><a href="basic-syntax.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.00 0.25 0.50 0.75 1.00</span></span>
+<span id="cb23-7"><a href="basic-syntax.html#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="basic-syntax.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co"># rep() 用于按规则重复实验条件或标签</span></span>
+<span id="cb23-9"><a href="basic-syntax.html#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="at">times =</span> <span class="dv">2</span>)</span>
+<span id="cb23-10"><a href="basic-syntax.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot;</span></span>
+<span id="cb23-11"><a href="basic-syntax.html#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="basic-syntax.html#cb23-12" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> <span class="dv">1</span>                              <span class="co"># 同一运算作用于每个元素</span></span>
+<span id="cb23-13"><a href="basic-syntax.html#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3 5 7 9</span></span>
+<span id="cb23-14"><a href="basic-syntax.html#cb23-14" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>)           <span class="co"># 两个等长向量按位置一一计算</span></span>
+<span id="cb23-15"><a href="basic-syntax.html#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]    2   40  600 8000</span></span></code></pre></div>
 </details>
 <p>R 的许多函数天然接收向量并逐元素工作，这就是向量化。较短向量参与运算时可能被循环补齐（recycling）；除非这种对应关系十分明确，否则应避免依赖隐式循环补齐。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
@@ -907,12 +969,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">1.2.1.2</span> 逻辑向量与筛选<a href="basic-syntax.html#逻辑向量与筛选" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="basic-syntax.html#cb25-1" aria-hidden="true" tabindex="-1"></a>score <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">58</span>, <span class="dv">76</span>, <span class="dv">91</span>, <span class="cn">NA</span>, <span class="dv">84</span>)</span>
-<span id="cb25-2"><a href="basic-syntax.html#cb25-2" aria-hidden="true" tabindex="-1"></a>passed <span class="ot">&lt;-</span> score <span class="sc">&gt;=</span> <span class="dv">60</span></span>
-<span id="cb25-3"><a href="basic-syntax.html#cb25-3" aria-hidden="true" tabindex="-1"></a>passed</span>
-<span id="cb25-4"><a href="basic-syntax.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE  TRUE  TRUE    NA  TRUE</span></span>
-<span id="cb25-5"><a href="basic-syntax.html#cb25-5" aria-hidden="true" tabindex="-1"></a>score[passed <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(passed)]</span>
-<span id="cb25-6"><a href="basic-syntax.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 76 91 84</span></span></code></pre></div>
+<span id="cb25-2"><a href="basic-syntax.html#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="basic-syntax.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 每个分数都与 60 比较，得到一个 TRUE/FALSE/NA 组成的筛选器</span></span>
+<span id="cb25-4"><a href="basic-syntax.html#cb25-4" aria-hidden="true" tabindex="-1"></a>passed <span class="ot">&lt;-</span> score <span class="sc">&gt;=</span> <span class="dv">60</span></span>
+<span id="cb25-5"><a href="basic-syntax.html#cb25-5" aria-hidden="true" tabindex="-1"></a>passed</span>
+<span id="cb25-6"><a href="basic-syntax.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE  TRUE  TRUE    NA  TRUE</span></span>
+<span id="cb25-7"><a href="basic-syntax.html#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="basic-syntax.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 方括号只保留条件为 TRUE 的位置；同时排除无法判断的缺失位置</span></span>
+<span id="cb25-9"><a href="basic-syntax.html#cb25-9" aria-hidden="true" tabindex="-1"></a>score[passed <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(passed)]</span>
+<span id="cb25-10"><a href="basic-syntax.html#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 76 91 84</span></span></code></pre></div>
 </details>
+<p>这段代码的目的，是把“及格”这个口头规则转成与原数据等长的逻辑向量，再用它筛选原向量。以后 <code>dplyr::filter()</code> 的本质仍是同一件事。</p>
 <p><code>==</code> 是逐元素比较；<code>%in%</code> 判断左侧每个元素是否属于右侧集合，尤其适合多个候选值。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="basic-syntax.html#cb26-1" aria-hidden="true" tabindex="-1"></a>major <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;统计学&quot;</span>, <span class="st">&quot;经济学&quot;</span>, <span class="st">&quot;数据科学&quot;</span>, <span class="st">&quot;数学&quot;</span>)</span>
@@ -1027,6 +1094,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="数据结构列表数据框因子" class="section level2 hasAnchor" number="1.3">
 <h2><span class="header-section-number">1.3</span> 数据结构：列表、数据框、因子<a href="basic-syntax.html#数据结构列表数据框因子" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>现实数据往往不是同一种类型：一个学生有字符型学号、数值型成绩、逻辑型状态，还可能有一组嵌套信息。本节的三个结构分别解决“异质对象怎样装在一起”“表格数据怎样组织”“分类变量怎样携带业务顺序”三个问题。</p>
 <div id="列表" class="section level3 hasAnchor" number="1.3.1">
 <h3><span class="header-section-number">1.3.1</span> 列表<a href="basic-syntax.html#列表" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>列表允许每个成分有不同类型、长度和结构，因此既能保存模型，也能保存一组异质结果。</p>
@@ -1049,6 +1117,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb34-16"><a href="basic-syntax.html#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $score</span></span>
 <span id="cb34-17"><a href="basic-syntax.html#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 86 91 88</span></span></code></pre></div>
 </details>
+<p>上面三行不是三种随意写法：<code>$</code> 按名称取得一个成分，<code>[[ ]]</code> 取出成分本身，<code>[ ]</code> 保留列表外壳。<strong>选择哪一种，取决于下一步需要“里面的值”还是“仍然是一个列表”。</strong></p>
 <table>
 <thead>
 <tr class="header">
@@ -1162,6 +1231,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="因子" class="section level3 hasAnchor" number="1.3.3">
 <h3><span class="header-section-number">1.3.3</span> 因子<a href="basic-syntax.html#因子" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>因子用于表示有限的类别集合。其内部可理解为“整数编码 + 水平标签”，水平顺序还决定统计汇总和图形显示顺序。</p>
+<p>为什么不能一直使用字符向量？因为字符只有字典顺序，不知道“及格 &lt; 中 &lt; 良 &lt; 优”这样的业务顺序。把类别转成因子，是在告诉 R：允许出现哪些类别、显示顺序是什么、这些类别是否存在大小关系。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="basic-syntax.html#cb42-1" aria-hidden="true" tabindex="-1"></a>grade <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
 <span id="cb42-2"><a href="basic-syntax.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;中&quot;</span>, <span class="st">&quot;良&quot;</span>, <span class="st">&quot;优&quot;</span>, <span class="st">&quot;及格&quot;</span>, <span class="st">&quot;良&quot;</span>),</span>
@@ -1224,6 +1294,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="数据结构字符串日期时间" class="section level2 hasAnchor" number="1.4">
 <h2><span class="header-section-number">1.4</span> 数据结构：字符串、日期时间<a href="basic-syntax.html#数据结构字符串日期时间" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>从 Excel、问卷或网页读入的数据，经常先以字符形式出现。字符串函数负责拆分和清理文本，日期函数负责把“看起来像日期的字符”转换成真正可计算的时间对象；正则表达式则负责描述文本中重复出现的结构。</p>
 <div id="字符串" class="section level3 hasAnchor" number="1.4.1">
 <h3><span class="header-section-number">1.4.1</span> 字符串<a href="basic-syntax.html#字符串" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>stringr</code> 的函数名以 <code>str_</code> 开头，参数顺序一致，并且大多是向量化的。教材按“长度—合并—拆分—格式化—排序—检测—提取—修改”的任务顺序组织，本节沿用这一结构。</p>
@@ -1284,17 +1355,25 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="basic-syntax.html#cb45-1" aria-hidden="true" tabindex="-1"></a>code <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;BJ-2023-001&quot;</span>, <span class="st">&quot;SH-2023-014&quot;</span>, <span class="st">&quot;GZ-2024-107&quot;</span>)</span>
-<span id="cb45-2"><a href="basic-syntax.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split_fixed</span>(code, <span class="st">&quot;-&quot;</span>, <span class="at">n =</span> <span class="dv">3</span>)</span>
-<span id="cb45-3"><a href="basic-syntax.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]   [,3] </span></span>
-<span id="cb45-4"><a href="basic-syntax.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] &quot;BJ&quot; &quot;2023&quot; &quot;001&quot;</span></span>
-<span id="cb45-5"><a href="basic-syntax.html#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] &quot;SH&quot; &quot;2023&quot; &quot;014&quot;</span></span>
-<span id="cb45-6"><a href="basic-syntax.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,] &quot;GZ&quot; &quot;2024&quot; &quot;107&quot;</span></span>
-<span id="cb45-7"><a href="basic-syntax.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(code, <span class="st">&quot;2024&quot;</span>)</span>
-<span id="cb45-8"><a href="basic-syntax.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE FALSE  TRUE</span></span>
-<span id="cb45-9"><a href="basic-syntax.html#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(code, <span class="st">&quot;[0-9]{3}$&quot;</span>)</span>
-<span id="cb45-10"><a href="basic-syntax.html#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;001&quot; &quot;014&quot; &quot;107&quot;</span></span>
-<span id="cb45-11"><a href="basic-syntax.html#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(code, <span class="st">&quot;-&quot;</span>, <span class="st">&quot;/&quot;</span>)</span>
-<span id="cb45-12"><a href="basic-syntax.html#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;BJ/2023-001&quot; &quot;SH/2023-014&quot; &quot;GZ/2024-107&quot;</span></span></code></pre></div>
+<span id="cb45-2"><a href="basic-syntax.html#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="basic-syntax.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 目的：把城市、年份和流水号拆成三列</span></span>
+<span id="cb45-4"><a href="basic-syntax.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split_fixed</span>(code, <span class="st">&quot;-&quot;</span>, <span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb45-5"><a href="basic-syntax.html#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]   [,3] </span></span>
+<span id="cb45-6"><a href="basic-syntax.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] &quot;BJ&quot; &quot;2023&quot; &quot;001&quot;</span></span>
+<span id="cb45-7"><a href="basic-syntax.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] &quot;SH&quot; &quot;2023&quot; &quot;014&quot;</span></span>
+<span id="cb45-8"><a href="basic-syntax.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,] &quot;GZ&quot; &quot;2024&quot; &quot;107&quot;</span></span>
+<span id="cb45-9"><a href="basic-syntax.html#cb45-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-10"><a href="basic-syntax.html#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 目的：判断哪些编号属于 2024 年；结果可用作筛选条件</span></span>
+<span id="cb45-11"><a href="basic-syntax.html#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(code, <span class="st">&quot;2024&quot;</span>)</span>
+<span id="cb45-12"><a href="basic-syntax.html#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE FALSE  TRUE</span></span>
+<span id="cb45-13"><a href="basic-syntax.html#cb45-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-14"><a href="basic-syntax.html#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 目的：提取结尾的三位流水号</span></span>
+<span id="cb45-15"><a href="basic-syntax.html#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(code, <span class="st">&quot;[0-9]{3}$&quot;</span>)</span>
+<span id="cb45-16"><a href="basic-syntax.html#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;001&quot; &quot;014&quot; &quot;107&quot;</span></span>
+<span id="cb45-17"><a href="basic-syntax.html#cb45-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-18"><a href="basic-syntax.html#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 目的：把第一个连字符改为斜线；若全部替换应使用 str_replace_all()</span></span>
+<span id="cb45-19"><a href="basic-syntax.html#cb45-19" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(code, <span class="st">&quot;-&quot;</span>, <span class="st">&quot;/&quot;</span>)</span>
+<span id="cb45-20"><a href="basic-syntax.html#cb45-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;BJ/2023-001&quot; &quot;SH/2023-014&quot; &quot;GZ/2024-107&quot;</span></span></code></pre></div>
 </details>
 <p>带 <code>_all</code> 后缀的函数处理每个字符串中的全部匹配；不带 <code>_all</code> 的版本通常只处理第一个匹配。</p>
 </div>
@@ -1394,130 +1473,295 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="正则表达式" class="section level2 hasAnchor" number="1.5">
 <h2><span class="header-section-number">1.5</span> 正则表达式<a href="basic-syntax.html#正则表达式" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>正则表达式用模式概括一组字符串。处理任务通常分为四步：<strong>发现规律 → 写出模式 → 在小样本上查看匹配 → 提取或替换。</strong></p>
-<div id="基本语法" class="section level3 hasAnchor" number="1.5.1">
-<h3><span class="header-section-number">1.5.1</span> 基本语法<a href="basic-syntax.html#基本语法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>正则表达式不是为了写出一串难懂的符号，而是为了<strong>一次描述一批字符串共有的结构</strong>。当目标内容的位置固定、左右有稳定标志，或者具有“若干位数字”这样的规律时，我们就能用一个模式批量检测、定位、提取或修改它们。</p>
+<div id="先明确为什么要用正则表达式" class="section level3 hasAnchor" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> 先明确：为什么要用正则表达式<a href="basic-syntax.html#先明确为什么要用正则表达式" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>教材中的字符向量包含文字、符号和百分数：</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="basic-syntax.html#cb51-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;CDK弱(+)10%+&quot;</span>, <span class="st">&quot;CDK(+)30%-&quot;</span>, <span class="st">&quot;CDK(-)0+&quot;</span>, <span class="st">&quot;CDK(++)60%*&quot;</span>)</span>
+<span id="cb51-2"><a href="basic-syntax.html#cb51-2" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb51-3"><a href="basic-syntax.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;CDK弱(+)10%+&quot; &quot;CDK(+)30%-&quot;   &quot;CDK(-)0+&quot;     &quot;CDK(++)60%*&quot;</span></span></code></pre></div>
+</details>
+<p>如果任务是“取出每条记录中的百分数”，不能按固定位置截取：第一条有“弱”，数字也可能是 0、10、30 或 60，长度并不相同。但目标仍有共同规律：</p>
+<ol style="list-style-type: decimal">
+<li>核心内容是数字；</li>
+<li>数字至少出现一次；</li>
+<li>数字后面可能有 <code>%</code>，也可能没有。</li>
+</ol>
+<p>把这三句话翻译成模式就是 <code>\d+%?</code>。在 R 字符串中要把反斜线再转义一次，所以代码写成 <code>"\\d+%?"</code>。</p>
 <table>
 <thead>
 <tr class="header">
-<th>类别</th>
-<th>符号</th>
-<th>含义示例</th>
+<th>人的描述</th>
+<th>正则片段</th>
+<th>片段回答的问题</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>位置</td>
-<td><code>^</code>, <code>$</code></td>
-<td>字符串开头、结尾</td>
+<td>一位数字</td>
+<td><code>\d</code></td>
+<td>要匹配什么字符？</td>
 </tr>
 <tr class="even">
-<td>任意与选择</td>
-<td><code>.</code>, <code>|</code></td>
-<td>任意字符、二选一</td>
+<td>数字出现一次或多次</td>
+<td><code>\d+</code></td>
+<td>前面的字符出现几次？</td>
 </tr>
 <tr class="odd">
-<td>字符集合</td>
-<td><code>[abc]</code>, <code>[^abc]</code></td>
-<td>集合内任一字符、集合外字符</td>
-</tr>
-<tr class="even">
-<td>重复</td>
-<td><code>*</code>, <code>+</code>, <code>?</code>, <code>{n,m}</code></td>
-<td>0 次以上、1 次以上、可选、限定次数</td>
-</tr>
-<tr class="odd">
-<td>字符类</td>
-<td><code>\\d</code>, <code>\\s</code>, <code>\\w</code></td>
-<td>数字、空白、单词字符</td>
-</tr>
-<tr class="even">
-<td>分组</td>
-<td><code>( )</code></td>
-<td>组合、捕获和控制优先级</td>
+<td>后面可以有一个 <code>%</code></td>
+<td><code>%?</code></td>
+<td>百分号是必需还是可选？</td>
 </tr>
 </tbody>
 </table>
-<p>R 字符串本身也使用反斜线转义，因此正则中的 <code>\d</code> 在 R 代码里通常写成 <code>"\\d"</code>。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="basic-syntax.html#cb51-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;CDK弱(+)10%+&quot;</span>, <span class="st">&quot;CDK(+)30%-&quot;</span>, <span class="st">&quot;CDK(-)0+&quot;</span>, <span class="st">&quot;CDK(++)60%*&quot;</span>)</span>
-<span id="cb51-2"><a href="basic-syntax.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(x, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+%?&quot;</span>)</span>
-<span id="cb51-3"><a href="basic-syntax.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;10%&quot; &quot;30%&quot; &quot;0&quot;   &quot;60%&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="basic-syntax.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 第一个参数 x 是待处理的原始字符串</span></span>
+<span id="cb52-2"><a href="basic-syntax.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 第二个参数是要寻找的共同模式</span></span>
+<span id="cb52-3"><a href="basic-syntax.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co"># str_extract() 对 x 中每个字符串提取第一次匹配到的内容</span></span>
+<span id="cb52-4"><a href="basic-syntax.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(x, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+%?&quot;</span>)</span>
+<span id="cb52-5"><a href="basic-syntax.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;10%&quot; &quot;30%&quot; &quot;0&quot;   &quot;60%&quot;</span></span></code></pre></div>
+</details>
+<p>结果依次为 <code>10%</code>、<code>30%</code>、<code>0</code> 和 <code>60%</code>。这里的关键不是背下 <code>"\\d+%?"</code>，而是学会从任务中依次回答“匹配什么、出现几次、位置在哪里”。</p>
+<p>正则模式只负责描述“什么算匹配”；<code>stringr</code> 函数决定“匹配后做什么”。</p>
+<table>
+<thead>
+<tr class="header">
+<th>任务</th>
+<th>函数</th>
+<th>返回结果的用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>判断是否出现</td>
+<td><code>str_detect()</code></td>
+<td>得到逻辑向量，用于筛选</td>
+</tr>
+<tr class="even">
+<td>查看匹配位置</td>
+<td><code>str_locate()</code></td>
+<td>得到起止位置，用于检查</td>
+</tr>
+<tr class="odd">
+<td>高亮检查模式</td>
+<td><code>str_view()</code></td>
+<td>在 Viewer 中调试模式</td>
+</tr>
+<tr class="even">
+<td>取出匹配内容</td>
+<td><code>str_extract()</code></td>
+<td>得到新的字符向量或变量</td>
+</tr>
+<tr class="odd">
+<td>修改匹配内容</td>
+<td><code>str_replace()</code></td>
+<td>清洗或统一文本格式</td>
+</tr>
+</tbody>
+</table>
+<p>因此，一个可靠的处理顺序是：<strong>发现规律 → 用语言描述规律 → 翻译成模式 → 在小样本中检查 → 最后提取或替换。</strong></p>
+</div>
+<div id="基本语法" class="section level3 hasAnchor" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> 基本语法<a href="basic-syntax.html#基本语法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>不要按符号表从上到下死记。构造模式时，依次从“位置—内容—次数—组合”四类问题中选择语法。</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>构造问题</th>
+<th>常用符号</th>
+<th>怎样读</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>匹配位于哪里？</td>
+<td><code>^</code>、<code>$</code></td>
+<td>字符串开头、字符串结尾</td>
+</tr>
+<tr class="even">
+<td>要匹配什么？</td>
+<td>普通字符、<code>.</code>、<code>[abc]</code>、<code>[^abc]</code>、<code>a|b</code></td>
+<td>原样字符、任意字符、集合内/外字符、二选一</td>
+</tr>
+<tr class="odd">
+<td>字符出现几次？</td>
+<td><code>*</code>、<code>+</code>、<code>?</code>、<code>{n}</code>、<code>{n,m}</code></td>
+<td>0 次以上、1 次以上、0 或 1 次、固定/限定次数</td>
+</tr>
+<tr class="even">
+<td>如何把片段视为整体？</td>
+<td><code>( )</code></td>
+<td>控制优先级、组成整体、捕获内容</td>
+</tr>
+</tbody>
+</table>
+<p>常用字符类是在回答“要匹配什么”：<code>\d</code> 匹配数字，<code>\D</code> 匹配非数字；<code>\s</code> 匹配空白，<code>\S</code> 匹配非空白；<code>\w</code> 匹配字母、数字、下划线或汉字，<code>\W</code> 匹配其反义。POSIX 写法如 <code>[[:digit:]]</code>、<code>[[:alpha:]]</code> 和 <code>[[:punct:]]</code> 分别匹配数字、字母和标点。</p>
+<div class="rmdnote">
+<p><strong>为什么代码里有两个反斜线？</strong> 正则引擎需要看到 <code>\d</code>；但 R 先读取字符串，反斜线在 R 字符串中也有转义作用，所以必须写成 <code>"\\d"</code>，R 才会把一个反斜线交给正则引擎。这是“两层解释”，不是正则本身要求两个反斜线。</p>
+</div>
+<p>默认匹配区分大小写；需要忽略大小写时可用 <code>regex(pattern, ignore_case = TRUE)</code>。多行文本中若要让 <code>^</code>、<code>$</code> 匹配每一行的开头和结尾，可用 <code>regex(pattern, multiline = TRUE)</code>。</p>
+</div>
+<div id="若干实例" class="section level3 hasAnchor" number="1.5.3">
+<h3><span class="header-section-number">1.5.3</span> 若干实例<a href="basic-syntax.html#若干实例" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>下面沿用教材实例。每个例子先说明“为什么做”，再把模式拆成可以读懂的片段。</p>
+<div id="直接匹配目标本身有规律" class="section level4 hasAnchor" number="1.5.3.1">
+<h4><span class="header-section-number">1.5.3.1</span> 直接匹配：目标本身有规律<a href="basic-syntax.html#直接匹配目标本身有规律" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="basic-syntax.html#cb53-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;S-2023-008&quot;</span>, <span class="st">&quot;S-2024-115&quot;</span>)</span>
+<span id="cb53-2"><a href="basic-syntax.html#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="basic-syntax.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 任务：提取每个编号末尾的三位流水号</span></span>
+<span id="cb53-4"><a href="basic-syntax.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co"># \d{3} = 恰好三位数字；$ = 并且必须位于字符串结尾</span></span>
+<span id="cb53-5"><a href="basic-syntax.html#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(id, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{3}$&quot;</span>)</span>
+<span id="cb53-6"><a href="basic-syntax.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;008&quot; &quot;115&quot;</span></span></code></pre></div>
+</details>
+<p>为什么需要 <code>$</code>？若只写 <code>\d{3}</code>，年份 <code>2023</code> 的前三位也满足“三位数字”，函数可能先提取到 <code>202</code>。加上 <code>$</code> 后，候选内容必须贴着字符串末尾，于是得到 <code>008</code> 和 <code>115</code>。</p>
+</div>
+<div id="零宽断言目标没有规律但边界有规律" class="section level4 hasAnchor" number="1.5.3.2">
+<h4><span class="header-section-number">1.5.3.2</span> 零宽断言：目标没有规律，但边界有规律<a href="basic-syntax.html#零宽断言目标没有规律但边界有规律" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>问卷星导出的“来自 IP”字段把 IP、省份和城市放在同一字符串中。我们希望提取省份和 IP，供后续分组统计使用，但不希望把括号和连字符也带进结果。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="basic-syntax.html#cb54-1" aria-hidden="true" tabindex="-1"></a>ip_location <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb54-2"><a href="basic-syntax.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;175.10.237.40(湖南-长沙)&quot;</span>,</span>
+<span id="cb54-3"><a href="basic-syntax.html#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;114.243.12.168(北京-北京)&quot;</span>,</span>
+<span id="cb54-4"><a href="basic-syntax.html#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;125.211.78.251(黑龙江-哈尔滨)&quot;</span></span>
+<span id="cb54-5"><a href="basic-syntax.html#cb54-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb54-6"><a href="basic-syntax.html#cb54-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-7"><a href="basic-syntax.html#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 任务 1：提取左括号与连字符之间的省份</span></span>
+<span id="cb54-8"><a href="basic-syntax.html#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="co"># (?&lt;=\() 只检查左侧必须是“(”，但不把“(”放入结果</span></span>
+<span id="cb54-9"><a href="basic-syntax.html#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="co"># .*? 匹配中间内容；(?=-) 检查右侧必须是“-”，但不返回“-”</span></span>
+<span id="cb54-10"><a href="basic-syntax.html#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(ip_location, <span class="st">&quot;(?&lt;=</span><span class="sc">\\</span><span class="st">().*?(?=-)&quot;</span>)</span>
+<span id="cb54-11"><a href="basic-syntax.html#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;湖南&quot;   &quot;北京&quot;   &quot;黑龙江&quot;</span></span>
+<span id="cb54-12"><a href="basic-syntax.html#cb54-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-13"><a href="basic-syntax.html#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 任务 2：提取字符串开头到左括号之前的 IP</span></span>
+<span id="cb54-14"><a href="basic-syntax.html#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="co"># ^ 表示从开头开始；(?=\() 表示在左括号前停止</span></span>
+<span id="cb54-15"><a href="basic-syntax.html#cb54-15" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(ip_location, <span class="st">&quot;^.*?(?=</span><span class="sc">\\</span><span class="st">()&quot;</span>)</span>
+<span id="cb54-16"><a href="basic-syntax.html#cb54-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;175.10.237.40&quot;  &quot;114.243.12.168&quot; &quot;125.211.78.251&quot;</span></span></code></pre></div>
+</details>
+<p><code>(?&lt;=左标志)</code> 是向后查看，<code>(?=右标志)</code> 是向前查看。可以把它们读成两条条件：“左边必须紧挨着什么”“右边必须紧挨着什么”。标志只负责定位，不进入返回值，因此称为“零宽”。</p>
+<p>同一思路可用于教材中的班级字段：专业名称本身长短不一，但一定在“级”之后、班号数字之前。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="basic-syntax.html#cb55-1" aria-hidden="true" tabindex="-1"></a>class_text <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;18级能源动力工程2班&quot;</span>, <span class="st">&quot;19级统计学1班&quot;</span>)</span>
+<span id="cb55-2"><a href="basic-syntax.html#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-3"><a href="basic-syntax.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (?&lt;=级) 规定左边界；.*? 提取专业；(?=[0-9]) 规定右边界</span></span>
+<span id="cb55-4"><a href="basic-syntax.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(class_text, <span class="st">&quot;(?&lt;=级).*?(?=[0-9])&quot;</span>)</span>
+<span id="cb55-5"><a href="basic-syntax.html#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;能源动力工程&quot; &quot;统计学&quot;</span></span></code></pre></div>
 </details>
 </div>
-<div id="若干实例" class="section level3 hasAnchor" number="1.5.2">
-<h3><span class="header-section-number">1.5.2</span> 若干实例<a href="basic-syntax.html#若干实例" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="贪婪与懒惰遇到多个边界时在哪里停" class="section level4 hasAnchor" number="1.5.3.3">
+<h4><span class="header-section-number">1.5.3.3</span> 贪婪与懒惰：遇到多个边界时在哪里停<a href="basic-syntax.html#贪婪与懒惰遇到多个边界时在哪里停" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="basic-syntax.html#cb52-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;S-2023-008&quot;</span>, <span class="st">&quot;S-2024-115&quot;</span>)</span>
-<span id="cb52-2"><a href="basic-syntax.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(id, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{3}$&quot;</span>)</span>
-<span id="cb52-3"><a href="basic-syntax.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;008&quot; &quot;115&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="basic-syntax.html#cb56-1" aria-hidden="true" tabindex="-1"></a>bracket_text <span class="ot">&lt;-</span> <span class="st">&quot;(1st) other (2nd)&quot;</span></span>
+<span id="cb56-2"><a href="basic-syntax.html#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="basic-syntax.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co"># .+ 默认尽可能多地匹配，所以从第一个左括号一直到最后一个右括号</span></span>
+<span id="cb56-4"><a href="basic-syntax.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(bracket_text, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">(.+</span><span class="sc">\\</span><span class="st">)&quot;</span>)</span>
+<span id="cb56-5"><a href="basic-syntax.html#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;(1st) other (2nd)&quot;</span></span>
+<span id="cb56-6"><a href="basic-syntax.html#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-7"><a href="basic-syntax.html#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 在 + 后加 ? 变成懒惰匹配：满足条件后尽早停止</span></span>
+<span id="cb56-8"><a href="basic-syntax.html#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(bracket_text, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">(.+?</span><span class="sc">\\</span><span class="st">)&quot;</span>)</span>
+<span id="cb56-9"><a href="basic-syntax.html#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;(1st)&quot;</span></span></code></pre></div>
 </details>
+<p>这里 <code>?</code> 不是单独表示“可有可无”，而是跟在 <code>+</code> 后面，把 <code>+</code> 的重复策略由“尽可能多”改为“尽可能少”。判断是否需要懒惰匹配，要看字符串中是否可能出现多个相同的右边界。</p>
+</div>
+<div id="分组捕获记住匹配片段并重新使用" class="section level4 hasAnchor" number="1.5.3.4">
+<h4><span class="header-section-number">1.5.3.4</span> 分组捕获：记住匹配片段并重新使用<a href="basic-syntax.html#分组捕获记住匹配片段并重新使用" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>分组捕获不只是“找到内容”，还会把圆括号内匹配到的片段依次保存为 <code>\1</code>、<code>\2</code>、<code>\3</code>，供替换时再次使用。</p>
+<p>教材的二手车型号存在两种格式。目标不是删除字母或数字，而是在第一个字母或数字前补一个空格，为后续拆分品牌和型号创造统一分隔符。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="basic-syntax.html#cb53-1" aria-hidden="true" tabindex="-1"></a>ip_location <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb53-2"><a href="basic-syntax.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;175.10.237.40(湖南-长沙)&quot;</span>,</span>
-<span id="cb53-3"><a href="basic-syntax.html#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;114.243.12.168(北京-北京)&quot;</span>,</span>
-<span id="cb53-4"><a href="basic-syntax.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;125.211.78.251(黑龙江-哈尔滨)&quot;</span></span>
-<span id="cb53-5"><a href="basic-syntax.html#cb53-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb53-6"><a href="basic-syntax.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(ip_location, <span class="st">&quot;(?&lt;=</span><span class="sc">\\</span><span class="st">().*?(?=-)&quot;</span>)</span>
-<span id="cb53-7"><a href="basic-syntax.html#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;湖南&quot;   &quot;北京&quot;   &quot;黑龙江&quot;</span></span>
-<span id="cb53-8"><a href="basic-syntax.html#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(ip_location, <span class="st">&quot;^.*?(?=</span><span class="sc">\\</span><span class="st">()&quot;</span>)</span>
-<span id="cb53-9"><a href="basic-syntax.html#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;175.10.237.40&quot;  &quot;114.243.12.168&quot; &quot;125.211.78.251&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="basic-syntax.html#cb57-1" aria-hidden="true" tabindex="-1"></a>car_model <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;宝马X3 2016款&quot;</span>, <span class="st">&quot;大众 速腾2017款&quot;</span>, <span class="st">&quot;宝马3系2012款&quot;</span>)</span>
+<span id="cb57-2"><a href="basic-syntax.html#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="basic-syntax.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ([a-zA-Z0-9]) 捕获遇到的第一个字母或数字，保存为 \1</span></span>
+<span id="cb57-4"><a href="basic-syntax.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot; \\1&quot; 用“空格 + 原字符”替换它，因此信息不会丢失</span></span>
+<span id="cb57-5"><a href="basic-syntax.html#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(car_model, <span class="st">&quot;([a-zA-Z0-9])&quot;</span>, <span class="st">&quot; </span><span class="sc">\\</span><span class="st">1&quot;</span>)</span>
+<span id="cb57-6"><a href="basic-syntax.html#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;宝马 X3 2016款&quot;   &quot;大众 速腾 2017款&quot; &quot;宝马 3系2012款&quot;</span></span></code></pre></div>
 </details>
-<p><code>(?&lt;=左标志)</code> 是向后查看，<code>(?=右标志)</code> 是向前查看；标志参与定位但不进入返回结果。这里使用 <code>.*?</code> 的懒惰匹配，避免跨过最近的右标志。</p>
+<p>下面的六位数字实际表示时、分、秒。<code>hms()</code> 需要分隔符，因此先把每两位数字捕获为一组，再在每组后加冒号。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="basic-syntax.html#cb54-1" aria-hidden="true" tabindex="-1"></a>movie <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;独行月球2022_Chinese&quot;</span>, <span class="st">&quot;蜘蛛侠USA_2021&quot;</span>)</span>
-<span id="cb54-2"><a href="basic-syntax.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(movie, <span class="st">&quot;(</span><span class="sc">\\</span><span class="st">d+)_(.+)$&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">2_</span><span class="sc">\\</span><span class="st">1&quot;</span>)</span>
-<span id="cb54-3"><a href="basic-syntax.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;独行月球Chinese_2022&quot; &quot;蜘蛛侠USA_2021&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="basic-syntax.html#cb58-1" aria-hidden="true" tabindex="-1"></a>compact_time <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;194631&quot;</span>, <span class="st">&quot;174223&quot;</span>)</span>
+<span id="cb58-2"><a href="basic-syntax.html#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="basic-syntax.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (\d{2}) 每次捕获两位数字</span></span>
+<span id="cb58-4"><a href="basic-syntax.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># str_replace_all() 处理每个字符串中的全部三组，而不只处理第一组</span></span>
+<span id="cb58-5"><a href="basic-syntax.html#cb58-5" aria-hidden="true" tabindex="-1"></a>time_with_colon <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(compact_time, <span class="st">&quot;(</span><span class="sc">\\</span><span class="st">d{2})&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1:&quot;</span>)</span>
+<span id="cb58-6"><a href="basic-syntax.html#cb58-6" aria-hidden="true" tabindex="-1"></a>time_with_colon</span>
+<span id="cb58-7"><a href="basic-syntax.html#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;19:46:31:&quot; &quot;17:42:23:&quot;</span></span>
+<span id="cb58-8"><a href="basic-syntax.html#cb58-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-9"><a href="basic-syntax.html#cb58-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 清洗后的字符已经具备“时:分:秒”结构，可以解析为时间</span></span>
+<span id="cb58-10"><a href="basic-syntax.html#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hms</span>(time_with_colon)</span>
+<span id="cb58-11"><a href="basic-syntax.html#cb58-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;19H 46M 31S&quot; &quot;17H 42M 23S&quot;</span></span></code></pre></div>
 </details>
+<p>最后，教材用两个捕获组统一电影信息中“年份_国别”的顺序。</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="basic-syntax.html#cb59-1" aria-hidden="true" tabindex="-1"></a>movie <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;独行月球2022_Chinese&quot;</span>, <span class="st">&quot;蜘蛛侠USA_2021&quot;</span>, <span class="st">&quot;人生大事2022_Chinese&quot;</span>)</span>
+<span id="cb59-2"><a href="basic-syntax.html#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="basic-syntax.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 第 1 组 (\d+) 捕获年份；第 2 组 (.+) 捕获下划线后的国别</span></span>
+<span id="cb59-4"><a href="basic-syntax.html#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 替换为“第 2 组_第 1 组”，从而统一为“国别_年份”</span></span>
+<span id="cb59-5"><a href="basic-syntax.html#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(movie, <span class="st">&quot;(</span><span class="sc">\\</span><span class="st">d+)_(.+)&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">2_</span><span class="sc">\\</span><span class="st">1&quot;</span>)</span>
+<span id="cb59-6"><a href="basic-syntax.html#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;独行月球Chinese_2022&quot; &quot;蜘蛛侠USA_2021&quot;       &quot;人生大事Chinese_2022&quot;</span></span></code></pre></div>
+</details>
+<p>第二条“蜘蛛侠USA_2021”没有“数字 + 下划线 + 国别”这一结构，所以不匹配并保持原样；另外两条被改成“Chinese_年份”。这也说明：正则只处理符合模式的记录，编写模式后必须检查未匹配记录是否符合预期。</p>
 <div class="callout">
-<p><strong>调试策略</strong>：先用 <code>str_view()</code> 或 <code>str_detect()</code> 验证模式，再使用 <code>str_extract()</code> 或 <code>str_replace()</code>。正则表达式越复杂，越需要小样本和边界测试。</p>
+<p><strong>读懂正则的固定方法</strong>：先用中文写出目标和边界；再把模式从左到右拆成“位置、字符、次数、分组”；用 <code>str_view()</code> 或 <code>str_detect()</code> 检查；最后才调用 <code>str_extract()</code> 或 <code>str_replace()</code>。若模式无法逐段解释，就不要直接用于完整数据。</p>
 </div>
 <div class="task">
-<p><strong>课堂检查 4</strong>：从 <code>c(“2023级统计学1班”, “2024级数据科学2班”)</code> 中分别提取年级、专业和班号，并为每一部分解释正则模式。</p>
+<p><strong>课堂检查 4</strong>：从 <code>c(“2023级统计学1班”, “2024级数据科学2班”)</code> 中分别提取年级、专业和班号。不要直接试符号：先写出每一部分的左边界、右边界和内容规律，再把它翻译成模式，并逐段解释运行结果。</p>
+</div>
 </div>
 </div>
 </div>
 <div id="控制结构" class="section level2 hasAnchor" number="1.6">
 <h2><span class="header-section-number">1.6</span> 控制结构<a href="basic-syntax.html#控制结构" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>到目前为止，代码都是从上到下全部执行。但实际任务会遇到两种变化：不同条件要走不同路径，同一步骤要对很多对象重复执行。分支结构解决“选哪条路”，循环与泛函式解决“怎样重复”。</p>
 <div id="分支结构" class="section level3 hasAnchor" number="1.6.1">
 <h3><span class="header-section-number">1.6.1</span> 分支结构<a href="basic-syntax.html#分支结构" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>分支结构根据一个长度为 1 的逻辑条件选择路径。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="basic-syntax.html#cb55-1" aria-hidden="true" tabindex="-1"></a>score_one <span class="ot">&lt;-</span> <span class="dv">76</span></span>
-<span id="cb55-2"><a href="basic-syntax.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (score_one <span class="sc">&gt;=</span> <span class="dv">60</span>) {</span>
-<span id="cb55-3"><a href="basic-syntax.html#cb55-3" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="st">&quot;通过&quot;</span></span>
-<span id="cb55-4"><a href="basic-syntax.html#cb55-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb55-5"><a href="basic-syntax.html#cb55-5" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="st">&quot;未通过&quot;</span></span>
-<span id="cb55-6"><a href="basic-syntax.html#cb55-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb55-7"><a href="basic-syntax.html#cb55-7" aria-hidden="true" tabindex="-1"></a>result</span>
-<span id="cb55-8"><a href="basic-syntax.html#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;通过&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="basic-syntax.html#cb60-1" aria-hidden="true" tabindex="-1"></a>score_one <span class="ot">&lt;-</span> <span class="dv">76</span></span>
+<span id="cb60-2"><a href="basic-syntax.html#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="basic-syntax.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 把“是否达到 60 分”写成一个长度为 1 的逻辑条件</span></span>
+<span id="cb60-4"><a href="basic-syntax.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (score_one <span class="sc">&gt;=</span> <span class="dv">60</span>) {</span>
+<span id="cb60-5"><a href="basic-syntax.html#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 条件为 TRUE 时执行这一支</span></span>
+<span id="cb60-6"><a href="basic-syntax.html#cb60-6" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="st">&quot;通过&quot;</span></span>
+<span id="cb60-7"><a href="basic-syntax.html#cb60-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb60-8"><a href="basic-syntax.html#cb60-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 条件为 FALSE 时执行另一支</span></span>
+<span id="cb60-9"><a href="basic-syntax.html#cb60-9" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="st">&quot;未通过&quot;</span></span>
+<span id="cb60-10"><a href="basic-syntax.html#cb60-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb60-11"><a href="basic-syntax.html#cb60-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-12"><a href="basic-syntax.html#cb60-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看分支最终生成的判断结果</span></span>
+<span id="cb60-13"><a href="basic-syntax.html#cb60-13" aria-hidden="true" tabindex="-1"></a>result</span>
+<span id="cb60-14"><a href="basic-syntax.html#cb60-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;通过&quot;</span></span></code></pre></div>
 </details>
+<p>写 <code>if</code> 的目的，是让程序根据数据自动选择步骤，而不是由人每次检查分数后手工输入结果。条件必须能明确归结为一个 <code>TRUE</code> 或 <code>FALSE</code>。</p>
 <p>多个分支要按互斥且覆盖完整的顺序组织。教材的百分制转五级制案例必须从最高分界向下判断，否则较高分数会被较低门槛提前截获。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="basic-syntax.html#cb56-1" aria-hidden="true" tabindex="-1"></a>score_one <span class="ot">&lt;-</span> <span class="dv">86</span></span>
-<span id="cb56-2"><a href="basic-syntax.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (score_one <span class="sc">&gt;=</span> <span class="dv">90</span>) {</span>
-<span id="cb56-3"><a href="basic-syntax.html#cb56-3" aria-hidden="true" tabindex="-1"></a>  grade_one <span class="ot">&lt;-</span> <span class="st">&quot;优&quot;</span></span>
-<span id="cb56-4"><a href="basic-syntax.html#cb56-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (score_one <span class="sc">&gt;=</span> <span class="dv">80</span>) {</span>
-<span id="cb56-5"><a href="basic-syntax.html#cb56-5" aria-hidden="true" tabindex="-1"></a>  grade_one <span class="ot">&lt;-</span> <span class="st">&quot;良&quot;</span></span>
-<span id="cb56-6"><a href="basic-syntax.html#cb56-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (score_one <span class="sc">&gt;=</span> <span class="dv">70</span>) {</span>
-<span id="cb56-7"><a href="basic-syntax.html#cb56-7" aria-hidden="true" tabindex="-1"></a>  grade_one <span class="ot">&lt;-</span> <span class="st">&quot;中&quot;</span></span>
-<span id="cb56-8"><a href="basic-syntax.html#cb56-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (score_one <span class="sc">&gt;=</span> <span class="dv">60</span>) {</span>
-<span id="cb56-9"><a href="basic-syntax.html#cb56-9" aria-hidden="true" tabindex="-1"></a>  grade_one <span class="ot">&lt;-</span> <span class="st">&quot;及格&quot;</span></span>
-<span id="cb56-10"><a href="basic-syntax.html#cb56-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb56-11"><a href="basic-syntax.html#cb56-11" aria-hidden="true" tabindex="-1"></a>  grade_one <span class="ot">&lt;-</span> <span class="st">&quot;不及格&quot;</span></span>
-<span id="cb56-12"><a href="basic-syntax.html#cb56-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb56-13"><a href="basic-syntax.html#cb56-13" aria-hidden="true" tabindex="-1"></a>grade_one</span>
-<span id="cb56-14"><a href="basic-syntax.html#cb56-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;良&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="basic-syntax.html#cb61-1" aria-hidden="true" tabindex="-1"></a>score_one <span class="ot">&lt;-</span> <span class="dv">86</span></span>
+<span id="cb61-2"><a href="basic-syntax.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (score_one <span class="sc">&gt;=</span> <span class="dv">90</span>) {</span>
+<span id="cb61-3"><a href="basic-syntax.html#cb61-3" aria-hidden="true" tabindex="-1"></a>  grade_one <span class="ot">&lt;-</span> <span class="st">&quot;优&quot;</span></span>
+<span id="cb61-4"><a href="basic-syntax.html#cb61-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (score_one <span class="sc">&gt;=</span> <span class="dv">80</span>) {</span>
+<span id="cb61-5"><a href="basic-syntax.html#cb61-5" aria-hidden="true" tabindex="-1"></a>  grade_one <span class="ot">&lt;-</span> <span class="st">&quot;良&quot;</span></span>
+<span id="cb61-6"><a href="basic-syntax.html#cb61-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (score_one <span class="sc">&gt;=</span> <span class="dv">70</span>) {</span>
+<span id="cb61-7"><a href="basic-syntax.html#cb61-7" aria-hidden="true" tabindex="-1"></a>  grade_one <span class="ot">&lt;-</span> <span class="st">&quot;中&quot;</span></span>
+<span id="cb61-8"><a href="basic-syntax.html#cb61-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (score_one <span class="sc">&gt;=</span> <span class="dv">60</span>) {</span>
+<span id="cb61-9"><a href="basic-syntax.html#cb61-9" aria-hidden="true" tabindex="-1"></a>  grade_one <span class="ot">&lt;-</span> <span class="st">&quot;及格&quot;</span></span>
+<span id="cb61-10"><a href="basic-syntax.html#cb61-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb61-11"><a href="basic-syntax.html#cb61-11" aria-hidden="true" tabindex="-1"></a>  grade_one <span class="ot">&lt;-</span> <span class="st">&quot;不及格&quot;</span></span>
+<span id="cb61-12"><a href="basic-syntax.html#cb61-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb61-13"><a href="basic-syntax.html#cb61-13" aria-hidden="true" tabindex="-1"></a>grade_one</span>
+<span id="cb61-14"><a href="basic-syntax.html#cb61-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;良&quot;</span></span></code></pre></div>
 </details>
 <p><code>if</code> 负责流程控制，只接受单一条件；<code>ifelse()</code> 接受逻辑向量并返回向量。多个向量化条件更适合 <code>dplyr::case_when()</code>。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="basic-syntax.html#cb57-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">95</span>, <span class="dv">86</span>, <span class="dv">73</span>, <span class="dv">62</span>, <span class="dv">48</span>, <span class="cn">NA</span>)</span>
-<span id="cb57-2"><a href="basic-syntax.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">case_when</span>(</span>
-<span id="cb57-3"><a href="basic-syntax.html#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">is.na</span>(scores) <span class="sc">~</span> <span class="cn">NA_character_</span>,</span>
-<span id="cb57-4"><a href="basic-syntax.html#cb57-4" aria-hidden="true" tabindex="-1"></a>  scores <span class="sc">&gt;=</span> <span class="dv">90</span> <span class="sc">~</span> <span class="st">&quot;优&quot;</span>, scores <span class="sc">&gt;=</span> <span class="dv">80</span> <span class="sc">~</span> <span class="st">&quot;良&quot;</span>, scores <span class="sc">&gt;=</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">&quot;中&quot;</span>,</span>
-<span id="cb57-5"><a href="basic-syntax.html#cb57-5" aria-hidden="true" tabindex="-1"></a>  scores <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">&quot;及格&quot;</span>, <span class="at">.default =</span> <span class="st">&quot;不及格&quot;</span></span>
-<span id="cb57-6"><a href="basic-syntax.html#cb57-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb57-7"><a href="basic-syntax.html#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;优&quot;     &quot;良&quot;     &quot;中&quot;     &quot;及格&quot;   &quot;不及格&quot; NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="basic-syntax.html#cb62-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">95</span>, <span class="dv">86</span>, <span class="dv">73</span>, <span class="dv">62</span>, <span class="dv">48</span>, <span class="cn">NA</span>)</span>
+<span id="cb62-2"><a href="basic-syntax.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">case_when</span>(</span>
+<span id="cb62-3"><a href="basic-syntax.html#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">is.na</span>(scores) <span class="sc">~</span> <span class="cn">NA_character_</span>,</span>
+<span id="cb62-4"><a href="basic-syntax.html#cb62-4" aria-hidden="true" tabindex="-1"></a>  scores <span class="sc">&gt;=</span> <span class="dv">90</span> <span class="sc">~</span> <span class="st">&quot;优&quot;</span>, scores <span class="sc">&gt;=</span> <span class="dv">80</span> <span class="sc">~</span> <span class="st">&quot;良&quot;</span>, scores <span class="sc">&gt;=</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">&quot;中&quot;</span>,</span>
+<span id="cb62-5"><a href="basic-syntax.html#cb62-5" aria-hidden="true" tabindex="-1"></a>  scores <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">&quot;及格&quot;</span>, <span class="at">.default =</span> <span class="st">&quot;不及格&quot;</span></span>
+<span id="cb62-6"><a href="basic-syntax.html#cb62-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb62-7"><a href="basic-syntax.html#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;优&quot;     &quot;良&quot;     &quot;中&quot;     &quot;及格&quot;   &quot;不及格&quot; NA</span></span></code></pre></div>
 </details>
 </div>
 <div id="循环结构" class="section level3 hasAnchor" number="1.6.2">
@@ -1526,31 +1770,39 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="for-循环看见迭代的三个部件" class="section level4 hasAnchor" number="1.6.2.1">
 <h4><span class="header-section-number">1.6.2.1</span> <code>for</code> 循环：看见迭代的三个部件<a href="basic-syntax.html#for-循环看见迭代的三个部件" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="basic-syntax.html#cb58-1" aria-hidden="true" tabindex="-1"></a>numeric_iris <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(iris[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
-<span id="cb58-2"><a href="basic-syntax.html#cb58-2" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="fu">ncol</span>(numeric_iris))</span>
-<span id="cb58-3"><a href="basic-syntax.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(numeric_iris)) {</span>
-<span id="cb58-4"><a href="basic-syntax.html#cb58-4" aria-hidden="true" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> <span class="fu">mean</span>(numeric_iris[[i]])</span>
-<span id="cb58-5"><a href="basic-syntax.html#cb58-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb58-6"><a href="basic-syntax.html#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(output) <span class="ot">&lt;-</span> <span class="fu">names</span>(numeric_iris)</span>
-<span id="cb58-7"><a href="basic-syntax.html#cb58-7" aria-hidden="true" tabindex="-1"></a>output</span>
-<span id="cb58-8"><a href="basic-syntax.html#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sepal.Length  Sepal.Width Petal.Length  Petal.Width </span></span>
-<span id="cb58-9"><a href="basic-syntax.html#cb58-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     5.843333     3.057333     3.758000     1.199333</span></span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="basic-syntax.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 输入：iris 的前四个数值列；每一列都要计算均值</span></span>
+<span id="cb63-2"><a href="basic-syntax.html#cb63-2" aria-hidden="true" tabindex="-1"></a>numeric_iris <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(iris[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
+<span id="cb63-3"><a href="basic-syntax.html#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="basic-syntax.html#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 先创建与列数等长的空结果向量，避免在循环中不断扩大对象</span></span>
+<span id="cb63-5"><a href="basic-syntax.html#cb63-5" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="fu">ncol</span>(numeric_iris))</span>
+<span id="cb63-6"><a href="basic-syntax.html#cb63-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-7"><a href="basic-syntax.html#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="co"># i 依次代表第 1、2、3、4 列的位置</span></span>
+<span id="cb63-8"><a href="basic-syntax.html#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(numeric_iris)) {</span>
+<span id="cb63-9"><a href="basic-syntax.html#cb63-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 取出第 i 列，计算均值，并存入结果的第 i 个位置</span></span>
+<span id="cb63-10"><a href="basic-syntax.html#cb63-10" aria-hidden="true" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> <span class="fu">mean</span>(numeric_iris[[i]])</span>
+<span id="cb63-11"><a href="basic-syntax.html#cb63-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb63-12"><a href="basic-syntax.html#cb63-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-13"><a href="basic-syntax.html#cb63-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 把原列名交给结果，使每个均值仍能对应原变量</span></span>
+<span id="cb63-14"><a href="basic-syntax.html#cb63-14" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(output) <span class="ot">&lt;-</span> <span class="fu">names</span>(numeric_iris)</span>
+<span id="cb63-15"><a href="basic-syntax.html#cb63-15" aria-hidden="true" tabindex="-1"></a>output</span>
+<span id="cb63-16"><a href="basic-syntax.html#cb63-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sepal.Length  Sepal.Width Petal.Length  Petal.Width </span></span>
+<span id="cb63-17"><a href="basic-syntax.html#cb63-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     5.843333     3.057333     3.758000     1.199333</span></span></code></pre></div>
 </details>
 <p>一个稳定的 <code>for</code> 循环包含：预先分配的输出、迭代序列、循环体。不要在每次循环中用 <code>c()</code> 或 <code>rbind()</code> 不断扩大对象；先保存到预分配向量或列表，最后一次合并。</p>
 </div>
 <div id="while-与-repeat" class="section level4 hasAnchor" number="1.6.2.2">
 <h4><span class="header-section-number">1.6.2.2</span> <code>while</code> 与 <code>repeat</code><a href="basic-syntax.html#while-与-repeat" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="basic-syntax.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb59-2"><a href="basic-syntax.html#cb59-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="cn">Inf</span></span>
-<span id="cb59-3"><a href="basic-syntax.html#cb59-3" aria-hidden="true" tabindex="-1"></a>draws <span class="ot">&lt;-</span> 0L</span>
-<span id="cb59-4"><a href="basic-syntax.html#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (x <span class="sc">&lt;=</span> <span class="dv">1</span>) {</span>
-<span id="cb59-5"><a href="basic-syntax.html#cb59-5" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>)</span>
-<span id="cb59-6"><a href="basic-syntax.html#cb59-6" aria-hidden="true" tabindex="-1"></a>  draws <span class="ot">&lt;-</span> draws <span class="sc">+</span> 1L</span>
-<span id="cb59-7"><a href="basic-syntax.html#cb59-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb59-8"><a href="basic-syntax.html#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">draws =</span> draws, <span class="at">last_value =</span> x)</span>
-<span id="cb59-9"><a href="basic-syntax.html#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      draws last_value </span></span>
-<span id="cb59-10"><a href="basic-syntax.html#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   3.000000   1.558708</span></span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="basic-syntax.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb64-2"><a href="basic-syntax.html#cb64-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="cn">Inf</span></span>
+<span id="cb64-3"><a href="basic-syntax.html#cb64-3" aria-hidden="true" tabindex="-1"></a>draws <span class="ot">&lt;-</span> 0L</span>
+<span id="cb64-4"><a href="basic-syntax.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (x <span class="sc">&lt;=</span> <span class="dv">1</span>) {</span>
+<span id="cb64-5"><a href="basic-syntax.html#cb64-5" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>)</span>
+<span id="cb64-6"><a href="basic-syntax.html#cb64-6" aria-hidden="true" tabindex="-1"></a>  draws <span class="ot">&lt;-</span> draws <span class="sc">+</span> 1L</span>
+<span id="cb64-7"><a href="basic-syntax.html#cb64-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb64-8"><a href="basic-syntax.html#cb64-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">draws =</span> draws, <span class="at">last_value =</span> x)</span>
+<span id="cb64-9"><a href="basic-syntax.html#cb64-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      draws last_value </span></span>
+<span id="cb64-10"><a href="basic-syntax.html#cb64-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   3.000000   1.558708</span></span></code></pre></div>
 </details>
 <p><code>while</code> 适用于迭代次数未知、先判断再执行；<code>repeat</code> 至少执行一次，必须设计清晰的 <code>break</code> 条件。<code>next</code> 跳过当前一轮，<code>break</code> 结束整个循环。</p>
 </div>
@@ -1593,24 +1845,24 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="basic-syntax.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(<span class="fu">as.matrix</span>(numeric_iris), <span class="dv">2</span>, mean)</span>
-<span id="cb60-2"><a href="basic-syntax.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sepal.Length  Sepal.Width Petal.Length  Petal.Width </span></span>
-<span id="cb60-3"><a href="basic-syntax.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     5.843333     3.057333     3.758000     1.199333</span></span>
-<span id="cb60-4"><a href="basic-syntax.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(numeric_iris, mean)</span>
-<span id="cb60-5"><a href="basic-syntax.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Sepal.Length</span></span>
-<span id="cb60-6"><a href="basic-syntax.html#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5.843333</span></span>
-<span id="cb60-7"><a href="basic-syntax.html#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb60-8"><a href="basic-syntax.html#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Sepal.Width</span></span>
-<span id="cb60-9"><a href="basic-syntax.html#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3.057333</span></span>
-<span id="cb60-10"><a href="basic-syntax.html#cb60-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb60-11"><a href="basic-syntax.html#cb60-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Petal.Length</span></span>
-<span id="cb60-12"><a href="basic-syntax.html#cb60-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3.758</span></span>
-<span id="cb60-13"><a href="basic-syntax.html#cb60-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb60-14"><a href="basic-syntax.html#cb60-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Petal.Width</span></span>
-<span id="cb60-15"><a href="basic-syntax.html#cb60-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.199333</span></span>
-<span id="cb60-16"><a href="basic-syntax.html#cb60-16" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(numeric_iris, mean)</span>
-<span id="cb60-17"><a href="basic-syntax.html#cb60-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sepal.Length  Sepal.Width Petal.Length  Petal.Width </span></span>
-<span id="cb60-18"><a href="basic-syntax.html#cb60-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     5.843333     3.057333     3.758000     1.199333</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="basic-syntax.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(<span class="fu">as.matrix</span>(numeric_iris), <span class="dv">2</span>, mean)</span>
+<span id="cb65-2"><a href="basic-syntax.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sepal.Length  Sepal.Width Petal.Length  Petal.Width </span></span>
+<span id="cb65-3"><a href="basic-syntax.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     5.843333     3.057333     3.758000     1.199333</span></span>
+<span id="cb65-4"><a href="basic-syntax.html#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(numeric_iris, mean)</span>
+<span id="cb65-5"><a href="basic-syntax.html#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Sepal.Length</span></span>
+<span id="cb65-6"><a href="basic-syntax.html#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5.843333</span></span>
+<span id="cb65-7"><a href="basic-syntax.html#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb65-8"><a href="basic-syntax.html#cb65-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Sepal.Width</span></span>
+<span id="cb65-9"><a href="basic-syntax.html#cb65-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3.057333</span></span>
+<span id="cb65-10"><a href="basic-syntax.html#cb65-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb65-11"><a href="basic-syntax.html#cb65-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Petal.Length</span></span>
+<span id="cb65-12"><a href="basic-syntax.html#cb65-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3.758</span></span>
+<span id="cb65-13"><a href="basic-syntax.html#cb65-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb65-14"><a href="basic-syntax.html#cb65-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Petal.Width</span></span>
+<span id="cb65-15"><a href="basic-syntax.html#cb65-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.199333</span></span>
+<span id="cb65-16"><a href="basic-syntax.html#cb65-16" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(numeric_iris, mean)</span>
+<span id="cb65-17"><a href="basic-syntax.html#cb65-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sepal.Length  Sepal.Width Petal.Length  Petal.Width </span></span>
+<span id="cb65-18"><a href="basic-syntax.html#cb65-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     5.843333     3.057333     3.758000     1.199333</span></span></code></pre></div>
 </details>
 <p>学习 <code>apply</code> 族有助于阅读大量既有 R 代码；新课程代码优先使用返回类型更明确的 <code>purrr</code> 或专用函数，如 <code>rowMeans()</code>、<code>colMeans()</code>。</p>
 </div>
@@ -1618,38 +1870,41 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">1.6.2.4</span> <code>purrr</code> 泛函式迭代<a href="basic-syntax.html#purrr-泛函式迭代" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>泛函式是“以函数作为输入的函数”。<code>map(.x, .f)</code> 把同一个函数 <code>.f</code> 映射到序列 <code>.x</code> 的每个元素，并收集结果。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="basic-syntax.html#cb61-1" aria-hidden="true" tabindex="-1"></a>numeric_iris <span class="sc">|&gt;</span></span>
-<span id="cb61-2"><a href="basic-syntax.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dbl</span>(mean)</span>
-<span id="cb61-3"><a href="basic-syntax.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sepal.Length  Sepal.Width Petal.Length  Petal.Width </span></span>
-<span id="cb61-4"><a href="basic-syntax.html#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     5.843333     3.057333     3.758000     1.199333</span></span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="basic-syntax.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 输入仍是四个数值列；map_dbl() 对每列调用同一个 mean()</span></span>
+<span id="cb66-2"><a href="basic-syntax.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co"># _dbl 表明我们要求结果必须是双精度数值向量</span></span>
+<span id="cb66-3"><a href="basic-syntax.html#cb66-3" aria-hidden="true" tabindex="-1"></a>numeric_iris <span class="sc">|&gt;</span></span>
+<span id="cb66-4"><a href="basic-syntax.html#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dbl</span>(mean)</span>
+<span id="cb66-5"><a href="basic-syntax.html#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sepal.Length  Sepal.Width Petal.Length  Petal.Width </span></span>
+<span id="cb66-6"><a href="basic-syntax.html#cb66-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     5.843333     3.057333     3.758000     1.199333</span></span></code></pre></div>
 </details>
+<p>这段 <code>map_dbl()</code> 与前面的 <code>for</code> 循环解决同一个问题。<code>for</code> 把“取第几列—计算—保存”全部写出来；<code>map_dbl()</code> 只保留不变的核心规则“对每列求均值”。当每次处理彼此独立、不需要提前退出时，后者通常更直接。</p>
 <p>选择后缀就是声明输出契约：<code>map_lgl()</code> 返回逻辑向量、<code>map_int()</code> 返回整数向量、<code>map_dbl()</code> 返回双精度向量、<code>map_chr()</code> 返回字符向量，<code>map()</code> 返回列表。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="basic-syntax.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>), <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb62-2"><a href="basic-syntax.html#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dbl</span>(\(x) <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb62-3"><a href="basic-syntax.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.5 5.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="basic-syntax.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>), <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb67-2"><a href="basic-syntax.html#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dbl</span>(\(x) <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb67-3"><a href="basic-syntax.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.5 5.0</span></span></code></pre></div>
 </details>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="basic-syntax.html#cb63-1" aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.58</span>, <span class="fl">1.76</span>, <span class="fl">1.64</span>)</span>
-<span id="cb63-2"><a href="basic-syntax.html#cb63-2" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">52</span>, <span class="dv">73</span>, <span class="dv">68</span>)</span>
-<span id="cb63-3"><a href="basic-syntax.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dbl</span>(height, weight, \(h, w) w <span class="sc">/</span> h<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb63-4"><a href="basic-syntax.html#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 20.83000 23.56663 25.28257</span></span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="basic-syntax.html#cb68-1" aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.58</span>, <span class="fl">1.76</span>, <span class="fl">1.64</span>)</span>
+<span id="cb68-2"><a href="basic-syntax.html#cb68-2" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">52</span>, <span class="dv">73</span>, <span class="dv">68</span>)</span>
+<span id="cb68-3"><a href="basic-syntax.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dbl</span>(height, weight, \(h, w) w <span class="sc">/</span> h<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb68-4"><a href="basic-syntax.html#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 20.83000 23.56663 25.28257</span></span></code></pre></div>
 </details>
 <p><code>pmap()</code> 把多元函数应用到多个对应序列；当输入是数据框时，可把每一行视为一组参数。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="basic-syntax.html#cb64-1" aria-hidden="true" tabindex="-1"></a>simulation_plan <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb64-2"><a href="basic-syntax.html#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb64-3"><a href="basic-syntax.html#cb64-3" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb64-4"><a href="basic-syntax.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb64-5"><a href="basic-syntax.html#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap</span>(simulation_plan, rnorm)</span>
-<span id="cb64-6"><a href="basic-syntax.html#cb64-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb64-7"><a href="basic-syntax.html#cb64-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -0.5604756 -0.2301775</span></span>
-<span id="cb64-8"><a href="basic-syntax.html#cb64-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb64-9"><a href="basic-syntax.html#cb64-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb64-10"><a href="basic-syntax.html#cb64-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 8.117417 5.141017 5.258575</span></span>
-<span id="cb64-11"><a href="basic-syntax.html#cb64-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb64-12"><a href="basic-syntax.html#cb64-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb64-13"><a href="basic-syntax.html#cb64-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11.715065 10.460916  8.734939  9.313147</span></span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="basic-syntax.html#cb69-1" aria-hidden="true" tabindex="-1"></a>simulation_plan <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb69-2"><a href="basic-syntax.html#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb69-3"><a href="basic-syntax.html#cb69-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb69-4"><a href="basic-syntax.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb69-5"><a href="basic-syntax.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap</span>(simulation_plan, rnorm)</span>
+<span id="cb69-6"><a href="basic-syntax.html#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb69-7"><a href="basic-syntax.html#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -0.5604756 -0.2301775</span></span>
+<span id="cb69-8"><a href="basic-syntax.html#cb69-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb69-9"><a href="basic-syntax.html#cb69-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
+<span id="cb69-10"><a href="basic-syntax.html#cb69-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 8.117417 5.141017 5.258575</span></span>
+<span id="cb69-11"><a href="basic-syntax.html#cb69-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb69-12"><a href="basic-syntax.html#cb69-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
+<span id="cb69-13"><a href="basic-syntax.html#cb69-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11.715065 10.460916  8.734939  9.313147</span></span></code></pre></div>
 </details>
 <table>
 <thead>
@@ -1685,65 +1940,73 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="自定义函数" class="section level2 hasAnchor" number="1.7">
 <h2><span class="header-section-number">1.7</span> 自定义函数<a href="basic-syntax.html#自定义函数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>复制粘贴代码会让同一规则出现多个版本：以后修改阈值或缺失值处理时，很容易漏改。自定义函数的目的，是为一套已经验证的步骤取名字，并明确它接收什么、返回什么。</p>
 <div id="自定义函数-1" class="section level3 hasAnchor" number="1.7.1">
 <h3><span class="header-section-number">1.7.1</span> 自定义函数<a href="basic-syntax.html#自定义函数-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>函数把一套步骤封装为可复用规则。教材建议先分析输入和输出，再用一个具体值逐步调试，最后才封装。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="basic-syntax.html#cb65-1" aria-hidden="true" tabindex="-1"></a>score_to_grade <span class="ot">&lt;-</span> <span class="cf">function</span>(score) {</span>
-<span id="cb65-2"><a href="basic-syntax.html#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(score) <span class="sc">!=</span> 1L <span class="sc">||</span> <span class="fu">is.na</span>(score)) {</span>
-<span id="cb65-3"><a href="basic-syntax.html#cb65-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NA_character_</span>)</span>
-<span id="cb65-4"><a href="basic-syntax.html#cb65-4" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb65-5"><a href="basic-syntax.html#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (score <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">||</span> score <span class="sc">&gt;</span> <span class="dv">100</span>) {</span>
-<span id="cb65-6"><a href="basic-syntax.html#cb65-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&quot;score 必须位于 0 到 100 之间&quot;</span>)</span>
-<span id="cb65-7"><a href="basic-syntax.html#cb65-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb65-8"><a href="basic-syntax.html#cb65-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">90</span>) {</span>
-<span id="cb65-9"><a href="basic-syntax.html#cb65-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;优&quot;</span></span>
-<span id="cb65-10"><a href="basic-syntax.html#cb65-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">80</span>) {</span>
-<span id="cb65-11"><a href="basic-syntax.html#cb65-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;良&quot;</span></span>
-<span id="cb65-12"><a href="basic-syntax.html#cb65-12" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">70</span>) {</span>
-<span id="cb65-13"><a href="basic-syntax.html#cb65-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;中&quot;</span></span>
-<span id="cb65-14"><a href="basic-syntax.html#cb65-14" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">60</span>) {</span>
-<span id="cb65-15"><a href="basic-syntax.html#cb65-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;及格&quot;</span></span>
-<span id="cb65-16"><a href="basic-syntax.html#cb65-16" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb65-17"><a href="basic-syntax.html#cb65-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;不及格&quot;</span></span>
-<span id="cb65-18"><a href="basic-syntax.html#cb65-18" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb65-19"><a href="basic-syntax.html#cb65-19" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb65-20"><a href="basic-syntax.html#cb65-20" aria-hidden="true" tabindex="-1"></a><span class="fu">score_to_grade</span>(<span class="dv">86</span>)</span>
-<span id="cb65-21"><a href="basic-syntax.html#cb65-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;良&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="basic-syntax.html#cb70-1" aria-hidden="true" tabindex="-1"></a>score_to_grade <span class="ot">&lt;-</span> <span class="cf">function</span>(score) {</span>
+<span id="cb70-2"><a href="basic-syntax.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 输入契约：这里只处理一个分数；缺失值直接返回字符型 NA</span></span>
+<span id="cb70-3"><a href="basic-syntax.html#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(score) <span class="sc">!=</span> 1L <span class="sc">||</span> <span class="fu">is.na</span>(score)) {</span>
+<span id="cb70-4"><a href="basic-syntax.html#cb70-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NA_character_</span>)</span>
+<span id="cb70-5"><a href="basic-syntax.html#cb70-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb70-6"><a href="basic-syntax.html#cb70-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-7"><a href="basic-syntax.html#cb70-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 边界检查：超出百分制范围时停止，避免悄悄产生错误等级</span></span>
+<span id="cb70-8"><a href="basic-syntax.html#cb70-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (score <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">||</span> score <span class="sc">&gt;</span> <span class="dv">100</span>) {</span>
+<span id="cb70-9"><a href="basic-syntax.html#cb70-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&quot;score 必须位于 0 到 100 之间&quot;</span>)</span>
+<span id="cb70-10"><a href="basic-syntax.html#cb70-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb70-11"><a href="basic-syntax.html#cb70-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-12"><a href="basic-syntax.html#cb70-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 核心规则：从最高阈值向下判断，命中后即返回相应等级</span></span>
+<span id="cb70-13"><a href="basic-syntax.html#cb70-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">90</span>) {</span>
+<span id="cb70-14"><a href="basic-syntax.html#cb70-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;优&quot;</span></span>
+<span id="cb70-15"><a href="basic-syntax.html#cb70-15" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">80</span>) {</span>
+<span id="cb70-16"><a href="basic-syntax.html#cb70-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;良&quot;</span></span>
+<span id="cb70-17"><a href="basic-syntax.html#cb70-17" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">70</span>) {</span>
+<span id="cb70-18"><a href="basic-syntax.html#cb70-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;中&quot;</span></span>
+<span id="cb70-19"><a href="basic-syntax.html#cb70-19" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">60</span>) {</span>
+<span id="cb70-20"><a href="basic-syntax.html#cb70-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;及格&quot;</span></span>
+<span id="cb70-21"><a href="basic-syntax.html#cb70-21" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb70-22"><a href="basic-syntax.html#cb70-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;不及格&quot;</span></span>
+<span id="cb70-23"><a href="basic-syntax.html#cb70-23" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb70-24"><a href="basic-syntax.html#cb70-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb70-25"><a href="basic-syntax.html#cb70-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-26"><a href="basic-syntax.html#cb70-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 用一个已知输入测试函数，确认 86 分应返回“良”</span></span>
+<span id="cb70-27"><a href="basic-syntax.html#cb70-27" aria-hidden="true" tabindex="-1"></a><span class="fu">score_to_grade</span>(<span class="dv">86</span>)</span>
+<span id="cb70-28"><a href="basic-syntax.html#cb70-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;良&quot;</span></span></code></pre></div>
 </details>
 <p>设计函数时写清四件事：输入参数的类型与范围、核心处理步骤、返回值的类型与结构、边界与缺失值处理。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="basic-syntax.html#cb66-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">35</span>, <span class="dv">67</span>, <span class="dv">100</span>, <span class="cn">NA</span>)</span>
-<span id="cb66-2"><a href="basic-syntax.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map_chr</span>(scores, score_to_grade)</span>
-<span id="cb66-3"><a href="basic-syntax.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;不及格&quot; &quot;及格&quot;   &quot;优&quot;     NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="basic-syntax.html#cb71-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">35</span>, <span class="dv">67</span>, <span class="dv">100</span>, <span class="cn">NA</span>)</span>
+<span id="cb71-2"><a href="basic-syntax.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map_chr</span>(scores, score_to_grade)</span>
+<span id="cb71-3"><a href="basic-syntax.html#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;不及格&quot; &quot;及格&quot;   &quot;优&quot;     NA</span></span></code></pre></div>
 </details>
 <p>如果一个函数有多个返回结果，应组合成一个有名字的列表或数据框。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="basic-syntax.html#cb67-1" aria-hidden="true" tabindex="-1"></a>mean_sd <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) {</span>
-<span id="cb67-2"><a href="basic-syntax.html#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
-<span id="cb67-3"><a href="basic-syntax.html#cb67-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm),</span>
-<span id="cb67-4"><a href="basic-syntax.html#cb67-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm),</span>
-<span id="cb67-5"><a href="basic-syntax.html#cb67-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(x))</span>
-<span id="cb67-6"><a href="basic-syntax.html#cb67-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb67-7"><a href="basic-syntax.html#cb67-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb67-8"><a href="basic-syntax.html#cb67-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_sd</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">12</span>))</span>
-<span id="cb67-9"><a href="basic-syntax.html#cb67-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $mean</span></span>
-<span id="cb67-10"><a href="basic-syntax.html#cb67-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6.6</span></span>
-<span id="cb67-11"><a href="basic-syntax.html#cb67-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb67-12"><a href="basic-syntax.html#cb67-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $sd</span></span>
-<span id="cb67-13"><a href="basic-syntax.html#cb67-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3.974921</span></span>
-<span id="cb67-14"><a href="basic-syntax.html#cb67-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb67-15"><a href="basic-syntax.html#cb67-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $n</span></span>
-<span id="cb67-16"><a href="basic-syntax.html#cb67-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="basic-syntax.html#cb72-1" aria-hidden="true" tabindex="-1"></a>mean_sd <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb72-2"><a href="basic-syntax.html#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb72-3"><a href="basic-syntax.html#cb72-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> na.rm),</span>
+<span id="cb72-4"><a href="basic-syntax.html#cb72-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> na.rm),</span>
+<span id="cb72-5"><a href="basic-syntax.html#cb72-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(x))</span>
+<span id="cb72-6"><a href="basic-syntax.html#cb72-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb72-7"><a href="basic-syntax.html#cb72-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb72-8"><a href="basic-syntax.html#cb72-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_sd</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">12</span>))</span>
+<span id="cb72-9"><a href="basic-syntax.html#cb72-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $mean</span></span>
+<span id="cb72-10"><a href="basic-syntax.html#cb72-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6.6</span></span>
+<span id="cb72-11"><a href="basic-syntax.html#cb72-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb72-12"><a href="basic-syntax.html#cb72-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $sd</span></span>
+<span id="cb72-13"><a href="basic-syntax.html#cb72-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3.974921</span></span>
+<span id="cb72-14"><a href="basic-syntax.html#cb72-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb72-15"><a href="basic-syntax.html#cb72-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $n</span></span>
+<span id="cb72-16"><a href="basic-syntax.html#cb72-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
 </details>
 <p>默认参数表达最常见的用法；<code>...</code> 用于把额外参数传给另一个函数，但应谨慎，避免参数去向不清。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="basic-syntax.html#cb68-1" aria-hidden="true" tabindex="-1"></a>summarise_num <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
-<span id="cb68-2"><a href="basic-syntax.html#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">mean =</span> <span class="fu">mean</span>(x, ...), <span class="at">sd =</span> <span class="fu">sd</span>(x, ...))</span>
-<span id="cb68-3"><a href="basic-syntax.html#cb68-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb68-4"><a href="basic-syntax.html#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise_num</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb68-5"><a href="basic-syntax.html#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mean       sd </span></span>
-<span id="cb68-6"><a href="basic-syntax.html#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2.333333 1.527525</span></span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="basic-syntax.html#cb73-1" aria-hidden="true" tabindex="-1"></a>summarise_num <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
+<span id="cb73-2"><a href="basic-syntax.html#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">mean =</span> <span class="fu">mean</span>(x, ...), <span class="at">sd =</span> <span class="fu">sd</span>(x, ...))</span>
+<span id="cb73-3"><a href="basic-syntax.html#cb73-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb73-4"><a href="basic-syntax.html#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise_num</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb73-5"><a href="basic-syntax.html#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     mean       sd </span></span>
+<span id="cb73-6"><a href="basic-syntax.html#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2.333333 1.527525</span></span></code></pre></div>
 </details>
 </div>
 <div id="r-自带的函数" class="section level3 hasAnchor" number="1.7.2">
@@ -1796,15 +2059,15 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="basic-syntax.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="dv">0</span>)</span>
-<span id="cb69-2"><a href="basic-syntax.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.3989423</span></span>
-<span id="cb69-3"><a href="basic-syntax.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.96</span>)</span>
-<span id="cb69-4"><a href="basic-syntax.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.9750021</span></span>
-<span id="cb69-5"><a href="basic-syntax.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
-<span id="cb69-6"><a href="basic-syntax.html#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.959964</span></span>
-<span id="cb69-7"><a href="basic-syntax.html#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb69-8"><a href="basic-syntax.html#cb69-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">3</span>)</span>
-<span id="cb69-9"><a href="basic-syntax.html#cb69-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -0.5604756 -0.2301775  1.5587083</span></span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="basic-syntax.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="dv">0</span>)</span>
+<span id="cb74-2"><a href="basic-syntax.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.3989423</span></span>
+<span id="cb74-3"><a href="basic-syntax.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.96</span>)</span>
+<span id="cb74-4"><a href="basic-syntax.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.9750021</span></span>
+<span id="cb74-5"><a href="basic-syntax.html#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb74-6"><a href="basic-syntax.html#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.959964</span></span>
+<span id="cb74-7"><a href="basic-syntax.html#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb74-8"><a href="basic-syntax.html#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">3</span>)</span>
+<span id="cb74-9"><a href="basic-syntax.html#cb74-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -0.5604756 -0.2301775  1.5587083</span></span></code></pre></div>
 </details>
 <p>随机模拟应在需要复现时设置种子。不要在函数内部无条件 <code>set.seed()</code>，否则每次调用都会产生完全相同的“随机”结果。</p>
 </div>
@@ -1812,32 +2075,44 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="综合练习把基础语法连成工作流" class="section level2 hasAnchor" number="1.8">
 <h2><span class="header-section-number">1.8</span> 综合练习：把基础语法连成工作流<a href="basic-syntax.html#综合练习把基础语法连成工作流" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="basic-syntax.html#cb70-1" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb70-2"><a href="basic-syntax.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>id,       <span class="sc">~</span>date,        <span class="sc">~</span>score, <span class="sc">~</span>satisfaction,</span>
-<span id="cb70-3"><a href="basic-syntax.html#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;BJ-001&quot;</span>, <span class="st">&quot;2023/02/20&quot;</span>, <span class="dv">86</span>,     <span class="st">&quot;满意&quot;</span>,</span>
-<span id="cb70-4"><a href="basic-syntax.html#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;SH-014&quot;</span>, <span class="st">&quot;2023/02/21&quot;</span>, <span class="dv">92</span>,     <span class="st">&quot;非常满意&quot;</span>,</span>
-<span id="cb70-5"><a href="basic-syntax.html#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;GZ-107&quot;</span>, <span class="st">&quot;2023/02/22&quot;</span>, <span class="cn">NA</span>,     <span class="st">&quot;一般&quot;</span>,</span>
-<span id="cb70-6"><a href="basic-syntax.html#cb70-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;BJ-203&quot;</span>, <span class="st">&quot;2023/02/22&quot;</span>, <span class="dv">58</span>,     <span class="st">&quot;不满意&quot;</span></span>
-<span id="cb70-7"><a href="basic-syntax.html#cb70-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb70-8"><a href="basic-syntax.html#cb70-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-9"><a href="basic-syntax.html#cb70-9" aria-hidden="true" tabindex="-1"></a>survey_clean <span class="ot">&lt;-</span> survey <span class="sc">|&gt;</span></span>
-<span id="cb70-10"><a href="basic-syntax.html#cb70-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb70-11"><a href="basic-syntax.html#cb70-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">city =</span> <span class="fu">str_extract</span>(id, <span class="st">&quot;^[A-Z]+&quot;</span>),</span>
-<span id="cb70-12"><a href="basic-syntax.html#cb70-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">ymd</span>(date),</span>
-<span id="cb70-13"><a href="basic-syntax.html#cb70-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">grade =</span> <span class="fu">map_chr</span>(score, score_to_grade),</span>
-<span id="cb70-14"><a href="basic-syntax.html#cb70-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">satisfaction =</span> <span class="fu">factor</span>(</span>
-<span id="cb70-15"><a href="basic-syntax.html#cb70-15" aria-hidden="true" tabindex="-1"></a>      satisfaction,</span>
-<span id="cb70-16"><a href="basic-syntax.html#cb70-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;非常不满意&quot;</span>, <span class="st">&quot;不满意&quot;</span>, <span class="st">&quot;一般&quot;</span>, <span class="st">&quot;满意&quot;</span>, <span class="st">&quot;非常满意&quot;</span>),</span>
-<span id="cb70-17"><a href="basic-syntax.html#cb70-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">ordered =</span> <span class="cn">TRUE</span></span>
-<span id="cb70-18"><a href="basic-syntax.html#cb70-18" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb70-19"><a href="basic-syntax.html#cb70-19" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb70-20"><a href="basic-syntax.html#cb70-20" aria-hidden="true" tabindex="-1"></a>survey_clean</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="basic-syntax.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 输入：一份同时包含编号、日期、分数和满意度的原始问卷数据</span></span>
+<span id="cb75-2"><a href="basic-syntax.html#cb75-2" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb75-3"><a href="basic-syntax.html#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>id,       <span class="sc">~</span>date,        <span class="sc">~</span>score, <span class="sc">~</span>satisfaction,</span>
+<span id="cb75-4"><a href="basic-syntax.html#cb75-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;BJ-001&quot;</span>, <span class="st">&quot;2023/02/20&quot;</span>, <span class="dv">86</span>,     <span class="st">&quot;满意&quot;</span>,</span>
+<span id="cb75-5"><a href="basic-syntax.html#cb75-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;SH-014&quot;</span>, <span class="st">&quot;2023/02/21&quot;</span>, <span class="dv">92</span>,     <span class="st">&quot;非常满意&quot;</span>,</span>
+<span id="cb75-6"><a href="basic-syntax.html#cb75-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;GZ-107&quot;</span>, <span class="st">&quot;2023/02/22&quot;</span>, <span class="cn">NA</span>,     <span class="st">&quot;一般&quot;</span>,</span>
+<span id="cb75-7"><a href="basic-syntax.html#cb75-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;BJ-203&quot;</span>, <span class="st">&quot;2023/02/22&quot;</span>, <span class="dv">58</span>,     <span class="st">&quot;不满意&quot;</span></span>
+<span id="cb75-8"><a href="basic-syntax.html#cb75-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb75-9"><a href="basic-syntax.html#cb75-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-10"><a href="basic-syntax.html#cb75-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 目的：把四个“看起来像文本或数值”的字段转换成可分析变量</span></span>
+<span id="cb75-11"><a href="basic-syntax.html#cb75-11" aria-hidden="true" tabindex="-1"></a>survey_clean <span class="ot">&lt;-</span> survey <span class="sc">|&gt;</span></span>
+<span id="cb75-12"><a href="basic-syntax.html#cb75-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb75-13"><a href="basic-syntax.html#cb75-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 编号开头的连续大写字母代表城市代码</span></span>
+<span id="cb75-14"><a href="basic-syntax.html#cb75-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">city =</span> <span class="fu">str_extract</span>(id, <span class="st">&quot;^[A-Z]+&quot;</span>),</span>
+<span id="cb75-15"><a href="basic-syntax.html#cb75-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-16"><a href="basic-syntax.html#cb75-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 原日期是字符；解析为 Date 后才能排序或计算时间差</span></span>
+<span id="cb75-17"><a href="basic-syntax.html#cb75-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">ymd</span>(date),</span>
+<span id="cb75-18"><a href="basic-syntax.html#cb75-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-19"><a href="basic-syntax.html#cb75-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># score_to_grade() 每次处理一个分数，map_chr() 把它应用到整列</span></span>
+<span id="cb75-20"><a href="basic-syntax.html#cb75-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">grade =</span> <span class="fu">map_chr</span>(score, score_to_grade),</span>
+<span id="cb75-21"><a href="basic-syntax.html#cb75-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-22"><a href="basic-syntax.html#cb75-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 满意度具有业务顺序；因子保证汇总、绘图和建模沿用该顺序</span></span>
+<span id="cb75-23"><a href="basic-syntax.html#cb75-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">satisfaction =</span> <span class="fu">factor</span>(</span>
+<span id="cb75-24"><a href="basic-syntax.html#cb75-24" aria-hidden="true" tabindex="-1"></a>      satisfaction,</span>
+<span id="cb75-25"><a href="basic-syntax.html#cb75-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;非常不满意&quot;</span>, <span class="st">&quot;不满意&quot;</span>, <span class="st">&quot;一般&quot;</span>, <span class="st">&quot;满意&quot;</span>, <span class="st">&quot;非常满意&quot;</span>),</span>
+<span id="cb75-26"><a href="basic-syntax.html#cb75-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">ordered =</span> <span class="cn">TRUE</span></span>
+<span id="cb75-27"><a href="basic-syntax.html#cb75-27" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb75-28"><a href="basic-syntax.html#cb75-28" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb75-29"><a href="basic-syntax.html#cb75-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-30"><a href="basic-syntax.html#cb75-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 输出：检查清洗后的变量类型与具体取值是否符合预期</span></span>
+<span id="cb75-31"><a href="basic-syntax.html#cb75-31" aria-hidden="true" tabindex="-1"></a>survey_clean</span></code></pre></div>
 </details>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["id"],"name":[1],"type":["chr"],"align":["left"]},{"label":["date"],"name":[2],"type":["date"],"align":["right"]},{"label":["score"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["satisfaction"],"name":[4],"type":["ord"],"align":["right"]},{"label":["city"],"name":[5],"type":["chr"],"align":["left"]},{"label":["grade"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"BJ-001","2":"2023-02-20","3":"86","4":"满意","5":"BJ","6":"良"},{"1":"SH-014","2":"2023-02-21","3":"92","4":"非常满意","5":"SH","6":"优"},{"1":"GZ-107","2":"2023-02-22","3":"NA","4":"一般","5":"GZ","6":"NA"},{"1":"BJ-203","2":"2023-02-22","3":"58","4":"不满意","5":"BJ","6":"不及格"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+<p>这段综合代码展示了本章各部分如何协作：数据框保存不同类型的列，正则从编号中提取信息，日期函数改变字段语义，自定义函数保存评分规则，<code>map_chr()</code> 执行重复操作，因子保存分类顺序。单个语法知识点的价值，就体现在它能否与其他步骤组合成完整工作流。</p>
 <p>请完成以下任务：</p>
 <ol style="list-style-type: decimal">
 <li>用 <code>str_extract()</code> 提取编号中的数字部分；</li>
