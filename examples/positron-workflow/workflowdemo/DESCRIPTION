@@ -1,0 +1,9 @@
+Package: workflowdemo
+Type: Package
+Title: A Minimal Reproducible Regression Workflow
+Version: 0.1.0
+Authors@R: person("Course", "Team", email = "course@example.org", role = c("aut", "cre"))
+Description: Validates motor car data and fits a small teaching regression model.
+    Demonstrates a dependency-free analysis function with reproducible tests.
+License: GPL-3
+Encoding: UTF-8

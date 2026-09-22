@@ -56,3 +56,4 @@ options(width = 80)
 | 第 5 章 探索性数据分析 | `05-eda.Rmd` | 已完成 |
 | 第 6 章 文档沟通 | `06-communication.Rmd` | 已完成 |
 | 附录 A–G | `appendix-*.Rmd` | 框架 |
+| 附录 H：Positron 与 AI 科研全流程（实践拓展） | `appendix-h-positron-workflow.Rmd` | 安装、分析、打包与论文输出 |

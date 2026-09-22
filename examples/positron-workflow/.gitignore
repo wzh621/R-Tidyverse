@@ -1,0 +1,5 @@
+workflowdemo.Rcheck/
+workflowdemo_*.tar.gz
+paper/*.aux
+paper/*.log
+paper/*.out

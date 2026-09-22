@@ -20,3 +20,4 @@ rmd_files:
   - appendix-e-web-scraping.Rmd
   - appendix-f-hpc.Rmd
   - appendix-g-ml.Rmd
+  - appendix-h-positron-workflow.Rmd

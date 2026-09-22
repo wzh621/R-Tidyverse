@@ -1,0 +1,2 @@
+export(fit_mpg_model)
+importFrom(stats,lm)
