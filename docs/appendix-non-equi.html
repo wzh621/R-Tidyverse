@@ -175,10 +175,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.6" data-path="intro.html"><a href="intro.html#安装与认识-positron"><i class="fa fa-check"></i><b>0.6</b> 安装与认识 Positron</a></li>
 <li class="chapter" data-level="0.7" data-path="intro.html"><a href="intro.html#配置-posit-assistant-deepseek"><i class="fa fa-check"></i><b>0.7</b> 配置 Posit Assistant + DeepSeek</a>
 <ul>
-<li class="chapter" data-level="0.7.1" data-path="intro.html"><a href="intro.html#准备-api-key"><i class="fa fa-check"></i><b>0.7.1</b> 准备 API Key</a></li>
-<li class="chapter" data-level="0.7.2" data-path="intro.html"><a href="intro.html#推荐使用-positron-原生-deepseek-提供商"><i class="fa fa-check"></i><b>0.7.2</b> 推荐：使用 Positron 原生 DeepSeek 提供商</a></li>
-<li class="chapter" data-level="0.7.3" data-path="intro.html"><a href="intro.html#兼容旧版custom-provider"><i class="fa fa-check"></i><b>0.7.3</b> 兼容旧版：Custom Provider</a></li>
-<li class="chapter" data-level="0.7.4" data-path="intro.html"><a href="intro.html#安全与验证清单"><i class="fa fa-check"></i><b>0.7.4</b> 安全与验证清单</a></li>
+<li class="chapter" data-level="0.7.1" data-path="intro.html"><a href="intro.html#先看视频再照清单操作"><i class="fa fa-check"></i><b>0.7.1</b> 先看视频，再照清单操作</a></li>
+<li class="chapter" data-level="0.7.2" data-path="intro.html"><a href="intro.html#准备-api-key"><i class="fa fa-check"></i><b>0.7.2</b> 准备 API Key</a></li>
+<li class="chapter" data-level="0.7.3" data-path="intro.html"><a href="intro.html#推荐使用-positron-原生-deepseek-提供商"><i class="fa fa-check"></i><b>0.7.3</b> 推荐：使用 Positron 原生 DeepSeek 提供商</a></li>
+<li class="chapter" data-level="0.7.4" data-path="intro.html"><a href="intro.html#兼容旧版custom-provider"><i class="fa fa-check"></i><b>0.7.4</b> 兼容旧版：Custom Provider</a></li>
+<li class="chapter" data-level="0.7.5" data-path="intro.html"><a href="intro.html#连接失败时按错误类型排查"><i class="fa fa-check"></i><b>0.7.5</b> 连接失败时按错误类型排查</a></li>
+<li class="chapter" data-level="0.7.6" data-path="intro.html"><a href="intro.html#安全与验证清单"><i class="fa fa-check"></i><b>0.7.6</b> 安全与验证清单</a></li>
 </ul></li>
 <li class="chapter" data-level="0.8" data-path="intro.html"><a href="intro.html#最小项目工作流"><i class="fa fa-check"></i><b>0.8</b> 最小项目工作流</a>
 <ul>
@@ -499,8 +501,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="H.3" data-path="appendix-positron.html"><a href="appendix-positron.html#配置-r-环境并做最小检查"><i class="fa fa-check"></i><b>H.3</b> 配置 R 环境并做最小检查</a></li>
 <li class="chapter" data-level="H.4" data-path="appendix-positron.html"><a href="appendix-positron.html#连接-posit-assistant-与-deepseek"><i class="fa fa-check"></i><b>H.4</b> 连接 Posit Assistant 与 DeepSeek</a>
 <ul>
-<li class="chapter" data-level="H.4.1" data-path="appendix-positron.html"><a href="appendix-positron.html#连接之前先明确数据边界"><i class="fa fa-check"></i><b>H.4.1</b> 连接之前先明确数据边界</a></li>
-<li class="chapter" data-level="H.4.2" data-path="appendix-positron.html"><a href="appendix-positron.html#配置与连接验收"><i class="fa fa-check"></i><b>H.4.2</b> 配置与连接验收</a></li>
+<li class="chapter" data-level="H.4.1" data-path="appendix-positron.html"><a href="appendix-positron.html#视频和逐步操作"><i class="fa fa-check"></i><b>H.4.1</b> 视频和逐步操作</a></li>
+<li class="chapter" data-level="H.4.2" data-path="appendix-positron.html"><a href="appendix-positron.html#连接之前先明确数据边界"><i class="fa fa-check"></i><b>H.4.2</b> 连接之前先明确数据边界</a></li>
+<li class="chapter" data-level="H.4.3" data-path="appendix-positron.html"><a href="appendix-positron.html#配置与连接验收"><i class="fa fa-check"></i><b>H.4.3</b> 配置与连接验收</a></li>
 </ul></li>
 <li class="chapter" data-level="H.5" data-path="appendix-positron.html"><a href="appendix-positron.html#用提示词把任务分成可验收的小步骤"><i class="fa fa-check"></i><b>H.5</b> 用提示词把任务分成可验收的小步骤</a>
 <ul>
@@ -561,49 +564,49 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">D.1</span> 非等连接<a href="appendix-non-equi.html#非等连接" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>教材使用房源、租客和已成交租赁三张表：</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="appendix-non-equi.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb336-2"><a href="appendix-non-equi.html#cb336-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb336-3"><a href="appendix-non-equi.html#cb336-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取房源、租客和已成交租赁数据</span></span>
-<span id="cb336-4"><a href="appendix-non-equi.html#cb336-4" aria-hidden="true" tabindex="-1"></a>Houses <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;data/House.csv&quot;</span>)</span>
-<span id="cb336-5"><a href="appendix-non-equi.html#cb336-5" aria-hidden="true" tabindex="-1"></a>Renters <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;data/Renters.csv&quot;</span>)</span>
-<span id="cb336-6"><a href="appendix-non-equi.html#cb336-6" aria-hidden="true" tabindex="-1"></a>Deals <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;data/Deals.csv&quot;</span>)</span>
-<span id="cb336-7"><a href="appendix-non-equi.html#cb336-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb336-8"><a href="appendix-non-equi.html#cb336-8" aria-hidden="true" tabindex="-1"></a>Houses</span>
-<span id="cb336-9"><a href="appendix-non-equi.html#cb336-9" aria-hidden="true" tabindex="-1"></a>Renters</span>
-<span id="cb336-10"><a href="appendix-non-equi.html#cb336-10" aria-hidden="true" tabindex="-1"></a>Deals</span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="appendix-non-equi.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb335-2"><a href="appendix-non-equi.html#cb335-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb335-3"><a href="appendix-non-equi.html#cb335-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取房源、租客和已成交租赁数据</span></span>
+<span id="cb335-4"><a href="appendix-non-equi.html#cb335-4" aria-hidden="true" tabindex="-1"></a>Houses <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;data/House.csv&quot;</span>)</span>
+<span id="cb335-5"><a href="appendix-non-equi.html#cb335-5" aria-hidden="true" tabindex="-1"></a>Renters <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;data/Renters.csv&quot;</span>)</span>
+<span id="cb335-6"><a href="appendix-non-equi.html#cb335-6" aria-hidden="true" tabindex="-1"></a>Deals <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;data/Deals.csv&quot;</span>)</span>
+<span id="cb335-7"><a href="appendix-non-equi.html#cb335-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb335-8"><a href="appendix-non-equi.html#cb335-8" aria-hidden="true" tabindex="-1"></a>Houses</span>
+<span id="cb335-9"><a href="appendix-non-equi.html#cb335-9" aria-hidden="true" tabindex="-1"></a>Renters</span>
+<span id="cb335-10"><a href="appendix-non-equi.html#cb335-10" aria-hidden="true" tabindex="-1"></a>Deals</span></code></pre></div>
 </details>
 <div id="找出可以合租的人" class="section level3 hasAnchor" number="10.1.1">
 <h3><span class="header-section-number">D.1.1</span> 找出可以合租的人<a href="appendix-non-equi.html#找出可以合租的人" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>这个问题是 <code>Renters</code> 表的自连接：先按首选区域等值匹配，再以 <code>id &lt; id</code> 避免同一组合重复出现。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="appendix-non-equi.html#cb337-1" aria-hidden="true" tabindex="-1"></a>Renters[</span>
-<span id="cb337-2"><a href="appendix-non-equi.html#cb337-2" aria-hidden="true" tabindex="-1"></a>  Renters,</span>
-<span id="cb337-3"><a href="appendix-non-equi.html#cb337-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># preferred 相等，同时只保留左侧 id 小于右侧 id 的组合</span></span>
-<span id="cb337-4"><a href="appendix-non-equi.html#cb337-4" aria-hidden="true" tabindex="-1"></a>  on <span class="ot">=</span> .(preferred, id <span class="sc">&lt;</span> id)</span>
-<span id="cb337-5"><a href="appendix-non-equi.html#cb337-5" aria-hidden="true" tabindex="-1"></a>][</span>
-<span id="cb337-6"><a href="appendix-non-equi.html#cb337-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 保留两位租客姓名及其共同首选区域</span></span>
-<span id="cb337-7"><a href="appendix-non-equi.html#cb337-7" aria-hidden="true" tabindex="-1"></a>  , .(name, preferred, i.name)</span>
-<span id="cb337-8"><a href="appendix-non-equi.html#cb337-8" aria-hidden="true" tabindex="-1"></a>] <span class="sc">|&gt;</span></span>
-<span id="cb337-9"><a href="appendix-non-equi.html#cb337-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="appendix-non-equi.html#cb336-1" aria-hidden="true" tabindex="-1"></a>Renters[</span>
+<span id="cb336-2"><a href="appendix-non-equi.html#cb336-2" aria-hidden="true" tabindex="-1"></a>  Renters,</span>
+<span id="cb336-3"><a href="appendix-non-equi.html#cb336-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># preferred 相等，同时只保留左侧 id 小于右侧 id 的组合</span></span>
+<span id="cb336-4"><a href="appendix-non-equi.html#cb336-4" aria-hidden="true" tabindex="-1"></a>  on <span class="ot">=</span> .(preferred, id <span class="sc">&lt;</span> id)</span>
+<span id="cb336-5"><a href="appendix-non-equi.html#cb336-5" aria-hidden="true" tabindex="-1"></a>][</span>
+<span id="cb336-6"><a href="appendix-non-equi.html#cb336-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 保留两位租客姓名及其共同首选区域</span></span>
+<span id="cb336-7"><a href="appendix-non-equi.html#cb336-7" aria-hidden="true" tabindex="-1"></a>  , .(name, preferred, i.name)</span>
+<span id="cb336-8"><a href="appendix-non-equi.html#cb336-8" aria-hidden="true" tabindex="-1"></a>] <span class="sc">|&gt;</span></span>
+<span id="cb336-9"><a href="appendix-non-equi.html#cb336-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code></pre></div>
 </details>
 </div>
 <div id="找出满足租客要求的可用房源" class="section level3 hasAnchor" number="10.1.2">
 <h3><span class="header-section-number">D.1.2</span> 找出满足租客要求的可用房源<a href="appendix-non-equi.html#找出满足租客要求的可用房源" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>一个房源需要同时满足：位于首选区域、租金在接受范围内、卧室数量足够，并且尚未成交。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="appendix-non-equi.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 先排除已经出租的房源，再与租客需求进行非等连接</span></span>
-<span id="cb338-2"><a href="appendix-non-equi.html#cb338-2" aria-hidden="true" tabindex="-1"></a>Houses[<span class="sc">!</span>id <span class="sc">%in%</span> Deals<span class="sc">$</span>house_id][</span>
-<span id="cb338-3"><a href="appendix-non-equi.html#cb338-3" aria-hidden="true" tabindex="-1"></a>  Renters,</span>
-<span id="cb338-4"><a href="appendix-non-equi.html#cb338-4" aria-hidden="true" tabindex="-1"></a>  on <span class="ot">=</span> .(</span>
-<span id="cb338-5"><a href="appendix-non-equi.html#cb338-5" aria-hidden="true" tabindex="-1"></a>    district <span class="sc">==</span> preferred,      <span class="co"># 地区必须相同</span></span>
-<span id="cb338-6"><a href="appendix-non-equi.html#cb338-6" aria-hidden="true" tabindex="-1"></a>    rent <span class="sc">&gt;=</span> min_rent,           <span class="co"># 租金不低于租客下限</span></span>
-<span id="cb338-7"><a href="appendix-non-equi.html#cb338-7" aria-hidden="true" tabindex="-1"></a>    rent <span class="sc">&lt;=</span> max_rent,           <span class="co"># 租金不高于租客上限</span></span>
-<span id="cb338-8"><a href="appendix-non-equi.html#cb338-8" aria-hidden="true" tabindex="-1"></a>    bedrooms <span class="sc">&gt;=</span> min_bedrooms    <span class="co"># 卧室数满足最低需求</span></span>
-<span id="cb338-9"><a href="appendix-non-equi.html#cb338-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb338-10"><a href="appendix-non-equi.html#cb338-10" aria-hidden="true" tabindex="-1"></a>][</span>
-<span id="cb338-11"><a href="appendix-non-equi.html#cb338-11" aria-hidden="true" tabindex="-1"></a>  , <span class="sc">-</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)                      <span class="co"># 删除连接后不需要的中间列</span></span>
-<span id="cb338-12"><a href="appendix-non-equi.html#cb338-12" aria-hidden="true" tabindex="-1"></a>] <span class="sc">|&gt;</span></span>
-<span id="cb338-13"><a href="appendix-non-equi.html#cb338-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="appendix-non-equi.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 先排除已经出租的房源，再与租客需求进行非等连接</span></span>
+<span id="cb337-2"><a href="appendix-non-equi.html#cb337-2" aria-hidden="true" tabindex="-1"></a>Houses[<span class="sc">!</span>id <span class="sc">%in%</span> Deals<span class="sc">$</span>house_id][</span>
+<span id="cb337-3"><a href="appendix-non-equi.html#cb337-3" aria-hidden="true" tabindex="-1"></a>  Renters,</span>
+<span id="cb337-4"><a href="appendix-non-equi.html#cb337-4" aria-hidden="true" tabindex="-1"></a>  on <span class="ot">=</span> .(</span>
+<span id="cb337-5"><a href="appendix-non-equi.html#cb337-5" aria-hidden="true" tabindex="-1"></a>    district <span class="sc">==</span> preferred,      <span class="co"># 地区必须相同</span></span>
+<span id="cb337-6"><a href="appendix-non-equi.html#cb337-6" aria-hidden="true" tabindex="-1"></a>    rent <span class="sc">&gt;=</span> min_rent,           <span class="co"># 租金不低于租客下限</span></span>
+<span id="cb337-7"><a href="appendix-non-equi.html#cb337-7" aria-hidden="true" tabindex="-1"></a>    rent <span class="sc">&lt;=</span> max_rent,           <span class="co"># 租金不高于租客上限</span></span>
+<span id="cb337-8"><a href="appendix-non-equi.html#cb337-8" aria-hidden="true" tabindex="-1"></a>    bedrooms <span class="sc">&gt;=</span> min_bedrooms    <span class="co"># 卧室数满足最低需求</span></span>
+<span id="cb337-9"><a href="appendix-non-equi.html#cb337-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb337-10"><a href="appendix-non-equi.html#cb337-10" aria-hidden="true" tabindex="-1"></a>][</span>
+<span id="cb337-11"><a href="appendix-non-equi.html#cb337-11" aria-hidden="true" tabindex="-1"></a>  , <span class="sc">-</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)                      <span class="co"># 删除连接后不需要的中间列</span></span>
+<span id="cb337-12"><a href="appendix-non-equi.html#cb337-12" aria-hidden="true" tabindex="-1"></a>] <span class="sc">|&gt;</span></span>
+<span id="cb337-13"><a href="appendix-non-equi.html#cb337-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code></pre></div>
 </details>
 </div>
 </div>
@@ -611,56 +614,56 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">D.2</span> 滚动连接<a href="appendix-non-equi.html#滚动连接" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>滚动连接的基本形式如下：</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="appendix-non-equi.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># roll = TRUE：匹配同一 id 下不晚于目标日期的最近一条记录</span></span>
-<span id="cb339-2"><a href="appendix-non-equi.html#cb339-2" aria-hidden="true" tabindex="-1"></a>x[y, on <span class="ot">=</span> .(id, date), roll <span class="ot">=</span> <span class="cn">TRUE</span>]</span>
-<span id="cb339-3"><a href="appendix-non-equi.html#cb339-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb339-4"><a href="appendix-non-equi.html#cb339-4" aria-hidden="true" tabindex="-1"></a><span class="co"># roll = -Inf：匹配同一 id 下不早于目标日期的最近一条记录</span></span>
-<span id="cb339-5"><a href="appendix-non-equi.html#cb339-5" aria-hidden="true" tabindex="-1"></a>x[y, on <span class="ot">=</span> .(id, date), roll <span class="ot">=</span> <span class="sc">-</span><span class="cn">Inf</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="appendix-non-equi.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="co"># roll = TRUE：匹配同一 id 下不晚于目标日期的最近一条记录</span></span>
+<span id="cb338-2"><a href="appendix-non-equi.html#cb338-2" aria-hidden="true" tabindex="-1"></a>x[y, on <span class="ot">=</span> .(id, date), roll <span class="ot">=</span> <span class="cn">TRUE</span>]</span>
+<span id="cb338-3"><a href="appendix-non-equi.html#cb338-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb338-4"><a href="appendix-non-equi.html#cb338-4" aria-hidden="true" tabindex="-1"></a><span class="co"># roll = -Inf：匹配同一 id 下不早于目标日期的最近一条记录</span></span>
+<span id="cb338-5"><a href="appendix-non-equi.html#cb338-5" aria-hidden="true" tabindex="-1"></a>x[y, on <span class="ot">=</span> .(id, date), roll <span class="ot">=</span> <span class="sc">-</span><span class="cn">Inf</span>]</span></code></pre></div>
 </details>
 <p>教材用网页会话与支付数据演示时间上的事件匹配。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="appendix-non-equi.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取网页会话与支付记录</span></span>
-<span id="cb340-2"><a href="appendix-non-equi.html#cb340-2" aria-hidden="true" tabindex="-1"></a>website <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;data/website.csv&quot;</span>)</span>
-<span id="cb340-3"><a href="appendix-non-equi.html#cb340-3" aria-hidden="true" tabindex="-1"></a>paypal <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;data/paypal.csv&quot;</span>)</span>
-<span id="cb340-4"><a href="appendix-non-equi.html#cb340-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb340-5"><a href="appendix-non-equi.html#cb340-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 为每个不同的用户—时间组合创建编号，便于观察连接结果</span></span>
-<span id="cb340-6"><a href="appendix-non-equi.html#cb340-6" aria-hidden="true" tabindex="-1"></a>website[, session_id <span class="sc">:</span><span class="er">=</span> .GRP, by <span class="ot">=</span> .(name, session_time)]</span>
-<span id="cb340-7"><a href="appendix-non-equi.html#cb340-7" aria-hidden="true" tabindex="-1"></a>paypal[, payment_id <span class="sc">:</span><span class="er">=</span> .GRP, by <span class="ot">=</span> .(name, purchase_time)]</span>
-<span id="cb340-8"><a href="appendix-non-equi.html#cb340-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb340-9"><a href="appendix-non-equi.html#cb340-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 复制一列作为统一的滚动连接时间键</span></span>
-<span id="cb340-10"><a href="appendix-non-equi.html#cb340-10" aria-hidden="true" tabindex="-1"></a>website[, join_time <span class="sc">:</span><span class="er">=</span> session_time]</span>
-<span id="cb340-11"><a href="appendix-non-equi.html#cb340-11" aria-hidden="true" tabindex="-1"></a>paypal[, join_time <span class="sc">:</span><span class="er">=</span> purchase_time]</span>
-<span id="cb340-12"><a href="appendix-non-equi.html#cb340-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb340-13"><a href="appendix-non-equi.html#cb340-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 两张表都按姓名和连接时间建立键</span></span>
-<span id="cb340-14"><a href="appendix-non-equi.html#cb340-14" aria-hidden="true" tabindex="-1"></a><span class="fu">setkey</span>(website, name, join_time)</span>
-<span id="cb340-15"><a href="appendix-non-equi.html#cb340-15" aria-hidden="true" tabindex="-1"></a><span class="fu">setkey</span>(paypal, name, join_time)</span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="appendix-non-equi.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取网页会话与支付记录</span></span>
+<span id="cb339-2"><a href="appendix-non-equi.html#cb339-2" aria-hidden="true" tabindex="-1"></a>website <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;data/website.csv&quot;</span>)</span>
+<span id="cb339-3"><a href="appendix-non-equi.html#cb339-3" aria-hidden="true" tabindex="-1"></a>paypal <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;data/paypal.csv&quot;</span>)</span>
+<span id="cb339-4"><a href="appendix-non-equi.html#cb339-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb339-5"><a href="appendix-non-equi.html#cb339-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 为每个不同的用户—时间组合创建编号，便于观察连接结果</span></span>
+<span id="cb339-6"><a href="appendix-non-equi.html#cb339-6" aria-hidden="true" tabindex="-1"></a>website[, session_id <span class="sc">:</span><span class="er">=</span> .GRP, by <span class="ot">=</span> .(name, session_time)]</span>
+<span id="cb339-7"><a href="appendix-non-equi.html#cb339-7" aria-hidden="true" tabindex="-1"></a>paypal[, payment_id <span class="sc">:</span><span class="er">=</span> .GRP, by <span class="ot">=</span> .(name, purchase_time)]</span>
+<span id="cb339-8"><a href="appendix-non-equi.html#cb339-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb339-9"><a href="appendix-non-equi.html#cb339-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 复制一列作为统一的滚动连接时间键</span></span>
+<span id="cb339-10"><a href="appendix-non-equi.html#cb339-10" aria-hidden="true" tabindex="-1"></a>website[, join_time <span class="sc">:</span><span class="er">=</span> session_time]</span>
+<span id="cb339-11"><a href="appendix-non-equi.html#cb339-11" aria-hidden="true" tabindex="-1"></a>paypal[, join_time <span class="sc">:</span><span class="er">=</span> purchase_time]</span>
+<span id="cb339-12"><a href="appendix-non-equi.html#cb339-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb339-13"><a href="appendix-non-equi.html#cb339-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 两张表都按姓名和连接时间建立键</span></span>
+<span id="cb339-14"><a href="appendix-non-equi.html#cb339-14" aria-hidden="true" tabindex="-1"></a><span class="fu">setkey</span>(website, name, join_time)</span>
+<span id="cb339-15"><a href="appendix-non-equi.html#cb339-15" aria-hidden="true" tabindex="-1"></a><span class="fu">setkey</span>(paypal, name, join_time)</span></code></pre></div>
 </details>
 <div id="前滚连接支付前最近的网页会话" class="section level3 hasAnchor" number="10.2.1">
 <h3><span class="header-section-number">D.2.1</span> 前滚连接：支付前最近的网页会话<a href="appendix-non-equi.html#前滚连接支付前最近的网页会话" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="appendix-non-equi.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 对每次支付，寻找同一用户在支付之前最近的一次会话</span></span>
-<span id="cb341-2"><a href="appendix-non-equi.html#cb341-2" aria-hidden="true" tabindex="-1"></a>website[paypal, roll <span class="ot">=</span> <span class="cn">TRUE</span>] <span class="sc">|&gt;</span></span>
-<span id="cb341-3"><a href="appendix-non-equi.html#cb341-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="appendix-non-equi.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 对每次支付，寻找同一用户在支付之前最近的一次会话</span></span>
+<span id="cb340-2"><a href="appendix-non-equi.html#cb340-2" aria-hidden="true" tabindex="-1"></a>website[paypal, roll <span class="ot">=</span> <span class="cn">TRUE</span>] <span class="sc">|&gt;</span></span>
+<span id="cb340-3"><a href="appendix-non-equi.html#cb340-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code></pre></div>
 </details>
 </div>
 <div id="后滚连接网页会话后的最近支付" class="section level3 hasAnchor" number="10.2.2">
 <h3><span class="header-section-number">D.2.2</span> 后滚连接：网页会话后的最近支付<a href="appendix-non-equi.html#后滚连接网页会话后的最近支付" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="appendix-non-equi.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 对每次网页会话，寻找同一用户在会话之后最近的一次支付</span></span>
-<span id="cb342-2"><a href="appendix-non-equi.html#cb342-2" aria-hidden="true" tabindex="-1"></a>paypal[website, roll <span class="ot">=</span> <span class="sc">-</span><span class="cn">Inf</span>] <span class="sc">|&gt;</span></span>
-<span id="cb342-3"><a href="appendix-non-equi.html#cb342-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="appendix-non-equi.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 对每次网页会话，寻找同一用户在会话之后最近的一次支付</span></span>
+<span id="cb341-2"><a href="appendix-non-equi.html#cb341-2" aria-hidden="true" tabindex="-1"></a>paypal[website, roll <span class="ot">=</span> <span class="sc">-</span><span class="cn">Inf</span>] <span class="sc">|&gt;</span></span>
+<span id="cb341-3"><a href="appendix-non-equi.html#cb341-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code></pre></div>
 </details>
 </div>
 <div id="滚动窗口连接" class="section level3 hasAnchor" number="10.2.3">
 <h3><span class="header-section-number">D.2.3</span> 滚动窗口连接<a href="appendix-non-equi.html#滚动窗口连接" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>还可以限制允许滚动的最长时间，只匹配网页会话后指定窗口内发生的支付。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="appendix-non-equi.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 教材代码将滚动窗口换算为秒</span></span>
-<span id="cb343-2"><a href="appendix-non-equi.html#cb343-2" aria-hidden="true" tabindex="-1"></a>twelve_hours <span class="ot">&lt;-</span> <span class="dv">60</span> <span class="sc">*</span> <span class="dv">60</span> <span class="sc">*</span> <span class="dv">20</span></span>
-<span id="cb343-3"><a href="appendix-non-equi.html#cb343-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb343-4"><a href="appendix-non-equi.html#cb343-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 仅在给定时间窗口内向后寻找支付记录</span></span>
-<span id="cb343-5"><a href="appendix-non-equi.html#cb343-5" aria-hidden="true" tabindex="-1"></a>paypal[website, roll <span class="ot">=</span> <span class="sc">-</span>twelve_hours] <span class="sc">|&gt;</span></span>
-<span id="cb343-6"><a href="appendix-non-equi.html#cb343-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="appendix-non-equi.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 教材代码将滚动窗口换算为秒</span></span>
+<span id="cb342-2"><a href="appendix-non-equi.html#cb342-2" aria-hidden="true" tabindex="-1"></a>twelve_hours <span class="ot">&lt;-</span> <span class="dv">60</span> <span class="sc">*</span> <span class="dv">60</span> <span class="sc">*</span> <span class="dv">20</span></span>
+<span id="cb342-3"><a href="appendix-non-equi.html#cb342-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb342-4"><a href="appendix-non-equi.html#cb342-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 仅在给定时间窗口内向后寻找支付记录</span></span>
+<span id="cb342-5"><a href="appendix-non-equi.html#cb342-5" aria-hidden="true" tabindex="-1"></a>paypal[website, roll <span class="ot">=</span> <span class="sc">-</span>twelve_hours] <span class="sc">|&gt;</span></span>
+<span id="cb342-6"><a href="appendix-non-equi.html#cb342-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code></pre></div>
 </details>
 <p><code>rollends</code> 参数是长度为 2 的逻辑向量，可控制是否对每组首个值之前、末个值之后的记录继续滚动。</p>
 

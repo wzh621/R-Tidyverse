@@ -23,7 +23,9 @@ source("run.R")
 - `outputs/results/numbers.tex`：论文引用的实际数字；禁止人工改写产生第二份结果。
 - `outputs/reports/work-report.md`：目的、方法、结果、解释、局限、复现和运行环境。
 - `workflowdemo/`：最小独立 R 包，含 DESCRIPTION、NAMESPACE、函数、Rd 和边界测试。
-- `paper/main.tex`：可编译的通用英文教学模板，不冒充任何期刊的官方模板。
+- `paper/main.tex`：可编译的通用英文教学模板。
+- `paper/templates/arxiv-english/`：面向统计写作的 arXiv 风格英文模板，使用 `natbib`/BibTeX 作者—年份引用。
+- `paper/templates/arxiv-chinese/`：`ctexart` 中文统计模板，同样使用作者—年份引用；arXiv 没有统一中文模板。
 
 ## 构建和检查 R 包
 
@@ -52,3 +54,23 @@ pdflatex -interaction=nonstopmode -halt-on-error main.tex
 先复制原模板到新的工作目录，保留原始 `.cls`、`.sty`、参考文献配置和章节命令。根据新目录调整路径，在导言区加入 `\input{../outputs/results/numbers.tex}`，在模板规定的 table 环境中加入 `\input{../outputs/tables/coefficients.tex}`，在 figure 环境中加入 `\includegraphics{../outputs/figures/observed-fitted.pdf}`。复用模板自己的标题、作者、图表和参考文献规范，不以本例的 `article` 类替换它。确保模板已加载 graphicx。含中文的原模板按其指定引擎（常见为 XeLaTeX）编译。
 
 这里未提供用户的真实模板，因此只验证通用教学模板。正式写作前还需依据真实数据补齐研究背景、文献、诊断与模型局限，不能让 AI 编造来源或显著性。
+
+## 从 arXiv 模板调用结果
+
+运行 `Rscript run.R` 后，可在模板目录中编译：
+
+```sh
+cd paper/templates/arxiv-english
+xelatex -interaction=nonstopmode -halt-on-error main.tex
+bibtex main
+xelatex -interaction=nonstopmode -halt-on-error main.tex
+xelatex -interaction=nonstopmode -halt-on-error main.tex
+
+cd ../arxiv-chinese
+xelatex -interaction=nonstopmode -halt-on-error main.tex
+bibtex main
+xelatex -interaction=nonstopmode -halt-on-error main.tex
+xelatex -interaction=nonstopmode -halt-on-error main.tex
+```
+
+两个 `main.tex` 都从 `outputs/results/numbers.tex` 读取数字，从 `outputs/tables/coefficients.tex` 读取表格，并插入 `outputs/figures/observed-fitted.pdf`。`references.bib` 可替换为自己的统计文献库，正文用 `\citet{}` 和 `\citep{}` 生成作者—年份引用。正式投稿必须换成目标期刊的官方文件。

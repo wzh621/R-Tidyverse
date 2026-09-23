@@ -143,7 +143,7 @@ fig:appendix-f-bigapply-image
 fig:appendix-g-mlr3-ecosystem
 fig:appendix-g-mlr3-workflow
 fig:appendix-g-tidymodels-ecosystem
-fig:ph-full-workflow
+fig:unnamed-chunk-1
 fig:ph-layout-image
 fig:ph-interpreter-image
 fig:ph-example-output
@@ -168,9 +168,11 @@ linuxubuntu-debian
 安装与认识-rstudio
 安装与认识-positron
 配置-posit-assistant-deepseek
+先看视频再照清单操作
 准备-api-key
 推荐使用-positron-原生-deepseek-提供商
 兼容旧版custom-provider
+连接失败时按错误类型排查
 安全与验证清单
 最小项目工作流
 第一步用-rstudio-图形界面建立项目边界
@@ -492,6 +494,7 @@ appendix-positron
 认识工作台代码在哪里运行结果在哪里看
 配置-r-环境并做最小检查
 连接-posit-assistant-与-deepseek
+视频和逐步操作
 连接之前先明确数据边界
 配置与连接验收
 用提示词把任务分成可验收的小步骤

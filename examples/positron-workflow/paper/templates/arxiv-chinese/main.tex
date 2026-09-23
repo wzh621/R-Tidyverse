@@ -1,0 +1,33 @@
+\documentclass[UTF8,a4paper,11pt,fontset=none]{ctexart}
+\setCJKmainfont{Songti SC}
+\setCJKsansfont{Heiti SC}
+\setCJKmonofont{Songti SC}
+\usepackage[round,authoryear]{natbib}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\input{../../../outputs/results/numbers.tex}
+\title{可复现的统计 R 工作流}
+\author{课程示例}
+\date{}
+\begin{document}
+\maketitle
+\section{引言}
+整洁数据有助于可复现的统计分析\citep{wickham2014}，透明的回归报告也应保留模型假设和计算记录\citep{gelman2020}。
+\section{结果}
+本教学分析包含 \SampleSize{} 个观测，模型 $R^2=\ModelRsquared$。
+\begin{table}[htbp]
+\centering
+\caption{由 R 自动生成的模型系数。}
+\input{../../../outputs/tables/coefficients.tex}
+\end{table}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.8\linewidth]{../../../outputs/figures/observed-fitted.pdf}
+\caption{观测值与拟合值。}
+\end{figure}
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

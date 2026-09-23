@@ -175,10 +175,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.6" data-path="intro.html"><a href="intro.html#安装与认识-positron"><i class="fa fa-check"></i><b>0.6</b> 安装与认识 Positron</a></li>
 <li class="chapter" data-level="0.7" data-path="intro.html"><a href="intro.html#配置-posit-assistant-deepseek"><i class="fa fa-check"></i><b>0.7</b> 配置 Posit Assistant + DeepSeek</a>
 <ul>
-<li class="chapter" data-level="0.7.1" data-path="intro.html"><a href="intro.html#准备-api-key"><i class="fa fa-check"></i><b>0.7.1</b> 准备 API Key</a></li>
-<li class="chapter" data-level="0.7.2" data-path="intro.html"><a href="intro.html#推荐使用-positron-原生-deepseek-提供商"><i class="fa fa-check"></i><b>0.7.2</b> 推荐：使用 Positron 原生 DeepSeek 提供商</a></li>
-<li class="chapter" data-level="0.7.3" data-path="intro.html"><a href="intro.html#兼容旧版custom-provider"><i class="fa fa-check"></i><b>0.7.3</b> 兼容旧版：Custom Provider</a></li>
-<li class="chapter" data-level="0.7.4" data-path="intro.html"><a href="intro.html#安全与验证清单"><i class="fa fa-check"></i><b>0.7.4</b> 安全与验证清单</a></li>
+<li class="chapter" data-level="0.7.1" data-path="intro.html"><a href="intro.html#先看视频再照清单操作"><i class="fa fa-check"></i><b>0.7.1</b> 先看视频，再照清单操作</a></li>
+<li class="chapter" data-level="0.7.2" data-path="intro.html"><a href="intro.html#准备-api-key"><i class="fa fa-check"></i><b>0.7.2</b> 准备 API Key</a></li>
+<li class="chapter" data-level="0.7.3" data-path="intro.html"><a href="intro.html#推荐使用-positron-原生-deepseek-提供商"><i class="fa fa-check"></i><b>0.7.3</b> 推荐：使用 Positron 原生 DeepSeek 提供商</a></li>
+<li class="chapter" data-level="0.7.4" data-path="intro.html"><a href="intro.html#兼容旧版custom-provider"><i class="fa fa-check"></i><b>0.7.4</b> 兼容旧版：Custom Provider</a></li>
+<li class="chapter" data-level="0.7.5" data-path="intro.html"><a href="intro.html#连接失败时按错误类型排查"><i class="fa fa-check"></i><b>0.7.5</b> 连接失败时按错误类型排查</a></li>
+<li class="chapter" data-level="0.7.6" data-path="intro.html"><a href="intro.html#安全与验证清单"><i class="fa fa-check"></i><b>0.7.6</b> 安全与验证清单</a></li>
 </ul></li>
 <li class="chapter" data-level="0.8" data-path="intro.html"><a href="intro.html#最小项目工作流"><i class="fa fa-check"></i><b>0.8</b> 最小项目工作流</a>
 <ul>
@@ -499,8 +501,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="H.3" data-path="appendix-positron.html"><a href="appendix-positron.html#配置-r-环境并做最小检查"><i class="fa fa-check"></i><b>H.3</b> 配置 R 环境并做最小检查</a></li>
 <li class="chapter" data-level="H.4" data-path="appendix-positron.html"><a href="appendix-positron.html#连接-posit-assistant-与-deepseek"><i class="fa fa-check"></i><b>H.4</b> 连接 Posit Assistant 与 DeepSeek</a>
 <ul>
-<li class="chapter" data-level="H.4.1" data-path="appendix-positron.html"><a href="appendix-positron.html#连接之前先明确数据边界"><i class="fa fa-check"></i><b>H.4.1</b> 连接之前先明确数据边界</a></li>
-<li class="chapter" data-level="H.4.2" data-path="appendix-positron.html"><a href="appendix-positron.html#配置与连接验收"><i class="fa fa-check"></i><b>H.4.2</b> 配置与连接验收</a></li>
+<li class="chapter" data-level="H.4.1" data-path="appendix-positron.html"><a href="appendix-positron.html#视频和逐步操作"><i class="fa fa-check"></i><b>H.4.1</b> 视频和逐步操作</a></li>
+<li class="chapter" data-level="H.4.2" data-path="appendix-positron.html"><a href="appendix-positron.html#连接之前先明确数据边界"><i class="fa fa-check"></i><b>H.4.2</b> 连接之前先明确数据边界</a></li>
+<li class="chapter" data-level="H.4.3" data-path="appendix-positron.html"><a href="appendix-positron.html#配置与连接验收"><i class="fa fa-check"></i><b>H.4.3</b> 配置与连接验收</a></li>
 </ul></li>
 <li class="chapter" data-level="H.5" data-path="appendix-positron.html"><a href="appendix-positron.html#用提示词把任务分成可验收的小步骤"><i class="fa fa-check"></i><b>H.5</b> 用提示词把任务分成可验收的小步骤</a>
 <ul>
@@ -558,10 +561,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">H</span> Positron 与 AI 辅助的 R 科研项目全流程<a href="appendix-positron.html#appendix-positron" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>本附录是新增的实践拓展，不属于原教材附录。你将完成一条可检查的链路：<strong>安装 R 与 Positron → 连接 Posit Assistant → 用提示词开发项目 → 分析数据 → 保存图片和结果 → 生成 LaTeX 表格 → 封装 R 包 → 编写工作说明 → 在论文模板中引用结果 → 从干净会话重跑</strong>。</p>
 <p>贯穿案例使用 R 自带的 <code>mtcars</code> 数据，回答“在控制发动机马力后，汽车重量与每加仑行驶里程有什么统计关联”。数据规模小、无需下载，也不涉及个人信息，适合把注意力放在工作流程上。本例用于软件流程教学，不能据此作因果解释或当作新研究发现。</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ph-full-workflow"></span>
-<img src="images/Codex%20%E5%9B%BE%E5%83%8F.png" alt="Positron、Posit Assistant 与 DeepSeek 支撑的 R 科研项目全流程。" width="92%" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
+<img src="images/Codex%20%E5%9B%BE%E5%83%8F.png" alt="Positron 的操作流程化处理" width="92%" />
 <p class="caption">
-Figure H.1: Positron、Posit Assistant 与 DeepSeek 支撑的 R 科研项目全流程。
+Figure H.1: Positron 的操作流程化处理
 </p>
 </div>
 <div id="先明确最终交付物" class="section level2 hasAnchor" number="14.1">
@@ -697,39 +700,52 @@ Figure H.3: Positron 官方 R 解释器选择器截图，2026-09-22 获取。关
 </p>
 </div>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="appendix-positron.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 确认当前进程的 R 版本和安装位置。</span></span>
-<span id="cb363-2"><a href="appendix-positron.html#cb363-2" aria-hidden="true" tabindex="-1"></a>R.version.string</span>
-<span id="cb363-3"><a href="appendix-positron.html#cb363-3" aria-hidden="true" tabindex="-1"></a><span class="fu">R.home</span>()</span>
-<span id="cb363-4"><a href="appendix-positron.html#cb363-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 确认读写文件时采用的当前目录。</span></span>
-<span id="cb363-5"><a href="appendix-positron.html#cb363-5" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
-<span id="cb363-6"><a href="appendix-positron.html#cb363-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建一个可在 Variables 中展开的小对象。</span></span>
-<span id="cb363-7"><a href="appendix-positron.html#cb363-7" aria-hidden="true" tabindex="-1"></a>cars <span class="ot">&lt;-</span> datasets<span class="sc">::</span>mtcars</span>
-<span id="cb363-8"><a href="appendix-positron.html#cb363-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cars[, <span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;wt&quot;</span>, <span class="st">&quot;hp&quot;</span>)])</span>
-<span id="cb363-9"><a href="appendix-positron.html#cb363-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 在 Plots 中查看结果，随后打开函数帮助。</span></span>
-<span id="cb363-10"><a href="appendix-positron.html#cb363-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cars<span class="sc">$</span>wt, cars<span class="sc">$</span>mpg, <span class="at">xlab =</span> <span class="st">&quot;Weight (1000 lb)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;MPG&quot;</span>)</span>
-<span id="cb363-11"><a href="appendix-positron.html#cb363-11" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(<span class="st">&quot;lm&quot;</span>)</span>
-<span id="cb363-12"><a href="appendix-positron.html#cb363-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看当前解释器能够使用的包，而不是另一个 R 安装目录的包。</span></span>
-<span id="cb363-13"><a href="appendix-positron.html#cb363-13" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">installed.packages</span>()[, <span class="fu">c</span>(<span class="st">&quot;Package&quot;</span>, <span class="st">&quot;Version&quot;</span>)])</span>
-<span id="cb363-14"><a href="appendix-positron.html#cb363-14" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="appendix-positron.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 确认当前进程的 R 版本和安装位置。</span></span>
+<span id="cb362-2"><a href="appendix-positron.html#cb362-2" aria-hidden="true" tabindex="-1"></a>R.version.string</span>
+<span id="cb362-3"><a href="appendix-positron.html#cb362-3" aria-hidden="true" tabindex="-1"></a><span class="fu">R.home</span>()</span>
+<span id="cb362-4"><a href="appendix-positron.html#cb362-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 确认读写文件时采用的当前目录。</span></span>
+<span id="cb362-5"><a href="appendix-positron.html#cb362-5" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb362-6"><a href="appendix-positron.html#cb362-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建一个可在 Variables 中展开的小对象。</span></span>
+<span id="cb362-7"><a href="appendix-positron.html#cb362-7" aria-hidden="true" tabindex="-1"></a>cars <span class="ot">&lt;-</span> datasets<span class="sc">::</span>mtcars</span>
+<span id="cb362-8"><a href="appendix-positron.html#cb362-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cars[, <span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;wt&quot;</span>, <span class="st">&quot;hp&quot;</span>)])</span>
+<span id="cb362-9"><a href="appendix-positron.html#cb362-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 在 Plots 中查看结果，随后打开函数帮助。</span></span>
+<span id="cb362-10"><a href="appendix-positron.html#cb362-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cars<span class="sc">$</span>wt, cars<span class="sc">$</span>mpg, <span class="at">xlab =</span> <span class="st">&quot;Weight (1000 lb)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;MPG&quot;</span>)</span>
+<span id="cb362-11"><a href="appendix-positron.html#cb362-11" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(<span class="st">&quot;lm&quot;</span>)</span>
+<span id="cb362-12"><a href="appendix-positron.html#cb362-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看当前解释器能够使用的包，而不是另一个 R 安装目录的包。</span></span>
+<span id="cb362-13"><a href="appendix-positron.html#cb362-13" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">installed.packages</span>()[, <span class="fu">c</span>(<span class="st">&quot;Package&quot;</span>, <span class="st">&quot;Version&quot;</span>)])</span>
+<span id="cb362-14"><a href="appendix-positron.html#cb362-14" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
 </details>
 <p><strong>结果与解释。</strong> <code>cars</code> 有 32 行，<code>wt</code> 的单位是千磅，<code>mpg</code> 是英里/加仑，数值越高通常表示同样燃油能行驶更远。Plots 中应出现重量和里程的散点图。变量查看器中的对象在退出会话后可能消失；保存在硬盘的脚本才是重跑依据。</p>
 <p><strong>常见问题。</strong> <code>install.packages()</code> 应在 R Console 执行；<code>R CMD check</code> 应在 Terminal 执行。找不到已安装包时先比较 <code>R.home()</code> 和 <code>.libPaths()</code>，不要立刻重复安装。安装包是一次性的环境准备，分析脚本不应每次运行都联网安装。</p>
 <p>本例的核心计算只使用 R 自带包。需要在自己的扩展项目中使用 <code>here</code>、<code>ggplot2</code>、<code>knitr</code>、<code>renv</code> 或 <code>devtools</code> 时，再单独安装所需包。采用 <code>here</code> 的项目可在入口第一行声明定位点：</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="appendix-positron.html#cb364-1" aria-hidden="true" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">i_am</span>(<span class="st">&quot;run.R&quot;</span>)</span>
-<span id="cb364-2"><a href="appendix-positron.html#cb364-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 无论脚本位于哪个子目录，都从项目根目录定位文件。</span></span>
-<span id="cb364-3"><a href="appendix-positron.html#cb364-3" aria-hidden="true" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;outputs&quot;</span>, <span class="st">&quot;tables&quot;</span>, <span class="st">&quot;coefficients.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="appendix-positron.html#cb363-1" aria-hidden="true" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">i_am</span>(<span class="st">&quot;run.R&quot;</span>)</span>
+<span id="cb363-2"><a href="appendix-positron.html#cb363-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 无论脚本位于哪个子目录，都从项目根目录定位文件。</span></span>
+<span id="cb363-3"><a href="appendix-positron.html#cb363-3" aria-hidden="true" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;outputs&quot;</span>, <span class="st">&quot;tables&quot;</span>, <span class="st">&quot;coefficients.csv&quot;</span>)</span></code></pre></div>
 </details>
 </div>
 <div id="连接-posit-assistant-与-deepseek" class="section level2 hasAnchor" number="14.4">
 <h2><span class="header-section-number">H.4</span> 连接 Posit Assistant 与 DeepSeek<a href="appendix-positron.html#连接-posit-assistant-与-deepseek" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="连接之前先明确数据边界" class="section level3 hasAnchor" number="14.4.1">
-<h3><span class="header-section-number">H.4.1</span> 连接之前先明确数据边界<a href="appendix-positron.html#连接之前先明确数据边界" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="视频和逐步操作" class="section level3 hasAnchor" number="14.4.1">
+<h3><span class="header-section-number">H.4.1</span> 视频和逐步操作<a href="appendix-positron.html#视频和逐步操作" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>先看 Posit 官方视频 <a href="https://youtu.be/4Ir_HX4riHw">A quick tour of Positron</a>，配套文字说明见<a href="https://posit.co/blog/a-quick-tour-of-positron/">官方文章</a>。视频适合熟悉安装后的窗口、项目、编辑器、Console 和数据科学窗格；官方目前没有专门演示 DeepSeek API 配置的视频，所以看完视频后按下面顺序在自己的电脑上操作：</p>
+<ol style="list-style-type: decimal">
+<li>安装 R 和 Positron，打开 <code>examples/positron-workflow/</code> 项目；</li>
+<li>在 Console 运行 <code>R.version.string</code> 和 <code>getwd()</code>；</li>
+<li>用命令面板运行 <code>Authentication: Configure Language Model Providers</code>；</li>
+<li>选择 <code>DeepSeek (Experimental)</code>，只在凭据输入框粘贴 API Key；</li>
+<li>用 <code>View: Show Posit Assistant</code> 打开助手，选择当前可用模型；</li>
+<li>先发送只读测试问题，再在本地运行 R 代码核对答案。</li>
+</ol>
+<p>如果界面没有 DeepSeek，先更新 Positron并查阅<a href="https://positron.posit.co/assistant-providers.html">官方服务商文档</a>，不要照抄旧教程中的模型名称。</p>
+</div>
+<div id="连接之前先明确数据边界" class="section level3 hasAnchor" number="14.4.2">
+<h3><span class="header-section-number">H.4.2</span> 连接之前先明确数据边界<a href="appendix-positron.html#连接之前先明确数据边界" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>目的。</strong> 让模型帮助解释和修改项目，同时由你掌握运行和审核的责任。模型服务可能按用量收费，API 使用权限与网页聊天订阅不是同一件事。先使用公开的 <code>mtcars</code> 数据测试；不要把 API Key、学生身份信息或未获准外发的研究数据加入聊天上下文。</p>
 <p>API Key 由你在 <a href="https://platform.deepseek.com/">DeepSeek 开放平台</a> 创建，并填入应用的凭据输入框。不要写进 <code>.R</code>、<code>.Rmd</code>、<code>.Renviron</code> 示例文本、截图或 Git 仓库。对教学截图应使用空输入框。</p>
 </div>
-<div id="配置与连接验收" class="section level3 hasAnchor" number="14.4.2">
-<h3><span class="header-section-number">H.4.2</span> 配置与连接验收<a href="appendix-positron.html#配置与连接验收" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="配置与连接验收" class="section level3 hasAnchor" number="14.4.3">
+<h3><span class="header-section-number">H.4.3</span> 配置与连接验收<a href="appendix-positron.html#配置与连接验收" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>下面的入口和服务商支持应以本机版本及<a href="https://positron.posit.co/assistant-providers.html">官方模型服务商文档</a>为准。软件升级可能改变标签与选项。</p>
 <ol style="list-style-type: decimal">
 <li>在命令面板搜索 <code>Authentication: Configure Language Model Providers</code>。</li>
@@ -798,15 +814,15 @@ Y_i = \beta_0 + \beta_1 W_i + \beta_2 H_i + \varepsilon_i.
 \]</span></p>
 <p><span class="math inline">\(\beta_1\)</span> 表示在马力相同的模型比较下，重量增加 1000 磅时平均 <code>mpg</code> 的变化。这里的“控制”是回归调整，不是随机实验。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="appendix-positron.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 内置数据不需要账户，也不会在构建时下载外部文件。</span></span>
-<span id="cb370-2"><a href="appendix-positron.html#cb370-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> datasets<span class="sc">::</span>mtcars</span>
-<span id="cb370-3"><a href="appendix-positron.html#cb370-3" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">nrow</span>(dat) <span class="sc">==</span> 32L)</span>
-<span id="cb370-4"><a href="appendix-positron.html#cb370-4" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">all</span>(<span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;wt&quot;</span>, <span class="st">&quot;hp&quot;</span>) <span class="sc">%in%</span> <span class="fu">names</span>(dat)))</span>
-<span id="cb370-5"><a href="appendix-positron.html#cb370-5" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="sc">!</span><span class="fu">anyNA</span>(dat[, <span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;wt&quot;</span>, <span class="st">&quot;hp&quot;</span>)]))</span>
-<span id="cb370-6"><a href="appendix-positron.html#cb370-6" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">lm</span>(mpg <span class="sc">~</span> wt <span class="sc">+</span> hp, <span class="at">data =</span> dat)</span>
-<span id="cb370-7"><a href="appendix-positron.html#cb370-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span>
-<span id="cb370-8"><a href="appendix-positron.html#cb370-8" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(fit)</span>
-<span id="cb370-9"><a href="appendix-positron.html#cb370-9" aria-hidden="true" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">confint</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="appendix-positron.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 内置数据不需要账户，也不会在构建时下载外部文件。</span></span>
+<span id="cb369-2"><a href="appendix-positron.html#cb369-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> datasets<span class="sc">::</span>mtcars</span>
+<span id="cb369-3"><a href="appendix-positron.html#cb369-3" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">nrow</span>(dat) <span class="sc">==</span> 32L)</span>
+<span id="cb369-4"><a href="appendix-positron.html#cb369-4" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">all</span>(<span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;wt&quot;</span>, <span class="st">&quot;hp&quot;</span>) <span class="sc">%in%</span> <span class="fu">names</span>(dat)))</span>
+<span id="cb369-5"><a href="appendix-positron.html#cb369-5" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="sc">!</span><span class="fu">anyNA</span>(dat[, <span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;wt&quot;</span>, <span class="st">&quot;hp&quot;</span>)]))</span>
+<span id="cb369-6"><a href="appendix-positron.html#cb369-6" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">lm</span>(mpg <span class="sc">~</span> wt <span class="sc">+</span> hp, <span class="at">data =</span> dat)</span>
+<span id="cb369-7"><a href="appendix-positron.html#cb369-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span>
+<span id="cb369-8"><a href="appendix-positron.html#cb369-8" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(fit)</span>
+<span id="cb369-9"><a href="appendix-positron.html#cb369-9" aria-hidden="true" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">confint</span>(fit)</span></code></pre></div>
 </details>
 <p><strong>结果与解释。</strong> 截距约为 <code>37.227</code>，重量系数约为 <code>-3.878</code>，马力系数约为 <code>-0.0318</code>。这些是该固定数据和公式的核对值，正式报告应读取实际保存的模型结果，不手工抄写近似值。截距对应重量、马力均为零，不适合作现实车辆解释。</p>
 </div>
@@ -814,9 +830,9 @@ Y_i = \beta_0 + \beta_1 W_i + \beta_2 H_i + \varepsilon_i.
 <h3><span class="header-section-number">H.7.2</span> 不省略诊断<a href="appendix-positron.html#不省略诊断" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>查看残差对拟合值图，检查是否有明显曲线或方差变化；查看正态 Q–Q 图，留意尾部偏离。小样本回归的标准误和区间依赖模型假设，不能只因 p 值小就宣称模型可靠。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="appendix-positron.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 诊断图是检查线索，不是自动通过的证明。</span></span>
-<span id="cb371-2"><a href="appendix-positron.html#cb371-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit, <span class="at">which =</span> <span class="dv">1</span>)</span>
-<span id="cb371-3"><a href="appendix-positron.html#cb371-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit, <span class="at">which =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="appendix-positron.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 诊断图是检查线索，不是自动通过的证明。</span></span>
+<span id="cb370-2"><a href="appendix-positron.html#cb370-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit, <span class="at">which =</span> <span class="dv">1</span>)</span>
+<span id="cb370-3"><a href="appendix-positron.html#cb370-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit, <span class="at">which =</span> <span class="dv">2</span>)</span></code></pre></div>
 </details>
 <p>若更换为自己的 CSV，先检查字段、编码、单位、重复和缺失，再调用同一函数。不要让 <code>lm()</code> 静默删除缺失观测后仍在文字中声称用了全部样本。</p>
 </div>
@@ -825,17 +841,17 @@ Y_i = \beta_0 + \beta_1 W_i + \beta_2 H_i + \varepsilon_i.
 <h2><span class="header-section-number">H.8</span> 保存本地图片、表格与模型对象<a href="appendix-positron.html#保存本地图片表格与模型对象" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>目的。</strong> 把屏幕中的临时结果变成能被论文引用的文件。PNG 适合网页预览，PDF 适合 LaTeX 中缩放的矢量图；CSV 方便检查数值，RDS 保留 R 对象结构。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="appendix-positron.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;outputs/figures&quot;</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb372-2"><a href="appendix-positron.html#cb372-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;outputs/tables&quot;</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb372-3"><a href="appendix-positron.html#cb372-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 开启图形设备以后，必须关闭它，文件才写完整。</span></span>
-<span id="cb372-4"><a href="appendix-positron.html#cb372-4" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;outputs/figures/weight-mpg.png&quot;</span>, <span class="at">width =</span> <span class="dv">1600</span>, <span class="at">height =</span> <span class="dv">1100</span>, <span class="at">res =</span> <span class="dv">180</span>)</span>
-<span id="cb372-5"><a href="appendix-positron.html#cb372-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat<span class="sc">$</span>wt, dat<span class="sc">$</span>mpg, <span class="at">xlab =</span> <span class="st">&quot;Weight (1000 lb)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;MPG&quot;</span>)</span>
-<span id="cb372-6"><a href="appendix-positron.html#cb372-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
-<span id="cb372-7"><a href="appendix-positron.html#cb372-7" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(fit, <span class="st">&quot;outputs/model.rds&quot;</span>)</span>
-<span id="cb372-8"><a href="appendix-positron.html#cb372-8" aria-hidden="true" tabindex="-1"></a><span class="co"># row.names=FALSE 前先把行名变成显式字段，避免变量名丢失。</span></span>
-<span id="cb372-9"><a href="appendix-positron.html#cb372-9" aria-hidden="true" tabindex="-1"></a>coefs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">term =</span> <span class="fu">rownames</span>(<span class="fu">coef</span>(<span class="fu">summary</span>(fit))),</span>
-<span id="cb372-10"><a href="appendix-positron.html#cb372-10" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">coef</span>(<span class="fu">summary</span>(fit)), <span class="at">row.names =</span> <span class="cn">NULL</span>, <span class="at">check.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb372-11"><a href="appendix-positron.html#cb372-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(coefs, <span class="st">&quot;outputs/tables/coefficients.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="appendix-positron.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;outputs/figures&quot;</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb371-2"><a href="appendix-positron.html#cb371-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;outputs/tables&quot;</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb371-3"><a href="appendix-positron.html#cb371-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 开启图形设备以后，必须关闭它，文件才写完整。</span></span>
+<span id="cb371-4"><a href="appendix-positron.html#cb371-4" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;outputs/figures/weight-mpg.png&quot;</span>, <span class="at">width =</span> <span class="dv">1600</span>, <span class="at">height =</span> <span class="dv">1100</span>, <span class="at">res =</span> <span class="dv">180</span>)</span>
+<span id="cb371-5"><a href="appendix-positron.html#cb371-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat<span class="sc">$</span>wt, dat<span class="sc">$</span>mpg, <span class="at">xlab =</span> <span class="st">&quot;Weight (1000 lb)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;MPG&quot;</span>)</span>
+<span id="cb371-6"><a href="appendix-positron.html#cb371-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb371-7"><a href="appendix-positron.html#cb371-7" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(fit, <span class="st">&quot;outputs/model.rds&quot;</span>)</span>
+<span id="cb371-8"><a href="appendix-positron.html#cb371-8" aria-hidden="true" tabindex="-1"></a><span class="co"># row.names=FALSE 前先把行名变成显式字段，避免变量名丢失。</span></span>
+<span id="cb371-9"><a href="appendix-positron.html#cb371-9" aria-hidden="true" tabindex="-1"></a>coefs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">term =</span> <span class="fu">rownames</span>(<span class="fu">coef</span>(<span class="fu">summary</span>(fit))),</span>
+<span id="cb371-10"><a href="appendix-positron.html#cb371-10" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">coef</span>(<span class="fu">summary</span>(fit)), <span class="at">row.names =</span> <span class="cn">NULL</span>, <span class="at">check.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb371-11"><a href="appendix-positron.html#cb371-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(coefs, <span class="st">&quot;outputs/tables/coefficients.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 </details>
 <p>以上演示单个步骤；完整项目应使用 <code>run.R</code> 的统一输出约定。图上若叠加简单的二元回归线，不能把它说成控制 <code>hp</code> 后的调整效应。要画调整后的线，应通过 <code>predict()</code> 固定 <code>hp</code> 后计算预测值，并在图注写出固定值。</p>
 <p>常见的空白图片来自忘记 <code>dev.off()</code> 或绘图发生在设备开启之前。写文件失败时检查目标目录是否已创建。相对路径中的大小写在不同系统上可能有不同表现，文件名应保持一致。</p>
@@ -845,19 +861,19 @@ Y_i = \beta_0 + \beta_1 W_i + \beta_2 H_i + \varepsilon_i.
 <p><strong>目的。</strong> 让论文表格和 CSV 来自同一张数值表，避免复制粘贴后数值不同。CSV 保存完整精度；显示用的小数位仅在排版时设置。</p>
 <p>已有 <code>knitr</code> 的项目可以这样生成一个 <strong>tabular 片段</strong>：</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="appendix-positron.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="co"># escape=TRUE 处理变量名中的下划线等 LaTeX 特殊字符。</span></span>
-<span id="cb373-2"><a href="appendix-positron.html#cb373-2" aria-hidden="true" tabindex="-1"></a>latex_table <span class="ot">&lt;-</span> knitr<span class="sc">::</span><span class="fu">kable</span>(coefs, <span class="at">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb373-3"><a href="appendix-positron.html#cb373-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">escape =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb373-4"><a href="appendix-positron.html#cb373-4" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="fu">as.character</span>(latex_table), <span class="st">&quot;outputs/tables/coefficients.tex&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="appendix-positron.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="co"># escape=TRUE 处理变量名中的下划线等 LaTeX 特殊字符。</span></span>
+<span id="cb372-2"><a href="appendix-positron.html#cb372-2" aria-hidden="true" tabindex="-1"></a>latex_table <span class="ot">&lt;-</span> knitr<span class="sc">::</span><span class="fu">kable</span>(coefs, <span class="at">format =</span> <span class="st">&quot;latex&quot;</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb372-3"><a href="appendix-positron.html#cb372-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">escape =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb372-4"><a href="appendix-positron.html#cb372-4" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="fu">as.character</span>(latex_table), <span class="st">&quot;outputs/tables/coefficients.tex&quot;</span>)</span></code></pre></div>
 </details>
 <p><code>booktabs=TRUE</code> 需要论文导言区加载 <code>\usepackage{booktabs}</code>。附带项目使用 base R 生成固定字段的表格，不强制安装 <code>knitr</code>。扩展到任意变量名时，要专门处理 <code>&amp;</code>、<code>%</code>、<code>_</code> 等特殊字符。</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb374-1"><a href="appendix-positron.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="co">% 如果 coefficients.tex 只有 tabular，可由主文件添加浮动体。</span></span>
-<span id="cb374-2"><a href="appendix-positron.html#cb374-2" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">table</span>}[htbp]</span>
-<span id="cb374-3"><a href="appendix-positron.html#cb374-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\centering</span></span>
-<span id="cb374-4"><a href="appendix-positron.html#cb374-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\caption</span>{Regression coefficients}</span>
-<span id="cb374-5"><a href="appendix-positron.html#cb374-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">\label</span>{<span class="ex">tab:coefficients</span>}</span>
-<span id="cb374-6"><a href="appendix-positron.html#cb374-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\input</span>{../outputs/tables/coefficients.tex}</span>
-<span id="cb374-7"><a href="appendix-positron.html#cb374-7" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">table</span>}</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb373-1"><a href="appendix-positron.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="co">% 如果 coefficients.tex 只有 tabular，可由主文件添加浮动体。</span></span>
+<span id="cb373-2"><a href="appendix-positron.html#cb373-2" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">table</span>}[htbp]</span>
+<span id="cb373-3"><a href="appendix-positron.html#cb373-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\centering</span></span>
+<span id="cb373-4"><a href="appendix-positron.html#cb373-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\caption</span>{Regression coefficients}</span>
+<span id="cb373-5"><a href="appendix-positron.html#cb373-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">\label</span>{<span class="ex">tab:coefficients</span>}</span>
+<span id="cb373-6"><a href="appendix-positron.html#cb373-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\input</span>{../outputs/tables/coefficients.tex}</span>
+<span id="cb373-7"><a href="appendix-positron.html#cb373-7" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">table</span>}</span></code></pre></div>
 <p>如果输出文件已经包含 <code>\begin{table}</code>，主文件只写 <code>\input{...}</code>，不能再套一层 table。先打开生成文件看首行，再决定引用方式。这也是让 AI 改写现有模板时必须检查的接口。</p>
 </div>
 <div id="把稳定的分析函数封装成-r-包" class="section level2 hasAnchor" number="14.10">
@@ -866,18 +882,18 @@ Y_i = \beta_0 + \beta_1 W_i + \beta_2 H_i + \varepsilon_i.
 <h3><span class="header-section-number">H.10.1</span> 从脚本到函数，再到包<a href="appendix-positron.html#从脚本到函数再到包" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>目的。</strong> 把“只能顺序执行的脚本”变成有输入、返回值和文档的接口。包内函数负责计算并返回对象，项目入口负责决定写到哪个文件夹。不要让导出的拟合函数每次调用都写文件或改变工作目录。</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="appendix-positron.html#cb375-1" aria-hidden="true" tabindex="-1"></a>fit_mpg <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
-<span id="cb375-2"><a href="appendix-positron.html#cb375-2" aria-hidden="true" tabindex="-1"></a>  required <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;wt&quot;</span>, <span class="st">&quot;hp&quot;</span>)</span>
-<span id="cb375-3"><a href="appendix-positron.html#cb375-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.data.frame</span>(data) <span class="sc">||</span> <span class="sc">!</span><span class="fu">all</span>(required <span class="sc">%in%</span> <span class="fu">names</span>(data))) {</span>
-<span id="cb375-4"><a href="appendix-positron.html#cb375-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&quot;data 必须是包含 mpg、wt、hp 的数据框&quot;</span>)</span>
-<span id="cb375-5"><a href="appendix-positron.html#cb375-5" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb375-6"><a href="appendix-positron.html#cb375-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">all</span>(<span class="fu">vapply</span>(data[required], is.numeric, <span class="fu">logical</span>(<span class="dv">1</span>))) <span class="sc">||</span></span>
-<span id="cb375-7"><a href="appendix-positron.html#cb375-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">any</span>(<span class="sc">!</span><span class="fu">is.finite</span>(<span class="fu">as.matrix</span>(data[required])))) {</span>
-<span id="cb375-8"><a href="appendix-positron.html#cb375-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&quot;模型变量必须为有限数值且没有缺失&quot;</span>)</span>
-<span id="cb375-9"><a href="appendix-positron.html#cb375-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb375-10"><a href="appendix-positron.html#cb375-10" aria-hidden="true" tabindex="-1"></a>  stats<span class="sc">::</span><span class="fu">lm</span>(mpg <span class="sc">~</span> wt <span class="sc">+</span> hp, <span class="at">data =</span> data)</span>
-<span id="cb375-11"><a href="appendix-positron.html#cb375-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb375-12"><a href="appendix-positron.html#cb375-12" aria-hidden="true" tabindex="-1"></a><span class="fu">fit_mpg</span>(datasets<span class="sc">::</span>mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="appendix-positron.html#cb374-1" aria-hidden="true" tabindex="-1"></a>fit_mpg <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb374-2"><a href="appendix-positron.html#cb374-2" aria-hidden="true" tabindex="-1"></a>  required <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;wt&quot;</span>, <span class="st">&quot;hp&quot;</span>)</span>
+<span id="cb374-3"><a href="appendix-positron.html#cb374-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.data.frame</span>(data) <span class="sc">||</span> <span class="sc">!</span><span class="fu">all</span>(required <span class="sc">%in%</span> <span class="fu">names</span>(data))) {</span>
+<span id="cb374-4"><a href="appendix-positron.html#cb374-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&quot;data 必须是包含 mpg、wt、hp 的数据框&quot;</span>)</span>
+<span id="cb374-5"><a href="appendix-positron.html#cb374-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb374-6"><a href="appendix-positron.html#cb374-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">all</span>(<span class="fu">vapply</span>(data[required], is.numeric, <span class="fu">logical</span>(<span class="dv">1</span>))) <span class="sc">||</span></span>
+<span id="cb374-7"><a href="appendix-positron.html#cb374-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">any</span>(<span class="sc">!</span><span class="fu">is.finite</span>(<span class="fu">as.matrix</span>(data[required])))) {</span>
+<span id="cb374-8"><a href="appendix-positron.html#cb374-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&quot;模型变量必须为有限数值且没有缺失&quot;</span>)</span>
+<span id="cb374-9"><a href="appendix-positron.html#cb374-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb374-10"><a href="appendix-positron.html#cb374-10" aria-hidden="true" tabindex="-1"></a>  stats<span class="sc">::</span><span class="fu">lm</span>(mpg <span class="sc">~</span> wt <span class="sc">+</span> hp, <span class="at">data =</span> data)</span>
+<span id="cb374-11"><a href="appendix-positron.html#cb374-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb374-12"><a href="appendix-positron.html#cb374-12" aria-hidden="true" tabindex="-1"></a><span class="fu">fit_mpg</span>(datasets<span class="sc">::</span>mtcars)</span></code></pre></div>
 </details>
 <p>这个函数演示接口与输入检查；附带包包含实际使用的版本及帮助文件。一般函数还需考虑样本量不足、设计矩阵秩亏、异常值等情况，不能把“没有报错”视作统计适用性已经通过。</p>
 </div>
@@ -948,7 +964,7 @@ Y_i = \beta_0 + \beta_1 W_i + \beta_2 H_i + \varepsilon_i.
 <h2><span class="header-section-number">H.12</span> 使用已有 LaTeX 模板生成论文<a href="appendix-positron.html#使用已有-latex-模板生成论文" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="先检查模板再插入内容" class="section level3 hasAnchor" number="14.12.1">
 <h3><span class="header-section-number">H.12.1</span> 先检查模板，再插入内容<a href="appendix-positron.html#先检查模板再插入内容" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>本项目没有提供指定期刊的论文模板，因此附带一个使用标准 <code>article</code> 文档类的<strong>教学模板</strong>。它用于跑通技术链路，不代表任何期刊格式。拿到真实模板后先复制模板目录，在副本中工作，保留原有 <code>.cls</code>、<code>.sty</code>、参考文献样式、作者区、章节命令和说明。</p>
+<p>本项目附带两个可直接运行的统计写作模板：<code>paper/templates/arxiv-english/</code> 是按 arXiv 统计论文常见的 <code>article + natbib + plainnat</code> 组织的英文模板，<code>paper/templates/arxiv-chinese/</code> 是 <code>ctexart + natbib + plainnat</code> 中文模板。两个模板都使用 <code>references.bib</code>，正文用作者—年份形式引用。arXiv 没有统一中文模板；arXiv:2412.19437 的源码可作为中文兼容设置的参考，但其 <code>deepseek.cls</code> 是定制类，不能当作通用模板。两个模板都用于跑通技术链路，不代表任何期刊格式。拿到真实模板后先复制模板目录，在副本中工作，保留原有 <code>.cls</code>、<code>.sty</code>、参考文献样式、作者区、章节命令和说明。</p>
 <pre class="text"><code>请先只读检查 paper/template 中的已有 LaTeX 模板。
 识别主文件、编译引擎、文档类、图表规范、参考文献系统及可编辑区域。
 列出分析结果对应的插入位置，不改 cls/sty，不覆盖原模板。
@@ -959,24 +975,24 @@ Y_i = \beta_0 + \beta_1 W_i + \beta_2 H_i + \varepsilon_i.
 <div id="图片表格与结果文字自动连接" class="section level3 hasAnchor" number="14.12.2">
 <h3><span class="header-section-number">H.12.2</span> 图片、表格与结果文字自动连接<a href="appendix-positron.html#图片表格与结果文字自动连接" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>主文件引用磁盘文件，而不是从 Plots 截屏或手动重新打一份数字：</p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb379-1"><a href="appendix-positron.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>{<span class="ex">article</span>}</span>
-<span id="cb379-2"><a href="appendix-positron.html#cb379-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">graphicx</span>}</span>
-<span id="cb379-3"><a href="appendix-positron.html#cb379-3" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">booktabs</span>}</span>
-<span id="cb379-4"><a href="appendix-positron.html#cb379-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\input</span>{../outputs/results/numbers.tex}</span>
-<span id="cb379-5"><a href="appendix-positron.html#cb379-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
-<span id="cb379-6"><a href="appendix-positron.html#cb379-6" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{Methods}</span>
-<span id="cb379-7"><a href="appendix-positron.html#cb379-7" aria-hidden="true" tabindex="-1"></a>We fit a linear model for mpg using weight and horsepower.</span>
-<span id="cb379-8"><a href="appendix-positron.html#cb379-8" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{Results}</span>
-<span id="cb379-9"><a href="appendix-positron.html#cb379-9" aria-hidden="true" tabindex="-1"></a><span class="co">% 数字宏由本次 R 分析自动生成。</span></span>
-<span id="cb379-10"><a href="appendix-positron.html#cb379-10" aria-hidden="true" tabindex="-1"></a>The model has <span class="ss">$R^2=</span><span class="sc">\ModelRsquared</span><span class="ss">$</span>.</span>
-<span id="cb379-11"><a href="appendix-positron.html#cb379-11" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">figure</span>}[htbp]</span>
-<span id="cb379-12"><a href="appendix-positron.html#cb379-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\centering</span></span>
-<span id="cb379-13"><a href="appendix-positron.html#cb379-13" aria-hidden="true" tabindex="-1"></a>  <span class="bu">\includegraphics</span>[width=0.8<span class="fu">\linewidth</span>]{<span class="ex">../outputs/figures/observed-fitted.pdf</span>}</span>
-<span id="cb379-14"><a href="appendix-positron.html#cb379-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\caption</span>{Observed and fitted fuel economy in the mtcars data.}</span>
-<span id="cb379-15"><a href="appendix-positron.html#cb379-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">\label</span>{<span class="ex">fig:observed-fitted</span>}</span>
-<span id="cb379-16"><a href="appendix-positron.html#cb379-16" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">figure</span>}</span>
-<span id="cb379-17"><a href="appendix-positron.html#cb379-17" aria-hidden="true" tabindex="-1"></a><span class="co">% 表格的完整引用方式取决于输出是否已经包含 table 环境。</span></span>
-<span id="cb379-18"><a href="appendix-positron.html#cb379-18" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb378-1"><a href="appendix-positron.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>{<span class="ex">article</span>}</span>
+<span id="cb378-2"><a href="appendix-positron.html#cb378-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">graphicx</span>}</span>
+<span id="cb378-3"><a href="appendix-positron.html#cb378-3" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">booktabs</span>}</span>
+<span id="cb378-4"><a href="appendix-positron.html#cb378-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\input</span>{../outputs/results/numbers.tex}</span>
+<span id="cb378-5"><a href="appendix-positron.html#cb378-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb378-6"><a href="appendix-positron.html#cb378-6" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{Methods}</span>
+<span id="cb378-7"><a href="appendix-positron.html#cb378-7" aria-hidden="true" tabindex="-1"></a>We fit a linear model for mpg using weight and horsepower.</span>
+<span id="cb378-8"><a href="appendix-positron.html#cb378-8" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{Results}</span>
+<span id="cb378-9"><a href="appendix-positron.html#cb378-9" aria-hidden="true" tabindex="-1"></a><span class="co">% 数字宏由本次 R 分析自动生成。</span></span>
+<span id="cb378-10"><a href="appendix-positron.html#cb378-10" aria-hidden="true" tabindex="-1"></a>The model has <span class="ss">$R^2=</span><span class="sc">\ModelRsquared</span><span class="ss">$</span>.</span>
+<span id="cb378-11"><a href="appendix-positron.html#cb378-11" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">figure</span>}[htbp]</span>
+<span id="cb378-12"><a href="appendix-positron.html#cb378-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\centering</span></span>
+<span id="cb378-13"><a href="appendix-positron.html#cb378-13" aria-hidden="true" tabindex="-1"></a>  <span class="bu">\includegraphics</span>[width=0.8<span class="fu">\linewidth</span>]{<span class="ex">../outputs/figures/observed-fitted.pdf</span>}</span>
+<span id="cb378-14"><a href="appendix-positron.html#cb378-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\caption</span>{Observed and fitted fuel economy in the mtcars data.}</span>
+<span id="cb378-15"><a href="appendix-positron.html#cb378-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">\label</span>{<span class="ex">fig:observed-fitted</span>}</span>
+<span id="cb378-16"><a href="appendix-positron.html#cb378-16" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">figure</span>}</span>
+<span id="cb378-17"><a href="appendix-positron.html#cb378-17" aria-hidden="true" tabindex="-1"></a><span class="co">% 表格的完整引用方式取决于输出是否已经包含 table 环境。</span></span>
+<span id="cb378-18"><a href="appendix-positron.html#cb378-18" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
 <p>这段示意代码的路径需与实际输出一致。附带项目提供已经匹配输出文件名的主文件。结果片段可以是完整句子，也可以是 <code>\newcommand</code> 数值宏；选择一种约定并在 README 中说明。生成宏时先 <code>\input</code> 定义文件再使用宏。</p>
 <p>从 <code>paper/</code> 目录编译时，<code>../outputs/</code> 指向项目结果目录。从项目根目录直接执行 LaTeX 可能改变相对路径的解析位置，按附带 README 的命令执行。中文正文需要适合中文的模板、字体与编译引擎；不要强行把 <code>pdflatex</code> 用到要求 XeLaTeX 的模板上。</p>
 <p><strong>检查。</strong> 打开编译 PDF，确认图形没有被裁切、表格没有超宽、交叉引用不是 <code>??</code>。编译成功后也要检查内容：图注是否说明单位，文字是否与表中系数一致，是否混用了旧输出。工作报告是交接材料，论文应提炼其中的相关方法和结果，而不是把运行日志全文贴入正文。</p>
@@ -986,23 +1002,32 @@ Y_i = \beta_0 + \beta_1 W_i + \beta_2 H_i + \varepsilon_i.
 <h2><span class="header-section-number">H.13</span> 从干净会话重跑整个流程<a href="appendix-positron.html#从干净会话重跑整个流程" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>关闭并重新启动 R，在 Positron 打开示例项目根目录，运行：</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="appendix-positron.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;run.R&quot;</span>)</span>
-<span id="cb380-2"><a href="appendix-positron.html#cb380-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 检查实际落盘的文件。</span></span>
-<span id="cb380-3"><a href="appendix-positron.html#cb380-3" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;outputs&quot;</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb380-4"><a href="appendix-positron.html#cb380-4" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;outputs/results/analysis.rds&quot;</span>)</span>
-<span id="cb380-5"><a href="appendix-positron.html#cb380-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(result, <span class="at">max.level =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="appendix-positron.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;run.R&quot;</span>)</span>
+<span id="cb379-2"><a href="appendix-positron.html#cb379-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 检查实际落盘的文件。</span></span>
+<span id="cb379-3"><a href="appendix-positron.html#cb379-3" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;outputs&quot;</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb379-4"><a href="appendix-positron.html#cb379-4" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;outputs/results/analysis.rds&quot;</span>)</span>
+<span id="cb379-5"><a href="appendix-positron.html#cb379-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(result, <span class="at">max.level =</span> <span class="dv">1</span>)</span></code></pre></div>
 </details>
 <p>Terminal 中构建和检查示例包（在项目根目录运行）：</p>
-<div class="sourceCode" id="cb381"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb381-1"><a href="appendix-positron.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD build workflowdemo</span>
-<span id="cb381-2"><a href="appendix-positron.html#cb381-2" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD check <span class="at">--no-manual</span> workflowdemo_0.1.0.tar.gz</span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb380-1"><a href="appendix-positron.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD build workflowdemo</span>
+<span id="cb380-2"><a href="appendix-positron.html#cb380-2" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD check <span class="at">--no-manual</span> workflowdemo_0.1.0.tar.gz</span></code></pre></div>
 <p>检查成功后在 R Console 安装到自己的 R 包库并调用：</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="appendix-positron.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;workflowdemo_0.1.0.tar.gz&quot;</span>, <span class="at">repos =</span> <span class="cn">NULL</span>, <span class="at">type =</span> <span class="st">&quot;source&quot;</span>)</span>
-<span id="cb382-2"><a href="appendix-positron.html#cb382-2" aria-hidden="true" tabindex="-1"></a>workflowdemo<span class="sc">::</span><span class="fu">fit_mpg_model</span>(datasets<span class="sc">::</span>mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="appendix-positron.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;workflowdemo_0.1.0.tar.gz&quot;</span>, <span class="at">repos =</span> <span class="cn">NULL</span>, <span class="at">type =</span> <span class="st">&quot;source&quot;</span>)</span>
+<span id="cb381-2"><a href="appendix-positron.html#cb381-2" aria-hidden="true" tabindex="-1"></a>workflowdemo<span class="sc">::</span><span class="fu">fit_mpg_model</span>(datasets<span class="sc">::</span>mtcars)</span></code></pre></div>
 </details>
-<p>如已有 LaTeX，在 Terminal 中进入论文目录后编译：</p>
-<div class="sourceCode" id="cb383"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb383-1"><a href="appendix-positron.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> paper</span>
-<span id="cb383-2"><a href="appendix-positron.html#cb383-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pdflatex</span> <span class="at">-interaction</span><span class="op">=</span>nonstopmode <span class="at">-halt-on-error</span> main.tex</span></code></pre></div>
+<p>如已有 LaTeX，在 Terminal 中进入模板目录后编译。英文模板：</p>
+<div class="sourceCode" id="cb382"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb382-1"><a href="appendix-positron.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> paper/templates/arxiv-english</span>
+<span id="cb382-2"><a href="appendix-positron.html#cb382-2" aria-hidden="true" tabindex="-1"></a><span class="ex">xelatex</span> <span class="at">-interaction</span><span class="op">=</span>nonstopmode <span class="at">-halt-on-error</span> main.tex</span>
+<span id="cb382-3"><a href="appendix-positron.html#cb382-3" aria-hidden="true" tabindex="-1"></a><span class="ex">bibtex</span> main</span>
+<span id="cb382-4"><a href="appendix-positron.html#cb382-4" aria-hidden="true" tabindex="-1"></a><span class="ex">xelatex</span> <span class="at">-interaction</span><span class="op">=</span>nonstopmode <span class="at">-halt-on-error</span> main.tex</span>
+<span id="cb382-5"><a href="appendix-positron.html#cb382-5" aria-hidden="true" tabindex="-1"></a><span class="ex">xelatex</span> <span class="at">-interaction</span><span class="op">=</span>nonstopmode <span class="at">-halt-on-error</span> main.tex</span></code></pre></div>
+<p>中文模板：</p>
+<div class="sourceCode" id="cb383"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb383-1"><a href="appendix-positron.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> paper/templates/arxiv-chinese</span>
+<span id="cb383-2"><a href="appendix-positron.html#cb383-2" aria-hidden="true" tabindex="-1"></a><span class="ex">xelatex</span> <span class="at">-interaction</span><span class="op">=</span>nonstopmode <span class="at">-halt-on-error</span> main.tex</span>
+<span id="cb383-3"><a href="appendix-positron.html#cb383-3" aria-hidden="true" tabindex="-1"></a><span class="ex">bibtex</span> main</span>
+<span id="cb383-4"><a href="appendix-positron.html#cb383-4" aria-hidden="true" tabindex="-1"></a><span class="ex">xelatex</span> <span class="at">-interaction</span><span class="op">=</span>nonstopmode <span class="at">-halt-on-error</span> main.tex</span>
+<span id="cb383-5"><a href="appendix-positron.html#cb383-5" aria-hidden="true" tabindex="-1"></a><span class="ex">xelatex</span> <span class="at">-interaction</span><span class="op">=</span>nonstopmode <span class="at">-halt-on-error</span> main.tex</span></code></pre></div>
 <p>不要依赖之前 Console 中已经存在的 <code>fit</code> 或 <code>dat</code>。顺序是：<strong>检查输入 → 拟合 → 输出图表和结果 → 生成报告 → 编译论文</strong>。论文编译所需的 TeX 环境应单独准备，不能把分析成功说成 PDF 已生成。</p>
 <p>有包依赖的真实项目可以使用 <code>renv::init()</code> 和 <code>renv::snapshot()</code> 保存依赖版本，复现者用 <code>renv::restore()</code> 恢复。<code>restore()</code> 会安装包，应先阅读依赖与下载来源。锁文件不包含操作系统、系统库、字体和 TeX，README 仍需记录这些条件。随机模拟或抽样应在入口固定种子；本例确定性线性回归无需为形式而添加随机种子。</p>
 <pre class="text"><code>请从全新 R 会话重跑入口，并检查：

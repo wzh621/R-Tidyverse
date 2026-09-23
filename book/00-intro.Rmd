@@ -324,6 +324,19 @@ Positron 的优势是 R 与 Python 的统一体验、现代代码编辑能力、
 
 > **版本提示（2026-08）**：Positron 2026.07 起默认提供 **Posit Assistant**，它取代旧称 **Positron Assistant**。新版已经提供原生的 **DeepSeek (Experimental)** 提供商；旧版教程中的 Custom Provider 仍可作为兼容方案。
 
+### 先看视频，再照清单操作
+
+先观看 Posit 官方视频 [A quick tour of Positron](https://youtu.be/4Ir_HX4riHw)（配套文章：[Posit 官方介绍](https://posit.co/blog/a-quick-tour-of-positron/)）。视频展示安装后的工作台、项目、编辑器、R Console 和数据科学窗格；它不是 DeepSeek API 的专门教程。视频看完后回到本节，按下面清单逐项完成：
+
+1. 安装 R，再安装 Positron，打开一个空的 R 项目；
+2. 在 R Console 运行 `R.version.string`、`getwd()`，确认解释器和项目目录正确；
+3. 打开命令面板，运行 `Authentication: Configure Language Model Providers`；
+4. 选择 `DeepSeek (Experimental)`，在安全凭据输入框中粘贴密钥；
+5. 运行 `View: Show Posit Assistant`，选择当前账户可用模型；
+6. 先发送只读测试问题，再用本地 R 代码核对答案。
+
+官方目前没有专门演示“在 Positron 中填写 DeepSeek API Key”的视频，因此视频只承担界面入门，API 配置以本节和[官方服务商文档](https://positron.posit.co/assistant-providers.html)为准。
+
 ### 准备 API Key
 
 1. 登录 [DeepSeek 开放平台](https://platform.deepseek.com/)；
@@ -337,7 +350,7 @@ Positron 的优势是 R 与 Python 的统一体验、现代代码编辑能力、
 3. 选择 **DeepSeek (Experimental)**；
 4. 按提示粘贴 API Key；
 5. 运行 **View: Show Posit Assistant** 打开侧栏；
-6. 在模型选择器中选 `deepseek-v4-flash` 或 `deepseek-v4-pro`；
+6. 在模型选择器中选择账户当前可用的模型；模型名称会随 DeepSeek 和 Positron 更新，不要照抄旧教程中的名称；
 7. 发送测试问题，例如：“解释当前 R 文件中 `summarise()` 的输入与输出，不要修改文件。”
 
 ```{r provider-list-shot, echo=FALSE, fig.cap="Positron 的 Language Model Providers 列表；DeepSeek 已作为 Experimental 提供商出现（本机截图，2026-08）", out.width="100%"}
@@ -357,18 +370,21 @@ knitr::include_graphics("assets/screenshots/positron-deepseek-auth.png")
 1. 选择 **Custom Provider (Experimental)**；
 2. Base URL 填写 `https://api.deepseek.com`；
 3. 输入 DeepSeek API Key；
-4. 如模型列表无法自动加载，在用户 `settings.json` 中配置：
+4. 如模型列表无法自动加载，先阅读官方文档，并使用账户当前允许的模型标识；不要把旧教程中的模型名直接复制到 `settings.json`。
 
-```json
-{
-  "positron.assistant.models.overrides.customProvider": [
-    {"name": "DeepSeek V4 Flash", "identifier": "deepseek-v4-flash"},
-    {"name": "DeepSeek V4 Pro", "identifier": "deepseek-v4-pro"}
-  ]
-}
-```
+模型名称会随服务更新，课堂示例不固定模型名。
 
-截至 2026-08，旧模型名 `deepseek-chat` 与 `deepseek-reasoner` 已进入弃用迁移阶段，课堂示例使用 V4 模型名。
+### 连接失败时按错误类型排查
+
+| 现象 | 先检查什么 | 处理方式 |
+|---|---|---|
+| `401` 或认证失败 | 密钥是否完整、服务商是否选成 DeepSeek | 重新生成密钥并只粘贴到凭据输入框 |
+| `429` 或额度/限流 | 账户余额、请求频率和平台状态 | 等待后重试，降低请求频率 |
+| 模型不存在 | 模型选择器中的当前列表 | 重新选择账户可用模型 |
+| 超时或无法连接 | 网络、代理、Base URL | 检查 `https://api.deepseek.com` 和网络 |
+| 能聊天但不能改文件 | 权限和 Assistant 模式 | 保持只读/sandbox，逐步授权并查看差异 |
+
+成功连接的最低标准是：能得到一段回答，并且本地 R Console 独立运行相同计算得到预期结果。不要把真实密钥发送给模型来排查问题。
 
 ### 安全与验证清单
 

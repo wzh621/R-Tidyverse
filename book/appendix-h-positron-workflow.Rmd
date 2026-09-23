@@ -4,7 +4,7 @@
 
 贯穿案例使用 R 自带的 `mtcars` 数据，回答“在控制发动机马力后，汽车重量与每加仑行驶里程有什么统计关联”。数据规模小、无需下载，也不涉及个人信息，适合把注意力放在工作流程上。本例用于软件流程教学，不能据此作因果解释或当作新研究发现。
 
-```{r ph-full-workflow, echo=FALSE, fig.cap="Positron、Posit Assistant 与 DeepSeek 支撑的 R 科研项目全流程。", out.width="92%"}
+```{r,echo=FALSE, fig.cap="Positron 的操作流程化处理"}
 knitr::include_graphics("images/Codex 图像.png")
 ```
 
@@ -55,6 +55,7 @@ knitr::include_graphics("images/Codex 图像.png")
 knitr::include_graphics("images/positron/install/positron-interface-official.jpeg")
 ```
 
+
 macOS 用 `Cmd+Shift+P`，Windows 用 `Ctrl+Shift+P` 打开命令面板。打开项目使用 **File → Open Folder**；新项目可先建立空文件夹再打开。已有 `.Rproj` 文件可以保留，但教学流程的项目边界是当前打开的文件夹。
 
 ## 配置 R 环境并做最小检查
@@ -82,6 +83,7 @@ head(installed.packages()[, c("Package", "Version")])
 .libPaths()
 ```
 
+
 **结果与解释。** `cars` 有 32 行，`wt` 的单位是千磅，`mpg` 是英里/加仑，数值越高通常表示同样燃油能行驶更远。Plots 中应出现重量和里程的散点图。变量查看器中的对象在退出会话后可能消失；保存在硬盘的脚本才是重跑依据。
 
 **常见问题。** `install.packages()` 应在 R Console 执行；`R CMD check` 应在 Terminal 执行。找不到已安装包时先比较 `R.home()` 和 `.libPaths()`，不要立刻重复安装。安装包是一次性的环境准备，分析脚本不应每次运行都联网安装。
@@ -94,7 +96,21 @@ here::i_am("run.R")
 here::here("outputs", "tables", "coefficients.csv")
 ```
 
+
 ## 连接 Posit Assistant 与 DeepSeek
+
+### 视频和逐步操作
+
+先看 Posit 官方视频 [A quick tour of Positron](https://youtu.be/4Ir_HX4riHw)，配套文字说明见[官方文章](https://posit.co/blog/a-quick-tour-of-positron/)。视频适合熟悉安装后的窗口、项目、编辑器、Console 和数据科学窗格；官方目前没有专门演示 DeepSeek API 配置的视频，所以看完视频后按下面顺序在自己的电脑上操作：
+
+1. 安装 R 和 Positron，打开 `examples/positron-workflow/` 项目；
+2. 在 Console 运行 `R.version.string` 和 `getwd()`；
+3. 用命令面板运行 `Authentication: Configure Language Model Providers`；
+4. 选择 `DeepSeek (Experimental)`，只在凭据输入框粘贴 API Key；
+5. 用 `View: Show Posit Assistant` 打开助手，选择当前可用模型；
+6. 先发送只读测试问题，再在本地运行 R 代码核对答案。
+
+如果界面没有 DeepSeek，先更新 Positron并查阅[官方服务商文档](https://positron.posit.co/assistant-providers.html)，不要照抄旧教程中的模型名称。
 
 ### 连接之前先明确数据边界
 
@@ -200,6 +216,7 @@ coef(fit)
 stats::confint(fit)
 ```
 
+
 **结果与解释。** 截距约为 `37.227`，重量系数约为 `-3.878`，马力系数约为 `-0.0318`。这些是该固定数据和公式的核对值，正式报告应读取实际保存的模型结果，不手工抄写近似值。截距对应重量、马力均为零，不适合作现实车辆解释。
 
 ### 不省略诊断
@@ -211,6 +228,7 @@ stats::confint(fit)
 plot(fit, which = 1)
 plot(fit, which = 2)
 ```
+
 
 若更换为自己的 CSV，先检查字段、编码、单位、重复和缺失，再调用同一函数。不要让 `lm()` 静默删除缺失观测后仍在文字中声称用了全部样本。
 
@@ -232,6 +250,7 @@ coefs <- data.frame(term = rownames(coef(summary(fit))),
 write.csv(coefs, "outputs/tables/coefficients.csv", row.names = FALSE)
 ```
 
+
 以上演示单个步骤；完整项目应使用 `run.R` 的统一输出约定。图上若叠加简单的二元回归线，不能把它说成控制 `hp` 后的调整效应。要画调整后的线，应通过 `predict()` 固定 `hp` 后计算预测值，并在图注写出固定值。
 
 常见的空白图片来自忘记 `dev.off()` 或绘图发生在设备开启之前。写文件失败时检查目标目录是否已创建。相对路径中的大小写在不同系统上可能有不同表现，文件名应保持一致。
@@ -248,6 +267,7 @@ latex_table <- knitr::kable(coefs, format = "latex", booktabs = TRUE,
                             digits = 3, row.names = FALSE, escape = TRUE)
 writeLines(as.character(latex_table), "outputs/tables/coefficients.tex")
 ```
+
 
 `booktabs=TRUE` 需要论文导言区加载 `\usepackage{booktabs}`。附带项目使用 base R 生成固定字段的表格，不强制安装 `knitr`。扩展到任意变量名时，要专门处理 `&`、`%`、`_` 等特殊字符。
 
@@ -283,6 +303,7 @@ fit_mpg <- function(data) {
 }
 fit_mpg(datasets::mtcars)
 ```
+
 
 这个函数演示接口与输入检查；附带包包含实际使用的版本及帮助文件。一般函数还需考虑样本量不足、设计矩阵秩亏、异常值等情况，不能把“没有报错”视作统计适用性已经通过。
 
@@ -327,7 +348,7 @@ fit_mpg(datasets::mtcars)
 
 ### 先检查模板，再插入内容
 
-本项目没有提供指定期刊的论文模板，因此附带一个使用标准 `article` 文档类的**教学模板**。它用于跑通技术链路，不代表任何期刊格式。拿到真实模板后先复制模板目录，在副本中工作，保留原有 `.cls`、`.sty`、参考文献样式、作者区、章节命令和说明。
+本项目附带两个可直接运行的统计写作模板：`paper/templates/arxiv-english/` 是按 arXiv 统计论文常见的 `article + natbib + plainnat` 组织的英文模板，`paper/templates/arxiv-chinese/` 是 `ctexart + natbib + plainnat` 中文模板。两个模板都使用 `references.bib`，正文用作者—年份形式引用。arXiv 没有统一中文模板；arXiv:2412.19437 的源码可作为中文兼容设置的参考，但其 `deepseek.cls` 是定制类，不能当作通用模板。两个模板都用于跑通技术链路，不代表任何期刊格式。拿到真实模板后先复制模板目录，在副本中工作，保留原有 `.cls`、`.sty`、参考文献样式、作者区、章节命令和说明。
 
 ```text
 请先只读检查 paper/template 中的已有 LaTeX 模板。
@@ -382,6 +403,7 @@ result <- readRDS("outputs/results/analysis.rds")
 str(result, max.level = 1)
 ```
 
+
 Terminal 中构建和检查示例包（在项目根目录运行）：
 
 ```sh
@@ -396,11 +418,25 @@ install.packages("workflowdemo_0.1.0.tar.gz", repos = NULL, type = "source")
 workflowdemo::fit_mpg_model(datasets::mtcars)
 ```
 
-如已有 LaTeX，在 Terminal 中进入论文目录后编译：
+
+如已有 LaTeX，在 Terminal 中进入模板目录后编译。英文模板：
 
 ```sh
-cd paper
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
+cd paper/templates/arxiv-english
+xelatex -interaction=nonstopmode -halt-on-error main.tex
+bibtex main
+xelatex -interaction=nonstopmode -halt-on-error main.tex
+xelatex -interaction=nonstopmode -halt-on-error main.tex
+```
+
+中文模板：
+
+```sh
+cd paper/templates/arxiv-chinese
+xelatex -interaction=nonstopmode -halt-on-error main.tex
+bibtex main
+xelatex -interaction=nonstopmode -halt-on-error main.tex
+xelatex -interaction=nonstopmode -halt-on-error main.tex
 ```
 
 不要依赖之前 Console 中已经存在的 `fit` 或 `dat`。顺序是：**检查输入 → 拟合 → 输出图表和结果 → 生成报告 → 编译论文**。论文编译所需的 TeX 环境应单独准备，不能把分析成功说成 PDF 已生成。
@@ -424,6 +460,7 @@ pdflatex -interaction=nonstopmode -halt-on-error main.tex
 ```{r ph-example-output, echo=FALSE, fig.cap="配套项目实际生成的观测值与拟合值图。虚线表示两者相等；这张图不能替代残差诊断。", out.width="85%"}
 knitr::include_graphics("images/positron/project/observed-fitted.png")
 ```
+
 
 ## 练习与验收
 

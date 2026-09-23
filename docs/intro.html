@@ -175,10 +175,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.6" data-path="intro.html"><a href="intro.html#安装与认识-positron"><i class="fa fa-check"></i><b>0.6</b> 安装与认识 Positron</a></li>
 <li class="chapter" data-level="0.7" data-path="intro.html"><a href="intro.html#配置-posit-assistant-deepseek"><i class="fa fa-check"></i><b>0.7</b> 配置 Posit Assistant + DeepSeek</a>
 <ul>
-<li class="chapter" data-level="0.7.1" data-path="intro.html"><a href="intro.html#准备-api-key"><i class="fa fa-check"></i><b>0.7.1</b> 准备 API Key</a></li>
-<li class="chapter" data-level="0.7.2" data-path="intro.html"><a href="intro.html#推荐使用-positron-原生-deepseek-提供商"><i class="fa fa-check"></i><b>0.7.2</b> 推荐：使用 Positron 原生 DeepSeek 提供商</a></li>
-<li class="chapter" data-level="0.7.3" data-path="intro.html"><a href="intro.html#兼容旧版custom-provider"><i class="fa fa-check"></i><b>0.7.3</b> 兼容旧版：Custom Provider</a></li>
-<li class="chapter" data-level="0.7.4" data-path="intro.html"><a href="intro.html#安全与验证清单"><i class="fa fa-check"></i><b>0.7.4</b> 安全与验证清单</a></li>
+<li class="chapter" data-level="0.7.1" data-path="intro.html"><a href="intro.html#先看视频再照清单操作"><i class="fa fa-check"></i><b>0.7.1</b> 先看视频，再照清单操作</a></li>
+<li class="chapter" data-level="0.7.2" data-path="intro.html"><a href="intro.html#准备-api-key"><i class="fa fa-check"></i><b>0.7.2</b> 准备 API Key</a></li>
+<li class="chapter" data-level="0.7.3" data-path="intro.html"><a href="intro.html#推荐使用-positron-原生-deepseek-提供商"><i class="fa fa-check"></i><b>0.7.3</b> 推荐：使用 Positron 原生 DeepSeek 提供商</a></li>
+<li class="chapter" data-level="0.7.4" data-path="intro.html"><a href="intro.html#兼容旧版custom-provider"><i class="fa fa-check"></i><b>0.7.4</b> 兼容旧版：Custom Provider</a></li>
+<li class="chapter" data-level="0.7.5" data-path="intro.html"><a href="intro.html#连接失败时按错误类型排查"><i class="fa fa-check"></i><b>0.7.5</b> 连接失败时按错误类型排查</a></li>
+<li class="chapter" data-level="0.7.6" data-path="intro.html"><a href="intro.html#安全与验证清单"><i class="fa fa-check"></i><b>0.7.6</b> 安全与验证清单</a></li>
 </ul></li>
 <li class="chapter" data-level="0.8" data-path="intro.html"><a href="intro.html#最小项目工作流"><i class="fa fa-check"></i><b>0.8</b> 最小项目工作流</a>
 <ul>
@@ -499,8 +501,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="H.3" data-path="appendix-positron.html"><a href="appendix-positron.html#配置-r-环境并做最小检查"><i class="fa fa-check"></i><b>H.3</b> 配置 R 环境并做最小检查</a></li>
 <li class="chapter" data-level="H.4" data-path="appendix-positron.html"><a href="appendix-positron.html#连接-posit-assistant-与-deepseek"><i class="fa fa-check"></i><b>H.4</b> 连接 Posit Assistant 与 DeepSeek</a>
 <ul>
-<li class="chapter" data-level="H.4.1" data-path="appendix-positron.html"><a href="appendix-positron.html#连接之前先明确数据边界"><i class="fa fa-check"></i><b>H.4.1</b> 连接之前先明确数据边界</a></li>
-<li class="chapter" data-level="H.4.2" data-path="appendix-positron.html"><a href="appendix-positron.html#配置与连接验收"><i class="fa fa-check"></i><b>H.4.2</b> 配置与连接验收</a></li>
+<li class="chapter" data-level="H.4.1" data-path="appendix-positron.html"><a href="appendix-positron.html#视频和逐步操作"><i class="fa fa-check"></i><b>H.4.1</b> 视频和逐步操作</a></li>
+<li class="chapter" data-level="H.4.2" data-path="appendix-positron.html"><a href="appendix-positron.html#连接之前先明确数据边界"><i class="fa fa-check"></i><b>H.4.2</b> 连接之前先明确数据边界</a></li>
+<li class="chapter" data-level="H.4.3" data-path="appendix-positron.html"><a href="appendix-positron.html#配置与连接验收"><i class="fa fa-check"></i><b>H.4.3</b> 配置与连接验收</a></li>
 </ul></li>
 <li class="chapter" data-level="H.5" data-path="appendix-positron.html"><a href="appendix-positron.html#用提示词把任务分成可验收的小步骤"><i class="fa fa-check"></i><b>H.5</b> 用提示词把任务分成可验收的小步骤</a>
 <ul>
@@ -936,23 +939,36 @@ Figure 0.3: Positron 当前界面示例；打开项目并启动 R 会话后，�
 <blockquote>
 <p><strong>版本提示（2026-08）</strong>：Positron 2026.07 起默认提供 <strong>Posit Assistant</strong>，它取代旧称 <strong>Positron Assistant</strong>。新版已经提供原生的 <strong>DeepSeek (Experimental)</strong> 提供商；旧版教程中的 Custom Provider 仍可作为兼容方案。</p>
 </blockquote>
-<div id="准备-api-key" class="section level3 hasAnchor" number="0.7.1">
-<h3><span class="header-section-number">0.7.1</span> 准备 API Key<a href="intro.html#准备-api-key" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="先看视频再照清单操作" class="section level3 hasAnchor" number="0.7.1">
+<h3><span class="header-section-number">0.7.1</span> 先看视频，再照清单操作<a href="intro.html#先看视频再照清单操作" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>先观看 Posit 官方视频 <a href="https://youtu.be/4Ir_HX4riHw">A quick tour of Positron</a>（配套文章：<a href="https://posit.co/blog/a-quick-tour-of-positron/">Posit 官方介绍</a>）。视频展示安装后的工作台、项目、编辑器、R Console 和数据科学窗格；它不是 DeepSeek API 的专门教程。视频看完后回到本节，按下面清单逐项完成：</p>
+<ol style="list-style-type: decimal">
+<li>安装 R，再安装 Positron，打开一个空的 R 项目；</li>
+<li>在 R Console 运行 <code>R.version.string</code>、<code>getwd()</code>，确认解释器和项目目录正确；</li>
+<li>打开命令面板，运行 <code>Authentication: Configure Language Model Providers</code>；</li>
+<li>选择 <code>DeepSeek (Experimental)</code>，在安全凭据输入框中粘贴密钥；</li>
+<li>运行 <code>View: Show Posit Assistant</code>，选择当前账户可用模型；</li>
+<li>先发送只读测试问题，再用本地 R 代码核对答案。</li>
+</ol>
+<p>官方目前没有专门演示“在 Positron 中填写 DeepSeek API Key”的视频，因此视频只承担界面入门，API 配置以本节和<a href="https://positron.posit.co/assistant-providers.html">官方服务商文档</a>为准。</p>
+</div>
+<div id="准备-api-key" class="section level3 hasAnchor" number="0.7.2">
+<h3><span class="header-section-number">0.7.2</span> 准备 API Key<a href="intro.html#准备-api-key" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>登录 <a href="https://platform.deepseek.com/">DeepSeek 开放平台</a>；</li>
 <li>在 API Keys 页面创建密钥并充值或确认额度；</li>
 <li>创建后立即存入密码管理器。不要截图、粘贴到讲义、写入 R 脚本或提交到 Git。</li>
 </ol>
 </div>
-<div id="推荐使用-positron-原生-deepseek-提供商" class="section level3 hasAnchor" number="0.7.2">
-<h3><span class="header-section-number">0.7.2</span> 推荐：使用 Positron 原生 DeepSeek 提供商<a href="intro.html#推荐使用-positron-原生-deepseek-提供商" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="推荐使用-positron-原生-deepseek-提供商" class="section level3 hasAnchor" number="0.7.3">
+<h3><span class="header-section-number">0.7.3</span> 推荐：使用 Positron 原生 DeepSeek 提供商<a href="intro.html#推荐使用-positron-原生-deepseek-提供商" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>在 Positron 按 <code>Ctrl/⌘ + Shift + P</code> 打开命令面板；</li>
 <li>运行 <strong>Authentication: Configure Language Model Providers</strong>；</li>
 <li>选择 <strong>DeepSeek (Experimental)</strong>；</li>
 <li>按提示粘贴 API Key；</li>
 <li>运行 <strong>View: Show Posit Assistant</strong> 打开侧栏；</li>
-<li>在模型选择器中选 <code>deepseek-v4-flash</code> 或 <code>deepseek-v4-pro</code>；</li>
+<li>在模型选择器中选择账户当前可用的模型；模型名称会随 DeepSeek 和 Positron 更新，不要照抄旧教程中的名称；</li>
 <li>发送测试问题，例如：“解释当前 R 文件中 <code>summarise()</code> 的输入与输出，不要修改文件。”</li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:provider-list-shot"></span>
@@ -969,25 +985,64 @@ Figure 0.5: 选择 DeepSeek 后的认证入口：只在安全输入框粘贴密�
 </div>
 <p>也可在启动 Positron 前设置系统环境变量 <code>DEEPSEEK_API_KEY</code>。不要把真实密钥写进项目的 <code>.Renviron</code>；若教学演示必须使用环境文件，应放到用户级文件并确保不被同步或提交。</p>
 </div>
-<div id="兼容旧版custom-provider" class="section level3 hasAnchor" number="0.7.3">
-<h3><span class="header-section-number">0.7.3</span> 兼容旧版：Custom Provider<a href="intro.html#兼容旧版custom-provider" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="兼容旧版custom-provider" class="section level3 hasAnchor" number="0.7.4">
+<h3><span class="header-section-number">0.7.4</span> 兼容旧版：Custom Provider<a href="intro.html#兼容旧版custom-provider" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>旧版 Positron 若没有 DeepSeek 选项：</p>
 <ol style="list-style-type: decimal">
 <li>选择 <strong>Custom Provider (Experimental)</strong>；</li>
 <li>Base URL 填写 <code>https://api.deepseek.com</code>；</li>
 <li>输入 DeepSeek API Key；</li>
-<li>如模型列表无法自动加载，在用户 <code>settings.json</code> 中配置：</li>
+<li>如模型列表无法自动加载，先阅读官方文档，并使用账户当前允许的模型标识；不要把旧教程中的模型名直接复制到 <code>settings.json</code>。</li>
 </ol>
-<div class="sourceCode" id="cb11"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb11-1"><a href="intro.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb11-2"><a href="intro.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;positron.assistant.models.overrides.customProvider&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb11-3"><a href="intro.html#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;DeepSeek V4 Flash&quot;</span><span class="fu">,</span> <span class="dt">&quot;identifier&quot;</span><span class="fu">:</span> <span class="st">&quot;deepseek-v4-flash&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb11-4"><a href="intro.html#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;DeepSeek V4 Pro&quot;</span><span class="fu">,</span> <span class="dt">&quot;identifier&quot;</span><span class="fu">:</span> <span class="st">&quot;deepseek-v4-pro&quot;</span><span class="fu">}</span></span>
-<span id="cb11-5"><a href="intro.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
-<span id="cb11-6"><a href="intro.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
-<p>截至 2026-08，旧模型名 <code>deepseek-chat</code> 与 <code>deepseek-reasoner</code> 已进入弃用迁移阶段，课堂示例使用 V4 模型名。</p>
+<p>模型名称会随服务更新，课堂示例不固定模型名。</p>
 </div>
-<div id="安全与验证清单" class="section level3 hasAnchor" number="0.7.4">
-<h3><span class="header-section-number">0.7.4</span> 安全与验证清单<a href="intro.html#安全与验证清单" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="连接失败时按错误类型排查" class="section level3 hasAnchor" number="0.7.5">
+<h3><span class="header-section-number">0.7.5</span> 连接失败时按错误类型排查<a href="intro.html#连接失败时按错误类型排查" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>现象</th>
+<th>先检查什么</th>
+<th>处理方式</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>401</code> 或认证失败</td>
+<td>密钥是否完整、服务商是否选成 DeepSeek</td>
+<td>重新生成密钥并只粘贴到凭据输入框</td>
+</tr>
+<tr class="even">
+<td><code>429</code> 或额度/限流</td>
+<td>账户余额、请求频率和平台状态</td>
+<td>等待后重试，降低请求频率</td>
+</tr>
+<tr class="odd">
+<td>模型不存在</td>
+<td>模型选择器中的当前列表</td>
+<td>重新选择账户可用模型</td>
+</tr>
+<tr class="even">
+<td>超时或无法连接</td>
+<td>网络、代理、Base URL</td>
+<td>检查 <code>https://api.deepseek.com</code> 和网络</td>
+</tr>
+<tr class="odd">
+<td>能聊天但不能改文件</td>
+<td>权限和 Assistant 模式</td>
+<td>保持只读/sandbox，逐步授权并查看差异</td>
+</tr>
+</tbody>
+</table>
+<p>成功连接的最低标准是：能得到一段回答，并且本地 R Console 独立运行相同计算得到预期结果。不要把真实密钥发送给模型来排查问题。</p>
+</div>
+<div id="安全与验证清单" class="section level3 hasAnchor" number="0.7.6">
+<h3><span class="header-section-number">0.7.6</span> 安全与验证清单<a href="intro.html#安全与验证清单" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Assistant 会把提示、选中的代码与允许的上下文发送给所选模型提供商；先阅读提供商的数据政策；</li>
 <li>不发送未脱敏的学生信息、成绩、身份证号或研究敏感数据；</li>
