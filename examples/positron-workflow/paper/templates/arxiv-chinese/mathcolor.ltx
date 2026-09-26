@@ -1,0 +1,6 @@
+\ProvidesFile{mathcolor.ltx}[2026/09/26 compatibility layer for older TeX Live]
+% TeX Live 2021 installations may contain a color.sty that requests this file
+% even when the corresponding LaTeX base file is missing. The templates do not
+% use advanced math-color commands; this fallback preserves grouped text color.
+\providecommand\mathcolor[2]{{\color{#1}#2}}
+\endinput

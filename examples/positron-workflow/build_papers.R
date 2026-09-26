@@ -27,6 +27,9 @@ run_command <- function(directory, command, command_args) {
 }
 
 compile_paper <- function(directory) {
+  # 避免旧的交叉引用缓存（例如启用 hyperref 前生成的两字段标签）
+  # 与当前五字段超链接标签冲突。每次从源文件和 BibTeX 重新构建。
+  unlink(file.path(directory, paste0("main.", c("aux", "bbl", "blg", "log", "out"))))
   run_command(directory, "xelatex",
               c("-interaction=nonstopmode", "-halt-on-error", "main.tex"))
   run_command(directory, "bibtex", "main")
