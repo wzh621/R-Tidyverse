@@ -1,76 +1,59 @@
-# Positron 全流程配套示例
+# R + AI 助手 + LaTeX 自动更新示例
 
-这是教学项目，不是完成有效性审查的汽车研究。仅需 R 自带包；不调用 AI、不需要 API Key。
+这个项目演示一条完整但精简的统计工作流：R 计算结果并生成图、表和数值宏；英文和中文 LaTeX 模板通过相对路径读取这些文件。修改 R 代码后重新构建，两篇论文同步更新。
 
-## 在 Positron 运行
+## 一次运行全部流程
 
-打开本目录（包含 run.R）作为项目，选择 R 解释器，在 R Console 执行：
+在 Positron 中打开本目录，在 Terminal 运行：
+
+```sh
+Rscript build_papers.R
+```
+
+脚本依次运行 `run.R`、英文 XeLaTeX/BibTeX 和中文 XeLaTeX/BibTeX。成功时显示 `WORKFLOW_OK` 和 `PAPERS_OK`。
+
+只运行 R 分析时，在 R Console 执行：
 
 ```r
 source("run.R")
 ```
 
-或在本目录的 Terminal 运行 `Rscript run.R`。命令行也支持从任何目录运行本文件的绝对路径。无随机算法，无需设置随机种子。实际结果与环境写入工作报告；重复执行会更新 outputs 中同名生成文件。
+## R 生成、LaTeX 引用
 
-## 文件与结果
+| R 生成文件 | LaTeX 调用方式 |
+|---|---|
+| `outputs/figures/observed-fitted.pdf` | `\includegraphics{../../../outputs/figures/observed-fitted.pdf}` |
+| `outputs/tables/coefficients.tex` | `\input{../../../outputs/tables/coefficients.tex}` |
+| `outputs/results/numbers.tex` | `\input{../../../outputs/results/numbers.tex}` |
 
-- `R/analysis.R`：读取内置 mtcars、校验数据并拟合 `mpg ~ wt + hp`。
-- `R/export.R`：将同一模型输出为 PNG/PDF、CSV、RDS、LaTeX 表和数字宏、Markdown 工作说明。
-- `outputs/figures/observed-fitted.png` / `.pdf`：屏幕与论文图。
-- `outputs/figures/diagnostics.png` / `.pdf`：残差对拟合值、正态 Q-Q、尺度位置和残差对杠杆值四联诊断图；须人工解释异常点和模式。
-- `outputs/tables/coefficients.csv` / `.tex`：机器可读结果和论文表格。
-- `outputs/results/analysis.rds`：数据、模型、系数表；用 `readRDS()` 读取。
-- `outputs/results/numbers.tex`：论文引用的实际数字；禁止人工改写产生第二份结果。
-- `outputs/reports/work-report.md`：目的、方法、结果、解释、局限、复现和运行环境。
-- `workflowdemo/`：最小独立 R 包，含 DESCRIPTION、NAMESPACE、函数、Rd 和边界测试。
-- `paper/main.tex`：可编译的通用英文教学模板。
-- `paper/templates/arxiv-english/`：面向统计写作的 arXiv 风格英文模板，使用 `natbib`/BibTeX 作者—年份引用。
-- `paper/templates/arxiv-chinese/`：`ctexart` 中文统计模板，同样使用作者—年份引用；arXiv 没有统一中文模板。
+全部使用相对路径，没有个人电脑的绝对路径。
 
-## 构建和检查 R 包
+## 统计论文模板
 
-在本目录执行（无需安装第三方依赖；`R CMD check` 会在临时检查库内安装本包）：
+- `paper/templates/arxiv-english/`：英文 IMS/Annals of Statistics 风格。
+- `paper/templates/arxiv-chinese/`：相同结构的中文版本，使用 `ctex`。
+- 两个模板都使用 `references.bib` 和作者—年份引用。
 
-```sh
-R CMD build workflowdemo
-R CMD check --no-manual workflowdemo_0.1.0.tar.gz
+`imsart.cls`、`imsart.sty` 和 `imsart-nameyear.bst` 取自 arXiv:2412.06766 的源码。该论文已录用到 *The Annals of Statistics*。上游模板文件保持原样，文件头声明采用 LaTeX Project Public License。
+
+生成的论文位于：
+
+```text
+paper/templates/arxiv-english/main.pdf
+paper/templates/arxiv-chinese/main.pdf
 ```
 
-交互式试用包可自行执行 `install.packages("workflowdemo_0.1.0.tar.gz", repos = NULL, type = "source")`，然后 `library(workflowdemo)` 和 `fit_mpg_model(mtcars)`。主流程直接加载包源码，因此无需先安装。
+## 验证自动更新
 
-## 编译论文
+在项目副本中修改 `R/export.R` 的图形颜色或标题，再运行 `Rscript build_papers.R`。中英文 PDF 中的图片应同时改变。修改模型后，`coefficients.tex`、`numbers.tex` 和两篇 PDF 中的结果也应同步改变。
 
-需要本机已有 LaTeX（如 TinyTeX、MacTeX 或 TeX Live）。从本目录执行：
+## 文件职责
 
-```sh
-cd paper
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
-```
+- `R/analysis.R`：检查数据并拟合 `mpg ~ wt + hp`。
+- `R/export.R`：生成 PNG/PDF 图、CSV/LaTeX 表格、RDS 和数值宏。
+- `run.R`：统一运行 R 分析。
+- `build_papers.R`：统一更新 R 输出并编译中英文论文。
+- `outputs/`：全部可重新生成的结果。
+- `paper/templates/`：中英文统计论文源文件。
 
-图表和数字路径相对于 `paper/`，必须在该目录编译。输出为 `paper/main.pdf`。R 运行不依赖 LaTeX；若未安装编译器，可先检查已生成的 `.tex` 文件。
-
-## 接入用户已有论文模板
-
-先复制原模板到新的工作目录，保留原始 `.cls`、`.sty`、参考文献配置和章节命令。根据新目录调整路径，在导言区加入 `\input{../outputs/results/numbers.tex}`，在模板规定的 table 环境中加入 `\input{../outputs/tables/coefficients.tex}`，在 figure 环境中加入 `\includegraphics{../outputs/figures/observed-fitted.pdf}`。复用模板自己的标题、作者、图表和参考文献规范，不以本例的 `article` 类替换它。确保模板已加载 graphicx。含中文的原模板按其指定引擎（常见为 XeLaTeX）编译。
-
-这里未提供用户的真实模板，因此只验证通用教学模板。正式写作前还需依据真实数据补齐研究背景、文献、诊断与模型局限，不能让 AI 编造来源或显著性。
-
-## 从 arXiv 模板调用结果
-
-运行 `Rscript run.R` 后，可在模板目录中编译：
-
-```sh
-cd paper/templates/arxiv-english
-xelatex -interaction=nonstopmode -halt-on-error main.tex
-bibtex main
-xelatex -interaction=nonstopmode -halt-on-error main.tex
-xelatex -interaction=nonstopmode -halt-on-error main.tex
-
-cd ../arxiv-chinese
-xelatex -interaction=nonstopmode -halt-on-error main.tex
-bibtex main
-xelatex -interaction=nonstopmode -halt-on-error main.tex
-xelatex -interaction=nonstopmode -halt-on-error main.tex
-```
-
-两个 `main.tex` 都从 `outputs/results/numbers.tex` 读取数字，从 `outputs/tables/coefficients.tex` 读取表格，并插入 `outputs/figures/observed-fitted.pdf`。`references.bib` 可替换为自己的统计文献库，正文用 `\citet{}` 和 `\citep{}` 生成作者—年份引用。正式投稿必须换成目标期刊的官方文件。
+本例只用于工作流教学。正式统计研究仍需检查模型假设、数据质量和推断边界；正式投稿时应换成目标期刊当前提供的模板。

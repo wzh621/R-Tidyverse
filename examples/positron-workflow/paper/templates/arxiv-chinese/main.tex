@@ -1,33 +1,83 @@
-\documentclass[UTF8,a4paper,11pt,fontset=none]{ctexart}
-\setCJKmainfont{Songti SC}
-\setCJKsansfont{Heiti SC}
-\setCJKmonofont{Songti SC}
-\usepackage[round,authoryear]{natbib}
-\usepackage[margin=2.5cm]{geometry}
-\usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage{amsmath}
-\usepackage{hyperref}
+\documentclass[aos]{imsart}
+
+\RequirePackage{amsthm,amsmath,amsfonts,amssymb}
+\RequirePackage[authoryear]{natbib}
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage[UTF8,fontset=fandol]{ctex}
+
+\startlocaldefs
+\numberwithin{equation}{section}
+\endlocaldefs
+
+% 以下命令由 R 自动生成，不要手工复制数值。
 \input{../../../outputs/results/numbers.tex}
-\title{可复现的统计 R 工作流}
-\author{课程示例}
-\date{}
+
 \begin{document}
-\maketitle
+
+\begin{frontmatter}
+\title{使用 R 与 LaTeX 建立可复现的统计工作流}
+\runtitle{R 与 LaTeX 可复现工作流}
+
+\begin{aug}
+\author[A]{\fnms{课程}~\snm{示例}}
+\address[A]{统计学课程项目}
+\end{aug}
+
+\begin{abstract}
+本教学示例说明如何用一个 R 入口生成统计论文所需的数值、矢量图和
+LaTeX 表格。修改分析并重新运行后，中英文论文会读取同一批最新结果。
+\end{abstract}
+
+\begin{keyword}
+\kwd{可复现研究}
+\kwd{R}
+\kwd{LaTeX}
+\kwd{相对路径}
+\end{keyword}
+\end{frontmatter}
+
 \section{引言}
-整洁数据有助于可复现的统计分析\citep{wickham2014}，透明的回归报告也应保留模型假设和计算记录\citep{gelman2020}。
+
+可复现的统计工作应把数据处理、模型估计和论文报告连接起来
+\citep{wickham2014}。回归结果还需要保留模型假设与计算来源
+\citep{gelman2020}。
+
+\section{方法}
+
+本例使用 R 内置的 \texttt{mtcars} 数据，拟合模型
+\(\texttt{mpg} \sim \texttt{wt} + \texttt{hp}\)。R 脚本把论文需要的
+结果全部写入项目内部的 \texttt{outputs} 目录。
+
 \section{结果}
-本教学分析包含 \SampleSize{} 个观测，模型 $R^2=\ModelRsquared$。
-\begin{table}[htbp]
-\centering
-\caption{由 R 自动生成的模型系数。}
-\input{../../../outputs/tables/coefficients.tex}
-\end{table}
+
+分析包含 \SampleSize{} 个观测，模型的 \(R^2=\ModelRsquared\)。
+控制马力后，重量每增加 1000 磅，预测每加仑英里数的变化为
+\WeightEstimate{}。
+
 \begin{figure}[htbp]
-\centering
-\includegraphics[width=.8\linewidth]{../../../outputs/figures/observed-fitted.pdf}
-\caption{观测值与拟合值。}
+  \centering
+  \includegraphics[width=0.82\textwidth]{../../../outputs/figures/observed-fitted.pdf}
+  \caption{观测值与拟合值。PDF 图片由 R 自动生成。}
+  \label{fig:observed-fitted}
 \end{figure}
-\bibliographystyle{plainnat}
+
+\begin{table}[htbp]
+  \centering
+  \caption{由 R 自动生成的回归系数。}
+  \label{tab:coefficients}
+  \input{../../../outputs/tables/coefficients.tex}
+\end{table}
+
+图~\ref{fig:observed-fitted}与表~\ref{tab:coefficients}均使用相对路径。
+改变 R 分析并重新构建论文后，两者会同步更新。
+
+\section{局限}
+
+这个小型观察性示例用于演示文件流程，不支持因果推断。正式分析仍需检查
+模型诊断并提供专业背景依据。
+
+\bibliographystyle{imsart-nameyear}
 \bibliography{references}
+
 \end{document}

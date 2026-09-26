@@ -3,3 +3,9 @@ workflowdemo_*.tar.gz
 paper/*.aux
 paper/*.log
 paper/*.out
+paper/templates/*/main.aux
+paper/templates/*/main.bbl
+paper/templates/*/main.blg
+paper/templates/*/main.log
+paper/templates/*/main.out
+paper/templates/*/main.pdf

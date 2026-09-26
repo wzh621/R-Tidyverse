@@ -1,12 +1,15 @@
-# 中文统计论文模板（作者—年份引用）
+# 中文 IMS 统计论文模板
 
-arXiv 没有统一的中文模板。本目录采用 `ctexart + natbib + plainnat`：中文排版用 XeLaTeX，统计论文常见的作者—年份引用用 BibTeX。arXiv:2412.19437 的源码可作为中文兼容设置参考，但其中的 `deepseek.cls` 是定制类，不适合直接当作通用模板。正式投稿时必须换成目标期刊的 `.cls`、`.bst` 和参考文献规范。
+本模板沿用英文版的 IMS/Annals of Statistics 结构，并增加 `ctex` 中文支持。
+`imsart.cls`、`imsart.sty` 和 `imsart-nameyear.bst` 来自 arXiv:2412.06766
+的公开源码，保持原样；文件头声明采用 LaTeX Project Public License。
+
+在项目根目录运行：
 
 ```sh
-xelatex -interaction=nonstopmode -halt-on-error main.tex
-bibtex main
-xelatex -interaction=nonstopmode -halt-on-error main.tex
-xelatex -interaction=nonstopmode -halt-on-error main.tex
+Rscript build_papers.R
 ```
 
-示例使用 `\citet{gelman2020}` 和 `\citep{wickham2014}`；`references.bib` 可直接替换为自己的统计文献库。
+模板通过相对路径读取 R 生成的图片、表格和结果宏，并使用
+`references.bib` 与作者—年份引用。中文使用 TeX Live 自带的 Fandol 字体，
+需要 XeLaTeX。正式投稿前，应换成目标期刊当前提供的模板和作者指南。
